@@ -16,6 +16,17 @@ pod 'React', :path => '../node_modules/react-native', :subspecs => [
 'RCTNetwork',
 'RCTWebSocket', # 这个模块是用于调试功能的
 # 在这里继续添加你所需要的RN模块
+'ART',
+'RCTActionSheet',
+'RCTAnimation',
+'RCTBlob',
+'RCTCameraRoll',
+'RCTGeolocation',
+'RCTImage',
+'RCTPushNotification',
+'RCTSettings',
+'RCTVibration',
+'RCTLinkingIOS',
 ]
 # 如果RN版本 >= 0.45则加入下面三个第三方编译依赖
 pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
