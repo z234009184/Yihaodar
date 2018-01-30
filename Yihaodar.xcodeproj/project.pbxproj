@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6868217ACE580F5D4E867FA7 /* Pods_Yihaodar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345B0B2259BEFB9AEECD9CD0 /* Pods_Yihaodar.framework */; };
 		8A235112201E0AC4002715E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A235111201E0AC4002715E0 /* AppDelegate.swift */; };
-		8A235114201E0AC4002715E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A235113201E0AC4002715E0 /* ViewController.swift */; };
 		8A235117201E0AC4002715E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A235115201E0AC4002715E0 /* Main.storyboard */; };
 		8A235119201E0AC4002715E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A235118201E0AC4002715E0 /* Assets.xcassets */; };
 		8A23511C201E0AC4002715E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A23511A201E0AC4002715E0 /* LaunchScreen.storyboard */; };
@@ -19,7 +18,6 @@
 		345B0B2259BEFB9AEECD9CD0 /* Pods_Yihaodar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yihaodar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A23510E201E0AC4002715E0 /* Yihaodar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yihaodar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A235111201E0AC4002715E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8A235113201E0AC4002715E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8A235116201E0AC4002715E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8A235118201E0AC4002715E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A23511B201E0AC4002715E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,7 +60,6 @@
 			isa = PBXGroup;
 			children = (
 				8A235111201E0AC4002715E0 /* AppDelegate.swift */,
-				8A235113201E0AC4002715E0 /* ViewController.swift */,
 				8A235115201E0AC4002715E0 /* Main.storyboard */,
 				8A235118201E0AC4002715E0 /* Assets.xcassets */,
 				8A23511A201E0AC4002715E0 /* LaunchScreen.storyboard */,
@@ -166,19 +163,25 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Yihaodar/Pods-Yihaodar-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/DoubleConversion/DoubleConversion.framework",
-				"${BUILT_PRODUCTS_DIR}/Folly/folly.framework",
-				"${BUILT_PRODUCTS_DIR}/GLog/glog.framework",
-				"${BUILT_PRODUCTS_DIR}/React/React.framework",
-				"${BUILT_PRODUCTS_DIR}/yoga/yoga.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/RAMAnimatedTabBarController/RAMAnimatedTabBarController.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DoubleConversion.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/folly.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/glog.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/yoga.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RAMAnimatedTabBarController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -225,7 +228,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A235114201E0AC4002715E0 /* ViewController.swift in Sources */,
 				8A235112201E0AC4002715E0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
