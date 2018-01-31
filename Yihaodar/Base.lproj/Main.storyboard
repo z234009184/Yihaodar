@@ -20,7 +20,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="zno-JW-Wf3"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" image="profile" selectedImage="profile_selected" id="rjz-OC-i1s" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="Item 2" image="profile" selectedImage="profile_selected" id="rjz-OC-i1s" customClass="GLTabBarItem" customModule="Yihaodar" customModuleProvider="target">
                         <connections>
                             <outlet property="animation" destination="jVP-Sb-IEa" id="riI-vb-8gt"/>
                         </connections>
@@ -32,10 +32,16 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="duration">
                             <real key="value" value="0.5"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="textSelectedColor">
+                            <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="-81" y="-61"/>
+            <point key="canvasLocation" x="-911" y="-9"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="MAf-qD-YQg">
@@ -47,7 +53,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="0ts-Ra-EL2"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" image="profile" selectedImage="profile_selected" id="nEr-Je-AhJ" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="Item 1" image="profile" selectedImage="profile_selected" id="nEr-Je-AhJ" customClass="GLTabBarItem" customModule="Yihaodar" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="yOffSet">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="animation" destination="fQ7-kE-gEh" id="GNc-fk-aFJ"/>
                         </connections>
@@ -59,15 +70,21 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="duration">
                             <real key="value" value="0.5"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="textSelectedColor">
+                            <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="-81" y="-725"/>
+            <point key="canvasLocation" x="-911" y="-694"/>
         </scene>
-        <!--Animated Tab Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="LIl-ma-fu8">
             <objects>
-                <tabBarController id="N7d-ix-GMk" customClass="RAMAnimatedTabBarController" customModule="RAMAnimatedTabBarController" sceneMemberID="viewController">
+                <tabBarController id="N7d-ix-GMk" customClass="GLTabBarController" customModule="Yihaodar" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qjy-mF-3mS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -80,7 +97,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Udk-QP-m87" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1033" y="-394"/>
+            <point key="canvasLocation" x="-1759" y="-359"/>
         </scene>
     </scenes>
     <resources>

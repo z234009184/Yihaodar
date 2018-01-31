@@ -39,4 +39,5 @@ target 'Yihaodar' do
     pod 'HandyJSON','4.0.0-beta.1'     # json/字典 映射 模型
     pod 'Toast-Swift'  #吐司提示
     pod 'Hero' # 各种交互动画
+    pod 'Navigation-stack'
 end

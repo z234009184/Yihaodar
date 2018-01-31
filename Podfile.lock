@@ -7,6 +7,7 @@ PODS:
   - Moya/Core (10.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
+  - Navigation-stack (0.0.8)
   - RAMAnimatedTabBarController (3.0.1)
   - Result (3.2.4)
   - SwiftyJSON (4.0.0)
@@ -16,6 +17,7 @@ DEPENDENCIES:
   - HandyJSON (= 4.0.0-beta.1)
   - Hero
   - Moya
+  - Navigation-stack
   - RAMAnimatedTabBarController
   - SwiftyJSON
   - Toast-Swift
@@ -25,11 +27,12 @@ SPEC CHECKSUMS:
   HandyJSON: 428bb18e2c34c2a77361accebf90cf64e4f74118
   Hero: cee286821578e170d8c0c9c9cda7897357401112
   Moya: 9e621707ff754eeb51ff3ec51a3d54e517c0733a
+  Navigation-stack: 89e24d03c72baab6e455c90b505d805852e4ad9a
   RAMAnimatedTabBarController: 78bafa7a1c1b162f0d4a86a936c0d1ee4a06ffcc
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
 
-PODFILE CHECKSUM: 6a69b56b7083c8f7ac79cf33b0d2da88be554d8d
+PODFILE CHECKSUM: 48623f6dcb2382641fd0c1c0a8e4d0a5d0952dcd
 
 COCOAPODS: 1.3.1
