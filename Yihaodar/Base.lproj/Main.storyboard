@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,35 +27,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Udk-QP-m87" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1759" y="-359"/>
-        </scene>
-        <!--工作台-->
-        <scene sceneID="euM-BV-3DS">
-            <objects>
-                <tableViewController id="U6M-WF-t3u" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9kH-dA-64C">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="OtM-eu-qDc">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OtM-eu-qDc" id="wgQ-K8-tgg">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="U6M-WF-t3u" id="oxo-wq-mTm"/>
-                            <outlet property="delegate" destination="U6M-WF-t3u" id="xAl-d2-bAC"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="工作台" id="FUw-JX-kYs"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kgw-TL-kWn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5" y="-757"/>
         </scene>
         <!--我的-->
         <scene sceneID="Y6c-7B-6WX">
@@ -146,7 +118,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="U6M-WF-t3u" kind="relationship" relationship="rootViewController" id="QEu-R4-xzU"/>
+                        <segue destination="CkB-Xx-zGi" kind="relationship" relationship="rootViewController" id="fyG-Iv-Wjb"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMY-SC-1TR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -162,6 +134,22 @@
                 </customObject>
             </objects>
             <point key="canvasLocation" x="-949" y="-757"/>
+        </scene>
+        <!--工作台-->
+        <scene sceneID="vbL-Yi-wuQ">
+            <objects>
+                <viewController id="CkB-Xx-zGi" customClass="GLWorkTableController" customModule="Yihaodar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="k89-Go-2z1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="lOC-6N-ND1"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="工作台" id="QxA-c4-39k"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UTg-bE-Ioh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5" y="-745"/>
         </scene>
     </scenes>
     <resources>
