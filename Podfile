@@ -39,5 +39,9 @@ target 'Yihaodar' do
     pod 'HandyJSON','4.0.0-beta.1'     # json/字典 映射 模型
     pod 'Toast-Swift'  #吐司提示
     pod 'Hero' # 各种交互动画
-
+    pod 'AwesomeCache' # 令人愉快的缓存框架
+    pod 'IBAnimatable' # Storyboard 中动画
+    pod 'ESPullToRefresh' # 下拉刷新
+    pod 'XLPagerTabStrip' # 顶部tab标签切换库
+    
 end

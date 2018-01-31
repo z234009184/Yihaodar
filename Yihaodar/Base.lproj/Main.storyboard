@@ -89,7 +89,7 @@
         <scene sceneID="ipK-hE-mDb">
             <objects>
                 <navigationController id="PdG-E0-hDF" customClass="GLNavigationController" customModule="Yihaodar" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的" image="profile_selected" id="kJS-Bg-n9e" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="我的" image="profile" selectedImage="profile_selected" id="kJS-Bg-n9e" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                 <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -128,7 +128,7 @@
         <scene sceneID="5ps-d7-Faa">
             <objects>
                 <navigationController id="52s-X4-U67" customClass="GLNavigationController" customModule="Yihaodar" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="工作台" image="profile" id="AIM-kL-Ltr" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="工作台" image="profile" selectedImage="profile_selected" id="AIM-kL-Ltr" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                 <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
