@@ -67,8 +67,8 @@
 			children = (
 				8A235111201E0AC4002715E0 /* AppDelegate.swift */,
 				8A65877F2021C97A0031DD3D /* GLWorkTableController.swift */,
-				8AD2E86F2020795A008D32EA /* GLTabBarController.swift */,
 				8AD2E87120208366008D32EA /* GLNavigationController.swift */,
+				8AD2E86F2020795A008D32EA /* GLTabBarController.swift */,
 				8A235115201E0AC4002715E0 /* Main.storyboard */,
 				8A235118201E0AC4002715E0 /* Assets.xcassets */,
 				8A23511A201E0AC4002715E0 /* LaunchScreen.storyboard */,
