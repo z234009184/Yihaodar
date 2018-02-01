@@ -8,6 +8,9 @@
 
 import XLPagerTabStrip
 
+
+
+/// 待办控制器
 class GLDaiBanController: UIViewController, IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "代办")
@@ -20,6 +23,8 @@ class GLDaiBanController: UIViewController, IndicatorInfoProvider {
     }
 }
 
+
+/// 已完成控制器
 class GLWanChengController: UIViewController, IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "已完成")
@@ -33,8 +38,16 @@ class GLWanChengController: UIViewController, IndicatorInfoProvider {
 }
 
 
+/// 工作台控制器
 class GLWorkTableController: ButtonBarPagerTabStripViewController {
+    
+    @IBOutlet weak var topButtonBarView: ButtonBarView!
+    @IBOutlet weak var containerScrollView: UIScrollView!
+    
     override func viewDidLoad() {
+        buttonBarView = topButtonBarView
+        containerView = containerScrollView
+        
         self.settings.style.buttonBarItemFont = .systemFont(ofSize: 14)
         self.settings.style.buttonBarItemTitleColor = UIColor.black
         self.settings.style.buttonBarHeight = 40
@@ -51,6 +64,8 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
         super.viewDidLoad()
     }
     
+    
+    /// MARK: - PagerTabStripDataSource
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         return [GLDaiBanController(), GLWanChengController()]
     }

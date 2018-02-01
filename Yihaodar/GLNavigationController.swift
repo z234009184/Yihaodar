@@ -8,13 +8,12 @@
 
 import UIKit
 
+
+/// 导航控制器
 class GLNavigationController:UINavigationController {
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        isNavigationBarHidden = true
     }
-    
-    
 }
