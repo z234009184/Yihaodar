@@ -43,5 +43,5 @@ target 'Yihaodar' do
     pod 'IBAnimatable' # Storyboard 中动画
     pod 'ESPullToRefresh' # 下拉刷新
     pod 'XLPagerTabStrip' # 顶部tab标签切换库
-    
+
 end

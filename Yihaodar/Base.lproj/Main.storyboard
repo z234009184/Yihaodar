@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment version="2304" identifier="iOS"/>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -55,7 +55,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HF4-b5-wVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1" y="-36"/>
+            <point key="canvasLocation" x="-57" y="-36"/>
         </scene>
         <!--我的-->
         <scene sceneID="ipK-hE-mDb">
@@ -142,46 +142,14 @@
                     <view key="view" contentMode="scaleToFill" id="k89-Go-2z1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Zir-Rf-Jwx" customClass="ButtonBarView" customModule="XLPagerTabStrip">
-                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Vqy-it-TDl"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="E2w-AB-9ir">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d8C-5G-Hpv">
-                                <rect key="frame" x="0.0" y="108" width="375" height="510"/>
-                            </scrollView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Zir-Rf-Jwx" firstAttribute="top" secondItem="uRp-4Z-DDX" secondAttribute="top" id="65N-lD-Yag"/>
-                            <constraint firstItem="d8C-5G-Hpv" firstAttribute="leading" secondItem="uRp-4Z-DDX" secondAttribute="leading" id="QdJ-pf-qpV"/>
-                            <constraint firstItem="Zir-Rf-Jwx" firstAttribute="leading" secondItem="uRp-4Z-DDX" secondAttribute="leading" id="Sj4-mY-HcE"/>
-                            <constraint firstItem="uRp-4Z-DDX" firstAttribute="bottom" secondItem="d8C-5G-Hpv" secondAttribute="bottom" id="WxV-df-use"/>
-                            <constraint firstItem="uRp-4Z-DDX" firstAttribute="trailing" secondItem="Zir-Rf-Jwx" secondAttribute="trailing" id="iHN-Ht-efI"/>
-                            <constraint firstItem="uRp-4Z-DDX" firstAttribute="trailing" secondItem="d8C-5G-Hpv" secondAttribute="trailing" id="sij-ZG-dvQ"/>
-                            <constraint firstItem="d8C-5G-Hpv" firstAttribute="top" secondItem="Zir-Rf-Jwx" secondAttribute="bottom" id="uMi-nc-feI"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="uRp-4Z-DDX"/>
+                        <viewLayoutGuide key="safeArea" id="qxa-s7-tEY"/>
                     </view>
                     <navigationItem key="navigationItem" title="工作台" id="QxA-c4-39k"/>
-                    <connections>
-                        <outlet property="containerScrollView" destination="d8C-5G-Hpv" id="eyg-J2-gXj"/>
-                        <outlet property="topButtonBarView" destination="Zir-Rf-Jwx" id="nNc-tQ-H5X"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UTg-bE-Ioh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5.5999999999999996" y="-745.27736131934034"/>
+            <point key="canvasLocation" x="-58.399999999999999" y="-758.77061469265368"/>
         </scene>
     </scenes>
     <resources>
