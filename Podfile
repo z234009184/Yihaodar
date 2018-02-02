@@ -40,8 +40,11 @@ target 'Yihaodar' do
     pod 'Toast-Swift'  #吐司提示
     pod 'Hero' # 各种交互动画
     pod 'AwesomeCache' # 令人愉快的缓存框架
-    pod 'IBAnimatable' # Storyboard 中动画
+    pod 'Spring' # 动画库
     pod 'ESPullToRefresh' # 下拉刷新
     pod 'XLPagerTabStrip' # 顶部tab标签切换库
-
+    pod 'IQKeyboardManagerSwift' # 键盘管理者
+    pod 'AlamofireImage' # 图片下载缓存库
+    pod 'RxSwift' # 函数响应式编程库
+    pod 'SnapKit' # autoLayout布局库
 end

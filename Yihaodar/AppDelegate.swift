@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let gltabVc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
 //        window?.rootViewController = gltabVc
 //        window?.makeKeyAndVisible()
-        
         return true
     }
 
@@ -46,6 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
 }
+
 
