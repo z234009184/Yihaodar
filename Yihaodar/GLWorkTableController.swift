@@ -7,7 +7,7 @@
 //
 
 import XLPagerTabStrip
-
+import DGElasticPullToRefresh
 
 
 /// 待办控制器
@@ -19,6 +19,17 @@ class GLDaiBanController: UITableViewController, IndicatorInfoProvider {
         super.viewDidLoad()
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reusableIdentifier)
+        
+        
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = .cyan
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(1.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: {
+                self?.tableView.dg_stopLoading()
+            })
+            }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         
     }
     
@@ -86,7 +97,7 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
 //        edgesForExtendedLayout = UIRectEdge(rawValue: 0)
         
         settings.style.buttonBarBackgroundColor = .black
-        settings.style.buttonBarItemBackgroundColor = .cyan
+        settings.style.buttonBarItemBackgroundColor = UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0)
         settings.style.selectedBarBackgroundColor = .blue
         settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
         settings.style.selectedBarHeight = 3.0
