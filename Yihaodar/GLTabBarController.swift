@@ -28,6 +28,14 @@ class GLTabBarController:RAMAnimatedTabBarController  {
     
     override open func viewDidLoad() {
         super.viewDidLoad()
+        
+//        view.backgroundColor = .white
+        
+        tabBar.isTranslucent = false
+        tabBar.backgroundImage = UIImage()
+//        tabBar.shadowImage = UIImage()
+        tabBar.barTintColor = .white
+        
     }
     
     

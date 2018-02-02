@@ -74,16 +74,16 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        let naviBarHeight = navigationController?.navigationBar.frame.maxY ?? 0
-        let tabbarHeight = navigationController?.tabBarController?.tabBar.frame.size.height ?? 0
-        
-        buttonBarView.frame.origin.y = naviBarHeight
-        containerView.frame = CGRect(x: 0, y: buttonBarView.frame.maxY, width: view.frame.size.width, height: view.frame.size.height - buttonBarView.frame.maxY - tabbarHeight)
+//        let naviBarHeight = navigationController?.navigationBar.frame.maxY ?? 0
+//        let tabbarHeight = navigationController?.tabBarController?.tabBar.frame.size.height ?? 0
+//
+//        buttonBarView.frame.origin.y = naviBarHeight
+//        containerView.frame = CGRect(x: 0, y: buttonBarView.frame.maxY, width: view.frame.size.width, height: view.frame.size.height - buttonBarView.frame.maxY - tabbarHeight)
     }
     
     override func viewDidLoad() {
         
-        automaticallyAdjustsScrollViewInsets = false
+//        edgesForExtendedLayout = UIRectEdge(rawValue: 0)
         
         settings.style.buttonBarBackgroundColor = .black
         settings.style.buttonBarItemBackgroundColor = .cyan
