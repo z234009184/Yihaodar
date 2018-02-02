@@ -47,4 +47,5 @@ target 'Yihaodar' do
     pod 'AlamofireImage' # 图片下载缓存库
     pod 'RxSwift' # 函数响应式编程库
     pod 'SnapKit' # autoLayout布局库
+    pod 'HGPlaceholders' # tableView 占位视图
 end

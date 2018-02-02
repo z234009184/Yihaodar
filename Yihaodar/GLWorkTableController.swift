@@ -11,33 +11,61 @@ import XLPagerTabStrip
 
 
 /// 待办控制器
-class GLDaiBanController: UIViewController, IndicatorInfoProvider {
-    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "代办")
-    }
+class GLDaiBanController: UITableViewController, IndicatorInfoProvider {
+    
+    private let reusableIdentifier = "DaiBanCellReusableIdentifier"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.red
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reusableIdentifier)
+        
+    }
+    
+    // MARK: - IndicatorInfoProvider
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: "代办")
+    }
+}
+
+extension GLDaiBanController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 50
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reusableIdentifier) else {
+            return UITableViewCell()
+        }
+        
+        cell.textLabel?.text = "\(indexPath.row)"
+        
+        return cell
     }
 }
 
 
 /// 已完成控制器
 class GLWanChengController: UIViewController, IndicatorInfoProvider {
-    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "已完成")
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = UIColor.blue
+        
+        
+    }
+    
+    // MARK: - IndicatorInfoProvider
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: "已完成")
     }
 }
 
 
+
+// MARK: - 工作台控制器
 /// 工作台控制器
 class GLWorkTableController: ButtonBarPagerTabStripViewController {
     
@@ -58,7 +86,7 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
         automaticallyAdjustsScrollViewInsets = false
         
         settings.style.buttonBarBackgroundColor = .black
-        settings.style.buttonBarItemBackgroundColor = .white
+        settings.style.buttonBarItemBackgroundColor = .cyan
         settings.style.selectedBarBackgroundColor = .blue
         settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
         settings.style.selectedBarHeight = 3.0
