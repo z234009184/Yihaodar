@@ -41,7 +41,7 @@ target 'Yihaodar' do
     pod 'Hero' # 各种交互动画
     pod 'AwesomeCache' # 令人愉快的缓存框架
     pod 'Spring' # 动画库
-    pod 'DGElasticPullToRefresh' # 下拉刷新
+    pod 'CRRefresh' # 下拉刷新
     pod 'XLPagerTabStrip' # 顶部tab标签切换库
     pod 'IQKeyboardManagerSwift' # 键盘管理者
     pod 'AlamofireImage' # 图片下载缓存库
