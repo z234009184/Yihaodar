@@ -7,7 +7,7 @@
 //
 
 import XLPagerTabStrip
-
+import CRRefresh
 
 
 /// 待办控制器
@@ -20,6 +20,16 @@ class GLDaiBanController: UITableViewController, IndicatorInfoProvider {
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reusableIdentifier)
     
+        tableView.cr.addHeadRefresh(animator: FastAnimator()) { [weak self] in
+            /// start refresh
+            /// Do anything you want...
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                /// Stop refresh when your job finished, it will reset refresh footer if completion is true
+                self?.tableView.cr.endHeaderRefresh()
+            })
+        }
+        /// manual refresh
+        tableView.cr.beginHeaderRefresh()
         
     }
     
