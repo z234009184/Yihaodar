@@ -8,29 +8,45 @@
 
 import XLPagerTabStrip
 import CRRefresh
+import HGPlaceholders
+
+
+class PlaceHolderTableView: TableView {
+    
+    override func customSetup() {
+        placeholdersProvider = .default
+    }
+    
+}
 
 
 /// 待办控制器
 class GLDaiBanController: UITableViewController, IndicatorInfoProvider {
+
+    
+    var placeholderTableView: TableView?
     
     private let reusableIdentifier = "DaiBanCellReusableIdentifier"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        placeholderTableView = tableView as? TableView
+        placeholderTableView?.placeholderDelegate = self
+    
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reusableIdentifier)
     
-        tableView.cr.addHeadRefresh(animator: FastAnimator()) { [weak self] in
-            /// start refresh
-            /// Do anything you want...
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                /// Stop refresh when your job finished, it will reset refresh footer if completion is true
-                self?.tableView.cr.endHeaderRefresh()
-            })
-        }
-        /// manual refresh
-        tableView.cr.beginHeaderRefresh()
-        
+//        tableView.cr.addHeadRefresh(animator: FastAnimator()) { [weak self] in
+//            /// start refresh
+//            /// Do anything you want...
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+//                /// Stop refresh when your job finished, it will reset refresh footer if completion is true
+//                self?.tableView.cr.endHeaderRefresh()
+//            })
+//        }
+//        /// manual refresh
+//        tableView.cr.beginHeaderRefresh()
+        placeholderTableView?.showNoResultsPlaceholder()
     }
     
     // MARK: - IndicatorInfoProvider
@@ -39,9 +55,15 @@ class GLDaiBanController: UITableViewController, IndicatorInfoProvider {
     }
 }
 
-extension GLDaiBanController {
+extension GLDaiBanController: PlaceholderDelegate {
+    func view(_ view: Any, actionButtonTappedFor placeholder: Placeholder) {
+        print(placeholder.key.value)
+        placeholderTableView?.showDefault()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+        
+        return 20
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -54,6 +76,9 @@ extension GLDaiBanController {
         
         return cell
     }
+    
+    
+    
 }
 
 
@@ -120,7 +145,10 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
     
     /// MARK: - PagerTabStripDataSource
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        return [GLDaiBanController(), GLWanChengController()]
+        
+        let daibanVc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "GLDaiBanController")
+        
+        return [daibanVc, GLWanChengController()]
     }
     
     

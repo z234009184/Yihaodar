@@ -151,6 +151,24 @@
             </objects>
             <point key="canvasLocation" x="-58.399999999999999" y="-758.77061469265368"/>
         </scene>
+        <!--Dai Ban Controller-->
+        <scene sceneID="fA6-pV-sM6">
+            <objects>
+                <tableViewController storyboardIdentifier="GLDaiBanController" id="B2E-m1-pOj" customClass="GLDaiBanController" customModule="Yihaodar" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tzi-TD-MHg" customClass="PlaceHolderTableView" customModule="Yihaodar" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="B2E-m1-pOj" id="qLv-M0-nDs"/>
+                            <outlet property="delegate" destination="B2E-m1-pOj" id="9tS-v5-3in"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IbW-QG-Wmo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="727" y="-758"/>
+        </scene>
     </scenes>
     <resources>
         <image name="profile" width="24" height="22"/>
