@@ -10,6 +10,12 @@ import XLPagerTabStrip
 import CRRefresh
 import HGPlaceholders
 
+class GLWorkTableListCell: UITableViewCell {
+    
+}
+
+
+
 // MARK: - 带有placeholder的tableView
 /// 带有placeholder的tableView
 class PlaceHolderTableView: TableView {
@@ -24,7 +30,7 @@ class GLDaiBanController: UITableViewController {
     
     var placeholderTableView: PlaceHolderTableView?
     
-    private let reusableIdentifier = "DaiBanCellReusableIdentifier"
+    private let reusableIdentifier = "GLWorkTableListCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +38,7 @@ class GLDaiBanController: UITableViewController {
         placeholderTableView = tableView as? PlaceHolderTableView
         placeholderTableView?.placeholderDelegate = self
     
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reusableIdentifier)
+//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reusableIdentifier)
         
         tableView.cr.addHeadRefresh(animator: RamotionAnimator(ballColor: .white, waveColor: YiBlueColor)) { [weak self] in
             /// start refresh
@@ -126,7 +132,7 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarLeftContentInset = 1
         settings.style.buttonBarRightContentInset = 1
         
-        changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
+        changeCurrentIndexProgressive = {  (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
             oldCell?.label.textColor = YiUnselectedTitleColor
             newCell?.label.textColor = .white

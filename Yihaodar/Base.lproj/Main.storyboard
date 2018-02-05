@@ -170,7 +170,7 @@
                                 <rect key="frame" x="0.0" y="122" width="375" height="496"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.92916911840438843" green="0.93318682909011841" blue="0.94551080465316772" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="sBC-aM-qXd" firstAttribute="leading" secondItem="qxa-s7-tEY" secondAttribute="leading" id="072-ed-uVF"/>
                             <constraint firstItem="t7F-fd-xo6" firstAttribute="leading" secondItem="qxa-s7-tEY" secondAttribute="leading" id="7Th-bQ-6vs"/>
@@ -208,10 +208,33 @@
         <scene sceneID="fA6-pV-sM6">
             <objects>
                 <tableViewController storyboardIdentifier="GLDaiBanController" id="B2E-m1-pOj" customClass="GLDaiBanController" customModule="Yihaodar" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tzi-TD-MHg" customClass="PlaceHolderTableView" customModule="Yihaodar" customModuleProvider="target">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" id="tzi-TD-MHg" customClass="PlaceHolderTableView" customModule="Yihaodar" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GLWorkTableListCell" id="jJG-YG-17e" customClass="GLWorkTableListCell" customModule="Yihaodar" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="150"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jJG-YG-17e" id="lBZ-vV-XMj">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFh-i3-ST6">
+                                            <rect key="frame" x="10" y="0.0" width="355" height="139.5"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="lFh-i3-ST6" firstAttribute="top" secondItem="lBZ-vV-XMj" secondAttribute="top" id="95a-DS-VJ3"/>
+                                        <constraint firstAttribute="trailing" secondItem="lFh-i3-ST6" secondAttribute="trailing" constant="10" id="CJk-gL-4eg"/>
+                                        <constraint firstItem="lFh-i3-ST6" firstAttribute="leading" secondItem="lBZ-vV-XMj" secondAttribute="leading" constant="10" id="FCS-FJ-XiG"/>
+                                        <constraint firstAttribute="bottom" secondItem="lFh-i3-ST6" secondAttribute="bottom" constant="10" id="Klv-GH-2I5"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableViewCell>
+                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="B2E-m1-pOj" id="qLv-M0-nDs"/>
                             <outlet property="delegate" destination="B2E-m1-pOj" id="9tS-v5-3in"/>
@@ -220,7 +243,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IbW-QG-Wmo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="727" y="-758"/>
+            <point key="canvasLocation" x="725.60000000000002" y="-758.77061469265368"/>
         </scene>
     </scenes>
     <resources>
