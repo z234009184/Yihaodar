@@ -12,7 +12,9 @@ import UIKit
 /// 导航控制器
 class GLNavigationController:UINavigationController {
     
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         

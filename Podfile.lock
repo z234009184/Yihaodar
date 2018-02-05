@@ -3,6 +3,9 @@ PODS:
   - AlamofireImage (3.3.0):
     - Alamofire (~> 4.5)
   - AwesomeCache (5.0)
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
   - CRRefresh (1.0.5)
   - HandyJSON (4.0.0-beta.1)
   - Hero (1.0.1)
@@ -16,15 +19,18 @@ PODS:
   - RAMAnimatedTabBarController (3.0.1)
   - Result (3.2.4)
   - RxSwift (4.1.0)
+  - SKPhotoBrowser (5.0.3)
   - SnapKit (4.0.0)
   - Spring (1.0.5)
   - SwiftyJSON (4.0.0)
+  - TKSubmitTransition (2.0)
   - Toast-Swift (3.0.1)
   - XLPagerTabStrip (8.0.0)
 
 DEPENDENCIES:
   - AlamofireImage
   - AwesomeCache
+  - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - CRRefresh
   - HandyJSON (= 4.0.0-beta.1)
   - Hero
@@ -33,16 +39,34 @@ DEPENDENCIES:
   - Moya
   - RAMAnimatedTabBarController
   - RxSwift
+  - SKPhotoBrowser
   - SnapKit
   - Spring
   - SwiftyJSON
+  - TKSubmitTransition (from `https://github.com/entotsu/TKSubmitTransition.git`, tag `2.0`)
   - Toast-Swift
   - XLPagerTabStrip
+
+EXTERNAL SOURCES:
+  ChameleonFramework:
+    :git: https://github.com/ViccAlexander/Chameleon.git
+  TKSubmitTransition:
+    :git: https://github.com/entotsu/TKSubmitTransition.git
+    :tag: 2.0
+
+CHECKOUT OPTIONS:
+  ChameleonFramework:
+    :commit: 6dd284bde21ea2e7f9fd89bc36f40df16e16369d
+    :git: https://github.com/ViccAlexander/Chameleon.git
+  TKSubmitTransition:
+    :git: https://github.com/entotsu/TKSubmitTransition.git
+    :tag: 2.0
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
   AwesomeCache: d8906955242173357caa0be0214d5e77dec32cc5
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CRRefresh: 718be57647db922a4a3af3f17fc41289145d8e83
   HandyJSON: 428bb18e2c34c2a77361accebf90cf64e4f74118
   Hero: cee286821578e170d8c0c9c9cda7897357401112
@@ -52,12 +76,14 @@ SPEC CHECKSUMS:
   RAMAnimatedTabBarController: 78bafa7a1c1b162f0d4a86a936c0d1ee4a06ffcc
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RxSwift: 4219941c1244c88002901bd87a69d3aea9ae71f0
+  SKPhotoBrowser: 6de77f7004442e79059f19d86e2e7e6a03b43a13
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   Spring: 17901566c8ecf3a1327902b940406c64512f9bb1
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  TKSubmitTransition: 647b907508da58ba864141e3c4382442ec536d40
   Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
   XLPagerTabStrip: d1ab378af0923320ec0b5eab11d7b2f803d31261
 
-PODFILE CHECKSUM: f5219f33befbcd018a6dd28577e6640073ff6d33
+PODFILE CHECKSUM: ea35ce536134e7c1ae6ca17c12ef224ad7738cac
 
 COCOAPODS: 1.3.1

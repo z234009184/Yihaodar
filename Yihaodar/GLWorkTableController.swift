@@ -117,6 +117,7 @@ extension GLWanChengController: IndicatorInfoProvider {
 /// 工作台控制器
 class GLWorkTableController: ButtonBarPagerTabStripViewController {
     
+    
     override func viewDidLoad() {
         
 //        edgesForExtendedLayout = UIRectEdge(rawValue: 0)

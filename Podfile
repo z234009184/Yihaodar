@@ -48,4 +48,7 @@ target 'Yihaodar' do
     pod 'RxSwift' # 函数响应式编程库
     pod 'SnapKit' # autoLayout布局库
     pod 'HGPlaceholders' # tableView 占位视图
+    pod 'SKPhotoBrowser' # 图片浏览器
+    pod 'TKSubmitTransition', :git => 'https://github.com/entotsu/TKSubmitTransition.git', :tag => '2.0' # 登陆动画按钮
+    pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git' # 颜色框架
 end

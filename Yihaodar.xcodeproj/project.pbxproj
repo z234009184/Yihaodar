@@ -13,6 +13,7 @@
 		8A235119201E0AC4002715E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A235118201E0AC4002715E0 /* Assets.xcassets */; };
 		8A23511C201E0AC4002715E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A23511A201E0AC4002715E0 /* LaunchScreen.storyboard */; };
 		8A4982D82027F63A00EB4BEF /* GLConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4982D72027F63A00EB4BEF /* GLConst.swift */; };
+		8A4982DA20282BF200EB4BEF /* GLLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4982D920282BF200EB4BEF /* GLLoginViewController.swift */; };
 		8A6587802021C97A0031DD3D /* GLWorkTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65877F2021C97A0031DD3D /* GLWorkTableController.swift */; };
 		8AD2E8702020795A008D32EA /* GLTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD2E86F2020795A008D32EA /* GLTabBarController.swift */; };
 		8AD2E87220208366008D32EA /* GLNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD2E87120208366008D32EA /* GLNavigationController.swift */; };
@@ -27,6 +28,7 @@
 		8A23511B201E0AC4002715E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A23511D201E0AC4002715E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A4982D72027F63A00EB4BEF /* GLConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLConst.swift; sourceTree = "<group>"; };
+		8A4982D920282BF200EB4BEF /* GLLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLLoginViewController.swift; sourceTree = "<group>"; };
 		8A65877F2021C97A0031DD3D /* GLWorkTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLWorkTableController.swift; sourceTree = "<group>"; };
 		8AD2E86F2020795A008D32EA /* GLTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLTabBarController.swift; sourceTree = "<group>"; };
 		8AD2E87120208366008D32EA /* GLNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLNavigationController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				8A235111201E0AC4002715E0 /* AppDelegate.swift */,
+				8A4982D920282BF200EB4BEF /* GLLoginViewController.swift */,
 				8A65877F2021C97A0031DD3D /* GLWorkTableController.swift */,
 				8AD2E87120208366008D32EA /* GLNavigationController.swift */,
 				8AD2E86F2020795A008D32EA /* GLTabBarController.swift */,
@@ -179,6 +182,7 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/AwesomeCache/AwesomeCache.framework",
 				"${BUILT_PRODUCTS_DIR}/CRRefresh/CRRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/HGPlaceholders/HGPlaceholders.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
@@ -187,9 +191,11 @@
 				"${BUILT_PRODUCTS_DIR}/RAMAnimatedTabBarController/RAMAnimatedTabBarController.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SKPhotoBrowser/SKPhotoBrowser.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Spring/Spring.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TKSubmitTransition/TKSubmitTransition.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 			);
@@ -199,6 +205,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AwesomeCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CRRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HGPlaceholders.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
@@ -207,9 +214,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RAMAnimatedTabBarController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SKPhotoBrowser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spring.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TKSubmitTransition.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 			);
@@ -261,6 +270,7 @@
 				8A6587802021C97A0031DD3D /* GLWorkTableController.swift in Sources */,
 				8A4982D82027F63A00EB4BEF /* GLConst.swift in Sources */,
 				8AD2E8702020795A008D32EA /* GLTabBarController.swift in Sources */,
+				8A4982DA20282BF200EB4BEF /* GLLoginViewController.swift in Sources */,
 				8A235112201E0AC4002715E0 /* AppDelegate.swift in Sources */,
 				8AD2E87220208366008D32EA /* GLNavigationController.swift in Sources */,
 			);
