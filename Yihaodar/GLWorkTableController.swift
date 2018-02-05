@@ -10,18 +10,16 @@ import XLPagerTabStrip
 import CRRefresh
 import HGPlaceholders
 
-
+// MARK: - 带有placeholder的tableView
+/// 带有placeholder的tableView
 class PlaceHolderTableView: TableView {
-    
     override func customSetup() {
         placeholdersProvider = .default
     }
-    
 }
-
-
+// MARK: - 待办控制器
 /// 待办控制器
-class GLDaiBanController: UITableViewController, IndicatorInfoProvider {
+class GLDaiBanController: UITableViewController {
 
     
     var placeholderTableView: PlaceHolderTableView?
@@ -35,29 +33,30 @@ class GLDaiBanController: UITableViewController, IndicatorInfoProvider {
         placeholderTableView?.placeholderDelegate = self
     
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reusableIdentifier)
-    
-//        tableView.cr.addHeadRefresh(animator: FastAnimator()) { [weak self] in
-//            /// start refresh
-//            /// Do anything you want...
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-//                /// Stop refresh when your job finished, it will reset refresh footer if completion is true
-//                self?.tableView.cr.endHeaderRefresh()
-//            })
-//        }
-//        /// manual refresh
-//        tableView.cr.beginHeaderRefresh()
+        
+        tableView.cr.addHeadRefresh(animator: RamotionAnimator(ballColor: .white, waveColor: YiBlueColor)) { [weak self] in
+            /// start refresh
+            /// Do anything you want...
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                /// Stop refresh when your job finished, it will reset refresh footer if completion is true
+                self?.tableView.cr.endHeaderRefresh()
+            })
+        }
+        /// manual refresh
+        tableView.cr.beginHeaderRefresh()
     }
     
-    // MARK: - IndicatorInfoProvider
-    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "代办任务")
-    }
 }
 
-extension GLDaiBanController: PlaceholderDelegate {
+extension GLDaiBanController: PlaceholderDelegate, IndicatorInfoProvider {
     func view(_ view: Any, actionButtonTappedFor placeholder: Placeholder) {
         print(placeholder.key.value)
         
+    }
+    
+    // IndicatorInfoProvider
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: "代办任务")
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,14 +74,15 @@ extension GLDaiBanController: PlaceholderDelegate {
         
         return cell
     }
-    
-    
-    
 }
 
 
+
+
+
+// MARK: - 已完成控制器
 /// 已完成控制器
-class GLWanChengController: UIViewController, IndicatorInfoProvider {
+class GLWanChengController: UIViewController {
     
     
     override func viewDidLoad() {
@@ -92,7 +92,10 @@ class GLWanChengController: UIViewController, IndicatorInfoProvider {
         
     }
     
-    // MARK: - IndicatorInfoProvider
+}
+
+extension GLWanChengController: IndicatorInfoProvider {
+    // IndicatorInfoProvider
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "已完成任务")
     }
@@ -100,27 +103,23 @@ class GLWanChengController: UIViewController, IndicatorInfoProvider {
 
 
 
+
+
+
+
 // MARK: - 工作台控制器
 /// 工作台控制器
 class GLWorkTableController: ButtonBarPagerTabStripViewController {
-    
-    
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-    }
     
     override func viewDidLoad() {
         
 //        edgesForExtendedLayout = UIRectEdge(rawValue: 0)
         
-        view.backgroundColor = .cyan
         settings.style.buttonBarBackgroundColor = YiBlueColor
         settings.style.buttonBarItemBackgroundColor = YiBlueColor
         settings.style.selectedBarBackgroundColor = .white
         settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 16)
-        settings.style.selectedBarHeight = 3.0
+        settings.style.selectedBarHeight = 4.0
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemTitleColor = .white
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
@@ -135,12 +134,10 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
         
         super.viewDidLoad()
         
-        
     }
     
     
-    
-    /// MARK: - PagerTabStripDataSource
+    /// PagerTabStripDataSource
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
         let daibanVc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "GLDaiBanController")

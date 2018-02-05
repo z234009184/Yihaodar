@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -144,10 +146,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sBC-aM-qXd" customClass="ButtonBarView" customModule="XLPagerTabStrip">
-                                <rect key="frame" x="0.0" y="64" width="375" height="64"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="kDe-4d-tDk"/>
+                                    <constraint firstAttribute="height" constant="50" id="kDe-4d-tDk"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oQr-cA-tMY">
                                     <size key="itemSize" width="50" height="50"/>
@@ -157,23 +159,42 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t7F-fd-xo6">
+                                <rect key="frame" x="0.0" y="114" width="375" height="70"/>
+                                <color key="backgroundColor" red="0.0" green="0.60392156860000001" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="t7F-fd-xo6" secondAttribute="height" multiplier="75:14" id="Xdd-2v-DPP"/>
+                                </constraints>
+                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xOu-lE-jmD">
-                                <rect key="frame" x="0.0" y="128" width="375" height="490"/>
+                                <rect key="frame" x="0.0" y="122" width="375" height="496"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="sBC-aM-qXd" firstAttribute="leading" secondItem="qxa-s7-tEY" secondAttribute="leading" id="072-ed-uVF"/>
+                            <constraint firstItem="t7F-fd-xo6" firstAttribute="leading" secondItem="qxa-s7-tEY" secondAttribute="leading" id="7Th-bQ-6vs"/>
+                            <constraint firstItem="t7F-fd-xo6" firstAttribute="top" secondItem="sBC-aM-qXd" secondAttribute="bottom" id="7UO-fb-3QC"/>
                             <constraint firstItem="qxa-s7-tEY" firstAttribute="bottom" secondItem="xOu-lE-jmD" secondAttribute="bottom" id="94F-n2-d6N"/>
                             <constraint firstItem="qxa-s7-tEY" firstAttribute="trailing" secondItem="xOu-lE-jmD" secondAttribute="trailing" id="DD9-8X-cZW"/>
                             <constraint firstItem="sBC-aM-qXd" firstAttribute="top" secondItem="qxa-s7-tEY" secondAttribute="top" id="EvZ-GD-J8c"/>
-                            <constraint firstItem="xOu-lE-jmD" firstAttribute="top" secondItem="sBC-aM-qXd" secondAttribute="bottom" id="PH0-bz-2Nn"/>
+                            <constraint firstItem="xOu-lE-jmD" firstAttribute="top" secondItem="sBC-aM-qXd" secondAttribute="bottom" constant="8" id="PH0-bz-2Nn"/>
                             <constraint firstItem="qxa-s7-tEY" firstAttribute="trailing" secondItem="sBC-aM-qXd" secondAttribute="trailing" id="TA5-og-Gw3"/>
+                            <constraint firstItem="qxa-s7-tEY" firstAttribute="trailing" secondItem="t7F-fd-xo6" secondAttribute="trailing" id="lAc-jy-5x6"/>
                             <constraint firstItem="xOu-lE-jmD" firstAttribute="leading" secondItem="qxa-s7-tEY" secondAttribute="leading" id="tjT-bV-Sw0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qxa-s7-tEY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="工作台" id="QxA-c4-39k"/>
+                    <navigationItem key="navigationItem" title="工作台" id="QxA-c4-39k">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="2cZ-aA-n1L">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </barButtonItem>
+                            <barButtonItem systemItem="search" id="AgV-AG-aKM">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="buttonBarView" destination="sBC-aM-qXd" id="fgL-yZ-2K1"/>
                         <outlet property="containerView" destination="xOu-lE-jmD" id="keB-ED-Scb"/>
