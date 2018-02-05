@@ -24,14 +24,14 @@ class PlaceHolderTableView: TableView {
 class GLDaiBanController: UITableViewController, IndicatorInfoProvider {
 
     
-    var placeholderTableView: TableView?
+    var placeholderTableView: PlaceHolderTableView?
     
     private let reusableIdentifier = "DaiBanCellReusableIdentifier"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        placeholderTableView = tableView as? TableView
+        placeholderTableView = tableView as? PlaceHolderTableView
         placeholderTableView?.placeholderDelegate = self
     
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reusableIdentifier)
@@ -46,24 +46,23 @@ class GLDaiBanController: UITableViewController, IndicatorInfoProvider {
 //        }
 //        /// manual refresh
 //        tableView.cr.beginHeaderRefresh()
-        placeholderTableView?.showNoResultsPlaceholder()
     }
     
     // MARK: - IndicatorInfoProvider
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "代办")
+        return IndicatorInfo(title: "代办任务")
     }
 }
 
 extension GLDaiBanController: PlaceholderDelegate {
     func view(_ view: Any, actionButtonTappedFor placeholder: Placeholder) {
         print(placeholder.key.value)
-        placeholderTableView?.showDefault()
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 20
+        return 50
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,7 +94,7 @@ class GLWanChengController: UIViewController, IndicatorInfoProvider {
     
     // MARK: - IndicatorInfoProvider
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "已完成")
+        return IndicatorInfo(title: "已完成任务")
     }
 }
 
@@ -109,38 +108,36 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-//        let naviBarHeight = navigationController?.navigationBar.frame.maxY ?? 0
-//        let tabbarHeight = navigationController?.tabBarController?.tabBar.frame.size.height ?? 0
-//
-//        buttonBarView.frame.origin.y = naviBarHeight
-//        containerView.frame = CGRect(x: 0, y: buttonBarView.frame.maxY, width: view.frame.size.width, height: view.frame.size.height - buttonBarView.frame.maxY - tabbarHeight)
+
     }
     
     override func viewDidLoad() {
         
 //        edgesForExtendedLayout = UIRectEdge(rawValue: 0)
         
-        settings.style.buttonBarBackgroundColor = .black
-        settings.style.buttonBarItemBackgroundColor = UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0)
-        settings.style.selectedBarBackgroundColor = .blue
-        settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
+        view.backgroundColor = .cyan
+        settings.style.buttonBarBackgroundColor = YiBlueColor
+        settings.style.buttonBarItemBackgroundColor = YiBlueColor
+        settings.style.selectedBarBackgroundColor = .white
+        settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 16)
         settings.style.selectedBarHeight = 3.0
         settings.style.buttonBarMinimumLineSpacing = 0
-        settings.style.buttonBarItemTitleColor = .black
+        settings.style.buttonBarItemTitleColor = .white
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
         settings.style.buttonBarLeftContentInset = 1
         settings.style.buttonBarRightContentInset = 1
         
-        
         changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
-            oldCell?.label.textColor = .black
-            newCell?.label.textColor = UIColor.red
+            oldCell?.label.textColor = YiUnselectedTitleColor
+            newCell?.label.textColor = .white
         }
         
         super.viewDidLoad()
+        
+        
     }
+    
     
     
     /// MARK: - PagerTabStripDataSource

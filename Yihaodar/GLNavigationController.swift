@@ -18,8 +18,9 @@ class GLNavigationController:UINavigationController {
         
         navigationBar.isTranslucent = false
         navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        navigationBar.shadowImage = UIImage()
-        navigationBar.barTintColor = .white
+        navigationBar.shadowImage = UIImage()
+        navigationBar.barTintColor = YiBlueColor
+        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         
     }
 }

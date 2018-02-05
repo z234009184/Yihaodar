@@ -142,10 +142,42 @@
                     <view key="view" contentMode="scaleToFill" id="k89-Go-2z1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sBC-aM-qXd" customClass="ButtonBarView" customModule="XLPagerTabStrip">
+                                <rect key="frame" x="0.0" y="64" width="375" height="64"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="kDe-4d-tDk"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oQr-cA-tMY">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xOu-lE-jmD">
+                                <rect key="frame" x="0.0" y="128" width="375" height="490"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sBC-aM-qXd" firstAttribute="leading" secondItem="qxa-s7-tEY" secondAttribute="leading" id="072-ed-uVF"/>
+                            <constraint firstItem="qxa-s7-tEY" firstAttribute="bottom" secondItem="xOu-lE-jmD" secondAttribute="bottom" id="94F-n2-d6N"/>
+                            <constraint firstItem="qxa-s7-tEY" firstAttribute="trailing" secondItem="xOu-lE-jmD" secondAttribute="trailing" id="DD9-8X-cZW"/>
+                            <constraint firstItem="sBC-aM-qXd" firstAttribute="top" secondItem="qxa-s7-tEY" secondAttribute="top" id="EvZ-GD-J8c"/>
+                            <constraint firstItem="xOu-lE-jmD" firstAttribute="top" secondItem="sBC-aM-qXd" secondAttribute="bottom" id="PH0-bz-2Nn"/>
+                            <constraint firstItem="qxa-s7-tEY" firstAttribute="trailing" secondItem="sBC-aM-qXd" secondAttribute="trailing" id="TA5-og-Gw3"/>
+                            <constraint firstItem="xOu-lE-jmD" firstAttribute="leading" secondItem="qxa-s7-tEY" secondAttribute="leading" id="tjT-bV-Sw0"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qxa-s7-tEY"/>
                     </view>
                     <navigationItem key="navigationItem" title="工作台" id="QxA-c4-39k"/>
+                    <connections>
+                        <outlet property="buttonBarView" destination="sBC-aM-qXd" id="fgL-yZ-2K1"/>
+                        <outlet property="containerView" destination="xOu-lE-jmD" id="keB-ED-Scb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UTg-bE-Ioh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -158,7 +190,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tzi-TD-MHg" customClass="PlaceHolderTableView" customModule="Yihaodar" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <connections>
                             <outlet property="dataSource" destination="B2E-m1-pOj" id="qLv-M0-nDs"/>
                             <outlet property="delegate" destination="B2E-m1-pOj" id="9tS-v5-3in"/>
