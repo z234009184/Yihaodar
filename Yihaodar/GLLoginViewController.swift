@@ -22,8 +22,11 @@ class GLLoginViewController: UIViewController {
     
     @IBAction func loginBtnClick(_ sender: TKTransitionSubmitButton) {
         sender.isEnabled = false
+        
         sender.animate(1, completion: {[weak self] () -> () in
-            self?.view.window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
+            let rootvc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
+            guard let vc = rootvc else { return }
+            self?.present(vc, animated: true, completion: nil)
         })
     }
 }
