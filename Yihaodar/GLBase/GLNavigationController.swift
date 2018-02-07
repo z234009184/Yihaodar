@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 /// 导航控制器
 class GLNavigationController:UINavigationController {
     

@@ -1,8 +1,8 @@
 //
-//  GLConst.swift
+//  UIColor+Extension.swift
 //  Yihaodar
 //
-//  Created by 张国梁 on 2018/2/5.
+//  Created by 张国梁 on 2018/2/7.
 //  Copyright © 2018年 Yihaodar. All rights reserved.
 //
 
@@ -44,13 +44,7 @@ extension UIColor {
     }
     
     
-//    public convenience init(r: CGFloat, g: CGFloat, b: CGFloat, alpha: CGFloat = 1) {
-//        self.init(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: alpha)
-//    }
+    //    public convenience init(r: CGFloat, g: CGFloat, b: CGFloat, alpha: CGFloat = 1) {
+    //        self.init(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: alpha)
+    //    }
 }
-
-let YiBlueColor = UIColor(hex: "009AFE")
-let YiUnselectedTitleColor = UIColor(hex: "A3D1FF")
-
-//let YiBlueColor = UIColor(rgb: "#009AFE")
-//let YiUnselectedTitleColor = UIColor(rgb: "#A3D1FF")

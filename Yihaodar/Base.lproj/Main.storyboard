@@ -33,78 +33,6 @@
             </objects>
             <point key="canvasLocation" x="-1759" y="-359"/>
         </scene>
-        <!--Login View Controller-->
-        <scene sceneID="bjC-aZ-9Xe">
-            <objects>
-                <viewController storyboardIdentifier="GLLoginViewController" id="POt-1h-pRk" customClass="GLLoginViewController" customModule="Yihaodar" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6tY-br-LU5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1n-9e-bIL" customClass="TKTransitionSubmitButton" customModule="TKSubmitTransition">
-                                <rect key="frame" x="50" y="413" width="275" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="DXL-wp-jxw"/>
-                                </constraints>
-                                <state key="normal" title="登陆"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="spinnerColor">
-                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="loginBtnClick:" destination="POt-1h-pRk" eventType="touchUpInside" id="UHo-Lr-t9k"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="h0r-JN-Usk">
-                                <rect key="frame" x="68" y="64" width="239" height="124"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade translate(0, -250) scale(1.5)"/>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PmB-gm-q41">
-                                <rect key="frame" x="68" y="251" width="239" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fcx-mR-MTa">
-                                <rect key="frame" x="68.5" y="303" width="239" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.60392156860000001" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="yij-bR-3CK" firstAttribute="trailing" secondItem="U1n-9e-bIL" secondAttribute="trailing" constant="50" id="6Nr-mQ-mN3"/>
-                            <constraint firstItem="PmB-gm-q41" firstAttribute="leading" secondItem="yij-bR-3CK" secondAttribute="leading" constant="68" id="CyK-L0-JGB"/>
-                            <constraint firstItem="Fcx-mR-MTa" firstAttribute="top" secondItem="PmB-gm-q41" secondAttribute="bottom" constant="22" id="DWW-9K-fFC"/>
-                            <constraint firstItem="yij-bR-3CK" firstAttribute="trailing" secondItem="h0r-JN-Usk" secondAttribute="trailing" constant="68" id="PCW-GP-7c9"/>
-                            <constraint firstItem="h0r-JN-Usk" firstAttribute="leading" secondItem="yij-bR-3CK" secondAttribute="leading" constant="68" id="TEb-8e-hiH"/>
-                            <constraint firstItem="Fcx-mR-MTa" firstAttribute="width" secondItem="PmB-gm-q41" secondAttribute="width" id="TqJ-3Y-685"/>
-                            <constraint firstItem="h0r-JN-Usk" firstAttribute="top" secondItem="yij-bR-3CK" secondAttribute="top" constant="44" id="a0e-CS-fCl"/>
-                            <constraint firstItem="PmB-gm-q41" firstAttribute="top" secondItem="h0r-JN-Usk" secondAttribute="bottom" constant="63" id="dkr-Ks-awc"/>
-                            <constraint firstItem="U1n-9e-bIL" firstAttribute="top" secondItem="Fcx-mR-MTa" secondAttribute="bottom" constant="80" id="lOY-0d-KGt"/>
-                            <constraint firstItem="yij-bR-3CK" firstAttribute="trailing" secondItem="PmB-gm-q41" secondAttribute="trailing" constant="68" id="lql-8g-DmW"/>
-                            <constraint firstItem="U1n-9e-bIL" firstAttribute="top" secondItem="Fcx-mR-MTa" secondAttribute="bottom" constant="80" id="nYU-bQ-BKk"/>
-                            <constraint firstItem="U1n-9e-bIL" firstAttribute="leading" secondItem="yij-bR-3CK" secondAttribute="leading" constant="50" id="o0u-P4-0cL"/>
-                            <constraint firstItem="Fcx-mR-MTa" firstAttribute="centerX" secondItem="PmB-gm-q41" secondAttribute="centerX" id="tab-zs-3Gs"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="yij-bR-3CK"/>
-                    </view>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <outlet property="loginBtn" destination="U1n-9e-bIL" id="Qkf-v9-h8I"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gzb-hD-eOk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1759.2" y="330.58470764617692"/>
-        </scene>
         <!--我的-->
         <scene sceneID="ipK-hE-mDb">
             <objects>
@@ -400,7 +328,16 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFh-i3-ST6">
                                             <rect key="frame" x="10" y="0.0" width="355" height="139.5"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIJ-s8-83d" customClass="DesignableLabel" customModule="Spring">
+                                                    <rect key="frame" x="16" y="8" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.67500239610000001" green="0.48484045269999998" blue="0.1771914363" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </view>
                                     </subviews>
                                     <constraints>
@@ -429,7 +366,6 @@
     </scenes>
     <resources>
         <image name="avatar" width="250" height="250"/>
-        <image name="logo" width="200" height="124"/>
         <image name="profile" width="24" height="22"/>
         <image name="profile_selected" width="24" height="22"/>
     </resources>

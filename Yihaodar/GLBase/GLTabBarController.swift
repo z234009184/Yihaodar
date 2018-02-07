@@ -8,7 +8,7 @@
 
 import Foundation
 import RAMAnimatedTabBarController
-
+import Hero
 
 
 class GLTabBarItem: RAMAnimatedTabBarItem {
@@ -29,7 +29,7 @@ class GLTabBarController:RAMAnimatedTabBarController  {
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-//        view.backgroundColor = .white
+//        heroModalAnimationType = .pageIn(direction: .left)
         
         tabBar.isTranslucent = false
         tabBar.backgroundImage = UIImage()

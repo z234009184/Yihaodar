@@ -8,9 +8,24 @@
 
 import XLPagerTabStrip
 import HGPlaceholders
+import PullToRefreshKit
 
+
+// MARK: - GLWorkTableListCell
+/// GLWorkTableListCell
 class GLWorkTableListCell: UITableViewCell {
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+    }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
 }
 
 
@@ -37,6 +52,16 @@ class GLDaiBanController: UITableViewController {
         placeholderTableView = tableView as? PlaceHolderTableView
         placeholderTableView?.placeholderDelegate = self
     
+        
+        tableView.configRefreshHeader(with: DefaultRefreshHeader.header()) { [weak self] in
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
+                self?.tableView.switchRefreshHeader(to: .normal(.success, 0.5))
+                self?.tableView.reloadData()
+            })
+        }
+        
+        
     }
     
 }
@@ -44,7 +69,7 @@ class GLDaiBanController: UITableViewController {
 extension GLDaiBanController: PlaceholderDelegate, IndicatorInfoProvider {
     func view(_ view: Any, actionButtonTappedFor placeholder: Placeholder) {
         print(placeholder.key.value)
-        
+        tableView.reloadData()
     }
     
     // IndicatorInfoProvider
@@ -53,8 +78,8 @@ extension GLDaiBanController: PlaceholderDelegate, IndicatorInfoProvider {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 50
+        let count = arc4random() % 30
+        return Int(count)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
