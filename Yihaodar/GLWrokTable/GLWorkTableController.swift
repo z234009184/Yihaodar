@@ -88,9 +88,17 @@ extension GLDaiBanController: PlaceholderDelegate, IndicatorInfoProvider {
             return UITableViewCell()
         }
         
-        cell.textLabel?.text = "\(indexPath.row)"
-        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let parentVc = parent else { return }
+        
+        let desVc = UIStoryboard(name: "GLTaskDetail", bundle: nil).instantiateInitialViewController()
+        guard let destinationVc = desVc else { return }
+        parentVc.navigationController?.pushViewController(destinationVc, animated: true)
+        
     }
 }
 
