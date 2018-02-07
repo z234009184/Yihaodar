@@ -10,6 +10,9 @@
 		6868217ACE580F5D4E867FA7 /* Pods_Yihaodar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345B0B2259BEFB9AEECD9CD0 /* Pods_Yihaodar.framework */; };
 		8A1DAB89202AB282001CBD0F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DAB88202AB282001CBD0F /* UIColor+Extension.swift */; };
 		8A1DAB90202AB43B001CBD0F /* GLLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DAB8F202AB43B001CBD0F /* GLLogin.storyboard */; };
+		8A1DAB92202AC3A8001CBD0F /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DAB91202AC3A8001CBD0F /* UIView+Extension.swift */; };
+		8A1DAB96202ACBA3001CBD0F /* GLWorkTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DAB94202ACBA3001CBD0F /* GLWorkTable.storyboard */; };
+		8A1DAB99202ACE04001CBD0F /* GLMe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DAB98202ACE04001CBD0F /* GLMe.storyboard */; };
 		8A235112201E0AC4002715E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A235111201E0AC4002715E0 /* AppDelegate.swift */; };
 		8A235117201E0AC4002715E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A235115201E0AC4002715E0 /* Main.storyboard */; };
 		8A235119201E0AC4002715E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A235118201E0AC4002715E0 /* Assets.xcassets */; };
@@ -25,6 +28,9 @@
 		345B0B2259BEFB9AEECD9CD0 /* Pods_Yihaodar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yihaodar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A1DAB88202AB282001CBD0F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		8A1DAB8F202AB43B001CBD0F /* GLLogin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLLogin.storyboard; sourceTree = "<group>"; };
+		8A1DAB91202AC3A8001CBD0F /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		8A1DAB95202ACBA3001CBD0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Yihaodar/Base.lproj/GLWorkTable.storyboard; sourceTree = SOURCE_ROOT; };
+		8A1DAB98202ACE04001CBD0F /* GLMe.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GLMe.storyboard; sourceTree = "<group>"; };
 		8A23510E201E0AC4002715E0 /* Yihaodar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yihaodar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A235111201E0AC4002715E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A235116201E0AC4002715E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -56,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				8A1DAB88202AB282001CBD0F /* UIColor+Extension.swift */,
+				8A1DAB91202AC3A8001CBD0F /* UIView+Extension.swift */,
 			);
 			path = GLExtension;
 			sourceTree = "<group>";
@@ -82,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				8A65877F2021C97A0031DD3D /* GLWorkTableController.swift */,
+				8A1DAB94202ACBA3001CBD0F /* GLWorkTable.storyboard */,
 			);
 			path = GLWrokTable;
 			sourceTree = "<group>";
@@ -92,6 +100,14 @@
 				8A4982D72027F63A00EB4BEF /* GLConst.swift */,
 			);
 			path = GLCommon;
+			sourceTree = "<group>";
+		};
+		8A1DAB97202ACC8F001CBD0F /* GLMe */ = {
+			isa = PBXGroup;
+			children = (
+				8A1DAB98202ACE04001CBD0F /* GLMe.storyboard */,
+			);
+			path = GLMe;
 			sourceTree = "<group>";
 		};
 		8A235105201E0AC4002715E0 = {
@@ -119,6 +135,7 @@
 				8A1DAB8B202AB361001CBD0F /* GLBase */,
 				8A1DAB8A202AB31A001CBD0F /* GLLogin */,
 				8A1DAB8C202AB383001CBD0F /* GLWrokTable */,
+				8A1DAB97202ACC8F001CBD0F /* GLMe */,
 				8A1DAB8E202AB3A4001CBD0F /* GLCommon */,
 				8A1DAB87202AB23F001CBD0F /* GLExtension */,
 				8A235115201E0AC4002715E0 /* Main.storyboard */,
@@ -211,7 +228,9 @@
 				8A23511C201E0AC4002715E0 /* LaunchScreen.storyboard in Resources */,
 				8A1DAB90202AB43B001CBD0F /* GLLogin.storyboard in Resources */,
 				8A235119201E0AC4002715E0 /* Assets.xcassets in Resources */,
+				8A1DAB96202ACBA3001CBD0F /* GLWorkTable.storyboard in Resources */,
 				8A235117201E0AC4002715E0 /* Main.storyboard in Resources */,
+				8A1DAB99202ACE04001CBD0F /* GLMe.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +333,7 @@
 			files = (
 				8A1DAB89202AB282001CBD0F /* UIColor+Extension.swift in Sources */,
 				8A6587802021C97A0031DD3D /* GLWorkTableController.swift in Sources */,
+				8A1DAB92202AC3A8001CBD0F /* UIView+Extension.swift in Sources */,
 				8A4982D82027F63A00EB4BEF /* GLConst.swift in Sources */,
 				8AD2E8702020795A008D32EA /* GLTabBarController.swift in Sources */,
 				8A4982DA20282BF200EB4BEF /* GLLoginViewController.swift in Sources */,
@@ -325,6 +345,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		8A1DAB94202ACBA3001CBD0F /* GLWorkTable.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A1DAB95202ACBA3001CBD0F /* Base */,
+			);
+			name = GLWorkTable.storyboard;
+			sourceTree = "<group>";
+		};
 		8A235115201E0AC4002715E0 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

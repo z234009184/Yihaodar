@@ -159,7 +159,7 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
     /// PagerTabStripDataSource
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
-        let daibanVc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "GLDaiBanController")
+        let daibanVc = UIStoryboard(name: "GLWorkTable", bundle: Bundle.main).instantiateViewController(withIdentifier: "GLDaiBanController")
         
         return [daibanVc, GLWanChengController()]
     }
