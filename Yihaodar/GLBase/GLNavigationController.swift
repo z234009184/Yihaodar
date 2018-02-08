@@ -23,6 +23,20 @@ class GLNavigationController:UINavigationController {
         navigationBar.shadowImage = UIImage()
         navigationBar.barTintColor = YiThemeColor
         navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: YiNavigationBarTitleColor]
-        
+    }
+    
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        if (self.viewControllers.count > 0) {
+            // 如果navigationController的字控制器个数大于两个就隐藏
+            viewController.hidesBottomBarWhenPushed = true;
+            
+            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "navigation_back"), style: .done, target: self, action: #selector(GLNavigationController.back))
+            
+        }
+        super.pushViewController(viewController, animated: animated)
+    }
+    
+    @objc func back() {
+        popViewController(animated: true)
     }
 }

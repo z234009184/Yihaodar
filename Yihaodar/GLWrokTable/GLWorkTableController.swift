@@ -14,6 +14,8 @@ import PullToRefreshKit
 // MARK: - GLWorkTableListCell
 /// GLWorkTableListCell
 class GLWorkTableListCell: UITableViewCell {
+    
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -53,17 +55,13 @@ class GLDaiBanController: UITableViewController {
         placeholderTableView?.placeholderDelegate = self
     
         
-        tableView.configRefreshHeader(with: DefaultRefreshHeader.header()) { [weak self] in
-            
+        tableView.configRefreshHeader(with: GLRefreshHeader.header()) { [weak self] in
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
                 self?.tableView.switchRefreshHeader(to: .normal(.success, 0.5))
                 self?.tableView.reloadData()
             })
         }
-        
-        
     }
-    
 }
 
 extension GLDaiBanController: PlaceholderDelegate, IndicatorInfoProvider {
