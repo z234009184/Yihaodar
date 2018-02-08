@@ -53,7 +53,7 @@ class GLDaiBanController: UITableViewController {
         
         placeholderTableView = tableView as? PlaceHolderTableView
         placeholderTableView?.placeholderDelegate = self
-    
+        
         
         tableView.configRefreshHeader(with: GLRefreshHeader.header()) { [weak self] in
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
@@ -76,7 +76,7 @@ extension GLDaiBanController: PlaceholderDelegate, IndicatorInfoProvider {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = arc4random() % 30
+        let count = arc4random() % 2
         return Int(count)
     }
     
