@@ -90,78 +90,80 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97h-yh-Gn4">
                                             <rect key="frame" x="10" y="0.0" width="355" height="154"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrq-ah-eQl" customClass="DesignableLabel" customModule="Spring">
-                                                    <rect key="frame" x="15" y="8" width="325" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="namename" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrq-ah-eQl" customClass="DesignableLabel" customModule="Spring">
+                                                    <rect key="frame" x="16" y="10" width="71" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.59999999999999998" green="0.62745098039215685" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="的发生地附近开了多少积分卡里的色即是空了解的发生地附近开了多少积分卡里的色即是空了解的发生地附近开了多少积分卡里的色即是空了解" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raM-gA-DRH" customClass="DesignableLabel" customModule="Spring">
-                                                    <rect key="frame" x="47" y="46" width="293" height="36"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="品牌，车系品牌，车系品牌，车系品牌，车系品牌，车系" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raM-gA-DRH" customClass="DesignableLabel" customModule="Spring">
+                                                    <rect key="frame" x="40" y="56" width="300" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.12941176470588234" green="0.15686274509803921" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Izb-dR-vbf" userLabel="line">
                                                     <rect key="frame" x="15" y="37" width="325" height="1"/>
-                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" red="0.92941176470588238" green="0.93333333333333335" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="WWa-mQ-CAl"/>
                                                     </constraints>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="UCV-Bk-HIJ" customClass="DesignableImageView" customModule="Spring">
-                                                    <rect key="frame" x="15" y="46" width="24" height="22"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="worktable_cell_car" translatesAutoresizingMaskIntoConstraints="NO" id="UCV-Bk-HIJ" customClass="DesignableImageView" customModule="Spring">
+                                                    <rect key="frame" x="15" y="58" width="17" height="13"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="BoN-Jc-nHy" customClass="DesignableImageView" customModule="Spring">
-                                                    <rect key="frame" x="15" y="97" width="24" height="22"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="worktable_cell_time" translatesAutoresizingMaskIntoConstraints="NO" id="BoN-Jc-nHy" customClass="DesignableImageView" customModule="Spring">
+                                                    <rect key="frame" x="15" y="103" width="16" height="16"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMf-sJ-dn9" customClass="DesignableButton" customModule="Spring">
-                                                    <rect key="frame" x="283" y="93" width="57" height="30"/>
+                                                    <rect key="frame" x="265" y="96" width="75" height="30"/>
+                                                    <color key="backgroundColor" red="0.098039215690000001" green="0.64313725489999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="96K-1b-BOI"/>
+                                                        <constraint firstAttribute="width" constant="75" id="bw3-3Y-OPS"/>
                                                     </constraints>
-                                                    <state key="normal" title=" 25万元 "/>
+                                                    <state key="normal" title="评估">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="15"/>
+                                                            <real key="value" value="2"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="的发生地附近开了多" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STa-QT-Vm0" customClass="DesignableLabel" customModule="Spring">
-                                                    <rect key="frame" x="47" y="99" width="138" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-02-08 13:00:04" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STa-QT-Vm0" customClass="DesignableLabel" customModule="Spring">
+                                                    <rect key="frame" x="39" y="103" width="132.5" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.59999999999999998" green="0.62745098039215685" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="worktable_cell_icon" translatesAutoresizingMaskIntoConstraints="NO" id="rTQ-Ew-LCx">
+                                                    <rect key="frame" x="0.0" y="10" width="6" height="17"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="raM-gA-DRH" secondAttribute="trailing" constant="15" id="0vK-aR-2aV"/>
+                                                <constraint firstItem="zrq-ah-eQl" firstAttribute="centerY" secondItem="rTQ-Ew-LCx" secondAttribute="centerY" id="2eG-kg-TWy"/>
+                                                <constraint firstItem="Izb-dR-vbf" firstAttribute="top" secondItem="zrq-ah-eQl" secondAttribute="bottom" constant="10" id="3SL-fR-EQ4"/>
                                                 <constraint firstItem="STa-QT-Vm0" firstAttribute="leading" secondItem="BoN-Jc-nHy" secondAttribute="trailing" constant="8" id="82P-sk-8TU"/>
                                                 <constraint firstAttribute="trailing" secondItem="Izb-dR-vbf" secondAttribute="trailing" constant="15" id="AE3-1H-5I2"/>
                                                 <constraint firstItem="HMf-sJ-dn9" firstAttribute="centerY" secondItem="STa-QT-Vm0" secondAttribute="centerY" id="CfL-Nv-7fa"/>
+                                                <constraint firstItem="rTQ-Ew-LCx" firstAttribute="top" secondItem="97h-yh-Gn4" secondAttribute="top" constant="10" id="Gbn-2q-isY"/>
                                                 <constraint firstAttribute="trailing" secondItem="HMf-sJ-dn9" secondAttribute="trailing" constant="15" id="LtA-yN-Zpk"/>
                                                 <constraint firstItem="STa-QT-Vm0" firstAttribute="centerY" secondItem="BoN-Jc-nHy" secondAttribute="centerY" id="MN8-ej-cZT"/>
                                                 <constraint firstItem="HMf-sJ-dn9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="97h-yh-Gn4" secondAttribute="leading" constant="20" symbolic="YES" id="NZw-Wj-mQk"/>
-                                                <constraint firstItem="raM-gA-DRH" firstAttribute="top" secondItem="UCV-Bk-HIJ" secondAttribute="top" id="Oge-8i-EL0"/>
-                                                <constraint firstAttribute="trailing" secondItem="zrq-ah-eQl" secondAttribute="trailing" constant="15" id="U3E-Qf-m8f"/>
                                                 <constraint firstItem="UCV-Bk-HIJ" firstAttribute="leading" secondItem="97h-yh-Gn4" secondAttribute="leading" constant="15" id="WJ8-g7-WIl"/>
+                                                <constraint firstItem="rTQ-Ew-LCx" firstAttribute="leading" secondItem="97h-yh-Gn4" secondAttribute="leading" id="WKN-LR-k8b"/>
                                                 <constraint firstItem="Izb-dR-vbf" firstAttribute="leading" secondItem="97h-yh-Gn4" secondAttribute="leading" constant="15" id="YnB-JB-jVz"/>
                                                 <constraint firstItem="raM-gA-DRH" firstAttribute="leading" secondItem="UCV-Bk-HIJ" secondAttribute="trailing" constant="8" id="ac5-DQ-cB5"/>
                                                 <constraint firstItem="BoN-Jc-nHy" firstAttribute="leading" secondItem="UCV-Bk-HIJ" secondAttribute="leading" id="cDv-8T-cqN"/>
-                                                <constraint firstAttribute="bottom" secondItem="STa-QT-Vm0" secondAttribute="bottom" priority="250" constant="21" id="dk1-Ix-fL8"/>
-                                                <constraint firstItem="zrq-ah-eQl" firstAttribute="top" secondItem="97h-yh-Gn4" secondAttribute="top" constant="8" id="eTs-dY-NHi"/>
-                                                <constraint firstItem="UCV-Bk-HIJ" firstAttribute="top" secondItem="Izb-dR-vbf" secondAttribute="bottom" constant="8" id="eui-yp-wHN"/>
-                                                <constraint firstItem="Izb-dR-vbf" firstAttribute="top" secondItem="zrq-ah-eQl" secondAttribute="bottom" constant="8" id="lab-Al-fDF"/>
-                                                <constraint firstItem="BoN-Jc-nHy" firstAttribute="top" secondItem="raM-gA-DRH" secondAttribute="bottom" constant="15" id="txb-fh-voq"/>
+                                                <constraint firstItem="zrq-ah-eQl" firstAttribute="leading" secondItem="rTQ-Ew-LCx" secondAttribute="trailing" constant="10" id="e8g-DX-kII"/>
+                                                <constraint firstItem="UCV-Bk-HIJ" firstAttribute="top" secondItem="Izb-dR-vbf" secondAttribute="bottom" constant="20" id="eui-yp-wHN"/>
+                                                <constraint firstItem="raM-gA-DRH" firstAttribute="centerY" secondItem="UCV-Bk-HIJ" secondAttribute="centerY" id="izO-R9-msM"/>
+                                                <constraint firstAttribute="bottom" secondItem="HMf-sJ-dn9" secondAttribute="bottom" priority="250" constant="15" id="o6Z-FP-pcu"/>
+                                                <constraint firstItem="BoN-Jc-nHy" firstAttribute="top" secondItem="raM-gA-DRH" secondAttribute="bottom" constant="30" id="txb-fh-voq"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="STa-QT-Vm0" secondAttribute="trailing" constant="20" symbolic="YES" id="yxQ-5x-a9Y"/>
-                                                <constraint firstItem="zrq-ah-eQl" firstAttribute="leading" secondItem="97h-yh-Gn4" secondAttribute="leading" constant="15" id="zGi-hF-NPh"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -207,6 +209,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="profile" width="24" height="22"/>
+        <image name="worktable_cell_car" width="17" height="13"/>
+        <image name="worktable_cell_icon" width="6" height="17"/>
+        <image name="worktable_cell_time" width="16" height="16"/>
     </resources>
 </document>
