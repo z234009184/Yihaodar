@@ -120,9 +120,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="omj-eP-ULe"/>
                     </view>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
-                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="loginBtn" destination="vs7-Zr-yoT" id="XPp-ly-zja"/>
                         <outlet property="logoImgView" destination="nwV-I2-gMp" id="7fv-Oh-ZCY"/>

@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -49,19 +48,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qxa-s7-tEY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="工作台" id="QxA-c4-39k">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="2cZ-aA-n1L">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </barButtonItem>
-                            <barButtonItem systemItem="search" id="AgV-AG-aKM">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
-                    </userDefinedRuntimeAttributes>
+                    <navigationItem key="navigationItem" title="工作台" id="QxA-c4-39k"/>
                     <connections>
                         <outlet property="buttonBarView" destination="sBC-aM-qXd" id="fgL-yZ-2K1"/>
                         <outlet property="containerView" destination="xOu-lE-jmD" id="keB-ED-Scb"/>

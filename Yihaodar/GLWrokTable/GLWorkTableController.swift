@@ -159,8 +159,39 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
         
         super.viewDidLoad()
         
+        setupRightBarItems()
+        
     }
     
+    func setupRightBarItems() -> Void {
+        
+        
+        let rightBarItemsView = UIView(frame: CGRect(x: 0, y: 0, width: 54, height: 18))
+        
+        let searchBtn = UIButton(type: .custom)
+        searchBtn.frame = CGRect(x: 0, y: 0, width: 18, height: 18)
+        searchBtn.setImage(#imageLiteral(resourceName: "navigation_search_icon"), for: .normal)
+        searchBtn.sizeToFit()
+        searchBtn.addTarget(self, action: #selector(GLWorkTableController.searchAction(_:)), for: UIControlEvents.touchUpInside)
+
+        let addBtn = UIButton(type: .custom)
+        addBtn.frame = CGRect(x: 36, y: 0, width: 18, height: 18)
+        addBtn.setImage(#imageLiteral(resourceName: "navigation_add_icon"), for: .normal)
+        addBtn.sizeToFit()
+        addBtn.addTarget(self, action: #selector(GLWorkTableController.addAction(_:)), for: UIControlEvents.touchUpInside)
+        
+        rightBarItemsView.addSubview(searchBtn)
+        rightBarItemsView.addSubview(addBtn)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarItemsView)
+    }
+    
+    @objc func searchAction(_ btn: UIButton) -> Void {
+        
+    }
+    @objc func addAction(_ btn: UIButton) -> Void {
+        
+    }
     
     /// PagerTabStripDataSource
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
