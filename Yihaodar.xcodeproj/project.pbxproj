@@ -19,6 +19,7 @@
 		8A235117201E0AC4002715E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A235115201E0AC4002715E0 /* Main.storyboard */; };
 		8A235119201E0AC4002715E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A235118201E0AC4002715E0 /* Assets.xcassets */; };
 		8A23511C201E0AC4002715E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A23511A201E0AC4002715E0 /* LaunchScreen.storyboard */; };
+		8A37F34D202BE9F2004FD467 /* GLSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37F34C202BE9F2004FD467 /* GLSearchViewController.swift */; };
 		8A4982D82027F63A00EB4BEF /* GLConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4982D72027F63A00EB4BEF /* GLConst.swift */; };
 		8A4982DA20282BF200EB4BEF /* GLLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4982D920282BF200EB4BEF /* GLLoginViewController.swift */; };
 		8A6587802021C97A0031DD3D /* GLWorkTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65877F2021C97A0031DD3D /* GLWorkTableController.swift */; };
@@ -41,6 +42,7 @@
 		8A235118201E0AC4002715E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A23511B201E0AC4002715E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A23511D201E0AC4002715E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A37F34C202BE9F2004FD467 /* GLSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLSearchViewController.swift; sourceTree = "<group>"; };
 		8A4982D72027F63A00EB4BEF /* GLConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLConst.swift; sourceTree = "<group>"; };
 		8A4982D920282BF200EB4BEF /* GLLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLLoginViewController.swift; sourceTree = "<group>"; };
 		8A65877F2021C97A0031DD3D /* GLWorkTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLWorkTableController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				8A1DAB8A202AB31A001CBD0F /* GLLogin */,
 				8A1DAB8C202AB383001CBD0F /* GLWrokTable */,
 				8A1DAB9A202AFFF8001CBD0F /* GLTaskDetail */,
+				8A37F34B202BE9D8004FD467 /* GLSearch */,
 				8A1DAB97202ACC8F001CBD0F /* GLMe */,
 				8A1DAB8E202AB3A4001CBD0F /* GLCommon */,
 				8A1DAB87202AB23F001CBD0F /* GLExtension */,
@@ -158,6 +161,14 @@
 				8A23511D201E0AC4002715E0 /* Info.plist */,
 			);
 			path = Yihaodar;
+			sourceTree = "<group>";
+		};
+		8A37F34B202BE9D8004FD467 /* GLSearch */ = {
+			isa = PBXGroup;
+			children = (
+				8A37F34C202BE9F2004FD467 /* GLSearchViewController.swift */,
+			);
+			path = GLSearch;
 			sourceTree = "<group>";
 		};
 		A75B12E3B46C11A698C249EA /* Pods */ = {
@@ -349,6 +360,7 @@
 				8A1DAB9C202B002B001CBD0F /* GLTaskDetailViewController.swift in Sources */,
 				8A1DAB89202AB282001CBD0F /* UIColor+GLExtension.swift in Sources */,
 				8A6587802021C97A0031DD3D /* GLWorkTableController.swift in Sources */,
+				8A37F34D202BE9F2004FD467 /* GLSearchViewController.swift in Sources */,
 				8A1DAB92202AC3A8001CBD0F /* UIView+GLExtension.swift in Sources */,
 				8A4982D82027F63A00EB4BEF /* GLConst.swift in Sources */,
 				8AD2E8702020795A008D32EA /* GLTabBarController.swift in Sources */,

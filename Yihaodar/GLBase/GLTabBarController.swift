@@ -29,7 +29,7 @@ class GLTabBarController:RAMAnimatedTabBarController  {
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-//        heroModalAnimationType = .pageIn(direction: .left)
+        heroModalAnimationType = .zoom
         
         tabBar.isTranslucent = false
         tabBar.backgroundImage = UIImage()

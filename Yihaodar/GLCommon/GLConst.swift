@@ -9,6 +9,6 @@
 import UIKit
 
 
-let YiBlueColor = UIColor(hex: "009AFE")
+let YiBlueColor = UIColor(hex: "19A4FF")
 let YiUnselectedTitleColor = UIColor(hex: "A3D1FF")
 
