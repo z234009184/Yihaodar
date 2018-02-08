@@ -34,7 +34,7 @@ class GLTabBarController:RAMAnimatedTabBarController  {
         tabBar.isTranslucent = false
         tabBar.backgroundImage = UIImage()
 //        tabBar.shadowImage = UIImage()
-        tabBar.barTintColor = .white
+        tabBar.barTintColor = YiThemeColor
         
     }
     

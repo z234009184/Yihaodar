@@ -7,8 +7,18 @@
 //
 
 import UIKit
+import AwesomeCache
 
-
+// MARK: - Color
+let YiThemeColor = UIColor(hex: "FFFFFF")
+let YiNavigationBarTitleColor = UIColor(hex: "767E87")
 let YiBlueColor = UIColor(hex: "19A4FF")
-let YiUnselectedTitleColor = UIColor(hex: "A3D1FF")
+let YiSelectedTitleColor = UIColor(hex: "212832")
+let YiUnselectedTitleColor = UIColor(hex: "99A0AA")
+let YiRefreshTitleColor = YiUnselectedTitleColor
+
+
+// MARK: - Cache
+/// user
+let userCache = try? Cache<NSString>(name: "userCache")
 

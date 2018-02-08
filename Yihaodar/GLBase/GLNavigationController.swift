@@ -12,16 +12,17 @@ import UIKit
 class GLNavigationController:UINavigationController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationBar.isTranslucent = false
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
-        navigationBar.barTintColor = YiBlueColor
-        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        navigationBar.barTintColor = YiThemeColor
+        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: YiNavigationBarTitleColor]
         
     }
 }

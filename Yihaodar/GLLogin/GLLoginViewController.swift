@@ -10,6 +10,7 @@ import UIKit
 import TKSubmitTransition
 import Spring
 
+
 class GLLoginViewController: UIViewController {
     
     @IBOutlet weak var logoImgView: DesignableImageView!
@@ -19,6 +20,13 @@ class GLLoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let clearBtn = usernameField.value(forKey: "clearButton") as? UIButton
+        clearBtn?.setImage(UIImage(named: "login_clear"), for: .normal)
+        clearBtn?.setImage(UIImage(named: "login_clear"), for: .highlighted)
+        
+        let clearBtnPsd = passwordField.value(forKey: "clearButton") as? UIButton
+        clearBtnPsd?.setImage(UIImage(named: "login_clear"), for: .normal)
+        clearBtnPsd?.setImage(UIImage(named: "login_clear"), for: .highlighted)
         
     }
     

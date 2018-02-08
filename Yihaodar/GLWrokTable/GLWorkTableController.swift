@@ -142,13 +142,13 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
         
 //        edgesForExtendedLayout = UIRectEdge(rawValue: 0)
         
-        settings.style.buttonBarBackgroundColor = YiBlueColor
-        settings.style.buttonBarItemBackgroundColor = YiBlueColor
-        settings.style.selectedBarBackgroundColor = .white
-        settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 16)
+        settings.style.buttonBarBackgroundColor = YiThemeColor
+        settings.style.buttonBarItemBackgroundColor = YiThemeColor
+        settings.style.selectedBarBackgroundColor = YiBlueColor
+        settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 17)
         settings.style.selectedBarHeight = 4.0
         settings.style.buttonBarMinimumLineSpacing = 0
-        settings.style.buttonBarItemTitleColor = .white
+        settings.style.buttonBarItemTitleColor = YiSelectedTitleColor
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
         settings.style.buttonBarLeftContentInset = 1
         settings.style.buttonBarRightContentInset = 1
@@ -156,7 +156,7 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
         changeCurrentIndexProgressive = {  (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
             oldCell?.label.textColor = YiUnselectedTitleColor
-            newCell?.label.textColor = .white
+            newCell?.label.textColor = YiSelectedTitleColor
         }
         
         super.viewDidLoad()
