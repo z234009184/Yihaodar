@@ -1,37 +1,27 @@
 //
-//  GLTaskDetailViewController.swift
+//  GLTaskDetailPictureViewController.swift
 //  Yihaodar
 //
-//  Created by 张国梁 on 2018/2/7.
+//  Created by 张国梁 on 2018/2/9.
 //  Copyright © 2018年 Yihaodar. All rights reserved.
 //
 
 import UIKit
 import Spring
 
-class GLTaskDetailViewController: UIViewController {
-    
-    var isInvalid: Bool = false
-    
-    
+class GLTaskDetailPictureViewController: UIViewController {
     /// 报单信息 --------------------
     @IBOutlet weak var contentView: UIView!
     
     @IBOutlet weak var orderNumberLabel: UILabel!
     @IBOutlet weak var orderPersonLabel: UILabel!
     @IBOutlet weak var orderSubmitDateLabel: UILabel!
-    @IBOutlet weak var orderCarBrandlabel: UILabel!
-    @IBOutlet weak var orderMileageLabel: UILabel!
-    @IBOutlet weak var orderBigMoneyLabel: UILabel!
-    @IBOutlet weak var orderCarColorLabel: UILabel!
-    @IBOutlet weak var orderIsBeiJingNumberLabel: UILabel!
+
+    @IBOutlet weak var collectionView: UICollectionView!
     
     
     /// 评估信息 ---------------------
     @IBOutlet weak var estimateMsgView: DesignableView!
-    
-    
-    @IBOutlet weak var estimateMsgViewTop: NSLayoutConstraint!
     
     @IBOutlet weak var estimateDateLabel: UILabel!
     @IBOutlet weak var estimatePriceLabel: UILabel!
@@ -48,7 +38,6 @@ class GLTaskDetailViewController: UIViewController {
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var estimateButton: DesignableButton!
     
-    @IBOutlet weak var bottomViewBottom: NSLayoutConstraint!
     
     
     
@@ -56,17 +45,6 @@ class GLTaskDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "任务详情"
-        
-        
-        
-        
-        if isInvalid { // 已失效
-            bottomViewBottom.constant = bottomView.frame.height - 10
-        } else { // 未失效
-            estimateMsgViewTop.constant = -(estimateMsgView.frame.height)
-        }
-        
-        
     }
     
     
