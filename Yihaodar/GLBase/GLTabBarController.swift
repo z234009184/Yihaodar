@@ -8,7 +8,6 @@
 
 import Foundation
 import RAMAnimatedTabBarController
-import Hero
 
 
 class GLTabBarItem: RAMAnimatedTabBarItem {
@@ -29,7 +28,6 @@ class GLTabBarController:RAMAnimatedTabBarController  {
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        heroModalAnimationType = .zoom
         
         tabBar.isTranslucent = false
         tabBar.backgroundImage = UIImage()

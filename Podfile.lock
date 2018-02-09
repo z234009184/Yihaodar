@@ -5,7 +5,7 @@ PODS:
   - AwesomeCache (5.0)
   - HandyJSON (4.0.0-beta.1)
   - Hero (1.0.1)
-  - HGPlaceholders (0.2.6)
+  - HGPlaceholders (0.3.0)
   - IQKeyboardManagerSwift (5.0.7)
   - Moya (10.0.1):
     - Moya/Core (= 10.0.1)
@@ -59,7 +59,7 @@ SPEC CHECKSUMS:
   AwesomeCache: d8906955242173357caa0be0214d5e77dec32cc5
   HandyJSON: 428bb18e2c34c2a77361accebf90cf64e4f74118
   Hero: cee286821578e170d8c0c9c9cda7897357401112
-  HGPlaceholders: b05be87025781e6fe9f7739d3529f2209b92ed80
+  HGPlaceholders: 2df01c51b04a30acd0b8c9c7161c7cdde4541109
   IQKeyboardManagerSwift: 30fb3a61de1af53a95e02b80fb54ed0a19d5ede5
   Moya: 9e621707ff754eeb51ff3ec51a3d54e517c0733a
   PullToRefreshKit: 0a2a019bf094b8beba18c8a1bedfb1fb67ee70fd

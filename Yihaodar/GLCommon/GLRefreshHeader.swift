@@ -23,13 +23,14 @@ open class GLRefreshHeader: UIView, RefreshableHeader {
     }
     
     open let spinner:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-    open let textLabel:UILabel = UILabel(frame: CGRect(x: 0,y: 0,width: 60,height: 40))
+    open let textLabel:UILabel = UILabel(frame: CGRect(x: 0,y: 0,width: 65,height: 40))
     open let imageView:UIImageView = UIImageView(frame: CGRect.zero)
     open var durationWhenHide = 0.5
     fileprivate var textDic = [RefreshKitHeaderText:String]()
     override init(frame: CGRect) {
         super.init(frame: frame)
         tintColor = YiRefreshTitleColor
+        spinner.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         addSubview(spinner)
         addSubview(textLabel)
         addSubview(imageView);
@@ -52,7 +53,7 @@ open class GLRefreshHeader: UIView, RefreshableHeader {
         super.layoutSubviews()
         imageView.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
         textLabel.center = CGPoint(x: frame.size.width/2, y: frame.size.height/2);
-        imageView.center = CGPoint(x: textLabel.frame.origin.x - 30, y: frame.size.height/2)
+        imageView.center = CGPoint(x: textLabel.frame.origin.x - 20, y: frame.size.height/2)
         spinner.center = imageView.center
     }
     
@@ -105,10 +106,10 @@ open class GLRefreshHeader: UIView, RefreshableHeader {
         switch result {
         case .success:
             textLabel.text = textDic[.refreshSuccess]
-            imageView.image = UIImage(named: "success", in: Bundle(for: DefaultRefreshHeader.self), compatibleWith: nil)
+            imageView.image = #imageLiteral(resourceName: "refresh_complete")
         case .failure:
             textLabel.text = textDic[.refreshFailure]
-            imageView.image = UIImage(named: "failure", in: Bundle(for: DefaultRefreshHeader.self), compatibleWith: nil)
+            imageView.image = #imageLiteral(resourceName: "refresh_complete")
         case .none:
             textLabel.text = textDic[.pullToRefresh]
             imageView.image = UIImage(named: "arrow_down", in: Bundle(for: DefaultRefreshHeader.self), compatibleWith: nil)

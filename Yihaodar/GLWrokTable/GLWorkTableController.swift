@@ -37,6 +37,15 @@ class GLWorkTableListCell: UITableViewCell {
 class PlaceHolderTableView: TableView {
     override func customSetup() {
         placeholdersProvider = .default
+        
+        var noResultsData: PlaceholderData = .noResults
+        noResultsData.title = ""
+        noResultsData.subtitle = "暂时没有任务"
+        noResultsData.action = nil
+        noResultsData.image = #imageLiteral(resourceName: "tableview_nodata_placeholder")
+        let noResultsPlaceholder = Placeholder(data: noResultsData, style: PlaceholderStyle(), key: .noResultsKey)
+        placeholdersProvider.add(placeholders: noResultsPlaceholder)
+        
     }
 }
 // MARK: - 待办控制器
@@ -53,21 +62,21 @@ class GLDaiBanController: UITableViewController {
         
         placeholderTableView = tableView as? PlaceHolderTableView
         placeholderTableView?.placeholderDelegate = self
-        
-        
+        placeholderTableView?.placeholdersAlwaysBounceVertical = true
         tableView.configRefreshHeader(with: GLRefreshHeader.header()) { [weak self] in
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now(), execute: {
                 self?.tableView.switchRefreshHeader(to: .normal(.success, 0.5))
                 self?.tableView.reloadData()
             })
         }
+        
+        tableView.switchRefreshHeader(to: .refreshing)
     }
 }
 
 extension GLDaiBanController: PlaceholderDelegate, IndicatorInfoProvider {
     func view(_ view: Any, actionButtonTappedFor placeholder: Placeholder) {
         print(placeholder.key.value)
-        tableView.reloadData()
     }
     
     // IndicatorInfoProvider
@@ -76,7 +85,7 @@ extension GLDaiBanController: PlaceholderDelegate, IndicatorInfoProvider {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = arc4random() % 2
+        let count = 10
         return Int(count)
     }
     
