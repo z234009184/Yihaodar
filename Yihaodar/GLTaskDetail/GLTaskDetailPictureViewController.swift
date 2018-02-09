@@ -9,6 +9,7 @@
 import UIKit
 import Spring
 
+
 class GLTaskDetailPictureViewController: UIViewController {
     /// 报单信息 --------------------
     @IBOutlet weak var contentView: UIView!
@@ -46,7 +47,7 @@ class GLTaskDetailPictureViewController: UIViewController {
     
     
     
-    
+    var imgnames = ["avatar","avatar","avatar","avatar","avatar",]
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "任务详情"
@@ -61,12 +62,21 @@ class GLTaskDetailPictureViewController: UIViewController {
     
 }
 
-fileprivate let identifier = "GLTaskDetailPictureCell"
 
+class GLTaskDetailPictureCell: UICollectionViewCell {
+    
+    @IBOutlet weak var imageView: UIImageView!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+}
+
+fileprivate let identifier = "GLTaskDetailPictureCell"
 extension GLTaskDetailPictureViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return imgnames.count
     }
     
     
@@ -74,8 +84,16 @@ extension GLTaskDetailPictureViewController: UICollectionViewDataSource, UIColle
     @available(iOS 6.0, *)
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+        guard let pictureCell = cell as? GLTaskDetailPictureCell else {
+            return UICollectionViewCell()
+        }
+        pictureCell.imageView.image = UIImage(named: imgnames[indexPath.item])
         
-        return cell
+        return pictureCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
     }
     
 }

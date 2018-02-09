@@ -355,7 +355,7 @@
                                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                 </collectionViewFlowLayout>
                                                                 <cells>
-                                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GLTaskDetailPictureCell" id="Ax5-wG-LcV">
+                                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GLTaskDetailPictureCell" id="Ax5-wG-LcV" customClass="GLTaskDetailPictureCell" customModule="Yihaodar" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -388,9 +388,12 @@
                                                                                 <color key="value" red="0.59999999999999998" green="0.62745098040000002" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                                                <size key="value" width="10" height="0.0"/>
+                                                                                <size key="value" width="10" height="10"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <outlet property="imageView" destination="1mU-3P-dCJ" id="v5D-kY-FoP"/>
+                                                                        </connections>
                                                                     </collectionViewCell>
                                                                 </cells>
                                                                 <connections>
