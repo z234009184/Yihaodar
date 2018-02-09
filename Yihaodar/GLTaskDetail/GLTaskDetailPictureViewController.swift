@@ -8,7 +8,7 @@
 
 import UIKit
 import Spring
-
+import SKPhotoBrowser
 
 class GLTaskDetailPictureViewController: UIViewController {
     /// 报单信息 --------------------
@@ -48,9 +48,31 @@ class GLTaskDetailPictureViewController: UIViewController {
     
     
     var imgnames = ["avatar","avatar","avatar","avatar","avatar",]
+    var imagesss = [SKPhoto]()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "任务详情"
+        let photo = SKPhoto.photoWithImage(#imageLiteral(resourceName: "avatar"))
+        imagesss.append(photo)
+        imagesss.append(photo)
+        imagesss.append(photo)
+        imagesss.append(photo)
+        imagesss.append(photo)
+        
+        
+        SKPhotoBrowserOptions.displayCounterLabel = false                         // counter label will be hidden
+        SKPhotoBrowserOptions.displayCloseButton = false
+        SKPhotoBrowserOptions.displayBackAndForwardButton = false
+        SKPhotoBrowserOptions.displayStatusbar = true
+        SKPhotoBrowserOptions.displayAction = false                               // action button will be hidden
+        SKPhotoBrowserOptions.displayHorizontalScrollIndicator = true
+        SKPhotoBrowserOptions.displayVerticalScrollIndicator = false
+        SKPhotoBrowserOptions.enableSingleTapDismiss = true
+        SKPhotoBrowserOptions.bounceAnimation = true
+        SKPhotoBrowserOptions.backgroundColor = UIColor(white: 0, alpha: 0.5)
     }
     
     
@@ -93,8 +115,14 @@ extension GLTaskDetailPictureViewController: UICollectionViewDataSource, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? GLTaskDetailPictureCell else { return }
+        
+        let originImage = cell.imageView.image // some image for baseImage
+        
+        let browser = SKPhotoBrowser(originImage: originImage ?? UIImage(), photos: imagesss, animatedFromView: cell)
+        browser.initializePageIndex(indexPath.item)
+        present(browser, animated: true, completion: nil)
         
     }
-    
 }
 
