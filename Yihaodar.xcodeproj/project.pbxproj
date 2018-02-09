@@ -45,6 +45,7 @@
 		8A235118201E0AC4002715E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A23511B201E0AC4002715E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A23511D201E0AC4002715E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A24F7A1202DB5C000FDC669 /* Yihaodar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yihaodar-Bridging-Header.h"; sourceTree = "<group>"; };
 		8A37F34C202BE9F2004FD467 /* GLSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLSearchViewController.swift; sourceTree = "<group>"; };
 		8A37F34E202C2EAD004FD467 /* GLRefreshHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLRefreshHeader.swift; sourceTree = "<group>"; };
 		8A37F352202D714E004FD467 /* GLTaskDetailPicture.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLTaskDetailPicture.storyboard; sourceTree = "<group>"; };
@@ -111,6 +112,7 @@
 			children = (
 				8A4982D72027F63A00EB4BEF /* GLConst.swift */,
 				8A37F34E202C2EAD004FD467 /* GLRefreshHeader.swift */,
+				8A24F7A1202DB5C000FDC669 /* Yihaodar-Bridging-Header.h */,
 			);
 			path = GLCommon;
 			sourceTree = "<group>";
@@ -232,6 +234,7 @@
 				TargetAttributes = {
 					8A23510D201E0AC4002715E0 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -520,6 +523,7 @@
 			baseConfigurationReference = B680B68F5D769927FEBDA177 /* Pods-Yihaodar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 233NVE642U;
 				INFOPLIST_FILE = Yihaodar/Info.plist;
@@ -527,6 +531,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yihaodar.Yihaodar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Yihaodar/GLCommon/Yihaodar-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -537,6 +543,7 @@
 			baseConfigurationReference = 9CB69999B059A2B4CCF6A133 /* Pods-Yihaodar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 233NVE642U;
 				INFOPLIST_FILE = Yihaodar/Info.plist;
@@ -544,6 +551,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yihaodar.Yihaodar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Yihaodar/GLCommon/Yihaodar-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
