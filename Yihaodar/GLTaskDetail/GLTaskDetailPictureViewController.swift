@@ -19,25 +19,30 @@ class GLTaskDetailPictureViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+    
     
     /// 评估信息 ---------------------
     @IBOutlet weak var estimateMsgView: DesignableView!
+    
+    @IBOutlet weak var estimateMsgViewTop: NSLayoutConstraint!
     
     @IBOutlet weak var estimateDateLabel: UILabel!
     @IBOutlet weak var estimatePriceLabel: UILabel!
     @IBOutlet weak var estimateCarDetailMsgLabel: UILabel!
     @IBOutlet weak var estimateMemoLabel: UILabel!
     
-    /// 失效视图
+    /// 失效视图 ---------------------
     @IBOutlet weak var invalidView: UIView!
     @IBOutlet weak var invalidDateLabel: UILabel!
     
     
     
-    /// 底部评估视图
+    /// 底部评估视图 ---------------------
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var estimateButton: DesignableButton!
     
+    @IBOutlet weak var bottomViewBottom: NSLayoutConstraint!
     
     
     
@@ -55,3 +60,23 @@ class GLTaskDetailPictureViewController: UIViewController {
     
     
 }
+
+fileprivate let identifier = "GLTaskDetailPictureCell"
+
+extension GLTaskDetailPictureViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 6
+    }
+    
+    
+    // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+    @available(iOS 6.0, *)
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+        
+        return cell
+    }
+    
+}
+
