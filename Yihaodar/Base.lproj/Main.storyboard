@@ -31,19 +31,7 @@
         <scene sceneID="ipK-hE-mDb">
             <objects>
                 <navigationController id="PdG-E0-hDF" customClass="GLNavigationController" customModule="Yihaodar" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的" image="tabbar_profile" selectedImage="tabbar_profile_selected" id="kJS-Bg-n9e" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                <color key="value" red="0.12941176469999999" green="0.15686274510000001" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
-                                <color key="value" red="0.12941176469999999" green="0.15686274510000001" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                        <connections>
-                            <outlet property="animation" destination="dgq-ss-DYq" id="0qK-gH-f08"/>
-                        </connections>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="我的" image="tabbar_profile" selectedImage="tabbar_profile_selected" id="kJS-Bg-n9e" customClass="GLTabBarItem" customModule="Yihaodar" customModuleProvider="target"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6ER-jy-Vng">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -53,16 +41,6 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9T-BL-9zt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="dgq-ss-DYq" customClass="RAMBounceAnimation" customModule="RAMAnimatedTabBarController">
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="color" keyPath="textSelectedColor">
-                            <color key="value" red="0.098039215690000001" green="0.64313725489999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
-                            <color key="value" red="0.098039215690000001" green="0.64313725489999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </customObject>
             </objects>
             <point key="canvasLocation" x="-950" y="-36"/>
         </scene>
@@ -70,19 +48,7 @@
         <scene sceneID="5ps-d7-Faa">
             <objects>
                 <navigationController id="52s-X4-U67" customClass="GLNavigationController" customModule="Yihaodar" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="工作台" image="tabbar_work" selectedImage="tabbar_work_selected" id="AIM-kL-Ltr" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                <color key="value" red="0.12941176470588234" green="0.15686274509803921" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
-                                <color key="value" red="0.12941176469999999" green="0.15686274510000001" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                        <connections>
-                            <outlet property="animation" destination="C24-s4-YfE" id="vvN-88-WKt"/>
-                        </connections>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="工作台" image="tabbar_work" selectedImage="tabbar_work_selected" id="AIM-kL-Ltr" customClass="GLTabBarItem" customModule="Yihaodar" customModuleProvider="target"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorImage="navigation_back" id="Anx-BX-f9c">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -92,16 +58,6 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMY-SC-1TR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="C24-s4-YfE" customClass="RAMBounceAnimation" customModule="RAMAnimatedTabBarController">
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="color" keyPath="textSelectedColor">
-                            <color key="value" red="0.098039215686274508" green="0.64313725490196072" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
-                            <color key="value" red="0.098039215690000001" green="0.64313725489999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </customObject>
             </objects>
             <point key="canvasLocation" x="-949" y="-757"/>
         </scene>

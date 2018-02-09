@@ -6,11 +6,11 @@
 //  Copyright © 2018年 Yihaodar. All rights reserved.
 //
 
-import Foundation
-import RAMAnimatedTabBarController
+import UIKit
 
 
-class GLTabBarItem: RAMAnimatedTabBarItem {
+
+class GLTabBarItem: UITabBarItem {
     override init() {
         super.init()
         
@@ -23,7 +23,7 @@ class GLTabBarItem: RAMAnimatedTabBarItem {
 }
 
 
-class GLTabBarController:RAMAnimatedTabBarController  {
+class GLTabBarController: UITabBarController {
     
     override open func viewDidLoad() {
         super.viewDidLoad()

@@ -33,12 +33,11 @@ target 'Yihaodar' do
 #    pod 'GLog', :podspec => '../node_modules/react-native/third-party-podspecs/GLog.podspec'
 #    pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-    pod 'RAMAnimatedTabBarController' # 带动效的TabBarController（修改了三行源码 icon.hilightImage = item.selectedImage  然后在动画类中 isHilight = true  false true）
     pod 'Moya'          # 网络封装层库
     pod 'SwiftyJSON'    # JSON 解析库
     pod 'HandyJSON','4.0.0-beta.1'     # json/字典 映射 模型
     pod 'Toast-Swift'  #吐司提示
-    pod 'Hero' # 各种交互动画
+#    pod 'Hero' # 各种交互动画
     pod 'AwesomeCache' # 令人愉快的缓存框架
     pod 'Spring' # 动画库
     pod 'PullToRefreshKit' # 下拉刷新

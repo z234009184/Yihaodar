@@ -14,7 +14,7 @@
         <!--Task Detail View Controller-->
         <scene sceneID="WcO-bt-aKQ">
             <objects>
-                <viewController id="ZYU-1h-8KB" customClass="GLTaskDetailViewController" customModule="Yihaodar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="ZYU-1h-8KB" customClass="GLTaskDetailViewController" customModule="Yihaodar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E3n-Xm-ZcQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
