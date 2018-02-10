@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 /// 导航控制器
 class GLNavigationController:UINavigationController {
     
@@ -23,6 +25,15 @@ class GLNavigationController:UINavigationController {
         navigationBar.shadowImage = UIImage()
         navigationBar.barTintColor = YiThemeColor
         navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: YiNavigationBarTitleColor]
+        
+        
+        /// 设置返回手势
+        let ges = UIScreenEdgePanGestureRecognizer(target: interactivePopGestureRecognizer?.delegate, action: Selector(("handleNavigationTransition:")))
+        ges.edges = .left
+        interactivePopGestureRecognizer?.view?.addGestureRecognizer(ges)
+        ges.delegate = self
+        interactivePopGestureRecognizer?.isEnabled = false
+        
     }
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
@@ -31,13 +42,17 @@ class GLNavigationController:UINavigationController {
             viewController.hidesBottomBarWhenPushed = true;
             
             viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "navigation_back"), style: .done, target: self, action: #selector(GLNavigationController.back))
-        } else {
-            
         }
         super.pushViewController(viewController, animated: animated)
     }
     
     @objc func back() {
         popViewController(animated: true)
+    }
+}
+
+extension GLNavigationController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return childViewControllers.count > 1
     }
 }

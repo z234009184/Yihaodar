@@ -72,6 +72,11 @@ class GLDaiBanController: UITableViewController {
         
         tableView.switchRefreshHeader(to: .refreshing)
     }
+    
+    
+    
+    
+    
 }
 
 extension GLDaiBanController: PlaceholderDelegate, IndicatorInfoProvider {
