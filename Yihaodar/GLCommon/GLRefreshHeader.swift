@@ -112,7 +112,7 @@ open class GLRefreshHeader: UIView, RefreshableHeader {
             imageView.image = #imageLiteral(resourceName: "refresh_complete")
         case .none:
             textLabel.text = textDic[.pullToRefresh]
-            imageView.image = UIImage(named: "arrow_down", in: Bundle(for: DefaultRefreshHeader.self), compatibleWith: nil)
+            imageView.image = #imageLiteral(resourceName: "refresh_down")
         }
         if imageRenderingWithTintColor{
             imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
@@ -121,7 +121,7 @@ open class GLRefreshHeader: UIView, RefreshableHeader {
     open func didCompleteHideAnimation(_ result:RefreshResult) {
         textLabel.text = textDic[.pullToRefresh]
         self.isHidden = true
-        imageView.image = UIImage(named: "arrow_down", in: Bundle(for: DefaultRefreshHeader.self), compatibleWith: nil)
+        imageView.image = #imageLiteral(resourceName: "refresh_down")
         if imageRenderingWithTintColor{
             imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
         }

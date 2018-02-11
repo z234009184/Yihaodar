@@ -6,10 +6,45 @@
 //  Copyright © 2018年 Yihaodar. All rights reserved.
 //
 
-import UIKit
 import Spring
 
-class GLTaskDetailViewController: UIViewController {
+class GLTaskDetailBaseViewController: UIViewController {
+    lazy var submitMessageView: GLSubmitMessageView = {
+        let accessoryView = GLSubmitMessageView()
+        let width = view.bounds.width
+        let height = width * 238.0/375.0
+        accessoryView.frame.size = CGSize(width: width, height: height)
+        accessoryView.frame.origin.x = 0
+        return accessoryView
+    }()
+    
+    lazy var maskView: DesignableView = {
+        let mv = DesignableView(frame: (navigationController?.view.bounds)!)
+        mv.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        let ges = UITapGestureRecognizer(target: self, action: #selector(GLTaskDetailPictureViewController.dismissCover(ges:)))
+        mv.addGestureRecognizer(ges)
+        return mv
+    }()
+    
+    @objc func dismissCover(ges: UITapGestureRecognizer) {
+        ges.view?.removeFromSuperview()
+    }
+    
+    func showSubmitMessageView() -> Void {
+        navigationController?.view.addSubview(maskView)
+        submitMessageView.frame.origin.y = maskView.frame.size.height
+        maskView.addSubview(submitMessageView)
+        
+        UIView.animate(withDuration: 0.25) {
+            self.submitMessageView.frame.origin.y = self.maskView.frame.size.height - self.submitMessageView.frame.size.height
+        }
+        
+    }
+}
+
+
+
+class GLTaskDetailViewController: GLTaskDetailBaseViewController {
     
     var isInvalid: Bool = false
     
@@ -59,7 +94,6 @@ class GLTaskDetailViewController: UIViewController {
         
         
         
-        
         if isInvalid { // 已失效
             bottomViewBottom.constant = bottomView.frame.height - 10
         } else { // 未失效
@@ -72,7 +106,7 @@ class GLTaskDetailViewController: UIViewController {
     
     /// 提交评估
     @IBAction func estimateBtnClick(_ sender: DesignableButton) {
-        
+        showSubmitMessageView()
     }
     
     

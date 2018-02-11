@@ -6,11 +6,12 @@
 //  Copyright © 2018年 Yihaodar. All rights reserved.
 //
 
-import UIKit
 import Spring
 import SKPhotoBrowser
+import IQKeyboardManagerSwift
 
-class GLTaskDetailPictureViewController: UIViewController {
+
+class GLTaskDetailPictureViewController: GLTaskDetailBaseViewController {
     /// 报单信息 --------------------
     @IBOutlet weak var contentView: UIView!
     
@@ -45,6 +46,7 @@ class GLTaskDetailPictureViewController: UIViewController {
     
     @IBOutlet weak var bottomViewBottom: NSLayoutConstraint!
     
+
     
     
     var imgnames = ["avatar","avatar","avatar","avatar","avatar",]
@@ -78,9 +80,8 @@ class GLTaskDetailPictureViewController: UIViewController {
     
     /// 提交评估
     @IBAction func estimateBtnClick(_ sender: DesignableButton) {
-        
+        showSubmitMessageView()
     }
-    
     
 }
 
