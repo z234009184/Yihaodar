@@ -112,8 +112,8 @@ extension GLDaiBanController: PlaceholderDelegate, IndicatorInfoProvider {
 //        destinationVc.isInvalid = true
 //        parentVc.navigationController?.pushViewController(destinationVc, animated: true)
 
-        let desVc = UIStoryboard(name: "GLTaskDetail", bundle: nil).instantiateInitialViewController()
-        guard let destinationVc = desVc as? GLTaskDetailViewController else { return }
+        let desVc = UIStoryboard(name: "GLTaskDetailPicture", bundle: nil).instantiateInitialViewController()
+        guard let destinationVc = desVc as? GLTaskDetailPictureViewController else { return }
         parentVc.navigationController?.pushViewController(destinationVc, animated: true)
         
     }
