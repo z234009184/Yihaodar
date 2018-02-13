@@ -70,6 +70,12 @@ class GLDaiBanController: UITableViewController {
             })
         }
         
+        tableView.configRefreshFooter(with: GLRefreshFooter.footer()) { [weak self] in
+            self?.tableView.switchRefreshFooter(to: .refreshing)
+            
+        }
+        
+        
         tableView.switchRefreshHeader(to: .refreshing)
     }
     
