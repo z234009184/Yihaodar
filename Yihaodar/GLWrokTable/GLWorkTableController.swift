@@ -40,8 +40,8 @@ class PlaceHolderTableView: TableView {
         
         var noResultsData: PlaceholderData = .noResults
         noResultsData.title = ""
-        noResultsData.subtitle = "暂时没有任务"
         noResultsData.action = nil
+        noResultsData.subtitle = "暂时没有任务"
         noResultsData.image = #imageLiteral(resourceName: "tableview_nodata_placeholder")
         let noResultsPlaceholder = Placeholder(data: noResultsData, style: PlaceholderStyle(), key: .noResultsKey)
         placeholdersProvider.add(placeholders: noResultsPlaceholder)
@@ -206,6 +206,10 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
     }
     
     @objc func searchAction(_ btn: UIButton) -> Void {
+        
+        let vc = UIStoryboard(name: "GLSearchViewController", bundle: Bundle.main).instantiateInitialViewController()
+        guard let searchVc = vc as? GLSearchViewController else { return }
+        navigationController?.pushViewController(searchVc, animated: true)
         
     }
     @objc func addAction(_ btn: UIButton) -> Void {
