@@ -32,6 +32,7 @@
 		8A6587802021C97A0031DD3D /* GLWorkTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65877F2021C97A0031DD3D /* GLWorkTableController.swift */; };
 		8AD2E8702020795A008D32EA /* GLTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD2E86F2020795A008D32EA /* GLTabBarController.swift */; };
 		8AD2E87220208366008D32EA /* GLNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD2E87120208366008D32EA /* GLNavigationController.swift */; };
+		8AEEF1EE203482AE00F8F5E1 /* GLAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AEEF1ED203482AE00F8F5E1 /* GLAddView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		8A65877F2021C97A0031DD3D /* GLWorkTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLWorkTableController.swift; sourceTree = "<group>"; };
 		8AD2E86F2020795A008D32EA /* GLTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLTabBarController.swift; sourceTree = "<group>"; };
 		8AD2E87120208366008D32EA /* GLNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLNavigationController.swift; sourceTree = "<group>"; };
+		8AEEF1ED203482AE00F8F5E1 /* GLAddView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLAddView.xib; sourceTree = "<group>"; };
 		9CB69999B059A2B4CCF6A133 /* Pods-Yihaodar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yihaodar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Yihaodar/Pods-Yihaodar.release.xcconfig"; sourceTree = "<group>"; };
 		B680B68F5D769927FEBDA177 /* Pods-Yihaodar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yihaodar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Yihaodar/Pods-Yihaodar.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +113,7 @@
 			children = (
 				8A65877F2021C97A0031DD3D /* GLWorkTableController.swift */,
 				8A1DAB94202ACBA3001CBD0F /* GLWorkTable.storyboard */,
+				8AEEF1ED203482AE00F8F5E1 /* GLAddView.xib */,
 			);
 			path = GLWrokTable;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 				8A1DAB8C202AB383001CBD0F /* GLWrokTable */,
 				8A1DAB9A202AFFF8001CBD0F /* GLTaskDetail */,
 				8A37F34B202BE9D8004FD467 /* GLSearch */,
+				8AEEF1EC20346F9700F8F5E1 /* GLAdd */,
 				8A1DAB97202ACC8F001CBD0F /* GLMe */,
 				8A1DAB8E202AB3A4001CBD0F /* GLCommon */,
 				8A1DAB87202AB23F001CBD0F /* GLExtension */,
@@ -192,6 +196,13 @@
 				8A24F7A920329A6400FDC669 /* GLSearchViewController.storyboard */,
 			);
 			path = GLSearch;
+			sourceTree = "<group>";
+		};
+		8AEEF1EC20346F9700F8F5E1 /* GLAdd */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GLAdd;
 			sourceTree = "<group>";
 		};
 		A75B12E3B46C11A698C249EA /* Pods */ = {
@@ -276,6 +287,7 @@
 			files = (
 				8A23511C201E0AC4002715E0 /* LaunchScreen.storyboard in Resources */,
 				8A1DAB90202AB43B001CBD0F /* GLLogin.storyboard in Resources */,
+				8AEEF1EE203482AE00F8F5E1 /* GLAddView.xib in Resources */,
 				8A24F7A6202F0E1200FDC669 /* GLSubmitMessageView.xib in Resources */,
 				8A37F353202D714E004FD467 /* GLTaskDetailPicture.storyboard in Resources */,
 				8A24F7AA20329A6400FDC669 /* GLSearchViewController.storyboard in Resources */,

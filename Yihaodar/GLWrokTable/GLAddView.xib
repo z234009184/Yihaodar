@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLWorkTableController" customModule="Yihaodar" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DesignableView" customModule="Spring">
+            <rect key="frame" x="0.0" y="0.0" width="305" height="446"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="创建一个新的..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgB-t5-DRv" customClass="DesignableLabel" customModule="Spring">
+                    <rect key="frame" x="18" y="22" width="125" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" red="0.46274509803921571" green="0.49411764705882355" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="983-MZ-Irc" customClass="DesignableButton" customModule="Spring">
+                    <rect key="frame" x="263" y="22" width="24" height="24"/>
+                    <state key="normal" image="arrow_down.png"/>
+                    <connections>
+                        <action selector="closeAddView:" destination="-1" eventType="touchUpInside" id="ucx-rW-dDq"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buq-fi-iR9" customClass="DesignableButton" customModule="Spring">
+                    <rect key="frame" x="34" y="91" width="78" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="车辆评估">
+                        <color key="titleColor" red="0.098039215690000001" green="0.64313725489999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="983-MZ-Irc" secondAttribute="trailing" constant="18" id="2ao-s7-P86"/>
+                <constraint firstItem="sgB-t5-DRv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="18" id="iE4-lp-Mi2"/>
+                <constraint firstItem="sgB-t5-DRv" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="22" id="m1f-N3-cII"/>
+                <constraint firstItem="983-MZ-Irc" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="22" id="vhf-8V-SUB"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-68" y="-176"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow_down.png" width="24" height="24"/>
+    </resources>
+</document>
