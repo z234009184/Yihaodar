@@ -224,39 +224,39 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
         showAddView()
     }
     
+    
     func showAddView() -> Void {
+        
+        let maskView = DesignableView(frame: (navigationController?.view.bounds)!)
+        maskView.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        let btn = UIButton(frame: maskView.bounds)
+        btn.addTarget(self, action: #selector(GLWorkTableController.dismissCover(btn:)), for: .touchUpInside)
+        maskView.addSubview(btn)
         tabBarController?.view.addSubview(maskView)
+        
         let addViewY = 167.0*UIScreen.main.bounds.size.height/667.0
         let addViewH = UIScreen.main.bounds.size.height - addViewY
-        print(addView)
+        
+        let addV = Bundle.main.loadNibNamed("GLAddView", owner: nil, options: nil)?.first
+        guard let addView = addV as? GLAddView else { return }
         addView.frame = CGRect(x: 0, y: addViewY, width: maskView.bounds.size.width, height: addViewH)
         maskView.addSubview(addView)
         
+        addView.closeClosure = { [weak self] in
+            self?.dismissCover(btn: btn)
+        }
+        addView.createEstimateClosure = { [weak self] in
+            
+            self?.dismissCover(btn: btn)
+        }
     }
     
-    lazy var addView: DesignableView = {
-        let addV = Bundle.main.loadNibNamed("GLAddView", owner: nil, options: nil)?.first
-        guard let v = addV as? DesignableView else { return DesignableView()}
-        return v
-    }()
     
-    
-    lazy var maskView: DesignableView = {
-        let mv = DesignableView(frame: (navigationController?.view.bounds)!)
-        mv.backgroundColor = UIColor(white: 0, alpha: 0.3)
-        let ges = UITapGestureRecognizer(target: self, action: #selector(GLTaskDetailPictureViewController.dismissCover(ges:)))
-        mv.addGestureRecognizer(ges)
-        return mv
-    }()
-    
-    @IBAction func closeAddView(_ sender: DesignableButton) {
-        maskView.removeFromSuperview()
+    @objc func dismissCover(btn: UIButton) {
+        btn.superview?.removeFromSuperview()
     }
     
-    @objc func dismissCover(ges: UITapGestureRecognizer) {
-        ges.view?.removeFromSuperview()
-    }
-    
+  
     
     /// PagerTabStripDataSource
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {

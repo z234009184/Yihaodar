@@ -33,6 +33,7 @@
 		8AD2E8702020795A008D32EA /* GLTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD2E86F2020795A008D32EA /* GLTabBarController.swift */; };
 		8AD2E87220208366008D32EA /* GLNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD2E87120208366008D32EA /* GLNavigationController.swift */; };
 		8AEEF1EE203482AE00F8F5E1 /* GLAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AEEF1ED203482AE00F8F5E1 /* GLAddView.xib */; };
+		8AEEF1F02035971000F8F5E1 /* GLAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEEF1EF2035971000F8F5E1 /* GLAddView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		8AD2E86F2020795A008D32EA /* GLTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLTabBarController.swift; sourceTree = "<group>"; };
 		8AD2E87120208366008D32EA /* GLNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLNavigationController.swift; sourceTree = "<group>"; };
 		8AEEF1ED203482AE00F8F5E1 /* GLAddView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLAddView.xib; sourceTree = "<group>"; };
+		8AEEF1EF2035971000F8F5E1 /* GLAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLAddView.swift; sourceTree = "<group>"; };
 		9CB69999B059A2B4CCF6A133 /* Pods-Yihaodar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yihaodar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Yihaodar/Pods-Yihaodar.release.xcconfig"; sourceTree = "<group>"; };
 		B680B68F5D769927FEBDA177 /* Pods-Yihaodar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yihaodar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Yihaodar/Pods-Yihaodar.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +115,7 @@
 			children = (
 				8A65877F2021C97A0031DD3D /* GLWorkTableController.swift */,
 				8A1DAB94202ACBA3001CBD0F /* GLWorkTable.storyboard */,
+				8AEEF1EF2035971000F8F5E1 /* GLAddView.swift */,
 				8AEEF1ED203482AE00F8F5E1 /* GLAddView.xib */,
 			);
 			path = GLWrokTable;
@@ -402,6 +405,7 @@
 				8AD2E8702020795A008D32EA /* GLTabBarController.swift in Sources */,
 				8A4982DA20282BF200EB4BEF /* GLLoginViewController.swift in Sources */,
 				8A3775E12033449700F921F8 /* GLRefreshFooter.swift in Sources */,
+				8AEEF1F02035971000F8F5E1 /* GLAddView.swift in Sources */,
 				8A37F34F202C2EAD004FD467 /* GLRefreshHeader.swift in Sources */,
 				8A24F7A8202F314000FDC669 /* GLSubmitMessageView.swift in Sources */,
 				8A235112201E0AC4002715E0 /* AppDelegate.swift in Sources */,
