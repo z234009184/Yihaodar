@@ -25,7 +25,7 @@ class GLNavigationController:UINavigationController {
         navigationBar.shadowImage = UIImage()
         navigationBar.barTintColor = YiThemeColor
         navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: YiNavigationBarTitleColor]
-        
+        navigationBar.tintColor = YiNavigationBarTitleColor
         
         /// 设置返回手势
         let ges = UIScreenEdgePanGestureRecognizer(target: interactivePopGestureRecognizer?.delegate, action: Selector(("handleNavigationTransition:")))
@@ -40,8 +40,7 @@ class GLNavigationController:UINavigationController {
         if (self.viewControllers.count > 0) {
             // 如果navigationController的字控制器个数大于两个就隐藏
             viewController.hidesBottomBarWhenPushed = true;
-            
-            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "navigation_back"), style: .done, target: self, action: #selector(GLNavigationController.back))
+//            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "navigation_back"), style: .done, target: self, action: #selector(GLNavigationController.back))
         }
         super.pushViewController(viewController, animated: animated)
     }

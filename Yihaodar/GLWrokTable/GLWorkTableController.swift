@@ -213,7 +213,7 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
     
     @objc func searchAction(_ btn: UIButton) -> Void {
         
-        let vc = UIStoryboard(name: "GLSearchViewController", bundle: Bundle.main).instantiateInitialViewController()
+        let vc = UIStoryboard(name: "GLSearch", bundle: Bundle.main).instantiateInitialViewController()
         guard let searchVc = vc as? GLSearchViewController else { return }
         navigationController?.pushViewController(searchVc, animated: true)
         
@@ -246,6 +246,11 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
             self?.dismissCover(btn: btn)
         }
         addView.createEstimateClosure = { [weak self] in
+            guard let vc = UIStoryboard(name: "GLCreateCarEstimate", bundle: Bundle.main).instantiateInitialViewController() else {
+                return
+            }
+            
+            self?.present(vc, animated: true, completion: nil)
             
             self?.dismissCover(btn: btn)
         }
