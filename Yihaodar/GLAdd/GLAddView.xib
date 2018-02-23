@@ -22,11 +22,11 @@
                     <color key="textColor" red="0.46274509803921571" green="0.49411764705882355" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buq-fi-iR9" customClass="DesignableButton" customModule="Spring">
-                    <rect key="frame" x="34" y="91" width="78" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buq-fi-iR9" customClass="DesignableButton" customModule="Spring">
+                    <rect key="frame" x="38.5" y="153" width="62" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="车辆评估">
-                        <color key="titleColor" red="0.098039215690000001" green="0.64313725489999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleColor" red="0.46274509800000002" green="0.4941176471" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="createEstimateBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="5RQ-H0-cPK"/>
@@ -34,20 +34,30 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="983-MZ-Irc">
                     <rect key="frame" x="263" y="22" width="24" height="24"/>
-                    <color key="backgroundColor" red="0.098039215690000001" green="0.64313725489999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="24" id="Wz9-Ge-jOP"/>
                         <constraint firstAttribute="height" constant="24" id="lmO-0b-gFy"/>
                     </constraints>
-                    <state key="normal" image="avatar"/>
+                    <state key="normal" image="add_close"/>
                     <connections>
                         <action selector="closeBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="35Y-to-8mz"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4Y-0H-qn4" customClass="DesignableButton" customModule="Spring">
+                    <rect key="frame" x="50" y="93" width="39" height="55"/>
+                    <state key="normal" image="add_car_estimate_icon"/>
+                    <connections>
+                        <action selector="createEstimateBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="0Bs-So-jEb"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="983-MZ-Irc" secondAttribute="trailing" constant="18" id="2ao-s7-P86"/>
+                <constraint firstItem="buq-fi-iR9" firstAttribute="centerX" secondItem="Y4Y-0H-qn4" secondAttribute="centerX" id="7u2-oS-bHN"/>
+                <constraint firstItem="Y4Y-0H-qn4" firstAttribute="top" secondItem="sgB-t5-DRv" secondAttribute="bottom" constant="50" id="FCU-fj-ZLJ"/>
+                <constraint firstItem="buq-fi-iR9" firstAttribute="top" secondItem="Y4Y-0H-qn4" secondAttribute="bottom" constant="5" id="JKS-il-bWM"/>
+                <constraint firstItem="Y4Y-0H-qn4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="MFQ-0m-yH3"/>
                 <constraint firstItem="sgB-t5-DRv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="18" id="iE4-lp-Mi2"/>
                 <constraint firstItem="sgB-t5-DRv" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="22" id="m1f-N3-cII"/>
                 <constraint firstItem="983-MZ-Irc" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="22" id="vhf-8V-SUB"/>
@@ -61,10 +71,11 @@
                 <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="YES"/>
                 <userDefinedRuntimeAttribute type="string" keyPath="animation" value="slideUp"/>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="-572" y="-400"/>
+            <point key="canvasLocation" x="-688" y="-457"/>
         </view>
     </objects>
     <resources>
-        <image name="avatar" width="250" height="250"/>
+        <image name="add_car_estimate_icon" width="39" height="55"/>
+        <image name="add_close" width="23" height="23"/>
     </resources>
 </document>
