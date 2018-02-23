@@ -24,7 +24,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k6c-tW-1aT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-662" y="-87"/>
+            <point key="canvasLocation" x="-258" y="-99"/>
         </scene>
         <!--新建车辆评估-->
         <scene sceneID="Zns-v9-mZG">
@@ -342,7 +342,7 @@
                 <viewControllerPlaceholder storyboardName="GLRadio" id="0mX-mr-QjW" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DTe-ng-3t2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1106" y="-101"/>
+            <point key="canvasLocation" x="690" y="309"/>
         </scene>
     </scenes>
     <resources>

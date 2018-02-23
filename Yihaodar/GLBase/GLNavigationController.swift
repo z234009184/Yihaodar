@@ -27,6 +27,9 @@ class GLNavigationController:UINavigationController {
         navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: YiNavigationBarTitleColor]
         navigationBar.tintColor = YiNavigationBarTitleColor
         
+        setupBackBarButton(vc: topViewController)
+        
+        
         /// 设置返回手势
         let ges = UIScreenEdgePanGestureRecognizer(target: interactivePopGestureRecognizer?.delegate, action: Selector(("handleNavigationTransition:")))
         ges.edges = .left
@@ -35,19 +38,32 @@ class GLNavigationController:UINavigationController {
         interactivePopGestureRecognizer?.isEnabled = false
         
     }
+    /// 设置返回按钮
+    func setupBackBarButton(vc: UIViewController?) -> Void {
+        let backItem = UIBarButtonItem()
+        backItem.title = "返回";
+        vc?.navigationItem.backBarButtonItem = backItem;
+    }
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         if (self.viewControllers.count > 0) {
-            // 如果navigationController的字控制器个数大于两个就隐藏
+            
+            // 隐藏tabbar
             viewController.hidesBottomBarWhenPushed = true;
+            
+            
 //            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "navigation_back"), style: .done, target: self, action: #selector(GLNavigationController.back))
+            
+            //设置返回按钮
+            setupBackBarButton(vc: viewController)
+            
         }
         super.pushViewController(viewController, animated: animated)
     }
     
-    @objc func back() {
-        popViewController(animated: true)
-    }
+//    @objc func back() {
+//        popViewController(animated: true)
+//    }
 }
 
 extension GLNavigationController: UIGestureRecognizerDelegate {

@@ -45,6 +45,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
+                                <action selector="priceTextFieldChanged:" destination="-1" eventType="editingChanged" id="ekh-DE-TAH"/>
                                 <outlet property="delegate" destination="-1" id="A30-Lz-Gwj"/>
                             </connections>
                         </textField>
@@ -200,7 +201,7 @@
                     <real key="value" value="4"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="-481" y="-172"/>
+            <point key="canvasLocation" x="-626" y="-177"/>
         </view>
     </objects>
 </document>

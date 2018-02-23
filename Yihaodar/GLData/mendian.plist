@@ -5,14 +5,18 @@
 	<dict>
 		<key>id</key>
 		<string>1</string>
-		<key>name</key>
+		<key>title</key>
 		<string>朝阳事业部</string>
+		<key>subTitle</key>
+		<string></string>
 	</dict>
 	<dict>
 		<key>id</key>
 		<string>2</string>
-		<key>name</key>
+		<key>title</key>
 		<string>海淀事业部</string>
+		<key>subTitle</key>
+		<string></string>
 	</dict>
 </array>
 </plist>
