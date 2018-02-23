@@ -18,6 +18,7 @@ class GLSubmitMessageView: UIView {
     
     @IBOutlet weak var memoTextField: DesignableTextField!
     
+    var submitBtnClosure: (()->())?
     
     var rangePoint:NSRange!
     var isFirst = true
@@ -44,6 +45,16 @@ class GLSubmitMessageView: UIView {
         
         
     }
+    
+    
+    @IBAction func submitBtnClick(_ sender: UIButton) {
+        guard let submitBtnClosure = submitBtnClosure else {
+            return
+        }
+        submitBtnClosure()
+        
+    }
+    
     
 }
 

@@ -161,6 +161,9 @@
                                     <real key="value" value="2"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="submitBtnClick:" destination="-1" eventType="touchUpInside" id="gCx-xz-Kac"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>

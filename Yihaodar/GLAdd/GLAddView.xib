@@ -61,7 +61,7 @@
                 <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="YES"/>
                 <userDefinedRuntimeAttribute type="string" keyPath="animation" value="slideUp"/>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="-423" y="-282"/>
+            <point key="canvasLocation" x="-572" y="-400"/>
         </view>
     </objects>
     <resources>

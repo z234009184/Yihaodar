@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GLSubmitLoadingView" customModule="Yihaodar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="309" height="215"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提交中..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHl-1R-EDc">
+                    <rect key="frame" x="119.5" y="150" width="70" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" red="0.46274509803921571" green="0.49411764705882355" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="taskdetail_submit_loading" translatesAutoresizingMaskIntoConstraints="NO" id="Sbo-Zh-dYB">
+                    <rect key="frame" x="135" y="47" width="40" height="68"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="DHl-1R-EDc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bQD-yf-Gx8"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="DHl-1R-EDc" secondAttribute="bottom" constant="44" id="lPz-NI-W5e"/>
+                <constraint firstItem="DHl-1R-EDc" firstAttribute="top" secondItem="Sbo-Zh-dYB" secondAttribute="bottom" constant="35" id="pT4-iN-hwR"/>
+                <constraint firstItem="Sbo-Zh-dYB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yQK-HJ-7Rp"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="3"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="YES"/>
+                <userDefinedRuntimeAttribute type="string" keyPath="animation" value="morph"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="imageView" destination="Sbo-Zh-dYB" id="ta7-Q7-AmD"/>
+                <outlet property="titleLabel" destination="DHl-1R-EDc" id="1Rb-Jf-4F0"/>
+            </connections>
+            <point key="canvasLocation" x="-175" y="-231"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="taskdetail_submit_loading" width="40" height="68"/>
+    </resources>
+</document>
