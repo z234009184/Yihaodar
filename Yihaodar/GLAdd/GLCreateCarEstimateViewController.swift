@@ -7,6 +7,7 @@
 //
 
 import Spring
+import HandyJSON
 
 class GLCreateCarEstimateViewController: UIViewController {
     
@@ -24,7 +25,16 @@ class GLCreateCarEstimateViewController: UIViewController {
     
     @IBOutlet weak var 门店Label: UILabel!
     @IBAction func mendianBtnClick(_ sender: UIButton) {
+        let vc = UIStoryboard(name: "GLRadio", bundle: Bundle.main).instantiateInitialViewController()
+        guard let radioVc = vc as? GLRadioViewController else { return }
         
+        let path = Bundle.main.path(forResource: "mendian", ofType: "plist")
+        guard let filePath = path else { return }
+        let arr = NSArray(contentsOfFile: filePath)
+        if let dataArr = [GLRadioModel].deserialize(from: arr as? [Any]) {
+            radioVc.dataArray = dataArr as! [GLRadioModel]
+        }
+        navigationController?.pushViewController(radioVc, animated: true)
     }
     
     @IBOutlet weak var 经理Label: UILabel!

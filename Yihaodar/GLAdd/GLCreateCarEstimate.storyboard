@@ -87,8 +87,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7o-Cm-BHt">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="69"/>
                                                         <connections>
-                                                            <action selector="mendianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="GwP-NB-LWE"/>
-                                                            <segue destination="0mX-mr-QjW" kind="show" id="NNB-sX-eJm"/>
+                                                            <action selector="mendianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="3ub-UQ-6Yg"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -335,14 +334,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AJu-8u-joQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="456.80000000000001" y="-98.50074962518741"/>
-        </scene>
-        <!--GLRadio-->
-        <scene sceneID="a4h-oI-GNO">
-            <objects>
-                <viewControllerPlaceholder storyboardName="GLRadio" id="0mX-mr-QjW" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DTe-ng-3t2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="690" y="309"/>
         </scene>
     </scenes>
     <resources>
