@@ -30,8 +30,6 @@ class GLWorkTableListCell: UITableViewCell {
     }
 }
 
-
-
 // MARK: - 带有placeholder的tableView
 /// 带有placeholder的tableView
 class PlaceHolderTableView: TableView {
@@ -48,6 +46,10 @@ class PlaceHolderTableView: TableView {
         
     }
 }
+
+
+
+
 // MARK: - 待办控制器
 /// 待办控制器
 class GLDaiBanController: UITableViewController {
@@ -96,7 +98,7 @@ extension GLDaiBanController: PlaceholderDelegate, IndicatorInfoProvider {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = 10
+        let count = 3
         return Int(count)
     }
     
@@ -113,14 +115,22 @@ extension GLDaiBanController: PlaceholderDelegate, IndicatorInfoProvider {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let parentVc = parent else { return }
         
-//        let desVc = UIStoryboard(name: "GLTaskDetail", bundle: nil).instantiateInitialViewController()
-//        guard let destinationVc = desVc as? GLTaskDetailViewController else { return }
-//        destinationVc.isInvalid = true
-//        parentVc.navigationController?.pushViewController(destinationVc, animated: true)
-
-        let desVc = UIStoryboard(name: "GLTaskDetailPicture", bundle: nil).instantiateInitialViewController()
-        guard let destinationVc = desVc as? GLTaskDetailPictureViewController else { return }
-        parentVc.navigationController?.pushViewController(destinationVc, animated: true)
+        if indexPath.row == 0 {
+            let desVc = UIStoryboard(name: "GLTaskDetail", bundle: nil).instantiateInitialViewController()
+            guard let destinationVc = desVc as? GLTaskDetailViewController else { return }
+            destinationVc.isInvalid = true
+            parentVc.navigationController?.pushViewController(destinationVc, animated: true)
+        }
+        if indexPath.row == 1 { //
+            let desVc = UIStoryboard(name: "GLTaskDetailPicture", bundle: nil).instantiateInitialViewController()
+            guard let destinationVc = desVc as? GLTaskDetailPictureViewController else { return }
+            parentVc.navigationController?.pushViewController(destinationVc, animated: true)
+        }
+        if indexPath.row == 2 { // 待定价
+            let desVc = UIStoryboard(name: "GLTaskDetailPrice", bundle: nil).instantiateInitialViewController()
+            guard let destinationVc = desVc as? GLTaskDetailPriceViewController else { return }
+            parentVc.navigationController?.pushViewController(destinationVc, animated: true)
+        }
         
     }
 }
@@ -131,23 +141,81 @@ extension GLDaiBanController: PlaceholderDelegate, IndicatorInfoProvider {
 
 // MARK: - 已完成控制器
 /// 已完成控制器
-class GLWanChengController: UIViewController {
+class GLWanChengController: UITableViewController {
     
+    
+    var placeholderTableView: PlaceHolderTableView?
+    
+    private let reusableIdentifier = "GLWorkTableListCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.blue
         
+        placeholderTableView = tableView as? PlaceHolderTableView
+        placeholderTableView?.placeholderDelegate = self
+        placeholderTableView?.placeholdersAlwaysBounceVertical = true
+        tableView.configRefreshHeader(with: GLRefreshHeader.header()) { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now(), execute: {
+                self?.tableView.switchRefreshHeader(to: .normal(.success, 0.5))
+                self?.tableView.reloadData()
+            })
+        }
         
+        tableView.configRefreshFooter(with: GLRefreshFooter.footer()) { [weak self] in
+            self?.tableView.switchRefreshFooter(to: .refreshing)
+            
+        }
+        
+        tableView.switchRefreshHeader(to: .refreshing)
     }
     
 }
 
-extension GLWanChengController: IndicatorInfoProvider {
+extension GLWanChengController: IndicatorInfoProvider, PlaceholderDelegate {
+    func view(_ view: Any, actionButtonTappedFor placeholder: Placeholder) {
+        
+    }
+    
     // IndicatorInfoProvider
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "已完成任务")
     }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let count = 3
+        return Int(count)
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reusableIdentifier) else {
+            return UITableViewCell()
+        }
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let parentVc = parent else { return }
+        
+        if indexPath.row == 0 {
+            let desVc = UIStoryboard(name: "GLTaskDetail", bundle: nil).instantiateInitialViewController()
+            guard let destinationVc = desVc as? GLTaskDetailViewController else { return }
+            destinationVc.isInvalid = true
+            parentVc.navigationController?.pushViewController(destinationVc, animated: true)
+        }
+        if indexPath.row == 1 { //
+            let desVc = UIStoryboard(name: "GLTaskDetailPicture", bundle: nil).instantiateInitialViewController()
+            guard let destinationVc = desVc as? GLTaskDetailPictureViewController else { return }
+            parentVc.navigationController?.pushViewController(destinationVc, animated: true)
+        }
+        if indexPath.row == 2 { // 待定价
+            
+        }
+        
+    }
+    
 }
 
 
@@ -267,8 +335,8 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
         let daibanVc = UIStoryboard(name: "GLWorkTable", bundle: Bundle.main).instantiateViewController(withIdentifier: "GLDaiBanController")
-        
-        return [daibanVc, GLWanChengController()]
+        let wanchengVc = UIStoryboard(name: "GLWorkTable", bundle: Bundle.main).instantiateViewController(withIdentifier: "GLWanChengController")
+        return [daibanVc, wanchengVc]
     }
     
     

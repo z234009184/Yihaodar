@@ -31,6 +31,8 @@
 		8A4982DA20282BF200EB4BEF /* GLLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4982D920282BF200EB4BEF /* GLLoginViewController.swift */; };
 		8A6587802021C97A0031DD3D /* GLWorkTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65877F2021C97A0031DD3D /* GLWorkTableController.swift */; };
 		8A7D848A20411BB000B5046C /* GLCarMessage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A7D848920411BB000B5046C /* GLCarMessage.storyboard */; };
+		8A7D848C2041325800B5046C /* GLTaskDetailPrice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A7D848B2041325800B5046C /* GLTaskDetailPrice.storyboard */; };
+		8A7D848E2041329300B5046C /* GLTaskDetailPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D848D2041329300B5046C /* GLTaskDetailPriceViewController.swift */; };
 		8AD2E8702020795A008D32EA /* GLTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD2E86F2020795A008D32EA /* GLTabBarController.swift */; };
 		8AD2E87220208366008D32EA /* GLNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD2E87120208366008D32EA /* GLNavigationController.swift */; };
 		8AEEF1EE203482AE00F8F5E1 /* GLAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AEEF1ED203482AE00F8F5E1 /* GLAddView.xib */; };
@@ -72,6 +74,8 @@
 		8A4982D920282BF200EB4BEF /* GLLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLLoginViewController.swift; sourceTree = "<group>"; };
 		8A65877F2021C97A0031DD3D /* GLWorkTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLWorkTableController.swift; sourceTree = "<group>"; };
 		8A7D848920411BB000B5046C /* GLCarMessage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLCarMessage.storyboard; sourceTree = "<group>"; };
+		8A7D848B2041325800B5046C /* GLTaskDetailPrice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLTaskDetailPrice.storyboard; sourceTree = "<group>"; };
+		8A7D848D2041329300B5046C /* GLTaskDetailPriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLTaskDetailPriceViewController.swift; sourceTree = "<group>"; };
 		8AD2E86F2020795A008D32EA /* GLTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLTabBarController.swift; sourceTree = "<group>"; };
 		8AD2E87120208366008D32EA /* GLNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLNavigationController.swift; sourceTree = "<group>"; };
 		8AEEF1ED203482AE00F8F5E1 /* GLAddView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLAddView.xib; sourceTree = "<group>"; };
@@ -161,6 +165,8 @@
 				8A1DAB9D202B003F001CBD0F /* GLTaskDetail.storyboard */,
 				8A37F354202D726B004FD467 /* GLTaskDetailPictureViewController.swift */,
 				8A37F352202D714E004FD467 /* GLTaskDetailPicture.storyboard */,
+				8A7D848D2041329300B5046C /* GLTaskDetailPriceViewController.swift */,
+				8A7D848B2041325800B5046C /* GLTaskDetailPrice.storyboard */,
 				8A24F7A5202F0E1200FDC669 /* GLSubmitMessageView.xib */,
 				8A24F7A7202F314000FDC669 /* GLSubmitMessageView.swift */,
 				8AEEF1FF203FAF7700F8F5E1 /* GLSubmitLoadingView.xib */,
@@ -331,6 +337,7 @@
 				8AEEF200203FAF7700F8F5E1 /* GLSubmitLoadingView.xib in Resources */,
 				8A1DAB96202ACBA3001CBD0F /* GLWorkTable.storyboard in Resources */,
 				8A1DAB9E202B003F001CBD0F /* GLTaskDetail.storyboard in Resources */,
+				8A7D848C2041325800B5046C /* GLTaskDetailPrice.storyboard in Resources */,
 				8A235117201E0AC4002715E0 /* Main.storyboard in Resources */,
 				8A7D848A20411BB000B5046C /* GLCarMessage.storyboard in Resources */,
 				8A1DAB99202ACE04001CBD0F /* GLMe.storyboard in Resources */,
@@ -433,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A1DAB9C202B002B001CBD0F /* GLTaskDetailViewController.swift in Sources */,
+				8A7D848E2041329300B5046C /* GLTaskDetailPriceViewController.swift in Sources */,
 				8A1DAB89202AB282001CBD0F /* UIColor+GLExtension.swift in Sources */,
 				8A37F355202D726B004FD467 /* GLTaskDetailPictureViewController.swift in Sources */,
 				8A6587802021C97A0031DD3D /* GLWorkTableController.swift in Sources */,
