@@ -33,6 +33,9 @@
                                                 <real key="value" value="35"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="gae-39-iMK" id="pw3-no-fJO"/>
+                                        </connections>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_icon" translatesAutoresizingMaskIntoConstraints="NO" id="VMq-LA-6pn">
                                         <rect key="frame" x="10" y="10" width="35" height="35"/>
@@ -53,7 +56,7 @@
                                     <constraint firstItem="VMq-LA-6pn" firstAttribute="leading" secondItem="2m4-fR-3n3" secondAttribute="leading" id="xfG-62-VUG"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="50" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Whf-Rf-pML">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="50" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Whf-Rf-pML">
                                 <rect key="frame" x="10" y="85" width="355" height="572"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -127,6 +130,8 @@
                     </view>
                     <connections>
                         <outlet property="searchDisplayController" destination="GNM-0T-aX7" id="foo-ee-QMa"/>
+                        <outlet property="tableView" destination="Whf-Rf-pML" id="3oM-w3-YlL"/>
+                        <outlet property="textField" destination="2m4-fR-3n3" id="zQ2-z0-qZw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cxv-0E-HY4" userLabel="First Responder" sceneMemberID="firstResponder"/>

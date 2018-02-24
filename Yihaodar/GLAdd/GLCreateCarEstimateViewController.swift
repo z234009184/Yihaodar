@@ -9,6 +9,7 @@
 import Spring
 import HandyJSON
 
+/// 订单信息控制器
 class GLCreateCarEstimateViewController: UIViewController {
     
     @IBOutlet weak var foldHeight1: NSLayoutConstraint!
@@ -22,18 +23,36 @@ class GLCreateCarEstimateViewController: UIViewController {
     @IBOutlet weak var cell2: UIView!
     @IBOutlet weak var cell3: UIView!
     
+    var selectedMendianModel: GLRadioModel?
     
     @IBOutlet weak var 门店Label: UILabel!
     @IBAction func mendianBtnClick(_ sender: UIButton) {
         let vc = UIStoryboard(name: "GLRadio", bundle: Bundle.main).instantiateInitialViewController()
         guard let radioVc = vc as? GLRadioViewController else { return }
-        
+        radioVc.navigationItem.title = "选择所属门店"
+        // 加载数据
         let path = Bundle.main.path(forResource: "mendian", ofType: "plist")
         guard let filePath = path else { return }
         let arr = NSArray(contentsOfFile: filePath)
+        // 字典数组 转模型数组
         if let dataArr = [GLRadioModel].deserialize(from: arr as? [Any]) {
-            radioVc.dataArray = dataArr as! [GLRadioModel]
+            var dataArray = dataArr as! [GLRadioModel]
+            
+            if let selectedMendianModel = selectedMendianModel {
+                for (index, value) in dataArray.enumerated() {
+                    if selectedMendianModel.id == value.id {
+                        dataArray.replaceSubrange(Range(index...index), with: [selectedMendianModel])
+                    }
+                }
+            }
+            radioVc.dataArray = dataArray
         }
+        
+        radioVc.closeClosure = { [weak self] (model: GLRadioModel) in
+            self?.selectedMendianModel = model
+            self?.门店Label.text = model.title
+        }
+        
         navigationController?.pushViewController(radioVc, animated: true)
     }
     

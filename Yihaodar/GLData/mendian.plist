@@ -9,6 +9,8 @@
 		<string>朝阳事业部</string>
 		<key>subTitle</key>
 		<string></string>
+		<key>isSelected</key>
+		<false/>
 	</dict>
 	<dict>
 		<key>id</key>
@@ -17,6 +19,8 @@
 		<string>海淀事业部</string>
 		<key>subTitle</key>
 		<string></string>
+		<key>isSelected</key>
+		<false/>
 	</dict>
 </array>
 </plist>

@@ -30,6 +30,7 @@
 		8A4982D82027F63A00EB4BEF /* GLConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4982D72027F63A00EB4BEF /* GLConst.swift */; };
 		8A4982DA20282BF200EB4BEF /* GLLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4982D920282BF200EB4BEF /* GLLoginViewController.swift */; };
 		8A6587802021C97A0031DD3D /* GLWorkTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65877F2021C97A0031DD3D /* GLWorkTableController.swift */; };
+		8A7D848A20411BB000B5046C /* GLCarMessage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A7D848920411BB000B5046C /* GLCarMessage.storyboard */; };
 		8AD2E8702020795A008D32EA /* GLTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD2E86F2020795A008D32EA /* GLTabBarController.swift */; };
 		8AD2E87220208366008D32EA /* GLNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD2E87120208366008D32EA /* GLNavigationController.swift */; };
 		8AEEF1EE203482AE00F8F5E1 /* GLAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AEEF1ED203482AE00F8F5E1 /* GLAddView.xib */; };
@@ -70,6 +71,7 @@
 		8A4982D72027F63A00EB4BEF /* GLConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLConst.swift; sourceTree = "<group>"; };
 		8A4982D920282BF200EB4BEF /* GLLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLLoginViewController.swift; sourceTree = "<group>"; };
 		8A65877F2021C97A0031DD3D /* GLWorkTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLWorkTableController.swift; sourceTree = "<group>"; };
+		8A7D848920411BB000B5046C /* GLCarMessage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLCarMessage.storyboard; sourceTree = "<group>"; };
 		8AD2E86F2020795A008D32EA /* GLTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLTabBarController.swift; sourceTree = "<group>"; };
 		8AD2E87120208366008D32EA /* GLNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLNavigationController.swift; sourceTree = "<group>"; };
 		8AEEF1ED203482AE00F8F5E1 /* GLAddView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLAddView.xib; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				8AEEF1ED203482AE00F8F5E1 /* GLAddView.xib */,
 				8AEEF1F120366F3000F8F5E1 /* GLCreateCarEstimateViewController.swift */,
 				8AEEF1F320366F5600F8F5E1 /* GLCreateCarEstimate.storyboard */,
+				8A7D848920411BB000B5046C /* GLCarMessage.storyboard */,
 				8AEEF1F92037C41800F8F5E1 /* GLRadioViewController.swift */,
 				8AEEF1F72037C20200F8F5E1 /* GLRadio.storyboard */,
 			);
@@ -329,6 +332,7 @@
 				8A1DAB96202ACBA3001CBD0F /* GLWorkTable.storyboard in Resources */,
 				8A1DAB9E202B003F001CBD0F /* GLTaskDetail.storyboard in Resources */,
 				8A235117201E0AC4002715E0 /* Main.storyboard in Resources */,
+				8A7D848A20411BB000B5046C /* GLCarMessage.storyboard in Resources */,
 				8A1DAB99202ACE04001CBD0F /* GLMe.storyboard in Resources */,
 				8AEEF1F420366F5600F8F5E1 /* GLCreateCarEstimate.storyboard in Resources */,
 				8AEEF1FE2039BB9100F8F5E1 /* mendian.plist in Resources */,
