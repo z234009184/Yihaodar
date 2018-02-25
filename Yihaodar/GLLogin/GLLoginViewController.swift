@@ -36,7 +36,9 @@ class GLLoginViewController: UIViewController {
         sender.animate(0, completion: {[weak self] () -> () in
             let rootvc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
             guard let vc = rootvc else { return }
-            self?.present(vc, animated: true, completion: nil)
+            self?.present(vc, animated: true, completion: {
+                sender.isEnabled = true
+            })
         })
     }
     
