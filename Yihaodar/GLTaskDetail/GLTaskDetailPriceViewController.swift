@@ -111,16 +111,60 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
 }
 
 
-class GLPictureMessageViewController: UIViewController, IndicatorInfoProvider {
+class GLPictureMessageViewController: UIViewController, IndicatorInfoProvider, UIScrollViewDelegate {
+    
+    @IBOutlet weak var firstCollectionViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var firsrCollectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
     }
     // IndicatorInfoProvider
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "附件信息")
     }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let contentOffsetY = scrollView.contentOffset.y
+        
+        if contentOffsetY <= 0 {
+            GLBasicMessageViewController.parentVc!.topConstraint.constant = 0
+        } else if contentOffsetY > 0 && contentOffsetY <= 65 {
+            GLBasicMessageViewController.parentVc!.topConstraint.constant = -contentOffsetY
+        } else {
+            GLBasicMessageViewController.parentVc!.topConstraint.constant = -65
+        }
+    }
 }
+
+fileprivate let identifier = "GLTaskDetailPictureCell"
+extension GLPictureMessageViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        let count = 5
+        if count == 0 {
+            firstCollectionViewHeight.constant = 24
+            firsrCollectionView.isHidden = true
+        } else {
+            firsrCollectionView.isHidden = false
+            firstCollectionViewHeight.constant = CGFloat(((count-1)/3 + 1) * 100 - 10)
+        }
+        
+        return count
+    }
+    
+    
+    // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+    @available(iOS 6.0, *)
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+        guard let pictureCell = cell as? GLTaskDetailPictureCell else {
+            return UICollectionViewCell()
+        }
+        return pictureCell
+    }
+}
+
 
 class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
     

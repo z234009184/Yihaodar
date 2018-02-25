@@ -13,5 +13,4 @@ class GLEstimateCarStateView: SpringView {
         super.awakeFromNib()
         
     }
-    
 }

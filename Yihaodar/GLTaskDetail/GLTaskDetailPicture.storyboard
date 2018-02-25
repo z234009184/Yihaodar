@@ -342,13 +342,13 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LXN-Gq-zJJ">
-                                                                <rect key="frame" x="12" y="69.5" width="300" height="190"/>
+                                                                <rect key="frame" x="12" y="69.5" width="290" height="190"/>
                                                                 <color key="backgroundColor" red="0.098039215690000001" green="0.64313725489999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="300" id="Jxg-W0-db4"/>
+                                                                    <constraint firstAttribute="width" constant="290" id="Jxg-W0-db4"/>
                                                                     <constraint firstAttribute="height" constant="190" id="Sbe-0L-IJc"/>
                                                                 </constraints>
-                                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wkI-qL-d5R">
+                                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wkI-qL-d5R">
                                                                     <size key="itemSize" width="90" height="90"/>
                                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
