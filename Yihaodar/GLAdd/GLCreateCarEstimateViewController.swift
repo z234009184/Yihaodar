@@ -25,6 +25,29 @@ class GLCreateCarEstimateViewController: UIViewController {
     
     var selectedMendianModel: GLRadioModel?
     
+    
+    
+    @IBOutlet weak var switchBtn: UIButton!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        openOrFoldBtnClick(switchBtn)
+        
+    }
+    
+    
+    @IBAction func cancelBtnClick(_ sender: UIBarButtonItem) {
+        navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func nextBtnClick(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    
+    
     @IBOutlet weak var 门店Label: UILabel!
     @IBAction func mendianBtnClick(_ sender: UIButton) {
         let vc = UIStoryboard(name: "GLRadio", bundle: Bundle.main).instantiateInitialViewController()
@@ -73,19 +96,8 @@ class GLCreateCarEstimateViewController: UIViewController {
     
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-    }
     
-    @IBAction func cancelBtnClick(_ sender: UIBarButtonItem) {
-        navigationController?.dismiss(animated: true, completion: nil)
-    }
     
-    @IBAction func nextBtnClick(_ sender: UIBarButtonItem) {
-        
-    }
     
     @IBAction func openOrFoldBtnClick(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
@@ -110,6 +122,4 @@ class GLCreateCarEstimateViewController: UIViewController {
         }
         
     }
-    
-    
 }
