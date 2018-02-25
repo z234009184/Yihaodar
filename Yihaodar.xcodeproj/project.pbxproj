@@ -29,6 +29,8 @@
 		8A37F355202D726B004FD467 /* GLTaskDetailPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37F354202D726B004FD467 /* GLTaskDetailPictureViewController.swift */; };
 		8A4982D82027F63A00EB4BEF /* GLConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4982D72027F63A00EB4BEF /* GLConst.swift */; };
 		8A4982DA20282BF200EB4BEF /* GLLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4982D920282BF200EB4BEF /* GLLoginViewController.swift */; };
+		8A54560D204255290039D127 /* GLEstimateCarStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A54560C204255290039D127 /* GLEstimateCarStateView.xib */; };
+		8A54560F204255340039D127 /* GLEstimateCarStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A54560E204255340039D127 /* GLEstimateCarStateView.swift */; };
 		8A6587802021C97A0031DD3D /* GLWorkTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65877F2021C97A0031DD3D /* GLWorkTableController.swift */; };
 		8A7D848A20411BB000B5046C /* GLCarMessage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A7D848920411BB000B5046C /* GLCarMessage.storyboard */; };
 		8A7D848C2041325800B5046C /* GLTaskDetailPrice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A7D848B2041325800B5046C /* GLTaskDetailPrice.storyboard */; };
@@ -72,6 +74,8 @@
 		8A37F354202D726B004FD467 /* GLTaskDetailPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLTaskDetailPictureViewController.swift; sourceTree = "<group>"; };
 		8A4982D72027F63A00EB4BEF /* GLConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLConst.swift; sourceTree = "<group>"; };
 		8A4982D920282BF200EB4BEF /* GLLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLLoginViewController.swift; sourceTree = "<group>"; };
+		8A54560C204255290039D127 /* GLEstimateCarStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLEstimateCarStateView.xib; sourceTree = "<group>"; };
+		8A54560E204255340039D127 /* GLEstimateCarStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLEstimateCarStateView.swift; sourceTree = "<group>"; };
 		8A65877F2021C97A0031DD3D /* GLWorkTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLWorkTableController.swift; sourceTree = "<group>"; };
 		8A7D848920411BB000B5046C /* GLCarMessage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLCarMessage.storyboard; sourceTree = "<group>"; };
 		8A7D848B2041325800B5046C /* GLTaskDetailPrice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLTaskDetailPrice.storyboard; sourceTree = "<group>"; };
@@ -167,10 +171,12 @@
 				8A37F352202D714E004FD467 /* GLTaskDetailPicture.storyboard */,
 				8A7D848D2041329300B5046C /* GLTaskDetailPriceViewController.swift */,
 				8A7D848B2041325800B5046C /* GLTaskDetailPrice.storyboard */,
-				8A24F7A5202F0E1200FDC669 /* GLSubmitMessageView.xib */,
+				8A54560E204255340039D127 /* GLEstimateCarStateView.swift */,
+				8A54560C204255290039D127 /* GLEstimateCarStateView.xib */,
 				8A24F7A7202F314000FDC669 /* GLSubmitMessageView.swift */,
-				8AEEF1FF203FAF7700F8F5E1 /* GLSubmitLoadingView.xib */,
+				8A24F7A5202F0E1200FDC669 /* GLSubmitMessageView.xib */,
 				8AEEF201203FB80D00F8F5E1 /* GLSubmitLoadingView.swift */,
+				8AEEF1FF203FAF7700F8F5E1 /* GLSubmitLoadingView.xib */,
 			);
 			path = GLTaskDetail;
 			sourceTree = "<group>";
@@ -330,6 +336,7 @@
 				8A1DAB90202AB43B001CBD0F /* GLLogin.storyboard in Resources */,
 				8AEEF1F82037C20200F8F5E1 /* GLRadio.storyboard in Resources */,
 				8AEEF1EE203482AE00F8F5E1 /* GLAddView.xib in Resources */,
+				8A54560D204255290039D127 /* GLEstimateCarStateView.xib in Resources */,
 				8A24F7A6202F0E1200FDC669 /* GLSubmitMessageView.xib in Resources */,
 				8A37F353202D714E004FD467 /* GLTaskDetailPicture.storyboard in Resources */,
 				8A24F7AA20329A6400FDC669 /* GLSearch.storyboard in Resources */,
@@ -447,6 +454,7 @@
 				8A37F34D202BE9F2004FD467 /* GLSearchViewController.swift in Sources */,
 				8AEEF1FA2037C41800F8F5E1 /* GLRadioViewController.swift in Sources */,
 				8A1DAB92202AC3A8001CBD0F /* UIView+GLExtension.swift in Sources */,
+				8A54560F204255340039D127 /* GLEstimateCarStateView.swift in Sources */,
 				8A4982D82027F63A00EB4BEF /* GLConst.swift in Sources */,
 				8AD2E8702020795A008D32EA /* GLTabBarController.swift in Sources */,
 				8A4982DA20282BF200EB4BEF /* GLLoginViewController.swift in Sources */,

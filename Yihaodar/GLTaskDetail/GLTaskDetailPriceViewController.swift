@@ -8,14 +8,17 @@
 
 import Spring
 import XLPagerTabStrip
+import SnapKit
+
+
 
 
 class GLBasicMessageViewController: UIViewController, IndicatorInfoProvider, UIScrollViewDelegate {
     
-    var parentVc: GLTaskDetailPriceViewController?
+    static var parentVc: GLTaskDetailPriceViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
-        parentVc = parent as? GLTaskDetailPriceViewController
+        GLBasicMessageViewController.parentVc = parent as? GLTaskDetailPriceViewController
         
     }
     // IndicatorInfoProvider
@@ -28,39 +31,86 @@ class GLBasicMessageViewController: UIViewController, IndicatorInfoProvider, UIS
         let contentOffsetY = scrollView.contentOffset.y
         
         if contentOffsetY <= 0 {
-            parentVc!.topConstraint.constant = 0
+            GLBasicMessageViewController.parentVc!.topConstraint.constant = 0
         } else if contentOffsetY > 0 && contentOffsetY <= 65 {
-            parentVc!.topConstraint.constant = -contentOffsetY
+            GLBasicMessageViewController.parentVc!.topConstraint.constant = -contentOffsetY
         } else {
-            parentVc!.topConstraint.constant = -65
+            GLBasicMessageViewController.parentVc!.topConstraint.constant = -65
         }
     }
     
 }
-class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider {
+class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, UIScrollViewDelegate {
+    
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var 车辆配置View: UIView!
+    @IBOutlet weak var 评估结果View: UIView!
+    @IBOutlet weak var 定价结果View: UIView!
+    
+    
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .yellow
+        
+        var arr = [GLEstimateCarStateView]()
+        
+        for index in 0..<3 {
+            let estimateView = Bundle.main.loadNibNamed("GLEstimateCarStateView", owner: nil, options: nil)?.first as! GLEstimateCarStateView
+            contentView.addSubview(estimateView)
+            arr.append(estimateView)
+            
+            if index == 0 {
+                estimateView.snp.updateConstraints { (make) in
+                    make.top.equalTo(车辆配置View.snp.bottom).offset(10)
+                    make.left.equalTo(contentView).offset(10)
+                    make.right.equalTo(contentView).offset(-10)
+                    make.height.equalTo(458).priority(249)
+                }
+            } else {
+                let lastEstimateView = arr[index-1]
+                estimateView.snp.updateConstraints { (make) in
+                    make.top.equalTo(lastEstimateView.snp.bottom).offset(10)
+                    make.left.equalTo(lastEstimateView)
+                    make.right.equalTo(lastEstimateView)
+                    make.height.equalTo(458).priority(249)
+                }
+                if (index == 2) {
+                    评估结果View.snp.updateConstraints { (make) in
+                        make.top.equalTo(estimateView.snp.bottom).offset(10)
+                    }
+                }
+            }
+        }
+        
+        
+        
+        
+        
+        
     }
     // IndicatorInfoProvider
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "评估信息")
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let vc = parent as? GLTaskDetailPriceViewController else {
-            return
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let contentOffsetY = scrollView.contentOffset.y
+        
+        if contentOffsetY <= 0 {
+            GLBasicMessageViewController.parentVc!.topConstraint.constant = 0
+        } else if contentOffsetY > 0 && contentOffsetY <= 65 {
+            GLBasicMessageViewController.parentVc!.topConstraint.constant = -contentOffsetY
+        } else {
+            GLBasicMessageViewController.parentVc!.topConstraint.constant = -65
         }
-        
-        vc.topConstraint.constant = 0
-        
-        UIView.animate(withDuration: 0.25) {
-            vc.view.layoutIfNeeded()
-        }
-        
     }
+   
     
 }
+
+
 class GLPictureMessageViewController: UIViewController, IndicatorInfoProvider {
     override func viewDidLoad() {
         super.viewDidLoad()
