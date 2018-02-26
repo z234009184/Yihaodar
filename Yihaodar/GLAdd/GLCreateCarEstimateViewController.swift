@@ -35,6 +35,10 @@ class GLCreateCarEstimateViewController: UIViewController {
         
         openOrFoldBtnClick(switchBtn)
         
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = "上一步";
+        navigationItem.backBarButtonItem = backItem;
     }
     
     
@@ -43,6 +47,9 @@ class GLCreateCarEstimateViewController: UIViewController {
     }
     
     @IBAction func nextBtnClick(_ sender: UIBarButtonItem) {
+        
+        let vc = UIStoryboard(name: "GLCreateCarEstimate", bundle: Bundle(for: type(of: self))).instantiateViewController(withIdentifier: "GLCarMessageViewController") as! GLCarMessageViewController
+        navigationController?.pushViewController(vc, animated: true)
         
     }
     
