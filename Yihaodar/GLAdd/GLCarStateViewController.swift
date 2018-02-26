@@ -21,7 +21,8 @@ class GLCarStateViewController: UIViewController {
     }
     
     @objc func nextBtnClick(item: UIBarButtonItem) {
-        
+        let vc = UIStoryboard(name: "GLCreateCarEstimate", bundle: Bundle(for: type(of: self))).instantiateViewController(withIdentifier: "GLUploadPictureViewController") as! GLUploadPictureViewController
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private lazy var arr = [GLCarStateView]()
@@ -46,10 +47,21 @@ class GLCarStateViewController: UIViewController {
         }
         arr.append(carStateView)
         
-        weak var weakStateView = carStateView
+        
+        weak var weakCarStateView = carStateView
         carStateView.deleteClosure = { [weak self] in
-            self?.arr.removeLast()
-            weakStateView?.removeFromSuperview()
+            guard let weakCarStateView = weakCarStateView else { return }
+            let index = self?.arr.index(of: weakCarStateView)
+            guard let i = index else { return }
+            self?.arr.remove(at: i)
+            weakCarStateView.removeFromSuperview()
+            if let firstView = self?.arr.first {
+                firstView.snp.remakeConstraints { (make) in
+                    make.top.equalTo((self?.contentView)!).offset(10)
+                    make.left.equalTo((self?.contentView)!).offset(10)
+                    make.right.equalTo((self?.contentView)!).offset(-10)
+                }
+            }
             if let lastView = self?.arr.last {
                 self?.addView.snp.remakeConstraints { (make) in
                     make.top.equalTo(lastView.snp.bottom).offset(40)
@@ -70,5 +82,7 @@ class GLCarStateViewController: UIViewController {
     @IBAction func questionMarkBtnClick(_ sender: UIButton) {
         
     }
+    
+    
     
 }

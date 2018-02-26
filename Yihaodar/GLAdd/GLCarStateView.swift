@@ -8,7 +8,7 @@
 
 import Spring
 
-class GLCarStateView: UIView {
+class GLCarStateView: UIView, UITextViewDelegate {
     
     var deleteClosure: (()->())?
     
@@ -30,5 +30,14 @@ class GLCarStateView: UIView {
         }
         deleteClosure()
         
+    }
+    @IBOutlet weak var textViewHeight: NSLayoutConstraint!
+    
+    func textViewDidChange(_ textView: UITextView) {
+        textViewHeight.constant = textView.contentSize.height
+    }
+    
+    deinit {
+        print("--dealloc")
     }
 }
