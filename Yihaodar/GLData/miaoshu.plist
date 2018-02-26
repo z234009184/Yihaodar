@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>id</key>
+		<string>1</string>
+		<key>title</key>
+		<string>HH 划痕</string>
+		<key>subTitle</key>
+		<string></string>
+		<key>isSelected</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>2</string>
+		<key>title</key>
+		<string>BX 变形</string>
+		<key>subTitle</key>
+		<string></string>
+		<key>isSelected</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>3</string>
+		<key>title</key>
+		<string>PS 破损</string>
+		<key>subTitle</key>
+		<string></string>
+		<key>isSelected</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>4</string>
+		<key>title</key>
+		<string>BJ 钣金</string>
+		<key>subTitle</key>
+		<string></string>
+		<key>isSelected</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>5</string>
+		<key>title</key>
+		<string>GH 更换</string>
+		<key>subTitle</key>
+		<string></string>
+		<key>isSelected</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>id</key>
+		<string>6</string>
+		<key>title</key>
+		<string>PQ 喷漆</string>
+		<key>subTitle</key>
+		<string></string>
+		<key>isSelected</key>
+		<false/>
+	</dict>
+</array>
+</plist>
