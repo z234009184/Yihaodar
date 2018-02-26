@@ -46,6 +46,8 @@
 		8AD5E0C12043D43600CB7CFF /* GLCarStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD5E0C02043D43600CB7CFF /* GLCarStateView.swift */; };
 		8AD5E0C32043FC0800CB7CFF /* GLUploadPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD5E0C22043FC0800CB7CFF /* GLUploadPictureViewController.swift */; };
 		8AD5E0C520440AD300CB7CFF /* GLEstimateResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD5E0C420440AD300CB7CFF /* GLEstimateResultViewController.swift */; };
+		8AD5E0C82044208C00CB7CFF /* GLCheckBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD5E0C72044208C00CB7CFF /* GLCheckBoxViewController.swift */; };
+		8AD5E0CA204420B100CB7CFF /* GLCheckBox.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5E0C9204420B100CB7CFF /* GLCheckBox.storyboard */; };
 		8AEEF1EE203482AE00F8F5E1 /* GLAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AEEF1ED203482AE00F8F5E1 /* GLAddView.xib */; };
 		8AEEF1F02035971000F8F5E1 /* GLAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEEF1EF2035971000F8F5E1 /* GLAddView.swift */; };
 		8AEEF1F220366F3000F8F5E1 /* GLCreateCarEstimateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEEF1F120366F3000F8F5E1 /* GLCreateCarEstimateViewController.swift */; };
@@ -100,6 +102,8 @@
 		8AD5E0C02043D43600CB7CFF /* GLCarStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLCarStateView.swift; sourceTree = "<group>"; };
 		8AD5E0C22043FC0800CB7CFF /* GLUploadPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLUploadPictureViewController.swift; sourceTree = "<group>"; };
 		8AD5E0C420440AD300CB7CFF /* GLEstimateResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLEstimateResultViewController.swift; sourceTree = "<group>"; };
+		8AD5E0C72044208C00CB7CFF /* GLCheckBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLCheckBoxViewController.swift; sourceTree = "<group>"; };
+		8AD5E0C9204420B100CB7CFF /* GLCheckBox.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLCheckBox.storyboard; sourceTree = "<group>"; };
 		8AEEF1ED203482AE00F8F5E1 /* GLAddView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLAddView.xib; sourceTree = "<group>"; };
 		8AEEF1EF2035971000F8F5E1 /* GLAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLAddView.swift; sourceTree = "<group>"; };
 		8AEEF1F120366F3000F8F5E1 /* GLCreateCarEstimateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLCreateCarEstimateViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +271,8 @@
 				8AD5E0BE2043D42C00CB7CFF /* GLCarStateView.xib */,
 				8AEEF1F92037C41800F8F5E1 /* GLRadioViewController.swift */,
 				8AEEF1F72037C20200F8F5E1 /* GLRadio.storyboard */,
+				8AD5E0C72044208C00CB7CFF /* GLCheckBoxViewController.swift */,
+				8AD5E0C9204420B100CB7CFF /* GLCheckBox.storyboard */,
 			);
 			path = GLAdd;
 			sourceTree = "<group>";
@@ -361,6 +367,7 @@
 			files = (
 				8A23511C201E0AC4002715E0 /* LaunchScreen.storyboard in Resources */,
 				8A1DAB90202AB43B001CBD0F /* GLLogin.storyboard in Resources */,
+				8AD5E0CA204420B100CB7CFF /* GLCheckBox.storyboard in Resources */,
 				8AEEF1F82037C20200F8F5E1 /* GLRadio.storyboard in Resources */,
 				8AEEF1EE203482AE00F8F5E1 /* GLAddView.xib in Resources */,
 				8A54560D204255290039D127 /* GLEstimateCarStateView.xib in Resources */,
@@ -492,6 +499,7 @@
 				8A4982D82027F63A00EB4BEF /* GLConst.swift in Sources */,
 				8AD5E0C32043FC0800CB7CFF /* GLUploadPictureViewController.swift in Sources */,
 				8AD2E8702020795A008D32EA /* GLTabBarController.swift in Sources */,
+				8AD5E0C82044208C00CB7CFF /* GLCheckBoxViewController.swift in Sources */,
 				8A4982DA20282BF200EB4BEF /* GLLoginViewController.swift in Sources */,
 				8A3775E12033449700F921F8 /* GLRefreshFooter.swift in Sources */,
 				8AEEF1F220366F3000F8F5E1 /* GLCreateCarEstimateViewController.swift in Sources */,

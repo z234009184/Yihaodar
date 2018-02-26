@@ -37,7 +37,4 @@ class GLCarStateView: UIView, UITextViewDelegate {
         textViewHeight.constant = textView.contentSize.height
     }
     
-    deinit {
-        print("--dealloc")
-    }
 }
