@@ -14,6 +14,7 @@ struct GLRadioModel: HandyJSON {
     var title: String?
     var subTitle: String?
     var isSelected: Bool = false
+    var isTextFied: Bool = false
 }
 
 

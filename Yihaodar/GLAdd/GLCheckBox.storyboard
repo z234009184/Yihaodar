@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +18,52 @@
                     <view key="view" contentMode="scaleToFill" id="CR6-Nr-mRk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GTr-SX-GuD">
+                                <rect key="frame" x="10" y="30" width="355" height="627"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="65" id="bKn-LX-e0I">
+                                        <rect key="frame" x="0.0" y="28" width="355" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bKn-LX-e0I" id="LTG-ih-0dR">
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="64.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O71-x9-tRU">
+                                                    <rect key="frame" x="25" y="21" width="19" height="22"/>
+                                                    <state key="normal" image="add_uncheck"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWF-N1-U3Y">
+                                                    <rect key="frame" x="54" y="26" width="37.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="dWF-N1-U3Y" firstAttribute="leading" secondItem="O71-x9-tRU" secondAttribute="trailing" constant="10" id="8f7-Bs-JBo"/>
+                                                <constraint firstItem="dWF-N1-U3Y" firstAttribute="top" secondItem="LTG-ih-0dR" secondAttribute="topMargin" constant="15" id="Bau-YD-v5V"/>
+                                                <constraint firstItem="O71-x9-tRU" firstAttribute="leading" secondItem="LTG-ih-0dR" secondAttribute="leadingMargin" constant="10" id="cyI-2h-vZc"/>
+                                                <constraint firstItem="O71-x9-tRU" firstAttribute="centerY" secondItem="LTG-ih-0dR" secondAttribute="centerY" id="fgY-z8-i0W"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92916911840438843" green="0.93318682909011841" blue="0.94551080465316772" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="GTr-SX-GuD" firstAttribute="leading" secondItem="gmC-t7-DYh" secondAttribute="leading" constant="10" id="Emk-OX-YlQ"/>
+                            <constraint firstItem="GTr-SX-GuD" firstAttribute="top" secondItem="gmC-t7-DYh" secondAttribute="top" constant="10" id="IjS-V1-iGl"/>
+                            <constraint firstItem="gmC-t7-DYh" firstAttribute="trailing" secondItem="GTr-SX-GuD" secondAttribute="trailing" constant="10" id="J11-D2-OVo"/>
+                            <constraint firstItem="gmC-t7-DYh" firstAttribute="bottom" secondItem="GTr-SX-GuD" secondAttribute="bottom" constant="10" id="Nck-e7-FRW"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gmC-t7-DYh"/>
                     </view>
                 </viewController>
@@ -26,4 +72,7 @@
             <point key="canvasLocation" x="444" y="-188"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="add_uncheck" width="19" height="19"/>
+    </resources>
 </document>
