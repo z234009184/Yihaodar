@@ -9,6 +9,9 @@
 import Spring
 
 class GLTaskDetailBaseViewController: UIViewController {
+    
+    lazy var tabBarVc = tabBarController as! GLTabBarController
+    
     lazy var submitMessageView: GLSubmitMessageView = {
         let accessoryView = GLSubmitMessageView()
         let width = view.bounds.width
@@ -17,76 +20,28 @@ class GLTaskDetailBaseViewController: UIViewController {
         accessoryView.frame.origin.x = 0
         
         accessoryView.submitBtnClosure = { [weak self] in
-            self?.dismissCover(btn: UIButton())
-            self?.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_success"), title: "提交成功")
+            self?.tabBarVc.dismissCover(btn: nil)
+            self?.tabBarVc.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_success"), title: "提交成功")
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.5, execute: {
+                self?.tabBarVc.dismissCover(btn: nil)
+            })
         }
         
         return accessoryView
     }()
     
-    var maskView: UIView?
-    
-    @objc func dismissCover(btn: UIButton) {
-        guard let maskView = maskView else {
-            return
-        }
-        maskView.removeFromSuperview()
-    }
-    
-    func showMaskView(isDismiss: Bool=true) {
-        dismissCover(btn: UIButton())
-        maskView = UIView(frame: (navigationController?.view.bounds)!)
-        guard let maskView = maskView else {
-            return
-        }
-        maskView.backgroundColor = UIColor(white: 0, alpha: 0.3)
-        
-        if isDismiss == true {
-            let btn = UIButton(frame: maskView.bounds)
-            maskView.addSubview(btn)
-            btn.addTarget(self, action: #selector(GLTaskDetailViewController.dismissCover(btn:)), for: .touchUpInside)
-        
-        }
-        navigationController?.view.addSubview(maskView)
-    }
-    
     func showSubmitMessageView() -> Void {
-        showMaskView()
-        guard let maskView = maskView else {
+        let mask = tabBarVc.showMaskView()
+        guard let maskView = mask else {
             return
         }
         submitMessageView.frame.origin.y = maskView.frame.size.height
         maskView.addSubview(submitMessageView)
         
         UIView.animate(withDuration: 0.25) {
-            self.submitMessageView.frame.origin.y = self.maskView!.frame.size.height - self.submitMessageView.frame.size.height
+            self.submitMessageView.frame.origin.y = maskView.frame.size.height - self.submitMessageView.frame.size.height
         }
     }
-    
-    func showLoadingView(img: UIImage?, title: String?) -> Void {
-        showMaskView(isDismiss: false)
-        guard let maskView = maskView else {
-            return
-        }
-        
-        let loadingView = Bundle.main.loadNibNamed("GLSubmitLoadingView", owner: nil, options: nil)?.first as? GLSubmitLoadingView
-        let width = view.bounds.width
-        let height  = width * 215.0/375.0
-        let y = navigationController!.view.bounds.size.height - height
-        loadingView?.frame = CGRect(x: 0, y: y, width: width, height: height)
-        if let img = img {
-            loadingView?.imageView.image = img
-        }
-        if let title = title {
-            loadingView?.titleLabel.text = title
-        }
-        guard let showView = loadingView else {
-            return
-        }
-        
-        maskView.addSubview(showView)
-    }
-    
 }
 
 
