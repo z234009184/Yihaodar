@@ -7,6 +7,7 @@
 //
 
 import Spring
+import FSPagerView
 
 class GLCarStateViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
@@ -79,12 +80,46 @@ class GLCarStateViewController: UIViewController {
     }
     
     
+    lazy var tabBarVc = navigationController?.presentingViewController as! GLTabBarController
+    lazy var imgs = [#imageLiteral(resourceName: "car_state_1"), #imageLiteral(resourceName: "car_state_2")]
     @IBAction func questionMarkBtnClick(_ sender: UIButton) {
+
         
+        let mask = tabBarVc.showMaskView()
+        guard let maskView = mask else {
+            return
+        }
+    
         
+        // Create a pager view
+        let pagerView = FSPagerView()
+        let width = maskView.bounds.width - 20
+        let height = width * 358.0/273.0
+        pagerView.frame.size.width = width
+        pagerView.frame.size.height = height
+        pagerView.center = maskView.center
+        pagerView.dataSource = self
+        pagerView.delegate = self
+        pagerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
+        maskView.addSubview(pagerView)
+        // Create a page control
+        let pageControl = FSPageControl(frame: CGRect(x: 0, y: pagerView.frame.size.height - 20, width: pagerView.frame.size.width, height: 20))
+        pagerView.addSubview(pageControl)
         
     }
+}
+
+extension GLCarStateViewController: FSPagerViewDataSource, FSPagerViewDelegate {
+    func numberOfItems(in pagerView: FSPagerView) -> Int {
+        return 2
+    }
     
+    func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
+        let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
+        cell.imageView?.image = imgs[index]
+        
+        return cell
+    }
     
     
 }

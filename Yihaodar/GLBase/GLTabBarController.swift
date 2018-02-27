@@ -39,10 +39,10 @@ class GLTabBarController: UITabBarController {
     
     var maskView: UIView?
     @objc func dismissCover(btn: UIButton?) {
-        guard let maskView = maskView else {
-            return
+        if let maskView = maskView {
+            maskView.removeFromSuperview()
         }
-        maskView.removeFromSuperview()
+        maskView = nil
     }
     func showMaskView(isDismiss: Bool=true) -> UIView? {
         dismissCover(btn: nil)
@@ -58,7 +58,13 @@ class GLTabBarController: UITabBarController {
             btn.addTarget(self, action: #selector(GLTabBarController.dismissCover(btn:)), for: .touchUpInside)
             
         }
-        self.view.addSubview(maskView)
+        guard let window = UIApplication.shared.keyWindow else {
+            self.view.addSubview(maskView)
+            return maskView
+        }
+        
+        window.addSubview(maskView)
+        
         
         return maskView
     }
