@@ -34,7 +34,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wij-pT-93n">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Wij-pT-93n">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yW0-Y4-eS1">
@@ -351,7 +351,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="2000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rv8-vc-Nsc">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="rv8-vc-Nsc">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="2000"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dcf-4l-Rui">
@@ -417,6 +417,43 @@
                                                             <constraint firstAttribute="height" constant="70" id="n4j-S3-mZ6"/>
                                                             <constraint firstItem="NAX-AD-9Uh" firstAttribute="leading" secondItem="Kf9-k5-QKh" secondAttribute="leading" constant="10" id="sUk-UC-gSy"/>
                                                             <constraint firstItem="vNC-US-ClM" firstAttribute="top" secondItem="o3n-b3-3K6" secondAttribute="bottom" constant="5" id="tJb-ex-oYo"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTd-iJ-7At">
+                                                        <rect key="frame" x="0.0" y="114" width="355" height="70"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*车辆号牌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TrV-fw-TPL">
+                                                                <rect key="frame" x="10" y="15" width="59" height="16"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <color key="textColor" red="0.59999999999999998" green="0.62745098040000002" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hqd-Fh-upa">
+                                                                <rect key="frame" x="8" y="69" width="347" height="1"/>
+                                                                <color key="backgroundColor" red="0.92941176469999998" green="0.93333333330000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="1" id="fB3-xn-Khu"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BfN-Fv-qgo" customClass="DesignableTextField" customModule="Spring">
+                                                                <rect key="frame" x="10" y="36" width="330" height="28"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="TrV-fw-TPL" firstAttribute="top" secondItem="gTd-iJ-7At" secondAttribute="top" constant="15" id="Eml-bu-Aod"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Hqd-Fh-upa" secondAttribute="bottom" id="HbZ-kn-azT"/>
+                                                            <constraint firstItem="BfN-Fv-qgo" firstAttribute="top" secondItem="TrV-fw-TPL" secondAttribute="bottom" constant="5" id="Pao-OT-9Ps"/>
+                                                            <constraint firstItem="Hqd-Fh-upa" firstAttribute="top" secondItem="BfN-Fv-qgo" secondAttribute="bottom" constant="5" id="d6w-et-FqE"/>
+                                                            <constraint firstItem="BfN-Fv-qgo" firstAttribute="leading" secondItem="TrV-fw-TPL" secondAttribute="leading" id="kji-te-HXe"/>
+                                                            <constraint firstItem="TrV-fw-TPL" firstAttribute="leading" secondItem="gTd-iJ-7At" secondAttribute="leading" constant="10" id="mhw-HH-moU"/>
+                                                            <constraint firstItem="Hqd-Fh-upa" firstAttribute="leading" secondItem="gTd-iJ-7At" secondAttribute="leading" constant="8" id="pI0-lB-RkT"/>
+                                                            <constraint firstAttribute="trailing" secondItem="BfN-Fv-qgo" secondAttribute="trailing" constant="15" id="qcY-co-z3j"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Hqd-Fh-upa" secondAttribute="trailing" id="uW2-qX-gv9"/>
+                                                            <constraint firstAttribute="height" constant="70" id="zRX-2o-RDt"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6K5-KV-Ara">
@@ -507,43 +544,6 @@
                                                             <constraint firstItem="L8X-cV-edm" firstAttribute="top" secondItem="4g4-3E-Q5F" secondAttribute="top" constant="15" id="kGm-hg-ZAM"/>
                                                             <constraint firstItem="eLq-GF-ZB5" firstAttribute="leading" secondItem="4g4-3E-Q5F" secondAttribute="leading" id="seL-Dp-Dh5"/>
                                                             <constraint firstItem="wJQ-f4-fF3" firstAttribute="leading" secondItem="4g4-3E-Q5F" secondAttribute="leading" constant="8" id="w2P-UT-3Qe"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTd-iJ-7At">
-                                                        <rect key="frame" x="0.0" y="114" width="355" height="70"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*车辆号牌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TrV-fw-TPL">
-                                                                <rect key="frame" x="10" y="15" width="59" height="16"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                <color key="textColor" red="0.59999999999999998" green="0.62745098040000002" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hqd-Fh-upa">
-                                                                <rect key="frame" x="8" y="69" width="347" height="1"/>
-                                                                <color key="backgroundColor" red="0.92941176469999998" green="0.93333333330000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="1" id="fB3-xn-Khu"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BfN-Fv-qgo" customClass="DesignableTextField" customModule="Spring">
-                                                                <rect key="frame" x="10" y="36" width="330" height="28"/>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                            </textField>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstItem="TrV-fw-TPL" firstAttribute="top" secondItem="gTd-iJ-7At" secondAttribute="top" constant="15" id="Eml-bu-Aod"/>
-                                                            <constraint firstAttribute="bottom" secondItem="Hqd-Fh-upa" secondAttribute="bottom" id="HbZ-kn-azT"/>
-                                                            <constraint firstItem="BfN-Fv-qgo" firstAttribute="top" secondItem="TrV-fw-TPL" secondAttribute="bottom" constant="5" id="Pao-OT-9Ps"/>
-                                                            <constraint firstItem="Hqd-Fh-upa" firstAttribute="top" secondItem="BfN-Fv-qgo" secondAttribute="bottom" constant="5" id="d6w-et-FqE"/>
-                                                            <constraint firstItem="BfN-Fv-qgo" firstAttribute="leading" secondItem="TrV-fw-TPL" secondAttribute="leading" id="kji-te-HXe"/>
-                                                            <constraint firstItem="TrV-fw-TPL" firstAttribute="leading" secondItem="gTd-iJ-7At" secondAttribute="leading" constant="10" id="mhw-HH-moU"/>
-                                                            <constraint firstItem="Hqd-Fh-upa" firstAttribute="leading" secondItem="gTd-iJ-7At" secondAttribute="leading" constant="8" id="pI0-lB-RkT"/>
-                                                            <constraint firstAttribute="trailing" secondItem="BfN-Fv-qgo" secondAttribute="trailing" constant="15" id="qcY-co-z3j"/>
-                                                            <constraint firstAttribute="trailing" secondItem="Hqd-Fh-upa" secondAttribute="trailing" id="uW2-qX-gv9"/>
-                                                            <constraint firstAttribute="height" constant="70" id="zRX-2o-RDt"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ax-HM-WP8">
@@ -822,6 +822,9 @@
                                                                     </label>
                                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ws-zH-byF">
                                                                         <rect key="frame" x="296" y="7" width="51" height="31"/>
+                                                                        <connections>
+                                                                            <action selector="peccancySwitch:" destination="V3A-iC-KUW" eventType="valueChanged" id="4yK-aW-NWf"/>
+                                                                        </connections>
                                                                     </switch>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YXB-QX-SbV">
                                                                         <rect key="frame" x="8" y="43" width="347" height="1"/>
@@ -895,8 +898,8 @@
                                                                             <constraint firstAttribute="height" constant="1" id="KK4-Si-bWi"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入罚款" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XPT-xe-Sd8" customClass="DesignableTextField" customModule="Spring">
-                                                                        <rect key="frame" x="8" y="13" width="314.5" height="18"/>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入罚款" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XPT-xe-Sd8" customClass="DesignableTextField" customModule="Spring">
+                                                                        <rect key="frame" x="10" y="13" width="314.5" height="18"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <textInputTraits key="textInputTraits"/>
@@ -912,20 +915,19 @@
                                                                     <constraint firstAttribute="trailing" secondItem="gTR-he-4bM" secondAttribute="trailing" id="Jlw-s9-Uox"/>
                                                                     <constraint firstItem="XPT-xe-Sd8" firstAttribute="centerY" secondItem="OrD-8Q-kpx" secondAttribute="centerY" id="OD1-ij-hi0"/>
                                                                     <constraint firstAttribute="height" constant="44" id="fcu-bH-bqm"/>
-                                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="k0o-0n-w9h"/>
                                                                     <constraint firstAttribute="trailing" secondItem="23F-J6-R3a" secondAttribute="trailing" constant="10" id="uYy-tx-rPN"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="132" id="2Ja-Qy-rS0"/>
                                                             <constraint firstAttribute="trailing" secondItem="pYg-US-a9t" secondAttribute="trailing" id="DqA-xk-gb7"/>
                                                             <constraint firstItem="M2S-7R-Wmp" firstAttribute="top" secondItem="NSE-1X-kxW" secondAttribute="top" id="UH2-bE-0l2"/>
                                                             <constraint firstItem="pYg-US-a9t" firstAttribute="top" secondItem="M2S-7R-Wmp" secondAttribute="bottom" id="bKT-xD-00q"/>
                                                             <constraint firstItem="pYg-US-a9t" firstAttribute="leading" secondItem="NSE-1X-kxW" secondAttribute="leading" id="fGP-8l-7Sd"/>
                                                             <constraint firstItem="OrD-8Q-kpx" firstAttribute="leading" secondItem="NSE-1X-kxW" secondAttribute="leading" id="hJM-LQ-PH4"/>
                                                             <constraint firstItem="OrD-8Q-kpx" firstAttribute="top" secondItem="pYg-US-a9t" secondAttribute="bottom" id="kiW-lP-jbl"/>
+                                                            <constraint firstAttribute="bottom" secondItem="OrD-8Q-kpx" secondAttribute="bottom" id="l8h-Pg-Z9Z"/>
                                                             <constraint firstAttribute="trailing" secondItem="OrD-8Q-kpx" secondAttribute="trailing" id="n5b-BT-btk"/>
                                                             <constraint firstAttribute="trailing" secondItem="M2S-7R-Wmp" secondAttribute="trailing" id="r9c-9n-f5h"/>
                                                             <constraint firstItem="M2S-7R-Wmp" firstAttribute="leading" secondItem="NSE-1X-kxW" secondAttribute="leading" id="yWZ-54-y8Q"/>
@@ -1288,6 +1290,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="openOrFoldBtnClick:" destination="V3A-iC-KUW" eventType="touchUpInside" id="cHZ-U9-WTr"/>
                                                     <action selector="openOrFoldBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="uxR-l0-c6D"/>
                                                 </connections>
                                             </button>
@@ -1323,6 +1326,40 @@
                         <viewLayoutGuide key="safeArea" id="L1H-t2-3Cg"/>
                     </view>
                     <size key="freeformSize" width="375" height="2000"/>
+                    <connections>
+                        <outlet property="carBrandLabel" destination="FfO-gv-f7S" id="fe8-iE-Kxt"/>
+                        <outlet property="carBusinessInsuranceLabel" destination="fhn-dP-SKT" id="jwA-P8-yqi"/>
+                        <outlet property="carColorLabel" destination="bpg-H1-soZ" id="xW0-u9-Xxr"/>
+                        <outlet property="carDriverMileageField" destination="dVx-TR-qSt" id="SDb-vk-IqG"/>
+                        <outlet property="carEngineNumberField" destination="Jnj-qF-rr6" id="3bG-Xn-gUD"/>
+                        <outlet property="carExhaustField" destination="sWy-cR-Wk5" id="1U6-zU-UXF"/>
+                        <outlet property="carFrameNumberField" destination="GLY-J1-PE2" id="ZJq-Re-zUo"/>
+                        <outlet property="carInvoicePriceField" destination="CL6-Dy-UGT" id="v6X-i4-wE3"/>
+                        <outlet property="carNumberLabel" destination="BfN-Fv-qgo" id="bl8-Wu-P3L"/>
+                        <outlet property="carPeccancySwitch" destination="9ws-zH-byF" id="J1Y-Sv-sfw"/>
+                        <outlet property="carProductDateLabel" destination="u3j-hD-NbT" id="JZc-l5-18Z"/>
+                        <outlet property="carPunishMoneyField" destination="XPT-xe-Sd8" id="zIP-GH-ba3"/>
+                        <outlet property="carPunishScoreField" destination="7z8-eZ-sZh" id="WM9-OR-ouZ"/>
+                        <outlet property="carRegisterDateLabel" destination="4AW-Hj-X83" id="CRz-Ga-H7P"/>
+                        <outlet property="carSeriesLabel" destination="LMl-9u-xDG" id="aTu-Hn-3TM"/>
+                        <outlet property="carTrafficInsuranceLabel" destination="dI8-hJ-vF2" id="WfK-q4-nQO"/>
+                        <outlet property="carTransferTimesField" destination="ciY-Io-2TS" id="K6Q-zz-f3U"/>
+                        <outlet property="carVersionLabel" destination="doM-En-wJ7" id="20l-fn-O5Z"/>
+                        <outlet property="carYearlyInspectionDateLabel" destination="yvc-rS-xV8" id="vvB-vQ-TSc"/>
+                        <outlet property="nameField" destination="o3n-b3-3K6" id="zz2-mi-P05"/>
+                        <outletCollection property="contraints" destination="nBn-CQ-zQK" collectionClass="NSMutableArray" id="iZv-Vf-eAQ"/>
+                        <outletCollection property="contraints" destination="WUR-a0-hE6" collectionClass="NSMutableArray" id="b32-qp-Ngs"/>
+                        <outletCollection property="contraints" destination="wcs-Ir-pdN" collectionClass="NSMutableArray" id="QCv-zt-aJ5"/>
+                        <outletCollection property="contraints" destination="u3H-8U-cyi" collectionClass="NSMutableArray" id="1iz-wg-TfI"/>
+                        <outletCollection property="constraintsViews" destination="IOJ-zz-a9D" collectionClass="NSMutableArray" id="2Y2-Ck-T8p"/>
+                        <outletCollection property="constraintsViews" destination="A4N-iW-BQv" collectionClass="NSMutableArray" id="KLR-Fc-Nm7"/>
+                        <outletCollection property="constraintsViews" destination="Ero-Gj-ofs" collectionClass="NSMutableArray" id="1qg-T4-6jf"/>
+                        <outletCollection property="constraintsViews" destination="vIJ-qt-2Hy" collectionClass="NSMutableArray" id="Cyn-de-fmN"/>
+                        <outletCollection property="switchViews" destination="pYg-US-a9t" collectionClass="NSMutableArray" id="vuq-4U-LsQ"/>
+                        <outletCollection property="switchViews" destination="OrD-8Q-kpx" collectionClass="NSMutableArray" id="n9L-ip-h3x"/>
+                        <outletCollection property="switchHeights" destination="6Ol-08-PoH" collectionClass="NSMutableArray" id="oPW-iW-bpi"/>
+                        <outletCollection property="switchHeights" destination="fcu-bH-bqm" collectionClass="NSMutableArray" id="3Tx-LG-r9W"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kqt-S2-D89" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1336,7 +1373,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="2000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SNK-H3-Njc">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="SNK-H3-Njc">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="2000"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b0d-hB-4pn">
@@ -2011,7 +2048,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="2000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqN-wZ-I9Q">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="gqN-wZ-I9Q">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="2000"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zQ-ap-om0">
@@ -2101,7 +2138,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="2000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lIh-pc-cwV">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="lIh-pc-cwV">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="2000"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uol-i6-Cvy">
@@ -2755,7 +2792,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="2000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yza-ln-5rD">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="yza-ln-5rD">
                                 <rect key="frame" x="0.0" y="20" width="375" height="1980"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eML-bc-wl6">
