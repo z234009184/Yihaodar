@@ -13,11 +13,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="arL-ea-99W" customClass="GLCarStateView" customModule="Yihaodar" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="365" height="326"/>
+            <rect key="frame" x="0.0" y="0.0" width="424" height="516"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BHI-sQ-jWh">
-                    <rect key="frame" x="0.0" y="0.0" width="365" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="424" height="44"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="worktable_cell_icon" translatesAutoresizingMaskIntoConstraints="NO" id="de3-RG-1Ko">
                             <rect key="frame" x="0.0" y="13.5" width="6" height="17"/>
@@ -29,7 +29,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNA-dj-vv6">
-                            <rect key="frame" x="319" y="7" width="31" height="30"/>
+                            <rect key="frame" x="378" y="7" width="31" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="删除">
                                 <color key="titleColor" red="0.098039215690000001" green="0.64313725489999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -51,10 +51,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uDM-fc-mXO">
-                    <rect key="frame" x="0.0" y="44" width="365" height="70"/>
+                    <rect key="frame" x="0.0" y="44" width="424" height="70"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5WH-H7-XuV">
-                            <rect key="frame" x="0.0" y="0.0" width="365" height="70"/>
+                            <rect key="frame" x="0.0" y="0.0" width="424" height="70"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*车构件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5M-XV-dvR">
                             <rect key="frame" x="10" y="15" width="46" height="16"/>
@@ -69,7 +69,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oc8-8f-ah0">
-                            <rect key="frame" x="8" y="69" width="357" height="1"/>
+                            <rect key="frame" x="8" y="69" width="416" height="1"/>
                             <color key="backgroundColor" red="0.92941176469999998" green="0.93333333330000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="24f-xC-5Jt"/>
@@ -93,10 +93,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I9m-pO-h4S">
-                    <rect key="frame" x="0.0" y="114" width="365" height="70"/>
+                    <rect key="frame" x="0.0" y="114" width="424" height="70"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyD-6T-IEd">
-                            <rect key="frame" x="0.0" y="0.0" width="365" height="70"/>
+                            <rect key="frame" x="0.0" y="0.0" width="424" height="70"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*部件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4OS-eh-TeK">
                             <rect key="frame" x="10" y="15" width="33" height="16"/>
@@ -111,7 +111,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZWy-vm-kDK">
-                            <rect key="frame" x="8" y="69" width="357" height="1"/>
+                            <rect key="frame" x="8" y="69" width="416" height="1"/>
                             <color key="backgroundColor" red="0.92941176469999998" green="0.93333333330000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="24k-9O-0Gv"/>
@@ -135,10 +135,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OWi-AE-YEJ">
-                    <rect key="frame" x="0.0" y="184" width="365" height="70"/>
+                    <rect key="frame" x="0.0" y="184" width="424" height="70"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xG7-dy-sWz">
-                            <rect key="frame" x="0.0" y="0.0" width="365" height="70"/>
+                            <rect key="frame" x="0.0" y="0.0" width="424" height="70"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*描述" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zif-wI-he0">
                             <rect key="frame" x="10" y="15" width="33" height="16"/>
@@ -153,7 +153,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Xi-3s-ans">
-                            <rect key="frame" x="8" y="69" width="357" height="1"/>
+                            <rect key="frame" x="8" y="69" width="416" height="1"/>
                             <color key="backgroundColor" red="0.92941176469999998" green="0.93333333330000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="unJ-sD-Q03"/>
@@ -177,10 +177,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mN9-DI-Wdq">
-                    <rect key="frame" x="0.0" y="254" width="365" height="72"/>
+                    <rect key="frame" x="0.0" y="254" width="424" height="72"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HIm-1O-8de">
-                            <rect key="frame" x="0.0" y="0.0" width="365" height="72"/>
+                            <rect key="frame" x="0.0" y="0.0" width="424" height="72"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="补充说明" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ize-gP-X6c">
                             <rect key="frame" x="10" y="15" width="54" height="16"/>
@@ -189,7 +189,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jEv-cT-UYo" customClass="IQTextView" customModule="IQKeyboardManagerSwift">
-                            <rect key="frame" x="10" y="34" width="345" height="30"/>
+                            <rect key="frame" x="10" y="34" width="404" height="30"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="TrJ-Bs-MFB"/>
@@ -250,7 +250,7 @@
                 <outlet property="deleteBtn" destination="fNA-dj-vv6" id="S32-bS-23v"/>
                 <outlet property="textViewHeight" destination="TrJ-Bs-MFB" id="Bdi-tN-qFs"/>
             </connections>
-            <point key="canvasLocation" x="-580.5" y="-841"/>
+            <point key="canvasLocation" x="-551" y="-746"/>
         </view>
     </objects>
     <resources>

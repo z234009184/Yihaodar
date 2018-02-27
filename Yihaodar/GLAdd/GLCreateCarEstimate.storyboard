@@ -461,9 +461,6 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IbH-gY-2k8">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
-                                                                <connections>
-                                                                    <action selector="zhuguanBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="xKE-HY-wng"/>
-                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*车辆品牌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRy-Gk-DGv">
                                                                 <rect key="frame" x="10" y="15" width="59" height="16"/>
@@ -506,9 +503,6 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLq-GF-ZB5">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
-                                                                <connections>
-                                                                    <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="WVH-k5-hae"/>
-                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*车辆系列" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8X-cV-edm">
                                                                 <rect key="frame" x="10" y="15" width="59" height="16"/>
@@ -551,9 +545,6 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wo6-4J-inD">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
-                                                                <connections>
-                                                                    <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="6Gz-pu-J5t"/>
-                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*车辆型号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5c-Bf-DMq">
                                                                 <rect key="frame" x="10" y="15" width="59" height="16"/>
@@ -634,7 +625,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oZC-Ki-eQl">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
-                                                                    <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="W5e-Iw-hcu"/>
+                                                                    <action selector="carProductDateSelected:" destination="V3A-iC-KUW" eventType="touchUpInside" id="CmE-5U-8PO"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*出厂日期" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07r-Ib-DDv">
@@ -678,9 +669,6 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O3h-yy-urx">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
-                                                                <connections>
-                                                                    <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="zaq-xu-Aud"/>
-                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*登记日期" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNe-v9-iGP">
                                                                 <rect key="frame" x="10" y="15" width="59" height="16"/>

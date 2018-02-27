@@ -87,6 +87,26 @@ class GLCarMessageViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    lazy var tabBarVc = navigationController?.presentingViewController as! GLTabBarController
+    @IBAction func carProductDateSelected(_ sender: UIButton) {
+        GLDatePicker.showDatePicker(currentDate: Date()) { (date) in
+            print(date)
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @IBAction func openOrFoldBtnClick(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if sender.isSelected == true {
