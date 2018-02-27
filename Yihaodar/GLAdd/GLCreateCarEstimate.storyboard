@@ -1347,6 +1347,7 @@
                         <outlet property="carVersionLabel" destination="doM-En-wJ7" id="20l-fn-O5Z"/>
                         <outlet property="carYearlyInspectionDateLabel" destination="yvc-rS-xV8" id="vvB-vQ-TSc"/>
                         <outlet property="nameField" destination="o3n-b3-3K6" id="zz2-mi-P05"/>
+                        <outlet property="openOrFoldBtn" destination="2hR-Xl-ecK" id="SGM-II-fkq"/>
                         <outletCollection property="contraints" destination="nBn-CQ-zQK" collectionClass="NSMutableArray" id="iZv-Vf-eAQ"/>
                         <outletCollection property="contraints" destination="WUR-a0-hE6" collectionClass="NSMutableArray" id="b32-qp-Ngs"/>
                         <outletCollection property="contraints" destination="wcs-Ir-pdN" collectionClass="NSMutableArray" id="QCv-zt-aJ5"/>

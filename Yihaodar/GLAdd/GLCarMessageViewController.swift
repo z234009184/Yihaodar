@@ -49,6 +49,7 @@ class GLCarMessageViewController: UIViewController {
     @IBOutlet weak var carTransferTimesField: DesignableTextField!
     /// 年检到期日
     @IBOutlet weak var carYearlyInspectionDateLabel: UILabel!
+    @IBOutlet weak var openOrFoldBtn: UIButton!
     
     /// 交强险Label
     @IBOutlet weak var carTrafficInsuranceLabel: UILabel!
@@ -75,6 +76,9 @@ class GLCarMessageViewController: UIViewController {
         navigationItem.backBarButtonItem = backItem;
         navigationItem.title = "新建车辆评估"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "下一步", style: .done, target: self, action: #selector(GLCarMessageViewController.nextBtnClick(item:)))
+        carPeccancySwitch.isOn = false
+        peccancySwitch(carPeccancySwitch)
+        openOrFoldBtnClick(openOrFoldBtn)
     }
     
     
