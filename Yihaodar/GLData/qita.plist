@@ -31,6 +31,10 @@
 		<string></string>
 		<key>isSelected</key>
 		<false/>
+		<key>input</key>
+		<string></string>
+		<key>inputPlaceHolder</key>
+		<string>请输入气囊数量(个)</string>
 	</dict>
 </array>
 </plist>

@@ -1399,6 +1399,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3LO-VK-fHT">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
+                                                                    <action selector="carTransmissionAction:" destination="2Xf-ES-n2u" eventType="touchUpInside" id="OkD-Nn-Hz6"/>
                                                                     <action selector="zhuguanBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="vnA-Cv-HuJ"/>
                                                                 </connections>
                                                             </button>
@@ -1669,6 +1670,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ws3-Oz-kpy">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
+                                                                    <action selector="carSeatFormatAction:" destination="2Xf-ES-n2u" eventType="touchUpInside" id="stq-H4-QJE"/>
                                                                     <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="Z3t-zs-IAy"/>
                                                                 </connections>
                                                             </button>
