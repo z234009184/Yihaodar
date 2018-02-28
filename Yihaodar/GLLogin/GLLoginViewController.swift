@@ -9,7 +9,7 @@
 import UIKit
 import TKSubmitTransition
 import Spring
-
+import SwiftyJSON
 
 class GLLoginViewController: UIViewController {
     
@@ -31,15 +31,35 @@ class GLLoginViewController: UIViewController {
     }
     
     @IBAction func loginBtnClick(_ sender: TKTransitionSubmitButton) {
-        sender.isEnabled = false
+        view.endEditing(true)
+        if ((usernameField.text?.length)! < 1) || ((passwordField.text?.length)! < 1) {
+            view.makeToast("用户名或密码不能为空")
+            return
+        }
         
-        sender.animate(0, completion: {[weak self] () -> () in
-            let rootvc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
-            guard let vc = rootvc else { return }
-            self?.present(vc, animated: true, completion: {
-                sender.isEnabled = true
-            })
-        })
+        view.isUserInteractionEnabled = false
+        sender.startLoadingAnimation()
+        
+        GLProvider.request(.login(username: usernameField.text!, password: passwordField.text!.md5())) { [weak self] (result) in
+            self?.view.isUserInteractionEnabled = true
+            sender.startFinishAnimation(0.3, completion: nil)
+            if case let .success(response) = result {
+                //解析数据
+                let json = JSON(response.data)
+                print(json)
+            }
+            
+            
+        }
+        
+        //        sender.animate(0, completion: {[weak self] () -> () in
+        //            let rootvc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
+        //            guard let vc = rootvc else { return }
+        //            self?.present(vc, animated: true, completion: {
+        //                sender.isEnabled = true
+        //            })
+        //        })
+        
     }
     
     //隐藏状态栏

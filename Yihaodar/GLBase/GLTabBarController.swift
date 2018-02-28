@@ -7,8 +7,7 @@
 //
 
 import UIKit
-
-
+import SwiftyJSON
 
 class GLTabBarItem: UITabBarItem {
     override init() {
@@ -33,6 +32,9 @@ class GLTabBarController: UITabBarController {
         tabBar.backgroundImage = UIImage()
 //        tabBar.shadowImage = UIImage()
         tabBar.barTintColor = YiThemeColor
+        
+        
+        
         
     }
     

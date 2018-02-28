@@ -40,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 注册APNs - custom method - 开发者自定义的方法
         self.registerRemoteNotification();
         
+           
         return true
     }
 
