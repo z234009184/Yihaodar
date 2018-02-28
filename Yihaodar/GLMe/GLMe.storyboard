@@ -52,22 +52,26 @@
                                                         <color key="textColor" red="0.36470588235294116" green="0.39215686274509803" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="显示当前用户层级" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkJ-pE-aCe" customClass="DesignableLabel" customModule="Spring">
-                                                        <rect key="frame" x="134" y="156" width="106.5" height="13"/>
-                                                        <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="13"/>
-                                                        <color key="textColor" red="0.59999999999999998" green="0.62745098039215685" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFN-7c-Gop">
+                                                        <rect key="frame" x="107" y="156" width="160" height="28"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <state key="normal" title="显示当前人员所在层级名称">
+                                                            <color key="titleColor" red="0.59999999999999998" green="0.62745098040000002" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="levelBtnClick:" destination="wOw-fo-ieo" eventType="touchUpInside" id="kJy-0I-JBP"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="7Fi-QC-PY6" firstAttribute="top" secondItem="oWl-5n-pDG" secondAttribute="bottom" constant="18" id="9C3-H5-LIk"/>
+                                                    <constraint firstItem="wFN-7c-Gop" firstAttribute="centerX" secondItem="HGz-oW-2ho" secondAttribute="centerX" id="G3O-h0-NIe"/>
                                                     <constraint firstAttribute="width" secondItem="HGz-oW-2ho" secondAttribute="height" multiplier="750:460" id="HRs-I7-4NW"/>
-                                                    <constraint firstItem="FkJ-pE-aCe" firstAttribute="top" secondItem="7Fi-QC-PY6" secondAttribute="bottom" constant="20" id="TDR-Ed-C06"/>
                                                     <constraint firstItem="oWl-5n-pDG" firstAttribute="top" secondItem="HGz-oW-2ho" secondAttribute="top" constant="25" id="p4r-ow-Ckj"/>
                                                     <constraint firstItem="oWl-5n-pDG" firstAttribute="centerX" secondItem="HGz-oW-2ho" secondAttribute="centerX" id="qpr-li-yfk"/>
                                                     <constraint firstItem="7Fi-QC-PY6" firstAttribute="centerX" secondItem="HGz-oW-2ho" secondAttribute="centerX" id="zFg-eZ-wTv"/>
-                                                    <constraint firstItem="FkJ-pE-aCe" firstAttribute="centerX" secondItem="HGz-oW-2ho" secondAttribute="centerX" id="zgb-3d-Eic"/>
+                                                    <constraint firstItem="wFN-7c-Gop" firstAttribute="top" secondItem="7Fi-QC-PY6" secondAttribute="bottom" constant="20" id="zrF-Ga-xUx"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lP1-pf-nnb">
@@ -161,6 +165,10 @@
                         <viewLayoutGuide key="safeArea" id="gfG-qe-FH3"/>
                     </view>
                     <navigationItem key="navigationItem" title="我的" id="O5K-fb-cj8"/>
+                    <connections>
+                        <outlet property="levelButton" destination="wFN-7c-Gop" id="pyD-U4-3Pn"/>
+                        <outlet property="nameLabel" destination="7Fi-QC-PY6" id="KZe-ca-M8b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z40-hJ-3Gx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,6 +10,44 @@ import UIKit
 import TKSubmitTransition
 import Spring
 import SwiftyJSON
+import HandyJSON
+import Default
+
+var GLUser = User()
+
+struct User: HandyJSON, Codable, DefaultStorable {
+    var phoneCode: String?
+    var jobName: String?
+    var storeId: String?
+    var createdDate: String?
+    var bossName: String?
+    var allOrganName: String?
+    var partyTypeId: String?
+    var bossId: String?
+    var store_permission: String?
+    var lastUpdateDateLong: String?
+    var emailCode: String?
+    var organName: String?
+    var orgName: String?
+    var jobCode: String?
+    var depId: String?
+    var depName: String?
+    var dimissionDateLong: String?
+    var nameLetter: String?
+    var createdDateLong: String?
+    var partyName: String?
+    var partyId: String?
+    var lastUpdateDate: String?
+    var orgId: String?
+    var storeName: String?
+    var status: String?
+    var comments: String?
+    var organCode: String?
+    var token: String?
+}
+
+
+
 
 class GLLoginViewController: UIViewController {
     
@@ -30,6 +68,20 @@ class GLLoginViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+         super.viewDidAppear(animated)
+        if let user = User.read() {
+            GLUser = user
+            if let token = user.token {
+                tokenString = token
+                
+                let rootvc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
+                guard let vc = rootvc else { return }
+                present(vc, animated: false, completion: nil)
+            }
+        }
+    }
+    
     @IBAction func loginBtnClick(_ sender: TKTransitionSubmitButton) {
         view.endEditing(true)
         if ((usernameField.text?.length)! < 1) || ((passwordField.text?.length)! < 1) {
@@ -42,23 +94,38 @@ class GLLoginViewController: UIViewController {
         
         GLProvider.request(.login(username: usernameField.text!, password: passwordField.text!.md5())) { [weak self] (result) in
             self?.view.isUserInteractionEnabled = true
-            sender.startFinishAnimation(0.3, completion: nil)
+            
             if case let .success(response) = result {
                 //解析数据
                 let json = JSON(response.data)
                 print(json)
+                if json["type"] == "S" {
+                    guard var user = User.deserialize(from: json["userData"].dictionaryObject) else {
+                        return
+                    }
+                    user.token = json["token"].rawString()
+                    user.write()
+                    GLUser = user
+                    print(user)
+                    
+                    sender.startFinishAnimation(0.3, completion: {
+                        let rootvc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
+                        guard let vc = rootvc else { return }
+                        self?.present(vc, animated: true, completion: {
+                            sender.isEnabled = true
+                        })
+                        
+                    })
+                    tokenString = user.token
+                } else {
+                    let msg = json["message"].rawString()
+                    sender.returnToOriginalState()
+                    self?.view.makeToast(msg)
+                }
             }
             
             
         }
-        
-        //        sender.animate(0, completion: {[weak self] () -> () in
-        //            let rootvc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
-        //            guard let vc = rootvc else { return }
-        //            self?.present(vc, animated: true, completion: {
-        //                sender.isEnabled = true
-        //            })
-        //        })
         
     }
     

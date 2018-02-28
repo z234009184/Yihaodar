@@ -31,6 +31,7 @@ struct AuthPlugin: PluginType {
     func willSend(_ request: RequestType, target: TargetType) {
         
     }
+    
 }
 
 
@@ -56,7 +57,7 @@ extension GLService: TargetType {
         }
     }
     var method: Moya.Method {
-        return .get
+        return .post
     }
     var task: Task {
         var param = [String:Any]()
