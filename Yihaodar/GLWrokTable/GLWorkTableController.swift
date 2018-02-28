@@ -54,10 +54,9 @@ class PlaceHolderTableView: TableView {
 /// 待办控制器
 class GLDaiBanController: UITableViewController {
 
-    
-    var placeholderTableView: PlaceHolderTableView?
-    
+    private var placeholderTableView: PlaceHolderTableView?
     private let reusableIdentifier = "GLWorkTableListCell"
+    private var startIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +64,9 @@ class GLDaiBanController: UITableViewController {
         placeholderTableView = tableView as? PlaceHolderTableView
         placeholderTableView?.placeholderDelegate = self
         placeholderTableView?.placeholdersAlwaysBounceVertical = true
+        
+        loadData()
+        
         tableView.configRefreshHeader(with: GLRefreshHeader.header()) { [weak self] in
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now(), execute: {
                 self?.tableView.switchRefreshHeader(to: .normal(.success, 0.5))
@@ -82,8 +84,14 @@ class GLDaiBanController: UITableViewController {
     }
     
     
-    
-    
+    func loadData() {
+        GLProvider.request(GLService.todoList(partyId: GLUser.partyId!, pageSize: "8", startIndex: "\(startIndex)"))  { (result) in
+            if case let .success(response) = result {
+                
+            }
+            
+        }
+    }
     
 }
 

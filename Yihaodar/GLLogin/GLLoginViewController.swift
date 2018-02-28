@@ -13,6 +13,7 @@ import SwiftyJSON
 import HandyJSON
 import Default
 
+
 var GLUser = User()
 
 struct User: HandyJSON, Codable, DefaultStorable {
@@ -124,8 +125,9 @@ class GLLoginViewController: UIViewController {
                 }
             }
             
-            
         }
+        
+        
         
     }
     
