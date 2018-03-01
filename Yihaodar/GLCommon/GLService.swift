@@ -10,9 +10,6 @@ import Moya
 import SwiftyJSON
 import Result
 
-/// token字符串
-var tokenString: String?
-
 struct CostumPlugin: PluginType {
     let tokenClosure: () -> String?
     
@@ -23,6 +20,7 @@ struct CostumPlugin: PluginType {
             //将token添加到请求头中
             request.addValue(token, forHTTPHeaderField: "token")
             request.addValue("iOS", forHTTPHeaderField: "channel")
+//            request.addValue(, forHTTPHeaderField: <#T##String#>)
             
         }
         return request
@@ -41,6 +39,12 @@ struct CostumPlugin: PluginType {
             if json["type"] == "E" {
                 let msg = json["message"].stringValue
                 window.makeToast(msg)
+                if json["code"] == "TOKEN IS ERROR" {
+                    let user = User.read()
+                    user?.clear()
+                    GLUser = User()
+                    window.rootViewController?.presentedViewController?.dismiss(animated: true, completion: nil)
+                }
             }
         }
         
@@ -56,7 +60,7 @@ struct CostumPlugin: PluginType {
 
 
 let GLProvider = MoyaProvider<GLService>(plugins: [
-    CostumPlugin(tokenClosure: { return tokenString })
+    CostumPlugin(tokenClosure: { return GLUser.token })
     ])
 
 
@@ -68,6 +72,12 @@ enum GLService {
     // 列表
     case todoList(partyId: String, pageSize: String, startIndex: String)
     case completeList(partyId: String, pageSize: String, startIndex: String)
+    case searchList(partyId: String, pageSize: String, startIndex: String, executionId: String)
+    // 详情
+    case estimateDetail(custRequestId: String, takeStatus: String, partyId: String, processExampleId: String, processTaskId: String)
+    case priceDetail(custRequestId: String, takeStatus: String, partyId: String, processExampleId: String, processTaskId: String)
+    
+    
 }
 
 // MARK: - TargetType Protocol Implementation
@@ -87,6 +97,13 @@ extension GLService: TargetType {
             return "/api/appProcess/work/todo.shtml"
         case .completeList(_, _, _):
             return "/api/appProcess/work/complete.shtml"
+        case .searchList(_, _, _, _):
+            return "/api/appProcess/work/search.shtml"
+        case .estimateDetail(_, _, _, _, _):
+            return "/api/appGetBdInfo/getBdInfoData.shtml"
+        case .priceDetail(_, _, _, _, _):
+            return "/api/appCarAssecc/getCarCollateralData.shtml"
+            
             
         }
     }
@@ -95,7 +112,7 @@ extension GLService: TargetType {
     }
     var task: Task {
         var param = [String:Any]()
-        param["header"] = ["channel": "iOS", "token": tokenString]
+        param["header"] = ["channel": "iOS", "token": GLUser.token]
         param["body"] = [String:Any]()
         switch self {
             
@@ -111,8 +128,16 @@ extension GLService: TargetType {
             
         case let GLService.completeList(partyId, pageSize, startIndex):
             param["body"] = ["partyId": partyId, "pageSize": pageSize, "startIndex": startIndex]
+            
+        case let GLService.searchList(partyId, pageSize, startIndex, executionId):
+            param["body"] = ["partyId": partyId, "pageSize": pageSize, "startIndex": startIndex, "executionId": executionId]
+        case let GLService.estimateDetail(custRequestId, takeStatus, partyId, processExampleId, processTaskId):
+            param["body"] = ["custRequestId": custRequestId, "takeStatus": takeStatus, "partyId": partyId, "processExampleId": processExampleId, "processTaskId": processTaskId]
+        case let GLService.priceDetail(custRequestId, takeStatus, partyId, processExampleId, processTaskId):
+            param["body"] = ["custRequestId": custRequestId, "takeStatus": takeStatus, "partyId": partyId, "processExampleId": processExampleId, "processTaskId": processTaskId]
+            
+            
         }
-        
         return .requestParameters(parameters: ["data": (JSON(param).rawString())!], encoding: URLEncoding.queryString)
     }
     var sampleData: Data {

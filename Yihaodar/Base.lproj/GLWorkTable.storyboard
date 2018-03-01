@@ -56,7 +56,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UTg-bE-Ioh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-321" y="-798"/>
+            <point key="canvasLocation" x="-713" y="-798"/>
         </scene>
         <!--Dai Ban Controller-->
         <scene sceneID="WtT-Oi-cae">
@@ -102,7 +102,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="worktable_cell_time" translatesAutoresizingMaskIntoConstraints="NO" id="BoN-Jc-nHy" customClass="DesignableImageView" customModule="Spring">
                                                     <rect key="frame" x="15" y="103" width="16" height="16"/>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMf-sJ-dn9" customClass="DesignableButton" customModule="Spring">
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMf-sJ-dn9" customClass="DesignableButton" customModule="Spring">
                                                     <rect key="frame" x="265" y="96" width="75" height="30"/>
                                                     <color key="backgroundColor" red="0.098039215690000001" green="0.64313725489999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -179,6 +179,12 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dateLabel" destination="STa-QT-Vm0" id="nIC-jM-EUM"/>
+                                    <outlet property="nameLabel" destination="raM-gA-DRH" id="QAm-LX-bQK"/>
+                                    <outlet property="stateBtn" destination="HMf-sJ-dn9" id="HiA-9L-50K"/>
+                                    <outlet property="titleNumLabel" destination="zrq-ah-eQl" id="S5O-Od-Qwt"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

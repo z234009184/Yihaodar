@@ -73,9 +73,8 @@ class GLLoginViewController: UIViewController {
          super.viewDidAppear(animated)
         if let user = User.read() {
             GLUser = user
-            if let token = user.token {
-                tokenString = token
-                
+            print(user)
+            if user.token != nil {
                 let rootvc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
                 guard let vc = rootvc else { return }
                 present(vc, animated: false, completion: nil)
@@ -104,7 +103,7 @@ class GLLoginViewController: UIViewController {
                     guard var user = User.deserialize(from: json["results"]["userData"].dictionaryObject) else {
                         return
                     }
-                    user.token = json["results"]["token"].rawString()
+                    user.token = json["results"]["token"].stringValue
                     user.write()
                     GLUser = user
                     print(user)
@@ -117,7 +116,6 @@ class GLLoginViewController: UIViewController {
                         })
                         
                     })
-                    tokenString = user.token
                 } else {
                     let msg = json["message"].rawString()
                     sender.returnToOriginalState()

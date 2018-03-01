@@ -10,17 +10,74 @@ import XLPagerTabStrip
 import HGPlaceholders
 import PullToRefreshKit
 import Spring
+import SwiftyJSON
+import HandyJSON
+
+/// 列表模型
+struct GLWorkTableModel: HandyJSON {
+    var organiserRoles: String?
+    var takeStatus: String?
+    var startDate: String?
+    var taskType: String?
+    var executionId: String?
+    var processName: String?
+    var processTaskId: String?
+    var executionData: String?
+    var executionString: String? {
+        get{
+            if let d = executionData?.data(using: String.Encoding.utf8) {
+               return JSON(d)["brandStyle"].stringValue + JSON(d)["brandName"].stringValue + JSON(d)["brandSeries"].stringValue
+            }
+            return executionData
+        }
+    }
+    var processId: String?
+    var endDate: String?
+    var taskName: String?
+    var organiser: String?
+    var processType: String?
+    var store_name: String?
+    var status : TaskType {
+        get {
+            if taskType == "BDGOODS_ASSESS_TASK" {
+                if executionData?.isEmpty == true {
+                    return TaskType.speedEstimate
+                } else {
+                    return TaskType.manualEstimate
+                }
+            } else if taskType == "CARS_ASSESS_TASK" {
+                return TaskType.price
+            } else {
+                return TaskType.unknow
+            }
+        }
+    }
+    var statusBtnName : String? {
+        get {
+            if taskType == "BDGOODS_ASSESS_TASK" {
+                return "评估"
+            } else if taskType == "CARS_ASSESS_TASK" {
+                return "定价"
+            } else {
+                return "未知"
+            }
+        }
+    }
+    
+    /// 类型: 手动/极速/定价
+    enum TaskType {
+        case manualEstimate
+        case speedEstimate
+        case price
+        case unknow
+    }
+    
+}
+
 
 // MARK: - GLWorkTableListCell
 /// GLWorkTableListCell
 class GLWorkTableListCell: UITableViewCell {
-    
-    
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -28,6 +85,24 @@ class GLWorkTableListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    @IBOutlet weak var titleNumLabel: DesignableLabel!
+    @IBOutlet weak var nameLabel: DesignableLabel!
+    @IBOutlet weak var dateLabel: DesignableLabel!
+    
+    @IBOutlet weak var stateBtn: DesignableButton!
+    
+    
+    var listModel: GLWorkTableModel? {
+        didSet {
+            
+            titleNumLabel.text = listModel?.executionId
+            nameLabel.text = listModel?.executionString
+            dateLabel.text = listModel?.startDate
+            stateBtn.setTitle(listModel?.statusBtnName, for: .normal)
+        }
+    }
+    
 }
 
 // MARK: - 带有placeholder的tableView
@@ -43,9 +118,12 @@ class PlaceHolderTableView: TableView {
         noResultsData.image = #imageLiteral(resourceName: "tableview_nodata_placeholder")
         let noResultsPlaceholder = Placeholder(data: noResultsData, style: PlaceholderStyle(), key: .noResultsKey)
         placeholdersProvider.add(placeholders: noResultsPlaceholder)
-        
+        self.placeholdersAlwaysBounceVertical = true
     }
 }
+
+
+
 
 
 
@@ -56,22 +134,20 @@ class GLDaiBanController: UITableViewController {
 
     private var placeholderTableView: PlaceHolderTableView?
     private let reusableIdentifier = "GLWorkTableListCell"
+    private let pageSize = 8
     private var startIndex = 0
+    private var dataArray = [GLWorkTableModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        placeholderTableView = tableView as? PlaceHolderTableView
-        placeholderTableView?.placeholderDelegate = self
-        placeholderTableView?.placeholdersAlwaysBounceVertical = true
-        
-        loadData()
-        
         tableView.configRefreshHeader(with: GLRefreshHeader.header()) { [weak self] in
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now(), execute: {
-                self?.tableView.switchRefreshHeader(to: .normal(.success, 0.5))
-                self?.tableView.reloadData()
-            })
+                self?.startIndex = 0
+                self?.dataArray.removeAll()
+                self?.loadData(success: {
+                    self?.tableView.switchRefreshHeader(to: .normal(.success, 0.5))
+                    self?.tableView.reloadData()
+                })
+            
         }
         
         tableView.configRefreshFooter(with: GLRefreshFooter.footer()) { [weak self] in
@@ -84,37 +160,44 @@ class GLDaiBanController: UITableViewController {
     }
     
     
-    func loadData() {
-        GLProvider.request(GLService.todoList(partyId: GLUser.partyId!, pageSize: "8", startIndex: "\(startIndex)"))  { (result) in
+    func loadData(success: @escaping ()->()) {
+        GLProvider.request(GLService.todoList(partyId: GLUser.partyId!, pageSize: "\(pageSize)", startIndex: "\(startIndex)"))  { [weak self] (result) in
+            if self == nil {return}
             if case let .success(response) = result {
-                
+                let json = JSON(response.data)
+                print(json)
+                if json["type"] != "S" { return }
+
+                guard let models = [GLWorkTableModel].deserialize(from: json["results"]["rows"].arrayObject) as? [GLWorkTableModel] else { return }
+                if models.count > 0 {
+                    self?.startIndex += 1
+                    self?.dataArray = (self?.dataArray)! + models
+                } else {
+                    // TODO: ------
+                }
+                success()
             }
-            
         }
     }
-    
 }
 
-extension GLDaiBanController: PlaceholderDelegate, IndicatorInfoProvider {
-    func view(_ view: Any, actionButtonTappedFor placeholder: Placeholder) {
-        print(placeholder.key.value)
-    }
-    
+extension GLDaiBanController: IndicatorInfoProvider {
     // IndicatorInfoProvider
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "代办任务")
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = 3
-        return Int(count)
+        return dataArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: reusableIdentifier) else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reusableIdentifier) as? GLWorkTableListCell else {
             return UITableViewCell()
         }
+        
+        cell.listModel = dataArray[indexPath.row]
         
         return cell
     }

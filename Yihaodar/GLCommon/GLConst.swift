@@ -19,6 +19,4 @@ let YiRefreshTitleColor = YiUnselectedTitleColor
 
 
 // MARK: - Cache
-/// user
-let userCache = try? Cache<NSString>(name: "userCache")
 
