@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().enableAutoToolbar = false
         IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
-        IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 200
+        IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 189
         
         // [ GTSdk ]：使用APPID/APPKEY/APPSECRENT启动个推
         GeTuiSdk.start(withAppId: kGtAppId, appKey: kGtAppKey, appSecret: kGtAppSecret, delegate: self);

@@ -8,12 +8,12 @@
 
 import Moya
 import SwiftyJSON
-
+import Result
 
 /// token字符串
 var tokenString: String?
 
-struct AuthPlugin: PluginType {
+struct CostumPlugin: PluginType {
     let tokenClosure: () -> String?
     
     func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
@@ -26,24 +26,48 @@ struct AuthPlugin: PluginType {
             
         }
         return request
-        
-        
     }
+    
     func willSend(_ request: RequestType, target: TargetType) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    func didReceive(_ result: Result<Response, MoyaError>, target: TargetType) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        guard let window = UIApplication.shared.keyWindow else { return }
         
+        if case let Result.success(response) = result {
+            let json = JSON(response.data)
+            if json["type"] == "E" {
+                let msg = json["message"].stringValue
+                window.makeToast(msg)
+            }
+        }
+        
+        //只有请求错误时会继续往下执行
+        guard case let Result.failure(error) = result else { return }
+        //弹出并显示错误信息
+        let message = error.errorDescription ?? "未知错误"
+        
+        window.makeToast(message)
     }
     
 }
 
 
 let GLProvider = MoyaProvider<GLService>(plugins: [
-    AuthPlugin(tokenClosure: { return tokenString })
+    CostumPlugin(tokenClosure: { return tokenString })
     ])
 
 
 enum GLService {
+    // 我的模块
     case login(username: String, password: String)
+    case logout(partyId: String)
+    case modifyPassword(partyId: String, password: String)
+    // 列表
     case todoList(partyId: String, pageSize: String, startIndex: String)
+    case completeList(partyId: String, pageSize: String, startIndex: String)
 }
 
 // MARK: - TargetType Protocol Implementation
@@ -55,8 +79,15 @@ extension GLService: TargetType {
         switch self {
         case .login(_, _):
             return "/api/sys/login.shtml"
+        case .logout(_):
+            return "/api/sys/logout.shtml"
+        case .modifyPassword(_, _):
+            return "/api/sys/modifyPassword.shtml"
         case .todoList(_, _, _):
             return "/api/appProcess/work/todo.shtml"
+        case .completeList(_, _, _):
+            return "/api/appProcess/work/complete.shtml"
+            
         }
     }
     var method: Moya.Method {
@@ -67,14 +98,20 @@ extension GLService: TargetType {
         param["header"] = ["channel": "iOS", "token": tokenString]
         param["body"] = [String:Any]()
         switch self {
-        case let .login(username, password):
+            
+        case let GLService.login(username, password):
             param["body"] = ["username": username, "password": password]
-        case let .todoList(partyId, pageSize, startIndex):
+        case let GLService.logout(partyId):
+            param["body"] = ["partyId": partyId]
+        case let GLService.modifyPassword(partyId, password):
+            param["body"] = ["partyId": partyId, "password": password]
+            
+        case let GLService.todoList(partyId, pageSize, startIndex):
             param["body"] = ["partyId": partyId, "pageSize": pageSize, "startIndex": startIndex]
             
+        case let GLService.completeList(partyId, pageSize, startIndex):
+            param["body"] = ["partyId": partyId, "pageSize": pageSize, "startIndex": startIndex]
         }
-        
-        
         
         return .requestParameters(parameters: ["data": (JSON(param).rawString())!], encoding: URLEncoding.queryString)
     }

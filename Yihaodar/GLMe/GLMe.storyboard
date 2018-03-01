@@ -201,7 +201,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" secureTextEntry="YES" textContentType="password"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
                                         <real key="value" value="10"/>
@@ -215,7 +215,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" secureTextEntry="YES" textContentType="password"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
                                         <real key="value" value="10"/>
@@ -238,6 +238,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EhV-Le-yVe"/>
                     </view>
+                    <connections>
+                        <outlet property="comfirmPasswordField" destination="Mrv-mH-Sdb" id="WPd-g1-zgG"/>
+                        <outlet property="passwordField" destination="bXE-CX-zKZ" id="UOj-3h-s1V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3gT-Xb-2Cc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

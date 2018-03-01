@@ -101,10 +101,10 @@ class GLLoginViewController: UIViewController {
                 let json = JSON(response.data)
                 print(json)
                 if json["type"] == "S" {
-                    guard var user = User.deserialize(from: json["userData"].dictionaryObject) else {
+                    guard var user = User.deserialize(from: json["results"]["userData"].dictionaryObject) else {
                         return
                     }
-                    user.token = json["token"].rawString()
+                    user.token = json["results"]["token"].rawString()
                     user.write()
                     GLUser = user
                     print(user)
@@ -125,6 +125,9 @@ class GLLoginViewController: UIViewController {
                 }
             }
             
+            if case .failure(_) = result {
+                sender.returnToOriginalState()
+            }
         }
         
         

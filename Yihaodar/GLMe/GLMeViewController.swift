@@ -8,6 +8,7 @@
 
 import Spring
 import Toast_Swift
+import SwiftyJSON
 
 class GLMeViewController: UIViewController {
     override func viewDidLoad() {
@@ -31,9 +32,18 @@ class GLMeViewController: UIViewController {
         
     }
     @IBAction func logoutBtnClick(_ sender: UIButton) {
-        var user = User.read()
-        user?.clear()
-        self.tabBarController?.dismiss(animated: true, completion: nil)
+        
+        GLProvider.request(GLService.logout(partyId: GLUser.partyId!)) { (result) in
+            if case let .success(respon) = result {
+                let json = JSON(respon.data)
+                print(json)
+                let user = User.read()
+                user?.clear()
+                GLUser = User()
+                self.tabBarController?.dismiss(animated: true, completion: nil)
+            }
+        }
+        
     }
 }
 
@@ -45,8 +55,33 @@ class GLMeModifyPassWordViewController: UIViewController {
         item.tintColor = YiSelectedTitleColor
         navigationItem.rightBarButtonItem = item
     }
+    @IBOutlet weak var passwordField: DesignableTextField!
+    
+    @IBOutlet weak var comfirmPasswordField: DesignableTextField!
     
     @objc func submitAction(item: UIBarButtonItem) {
+        view.endEditing(true)
+        if (passwordField.text?.length)! < 1 || (comfirmPasswordField.text?.length)! < 1 {
+            view.makeToast("请输入密码")
+        }
+        
+        if passwordField.text != comfirmPasswordField.text {
+            view.makeToast("两次密码不一致，请重新输入")
+        }
+        
+        GLProvider.request(GLService.modifyPassword(partyId: GLUser.partyId!, password: passwordField.text!.md5())) {[weak self] (result) in
+            if case let .success(respon) = result {
+                let json = JSON(respon.data)
+                if json["type"] == "S" {
+                    self?.view.makeToast("修改成功")
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                        self?.navigationController?.popViewController(animated: true)
+                    })
+                    
+                }
+            }
+        }
+        
         
         print("提交")
     }

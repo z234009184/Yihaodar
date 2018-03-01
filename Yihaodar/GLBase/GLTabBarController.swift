@@ -60,14 +60,8 @@ class GLTabBarController: UITabBarController {
             btn.addTarget(self, action: #selector(GLTabBarController.dismissCover(btn:)), for: .touchUpInside)
             
         }
-        guard let window = UIApplication.shared.keyWindow else {
-            self.view.addSubview(maskView)
-            return maskView
-        }
         
-        window.addSubview(maskView)
-        
-        
+        self.view.addSubview(maskView)
         return maskView
     }
     

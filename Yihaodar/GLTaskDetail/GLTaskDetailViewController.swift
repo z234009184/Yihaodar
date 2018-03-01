@@ -38,8 +38,11 @@ class GLTaskDetailBaseViewController: UIViewController {
         submitMessageView.frame.origin.y = maskView.frame.size.height
         maskView.addSubview(submitMessageView)
         
-        UIView.animate(withDuration: 0.25) {
+        UIView.animate(withDuration: 0.25, animations: {
             self.submitMessageView.frame.origin.y = maskView.frame.size.height - self.submitMessageView.frame.size.height
+        }) { (b) in
+            print(b)
+            self.submitMessageView.priceTextField.becomeFirstResponder()
         }
     }
 }
