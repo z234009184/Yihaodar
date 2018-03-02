@@ -25,10 +25,14 @@ struct GLWorkTableModel: HandyJSON {
     var executionData: String?
     var executionString: String? {
         get{
+            var str: String?
             if let d = executionData?.data(using: String.Encoding.utf8) {
-               return JSON(d)["brandStyle"].stringValue + JSON(d)["brandName"].stringValue + JSON(d)["brandSeries"].stringValue
+                str = JSON(d)["brandStyle"].stringValue + JSON(d)["brandName"].stringValue + JSON(d)["brandSeries"].stringValue
+                if str?.trimmingCharacters(in: .alphanumerics).isEmpty == true {
+                    str = "此单含有车辆证件照片"
+                }
             }
-            return executionData
+            return str
         }
     }
     var processId: String?
@@ -40,11 +44,7 @@ struct GLWorkTableModel: HandyJSON {
     var status : TaskType {
         get {
             if taskType == "BDGOODS_ASSESS_TASK" {
-                if executionData?.isEmpty == true {
-                    return TaskType.speedEstimate
-                } else {
-                    return TaskType.manualEstimate
-                }
+                return TaskType.bdEstimate
             } else if taskType == "CARS_ASSESS_TASK" {
                 return TaskType.price
             } else {
@@ -66,13 +66,13 @@ struct GLWorkTableModel: HandyJSON {
     
     /// 类型: 手动/极速/定价
     enum TaskType {
-        case manualEstimate
-        case speedEstimate
+        case bdEstimate
         case price
         case unknow
     }
     
 }
+
 
 
 // MARK: - GLWorkTableListCell
@@ -96,10 +96,10 @@ class GLWorkTableListCell: UITableViewCell {
     var listModel: GLWorkTableModel? {
         didSet {
             
-            titleNumLabel.text = listModel?.executionId
-            nameLabel.text = listModel?.executionString
-            dateLabel.text = listModel?.startDate
-            stateBtn.setTitle(listModel?.statusBtnName, for: .normal)
+            titleNumLabel.text = listModel?.executionId ?? ""
+            nameLabel.text = listModel?.executionString ?? ""
+            dateLabel.text = listModel?.startDate ?? ""
+            stateBtn.setTitle(listModel?.statusBtnName ?? "", for: .normal)
         }
     }
     
@@ -124,81 +124,21 @@ class PlaceHolderTableView: TableView {
 
 
 
-
-
-
-
-// MARK: - 待办控制器
-/// 待办控制器
-class GLDaiBanController: UITableViewController {
-
-    private var placeholderTableView: PlaceHolderTableView?
-    private let reusableIdentifier = "GLWorkTableListCell"
-    private let pageSize = 8
-    private var startIndex = 0
-    private var dataArray = [GLWorkTableModel]()
+class GLWorkTableBaseViewController: UITableViewController {
+    open let reusableIdentifier = "GLWorkTableListCell"
+    open let pageSize = 8
+    open var startIndex = 1
+    open var dataArray = [GLWorkTableModel]()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.configRefreshHeader(with: GLRefreshHeader.header()) { [weak self] in
-                self?.startIndex = 0
-                self?.dataArray.removeAll()
-                self?.loadData(success: {
-                    self?.tableView.switchRefreshHeader(to: .normal(.success, 0.5))
-                    self?.tableView.reloadData()
-                })
-            
-        }
-        
-        tableView.configRefreshFooter(with: GLRefreshFooter.footer()) { [weak self] in
-            self?.tableView.switchRefreshFooter(to: .refreshing)
-            
-        }
-        
-        
-        tableView.switchRefreshHeader(to: .refreshing)
-    }
-    
-    
-    func loadData(success: @escaping ()->()) {
-        GLProvider.request(GLService.todoList(partyId: GLUser.partyId!, pageSize: "\(pageSize)", startIndex: "\(startIndex)"))  { [weak self] (result) in
-            if self == nil {return}
-            if case let .success(response) = result {
-                let json = JSON(response.data)
-                print(json)
-                if json["type"] != "S" { return }
-
-                guard let models = [GLWorkTableModel].deserialize(from: json["results"]["rows"].arrayObject) as? [GLWorkTableModel] else { return }
-                if models.count > 0 {
-                    self?.startIndex += 1
-                    self?.dataArray = (self?.dataArray)! + models
-                } else {
-                    // TODO: ------
-                }
-                success()
-            }
-        }
-    }
-}
-
-extension GLDaiBanController: IndicatorInfoProvider {
-    // IndicatorInfoProvider
-    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "代办任务")
-    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
     }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reusableIdentifier) as? GLWorkTableListCell else {
             return UITableViewCell()
         }
-        
         cell.listModel = dataArray[indexPath.row]
-        
         return cell
     }
     
@@ -206,25 +146,83 @@ extension GLDaiBanController: IndicatorInfoProvider {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let parentVc = parent else { return }
         
-        if indexPath.row == 0 {
-            let desVc = UIStoryboard(name: "GLTaskDetail", bundle: nil).instantiateInitialViewController()
-            guard let destinationVc = desVc as? GLTaskDetailViewController else { return }
-            destinationVc.isInvalid = false
-            parentVc.navigationController?.pushViewController(destinationVc, animated: true)
-        }
-        if indexPath.row == 1 { //
-            let desVc = UIStoryboard(name: "GLTaskDetailPicture", bundle: nil).instantiateInitialViewController()
-            guard let destinationVc = desVc as? GLTaskDetailPictureViewController else { return }
-            parentVc.navigationController?.pushViewController(destinationVc, animated: true)
-        }
-        if indexPath.row == 2 { // 待定价
-            let desVc = UIStoryboard(name: "GLTaskDetailPrice", bundle: nil).instantiateInitialViewController()
-            guard let destinationVc = desVc as? GLTaskDetailPriceViewController else { return }
-            parentVc.navigationController?.pushViewController(destinationVc, animated: true)
-        }
+        let model = dataArray[indexPath.row]
         
+        switch model.status {
+        case .bdEstimate:
+            let desVc = UIStoryboard(name: "GLTaskDetail", bundle: nil).instantiateInitialViewController()
+            guard let bdVc = desVc as? GLTaskDetailViewController else { return }
+            bdVc.model = model
+            parentVc.navigationController?.pushViewController(bdVc, animated: true)
+            
+            return
+        case .price:
+            let desVc = UIStoryboard(name: "GLTaskDetailPrice", bundle: nil).instantiateInitialViewController()
+            guard let djVc = desVc as? GLTaskDetailPriceViewController else { return }
+            parentVc.navigationController?.pushViewController(djVc, animated: true)
+            
+            return
+        default:
+            return
+        }
+    }
+    
+}
+
+
+
+
+
+// MARK: - 待办控制器
+/// 待办控制器
+class GLDaiBanController: GLWorkTableBaseViewController, IndicatorInfoProvider {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.configRefreshHeader(with: GLRefreshHeader.header()) { [weak self] in
+            self?.startIndex = 1
+            self?.loadData()
+            
+        }
+        tableView.configRefreshFooter(with: GLRefreshFooter.footer()) { [weak self] in
+            self?.loadData()
+        }
+        tableView.switchRefreshHeader(to: .refreshing)
+    }
+    
+    func loadData() {
+        GLProvider.request(GLService.todoList(partyId: GLUser.partyId!, pageSize: "\(pageSize)", startIndex: "\(startIndex)"))  { [weak self] (result) in
+            if self == nil {return}
+            
+            if case let .success(response) = result {
+                if self?.startIndex == 1 {
+                    self?.dataArray.removeAll()
+                }
+                let json = JSON(response.data)
+                print(json)
+                if let models = [GLWorkTableModel].deserialize(from: json["results"]["rows"].arrayObject) as? [GLWorkTableModel] {
+                    // 拼接数据
+                    self?.dataArray = (self?.dataArray)! + models
+                    
+                    if models.count >= (self?.pageSize)! { // 大于一页 可以进行加载
+                        self?.startIndex += 1
+                        self?.tableView.switchRefreshFooter(to: .normal)
+                    } else { // 无更多数据
+                        self?.tableView.switchRefreshFooter(to: .noMoreData)
+                    }
+                }
+            }
+            self?.tableView.switchRefreshHeader(to: .normal(.success, 0.5))
+            self?.tableView.reloadData()
+        }
+    }
+    
+    // IndicatorInfoProvider
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: "代办任务")
     }
 }
+
 
 
 
@@ -232,85 +230,51 @@ extension GLDaiBanController: IndicatorInfoProvider {
 
 // MARK: - 已完成控制器
 /// 已完成控制器
-class GLWanChengController: UITableViewController {
-    
-    
-    var placeholderTableView: PlaceHolderTableView?
-    
-    private let reusableIdentifier = "GLWorkTableListCell"
+class GLWanChengController: GLWorkTableBaseViewController, IndicatorInfoProvider {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        placeholderTableView = tableView as? PlaceHolderTableView
-        placeholderTableView?.placeholderDelegate = self
-        placeholderTableView?.placeholdersAlwaysBounceVertical = true
         tableView.configRefreshHeader(with: GLRefreshHeader.header()) { [weak self] in
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now(), execute: {
-                self?.tableView.switchRefreshHeader(to: .normal(.success, 0.5))
-                self?.tableView.reloadData()
-            })
-        }
-        
-        tableView.configRefreshFooter(with: GLRefreshFooter.footer()) { [weak self] in
-            self?.tableView.switchRefreshFooter(to: .refreshing)
+            self?.startIndex = 1
+            self?.loadData()
             
         }
-        
+        tableView.configRefreshFooter(with: GLRefreshFooter.footer()) { [weak self] in
+            self?.loadData()
+        }
         tableView.switchRefreshHeader(to: .refreshing)
     }
-    
-}
-
-extension GLWanChengController: IndicatorInfoProvider, PlaceholderDelegate {
-    func view(_ view: Any, actionButtonTappedFor placeholder: Placeholder) {
-        
+    func loadData() {
+        GLProvider.request(GLService.completeList(partyId: GLUser.partyId!, pageSize: "\(pageSize)", startIndex: "\(startIndex)"))  { [weak self] (result) in
+            if self == nil {return}
+            
+            if case let .success(response) = result {
+                if self?.startIndex == 1 {
+                    self?.dataArray.removeAll()
+                }
+                let json = JSON(response.data)
+                print(json)
+                if let models = [GLWorkTableModel].deserialize(from: json["results"]["rows"].arrayObject) as? [GLWorkTableModel] {
+                    // 拼接数据
+                    self?.dataArray = (self?.dataArray)! + models
+                    
+                    if models.count >= (self?.pageSize)! { // 大于一页 可以进行加载
+                        self?.startIndex += 1
+                        self?.tableView.switchRefreshFooter(to: .normal)
+                    } else { // 无更多数据
+                        self?.tableView.switchRefreshFooter(to: .noMoreData)
+                    }
+                }
+            }
+            self?.tableView.switchRefreshHeader(to: .normal(.success, 0.5))
+            self?.tableView.reloadData()
+        }
     }
-    
     // IndicatorInfoProvider
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "已完成任务")
     }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = 3
-        return Int(count)
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: reusableIdentifier) else {
-            return UITableViewCell()
-        }
-        
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        guard let parentVc = parent else { return }
-        
-        if indexPath.row == 0 {
-            let desVc = UIStoryboard(name: "GLTaskDetail", bundle: nil).instantiateInitialViewController()
-            guard let destinationVc = desVc as? GLTaskDetailViewController else { return }
-            destinationVc.isInvalid = true
-            parentVc.navigationController?.pushViewController(destinationVc, animated: true)
-        }
-        if indexPath.row == 1 { //
-            let desVc = UIStoryboard(name: "GLTaskDetailPicture", bundle: nil).instantiateInitialViewController()
-            guard let destinationVc = desVc as? GLTaskDetailPictureViewController else { return }
-            parentVc.navigationController?.pushViewController(destinationVc, animated: true)
-        }
-        if indexPath.row == 2 { // 待定价
-            
-        }
-        
-    }
-    
 }
-
-
-
 
 
 

@@ -32,10 +32,10 @@ open class GLRefreshFooter:UIView, RefreshableFooter{
         return GLRefreshFooter()
     }
     open let spinner:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-    open  let textLabel:UILabel = UILabel(frame: CGRect(x: 0,y: 0,width: 65,height: 40))
+    open  let textLabel:UILabel = UILabel(frame: CGRect(x: 0,y: 0,width: 80,height: 40))
     let imageView = UIImageView(image: #imageLiteral(resourceName: "refresh_bottom_nodata_img"))
     /// 触发刷新的模式
-    open var refreshMode = RefreshMode.scrollAndTap{
+    open var refreshMode = RefreshMode.scroll{
         didSet{
             tap.isEnabled = (refreshMode != .scroll)
             udpateTextLabelWithMode(refreshMode)

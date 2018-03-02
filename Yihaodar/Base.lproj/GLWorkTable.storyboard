@@ -318,6 +318,12 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dateLabel" destination="6xb-Sl-XjK" id="RSI-xy-cSg"/>
+                                    <outlet property="nameLabel" destination="4KJ-gi-Jzy" id="yG3-LA-pRa"/>
+                                    <outlet property="stateBtn" destination="dXi-Rd-VVD" id="ahc-Nd-qu5"/>
+                                    <outlet property="titleNumLabel" destination="cEb-gn-oib" id="Yza-G4-msW"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

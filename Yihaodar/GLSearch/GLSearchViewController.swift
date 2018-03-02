@@ -8,8 +8,9 @@
 
 import UIKit
 import HGPlaceholders
+import SwiftyJSON
 
-class GLSearchViewController: UITableViewController {
+class GLSearchViewController: GLWorkTableBaseViewController {
     
     var placeholderTableView: PlaceHolderTableView?
     
@@ -20,15 +21,48 @@ class GLSearchViewController: UITableViewController {
         
         setupTableView()
         
+        tableView.configRefreshFooter(with: GLRefreshFooter.footer()) { [weak self] in
+            self?.loadData()
+        }
+        
+        
     }
+    
+    func loadData() {
+        
+        
+        let executionId = (navigationItem.titleView as! UISearchBar).text
+        GLProvider.request(GLService.searchList(partyId: GLUser.partyId!, pageSize: "\(pageSize)", startIndex: "\(startIndex)", executionId: executionId!))  { [weak self] (result) in
+            if self == nil {return}
+            
+            if case let .success(response) = result {
+                if self?.startIndex == 1 {
+                    self?.dataArray.removeAll()
+                }
+                let json = JSON(response.data)
+                print(json)
+                if let models = [GLWorkTableModel].deserialize(from: json["results"]["rows"].arrayObject) as? [GLWorkTableModel] {
+                    // 拼接数据
+                    self?.dataArray = (self?.dataArray)! + models
+                    
+                    if models.count >= (self?.pageSize)! { // 大于一页 可以进行加载
+                        self?.startIndex += 1
+                        self?.tableView.switchRefreshFooter(to: .normal)
+                    } else { // 无更多数据
+                        self?.tableView.switchRefreshFooter(to: .noMoreData)
+                    }
+                }
+            }
+            self?.tableView.switchRefreshHeader(to: .normal(.success, 0.5))
+            self?.tableView.reloadData()
+        }
+    }
+    
     
     func setupTableView() -> Void {
         placeholderTableView = tableView as? PlaceHolderTableView
-        placeholderTableView?.placeholderDelegate = self
         placeholderTableView?.placeholdersAlwaysBounceVertical = true
-        
         placeholderTableView?.placeholdersProvider = .default
-        
         var noResultsData: PlaceholderData = .noResults
         noResultsData.title = ""
         noResultsData.action = nil
@@ -46,6 +80,7 @@ class GLSearchViewController: UITableViewController {
         let searchbar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
         
         navigationItem.titleView = searchbar
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "取消", style: .done, target: self, action: #selector(GLSearchViewController.cancelBtn(item:)))
         
         searchbar.barStyle = UIBarStyle.default
         
@@ -53,41 +88,27 @@ class GLSearchViewController: UITableViewController {
         searchbar.tintColor = YiSelectedTitleColor
         searchbar.searchBarStyle = .minimal
         
-        searchbar.showsCancelButton = true
+        searchbar.showsCancelButton = false
         searchbar.delegate = self
         // 键盘类型设置
         searchbar.returnKeyType = .search
         
         // 第一响应，即进入编辑状态
         searchbar.becomeFirstResponder()
-        let uiButton = searchbar.value(forKey: "cancelButton") as! UIButton
-        uiButton.setTitle("取消", for: .normal)
-        uiButton.setTitleColor(YiSelectedTitleColor,for: .normal)
-    }
-}
-
-extension GLSearchViewController : PlaceholderDelegate {
-    func view(_ view: Any, actionButtonTappedFor placeholder: Placeholder) {
-        
+//        let uiButton = searchbar.value(forKey: "cancelButton") as! UIButton
+//        uiButton.setTitle("取消", for: .normal)
+//        uiButton.setTitleColor(YiSelectedTitleColor,for: .normal)
     }
     
-    
+    @objc func cancelBtn(item: UIBarButtonItem)  {
+        (navigationItem.titleView as! UISearchBar).endEditing(true)
+        navigationController?.popViewController(animated: true)
+    }
 }
-
 
 extension GLSearchViewController : UISearchBarDelegate {
     // 实现代理方法
     // MARK: - UISearchBarDelegate
-    
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool  {
-        print("1 searchBarShouldBeginEditing")
-        
-        return true
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        print("2 searchBarTextDidBeginEditing")
-    }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("3 searchBar")
@@ -95,50 +116,11 @@ extension GLSearchViewController : UISearchBarDelegate {
         print("3 text=\(String(describing: searchBar.text)), string=\(searchText)")
     }
     
-    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        print("4 searchBar")
-        
-        print("4 text=\(String(describing: searchBar.text)), range=\(range), string=\(text)")
-        
-        return true
-    }
-    
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool
-    {
-        print("5 searchBarShouldEndEditing")
-        
-        return true
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        print("6 searchBarTextDidEndEditing")
-    }
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("7 searchBarSearchButtonClicked")
-        
         searchBar.endEditing(true)
+        startIndex = 1
+        loadData()
     }
     
-    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
-        print("8 searchBarBookmarkButtonClicked")
-        
-        searchBar.endEditing(true)
-    }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print("9 searchBarCancelButtonClicked")
-        searchBar.endEditing(true)
-        navigationController?.popViewController(animated: true)
-    }
-    
-    func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
-        print("10 searchBarResultsListButtonClicked")
-        
-        searchBar.endEditing(true)
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        print("11 searchBar")
-    }
 }
