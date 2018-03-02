@@ -9,6 +9,107 @@
 import Spring
 import SwiftyJSON
 import SKPhotoBrowser
+import SnapKit
+import HandyJSON
+import AlamofireImage
+
+
+/*
+ // 极速
+{
+    "custId": "YHD-BD-CD-20171214-0001",
+    "custRequestId": "",
+    "vehicles": [
+    {
+    "fileTitle": "车辆驾驶证/机动车登记证书",
+    "fileName": "4b0f0de323d84f5d801a60ee89871728.jpg",
+    "uuid": "01201712141304073900",
+    "fileUrl": "http://www.duanhan.ren/staticgfs/4b0f0de323d84f5d801a60ee89871728.jpg"
+    },
+    {
+    "fileTitle": "其他附件",
+    "fileName": "d929b94352a74e11bdc69a8297856c68.jpg",
+    "uuid": "01201712141304073912",
+    "fileUrl": "http://www.duanhan.ren/staticgfs/d929b94352a74e11bdc69a8297856c68.jpg"
+    }
+    ],
+    "others": "[{"fileUrl":"http: //www.duanhan.ren/staticgfs/d929b94352a74e11bdc69a8297856c68.jpg","fileName":"d929b94352a74e11bdc69a8297856c68.jpg"}]",
+    "bDType": "2",
+    "createdDate": "2017年12月14日 17:29:54",
+    "quotesId": "yhd_wap000022"
+}
+
+ // 手动
+{
+    "custId": "YHD-BD-CD-20171214-0002",
+    "custRequestId": "",
+    "isBj": "0",
+    "goodsSeries": "23562",
+    "brandName": "117",
+    "registerTime": "2012",
+    "quotesId": "yhd_wap000022",
+    "goodsSeriesName": "2015款 ACS3 sport",
+    "runNumber": "",
+    "parValue": "",
+    "brandNameCN": "AC Schnitzer",
+    "brandSeriesName": "AC Schnitzer M3",
+    "bDType": "1",
+    "createdDate": "2017年12月14日 17:30:17",
+    "carColor": "",
+    "brandSeries": "3895"
+}
+*/
+
+
+struct GLEstimateMsgModel: HandyJSON {
+    var worth_id: String?
+    var org_name: String?
+    var created_date_long: String?
+    var last_update_date_long: String?
+    var evaluat_status: String?
+    var cust_request_id: String?
+    var party_id: String?
+    var created_date: String?
+    var party_name: String?
+    var process_id: String?
+    var last_update_date: String?
+    var org_id: String?
+    
+}
+
+
+struct GLTaskDetailPictureModel: HandyJSON {
+    var fileTitle: String?
+    var fileName: String?
+    var uuid: String?
+    var fileUrl: String?
+    
+}
+
+struct GLTaskDetailModel: HandyJSON {
+    var custId: String?
+    var custRequestId: String?
+    var isBj: String?
+    var goodsSeries: String?
+    var brandName: String?
+    var registerTime: String?
+    var quotesId: String?
+    var goodsSeriesName: String?
+    var runNumber: String?
+    var parValue: String?
+    var brandNameCN: String?
+    var brandSeriesName: String?
+    var bDType: String?
+    var createdDate: String?
+    var carColor: String?
+    var brandSeries: String?
+    var vehicles: [GLTaskDetailPictureModel]?
+    var others: GLTaskDetailPictureModel?
+}
+
+
+
+
 
 class GLTaskDetailBaseViewController: UIViewController {
     
@@ -49,8 +150,6 @@ class GLTaskDetailBaseViewController: UIViewController {
     }
 }
 
-
-
 class GLTaskDetailViewController: GLTaskDetailBaseViewController {
     
     /// 报单信息 --------------------
@@ -59,19 +158,18 @@ class GLTaskDetailViewController: GLTaskDetailBaseViewController {
     @IBOutlet weak var orderNumberLabel: UILabel!
     @IBOutlet weak var orderPersonLabel: UILabel!
     @IBOutlet weak var orderSubmitDateLabel: UILabel!
+    
+         // 手动保单视图
+    @IBOutlet weak var manualView: UIView!
     @IBOutlet weak var orderCarBrandlabel: UILabel!
     @IBOutlet weak var orderMileageLabel: UILabel!
     @IBOutlet weak var orderBigMoneyLabel: UILabel!
     @IBOutlet weak var orderCarColorLabel: UILabel!
     @IBOutlet weak var orderIsBeiJingNumberLabel: UILabel!
     
-    // 手动保单视图
-    @IBOutlet weak var manualView: UIView!
     
+         // 极速保单
     @IBOutlet weak var speedView: UIView!
-    
-    
-    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
@@ -95,27 +193,79 @@ class GLTaskDetailViewController: GLTaskDetailBaseViewController {
     
     @IBOutlet weak var bottomViewBottom: NSLayoutConstraint!
     
-    var model: GLWorkTableModel? {
+    /// 列表cell模型
+    var model: GLWorkTableModel?
+    
+    /// 详情模型
+    var detailModel: GLTaskDetailModel? {
         didSet{
-            
+            orderNumberLabel.text = detailModel?.custId
+            orderPersonLabel.text = detailModel?.quotesId
+            orderSubmitDateLabel.text = detailModel?.createdDate
+            if detailModel?.bDType == "1" { // 手动报单
+                speedView.isHidden = true
+                manualView.isHidden = false
+                speedView.snp.remakeConstraints({ (make) in
+                    make.height.equalTo(0)
+                })
+                manualView.snp.removeConstraints()
+                
+                
+                
+            } else if detailModel?.bDType == "2" { // 极速报单
+                speedView.isHidden = false
+                manualView.isHidden = true
+                speedView.snp.removeConstraints()
+                manualView.snp.remakeConstraints({ (make) in
+                    make.height.equalTo(0)
+                })
+                
+                detailModel?.vehicles?.enumerated().forEach({ (index, value) in
+                    let photo = SKPhoto.photoWithImageURL((value.fileUrl)!)
+                    imagesss.append(photo)
+                    collectionView.reloadData()
+                })
+            }
         }
     }
     
-    var imgnames = ["avatar","avatar","avatar","avatar","avatar",]
+    /// 评估信息模型
+    var estimateMsgModel: GLEstimateMsgModel? {
+        didSet{
+            if estimateMsgModel?.evaluat_status == "1" || estimateMsgModel?.evaluat_status == "2" { // 已评估
+                
+                if estimateMsgModel?.evaluat_status == "2" { // 已失效
+                    invalidView.isHidden = false
+                    if let str = estimateMsgModel?.last_update_date {
+                        invalidDateLabel.text = str.substring(to: str.index(str.startIndex, offsetBy: 10))
+                    }
+                } else { // 未失效
+                    invalidView.isHidden = true
+                }
+                
+                bottomViewBottom.constant = 64
+                estimateMsgView.isHidden = false
+                estimateMsgView.snp.removeConstraints()
+                
+                
+            } else { // 未评估
+                bottomViewBottom.constant = 0
+                estimateMsgView.isHidden = true
+                estimateMsgView.snp.remakeConstraints({ (make) in
+                    make.height.equalTo(0)
+                })
+                
+            }
+        }
+    }
+    
+    
     var imagesss = [SKPhoto]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "任务详情"
-        
-        let photo = SKPhoto.photoWithImage(#imageLiteral(resourceName: "avatar"))
-        imagesss.append(photo)
-        imagesss.append(photo)
-        imagesss.append(photo)
-        imagesss.append(photo)
-        imagesss.append(photo)
-        
         
         SKPhotoBrowserOptions.displayCounterLabel = false                         // counter label will be hidden
         SKPhotoBrowserOptions.displayCloseButton = false
@@ -139,16 +289,16 @@ class GLTaskDetailViewController: GLTaskDetailBaseViewController {
             return
         }
         
-        GLProvider.request(GLService.estimateDetail(custRequestId: model.executionId!, takeStatus: model.takeStatus!, partyId: GLUser.partyId!, processExampleId: model.processId!, processTaskId: model.processTaskId!)) { (result) in
+        GLProvider.request(GLService.estimateDetail(custRequestId: model.executionId!, takeStatus: model.takeStatus!, partyId: GLUser.partyId!, processExampleId: model.processId!, processTaskId: model.processTaskId!)) {[weak self] (result) in
             
             if case let .success(respon) = result {
-                print(JSON(respon.data))
+                let jsonStr = JSON(respon.data).rawString()
                 
-                
+                self?.detailModel = GLTaskDetailModel.deserialize(from: jsonStr, designatedPath: "results.dataDJ")
+                self?.estimateMsgModel = GLEstimateMsgModel.deserialize(from: jsonStr, designatedPath: "results.dataPG")
             }
         }
     }
-    
     
     /// 提交评估
     @IBAction func estimateBtnClick(_ sender: DesignableButton) {
@@ -173,7 +323,7 @@ fileprivate let identifier = "GLTaskDetailPictureCell"
 extension GLTaskDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imgnames.count
+        return imagesss.count
     }
     
     
@@ -184,8 +334,9 @@ extension GLTaskDetailViewController: UICollectionViewDataSource, UICollectionVi
         guard let pictureCell = cell as? GLTaskDetailPictureCell else {
             return UICollectionViewCell()
         }
-        pictureCell.imageView.image = UIImage(named: imgnames[indexPath.item])
-        
+//        pictureCell.imageView.image = UIImage(named: imgnames[indexPath.item])
+
+        pictureCell.imageView.af_setImage(withURL: URL(string: imagesss[indexPath.item].photoURL)!)
         return pictureCell
     }
     
