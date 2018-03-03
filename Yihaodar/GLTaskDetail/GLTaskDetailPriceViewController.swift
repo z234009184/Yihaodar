@@ -192,16 +192,64 @@ struct GLPriceDetailModel: HandyJSON {
 
 class GLBasicMessageViewController: UIViewController, IndicatorInfoProvider, UIScrollViewDelegate {
     static var parentVc: GLTaskDetailPriceViewController?
+    // 订单信息
+    @IBOutlet weak var orderStoreLabel: UILabel!
+    @IBOutlet weak var orderManagerLabel: UILabel!
+    @IBOutlet weak var orderSuperintendLabel: UILabel!
+    @IBOutlet weak var orderMajordomoLabel: UILabel!
+    
+    
+    // 车辆信息
+    @IBOutlet weak var carNameLabel: UILabel!
+    @IBOutlet weak var carNumberLabel: UILabel!
+    @IBOutlet weak var carSeriesLabel: UILabel!
+    @IBOutlet weak var carColorLabel: UILabel!
+    @IBOutlet weak var carProductDateLabel: UILabel!
+    @IBOutlet weak var carRegisterDateLabel: UILabel!
+    @IBOutlet weak var carMileageLabel: UILabel!
+    @IBOutlet weak var carExhaustLabel: UILabel!
+    @IBOutlet weak var carPeccancyLabel: UILabel!
+    @IBOutlet weak var carEngineVersionLabel: UILabel!
+    @IBOutlet weak var carFrameNumberLabel: UILabel!
+    @IBOutlet weak var carInvoicePriceLabel: UILabel!
+    
+    @IBOutlet weak var carCheckLimitDateLabel: UILabel!
+    
+    @IBOutlet weak var carTrafficLabel: UILabel!
+    
+    @IBOutlet weak var carBusinessLabel: UILabel!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         GLBasicMessageViewController.parentVc = parent as? GLTaskDetailPriceViewController
+        
         
     }
     
     /// 更新界面
     public func updateUI(model: GLPriceDetailModel) {
+        orderStoreLabel.text = model.assessmentList?.store_name
+        orderManagerLabel.text = model.assessmentList?.boss_party_id
+        orderSuperintendLabel.text = model.assessmentList?.executive_party_id
+        orderMajordomoLabel.text = model.assessmentList?.director_party_id
         
-
+        carNameLabel.text = model.assessmentList?.ower
+        carNumberLabel.text = model.assessmentList?.goods_code
+        carSeriesLabel.text = model.assessmentList?.series_name
+        carColorLabel.text = model.assessmentList?.car_color
+        carProductDateLabel.text = model.assessmentList?.production_date
+        carRegisterDateLabel.text = model.assessmentList?.register_date
+        carMileageLabel.text = model.assessmentList?.run_number
+        carExhaustLabel.text = model.assessmentList?.displacement
+        carPeccancyLabel.text = (model.assessmentList?.peccancy)! == "0" ? "无" : "有"
+        carEngineVersionLabel.text = model.assessmentList?.engine_code
+        carFrameNumberLabel.text = model.assessmentList?.frame_code
+        carInvoicePriceLabel.text = model.assessmentList?.invoice
+        carCheckLimitDateLabel.text = model.assessmentList?.year_check
+        carTrafficLabel.text = model.assessmentList?.jq_insurance
+        carBusinessLabel.text = model.assessmentList?.sy_insurance
     }
     
     
@@ -229,42 +277,122 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
     @IBOutlet weak var 评估结果View: UIView!
     @IBOutlet weak var 定价结果View: UIView!
     
+    // 车辆配置
+    @IBOutlet weak var 变速器Label: UILabel!
+    @IBOutlet weak var 驱动方式Label: UILabel!
+    @IBOutlet weak var 有无钥匙启动Label: UILabel!
+    @IBOutlet weak var 定速巡航Label: UILabel!
+    @IBOutlet weak var 导航Label: UILabel!
+    @IBOutlet weak var 后排娱乐Label: UILabel!
+    @IBOutlet weak var 座椅形式Label: UILabel!
+    @IBOutlet weak var 燃油方式Label: UILabel!
+    @IBOutlet weak var 天窗Label: UILabel!
+    @IBOutlet weak var 空调配置Label: UILabel!
+    @IBOutlet weak var 其他Label: UILabel!
+    @IBOutlet weak var 事故Label: UILabel!
+    @IBOutlet weak var 车架号Label: UILabel!
+    
+    /**
+     车况信息动态获取添加
+     */
+    
+    
+    // 评估结果
+    @IBOutlet weak var 评估师Label: UILabel!
+    @IBOutlet weak var 评估价格Label: UILabel!
+    @IBOutlet weak var 评估备注Label: UILabel!
+
+    
+    
+    // 定价结果
+    @IBOutlet weak var 定价师Label: UILabel!
+    @IBOutlet weak var 定价价格Label: UILabel!
+    @IBOutlet weak var 定价备注Label: UILabel!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var arr = [GLEstimateCarStateView]()
+        if let model = GLBasicMessageViewController.parentVc!.priceDetailModel {
+            GLBasicMessageViewController.parentVc!.updateEstimateVcUI(priceDetailModel: model)
+        }
         
-        for index in 0..<3 {
-            let estimateView = Bundle.main.loadNibNamed("GLEstimateCarStateView", owner: nil, options: nil)?.first as! GLEstimateCarStateView
-            contentView.addSubview(estimateView)
-            arr.append(estimateView)
+    }
+    
+    /// 更新界面
+    public func updateUI(model: GLPriceDetailModel) {
+        guard var status_id = model.assessmentList?.status_id else { return }
+        status_id = "02"
+        if status_id != "03" { // 如果不是已定价 就隐藏定价模块
+            if 定价结果View == nil { return }
+            定价结果View.snp.remakeConstraints { (make) in
+                make.height.equalTo(0)
+            }
+            定价结果View.isHidden = true
+        }
+        
+        
+        变速器Label.text = model.assessmentList?.gearbox
+        驱动方式Label.text = model.assessmentList?.driving_type
+        有无钥匙启动Label.text = model.assessmentList?.keyless_startup
+        定速巡航Label.text = model.assessmentList?.cruise_control
+        导航Label.text = model.assessmentList?.navigation
+        后排娱乐Label.text = model.assessmentList?.hpyl
+        座椅形式Label.text = model.assessmentList?.chair_type
+        燃油方式Label.text = model.assessmentList?.fuel_type
+        天窗Label.text = model.assessmentList?.skylight
+        空调配置Label.text = model.assessmentList?.air_conditioner
+        其他Label.text = model.assessmentList?.other
+        事故Label.text = model.assessmentList?.accident
+        车架号Label.text = model.assessmentList?.Accident_level
+        
+        评估师Label.text = model.assessmentList?.assessment_name
+        评估价格Label.text = model.assessmentList?.confirmed_money
+        评估备注Label.text = model.assessmentList?.remarks
+        
+        定价师Label.text = model.priceList?.first?.partyName
+        定价价格Label.text = model.priceList?.first?.confirmedMoney
+        定价备注Label.text = model.priceList?.first?.appraiseRemarks
+        
+        
+        /// 车况信息
+        guard let stateArr = model.parts else { return }
+        var arr = [GLEstimateCarStateView]()
+        for (index, value) in stateArr.enumerated() {
+            let carStateView = Bundle.main.loadNibNamed("GLEstimateCarStateView", owner: nil, options: nil)?.first as! GLEstimateCarStateView
+            contentView.addSubview(carStateView)
+            arr.append(carStateView)
             
+            /// 布局
             if index == 0 {
-                estimateView.snp.updateConstraints { (make) in
+                carStateView.snp.updateConstraints { (make) in
                     make.top.equalTo(车辆配置View.snp.bottom).offset(10)
                     make.left.equalTo(contentView).offset(10)
                     make.right.equalTo(contentView).offset(-10)
                     make.height.equalTo(458).priority(249)
                 }
             } else {
-                let lastEstimateView = arr[index-1]
-                estimateView.snp.updateConstraints { (make) in
-                    make.top.equalTo(lastEstimateView.snp.bottom).offset(10)
-                    make.left.equalTo(lastEstimateView)
-                    make.right.equalTo(lastEstimateView)
+                let lastCarStateView = arr[index-1]
+                carStateView.snp.updateConstraints { (make) in
+                    make.top.equalTo(lastCarStateView.snp.bottom).offset(10)
+                    make.left.equalTo(lastCarStateView)
+                    make.right.equalTo(lastCarStateView)
                     make.height.equalTo(458).priority(249)
                 }
                 if (index == 2) {
                     评估结果View.snp.updateConstraints { (make) in
-                        make.top.equalTo(estimateView.snp.bottom).offset(10)
+                        make.top.equalTo(carStateView.snp.bottom).offset(10)
                     }
                 }
             }
+            
+            /// 赋值
+            
+            
+            
+            
         }
-    }
-    
-    /// 更新界面
-    public func updateUI(model: GLPriceDetailModel) {
         
         
     }
@@ -285,7 +413,6 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
             GLBasicMessageViewController.parentVc!.topConstraint.constant = -65
         }
     }
-   
     
 }
 
@@ -298,6 +425,7 @@ class GLPictureMessageViewController: UIViewController, IndicatorInfoProvider, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     
@@ -358,6 +486,9 @@ extension GLPictureMessageViewController: UICollectionViewDataSource, UICollecti
 class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
     
     
+    @IBOutlet weak var bottomViewBottomConstrain: NSLayoutConstraint!
+    
+    
     @IBOutlet weak var priceTitleLabel: UILabel!
     @IBOutlet weak var priceStoreNameLabel: UILabel!
     @IBOutlet weak var priceStateBtn: UIButton!
@@ -382,6 +513,8 @@ class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
                     priceStateBtn.setTitle("定价:"+price+"万元", for: .normal)
                     priceStateBtn.setTitleColor(YiBlueColor, for: .normal)
                     priceStateBtn.backgroundColor = .white
+                    
+                    bottomViewBottomConstrain.constant = -64
                 }
             }
             
@@ -413,6 +546,8 @@ class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
         }
         
         super.viewDidLoad()
+        
+        navigationItem.title = "任务详情"
         
         loadData()
     }
