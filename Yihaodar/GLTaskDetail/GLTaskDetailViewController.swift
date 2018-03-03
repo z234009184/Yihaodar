@@ -11,7 +11,6 @@ import SwiftyJSON
 import SKPhotoBrowser
 import SnapKit
 import HandyJSON
-import AlamofireImage
 
 
 /*
@@ -220,11 +219,31 @@ class GLTaskDetailViewController: GLTaskDetailBaseViewController {
                     make.height.equalTo(0)
                 })
                 
+                
                 detailModel?.vehicles?.enumerated().forEach({ (index, value) in
                     let photo = SKPhoto.photoWithImageURL((value.fileUrl)!)
+                    photo.checkCache()
+                    photo.index = index
+                    photo.shouldCachePhotoURLImage = true
+                    photo.loadUnderlyingImageAndNotify()
                     imagesss.append(photo)
-                    collectionView.reloadData()
                 })
+                
+                
+                
+                observer = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: SKPHOTO_LOADING_DID_END_NOTIFICATION), object: nil, queue: OperationQueue.main, using: {[weak self] (noti) in
+                    guard let photo = noti.object as? SKPhoto else {return}
+                    let indexPath = IndexPath(item: photo.index, section: 0)
+                    self?.collectionView.reloadItems(at: [indexPath])
+                })
+                
+                
+                
+                let count = (detailModel?.vehicles?.count)! - 1
+                let constant = CGFloat((Int(count)/3)+1) * 100.0 - 10
+                collectionViewHeight.constant = constant
+                
+                collectionView.reloadData()
             }
         }
     }
@@ -261,7 +280,7 @@ class GLTaskDetailViewController: GLTaskDetailBaseViewController {
     
     
     var imagesss = [SKPhoto]()
-    
+    var observer: NSObjectProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -306,6 +325,12 @@ class GLTaskDetailViewController: GLTaskDetailBaseViewController {
     }
     
     
+    deinit {
+        guard let observer = observer else { return }
+        NotificationCenter.default.removeObserver(observer)
+    }
+    
+    
 }
 
 
@@ -323,6 +348,7 @@ fileprivate let identifier = "GLTaskDetailPictureCell"
 extension GLTaskDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return imagesss.count
     }
     
@@ -334,18 +360,17 @@ extension GLTaskDetailViewController: UICollectionViewDataSource, UICollectionVi
         guard let pictureCell = cell as? GLTaskDetailPictureCell else {
             return UICollectionViewCell()
         }
-//        pictureCell.imageView.image = UIImage(named: imgnames[indexPath.item])
-
-        pictureCell.imageView.af_setImage(withURL: URL(string: imagesss[indexPath.item].photoURL)!)
+        pictureCell.imageView.image = imagesss[indexPath.item].underlyingImage
         return pictureCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? GLTaskDetailPictureCell else { return }
         
-        let originImage = cell.imageView.image // some image for baseImage
+        guard let originImage = cell.imageView.image else { return } // some image for baseImage
         
-        let browser = SKPhotoBrowser(originImage: originImage ?? UIImage(), photos: imagesss, animatedFromView: cell)
+        
+        let browser = SKPhotoBrowser(originImage: originImage, photos: imagesss, animatedFromView: cell)
         browser.initializePageIndex(indexPath.item)
         present(browser, animated: true, completion: nil)
         

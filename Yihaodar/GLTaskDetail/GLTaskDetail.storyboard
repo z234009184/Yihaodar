@@ -367,15 +367,21 @@
                                                                             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                                             <autoresizingMask key="autoresizingMask"/>
                                                                             <subviews>
-                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="Vnw-D4-DgC">
+                                                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="AZ7-ww-5GS">
+                                                                                    <rect key="frame" x="35" y="34.5" width="20" height="20"/>
+                                                                                </activityIndicatorView>
+                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vnw-D4-DgC">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 </imageView>
                                                                             </subviews>
                                                                         </view>
                                                                         <color key="backgroundColor" red="0.79607843140000001" green="0.82745098039999998" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <constraints>
                                                                             <constraint firstItem="Vnw-D4-DgC" firstAttribute="top" secondItem="uUd-PZ-sap" secondAttribute="top" id="DwC-bH-ccY"/>
+                                                                            <constraint firstItem="AZ7-ww-5GS" firstAttribute="centerX" secondItem="uUd-PZ-sap" secondAttribute="centerX" id="F8c-CF-oWB"/>
                                                                             <constraint firstItem="Vnw-D4-DgC" firstAttribute="leading" secondItem="uUd-PZ-sap" secondAttribute="leading" id="NZg-7E-NSu"/>
+                                                                            <constraint firstItem="AZ7-ww-5GS" firstAttribute="centerY" secondItem="uUd-PZ-sap" secondAttribute="centerY" id="OCK-8T-gFB"/>
                                                                             <constraint firstAttribute="trailing" secondItem="Vnw-D4-DgC" secondAttribute="trailing" id="hba-bi-ehK"/>
                                                                             <constraint firstAttribute="bottom" secondItem="Vnw-D4-DgC" secondAttribute="bottom" id="n96-NA-noK"/>
                                                                         </constraints>
@@ -729,7 +735,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="avatar" width="250" height="250"/>
         <image name="taskdetail_invalid" width="113" height="113"/>
     </resources>
 </document>
