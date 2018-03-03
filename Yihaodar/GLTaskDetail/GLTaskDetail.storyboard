@@ -23,10 +23,10 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="1216"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w7Z-Vv-QZB">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1158.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1225.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xx7-H7-rZP" customClass="DesignableView" customModule="Spring">
-                                                <rect key="frame" x="10" y="10" width="355" height="807.5"/>
+                                                <rect key="frame" x="10" y="10" width="355" height="874.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BFT-4Y-VYm">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="201"/>
@@ -149,7 +149,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ju1-I4-kRm">
-                                                        <rect key="frame" x="0.0" y="201" width="355" height="335"/>
+                                                        <rect key="frame" x="0.0" y="201" width="355" height="402"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SvZ-aC-eTm">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="67"/>
@@ -185,8 +185,42 @@
                                                                     <constraint firstItem="pkw-ZE-nVt" firstAttribute="leading" secondItem="SvZ-aC-eTm" secondAttribute="leading" constant="12" id="rez-4f-thM"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ikR-DF-XW3">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xpY-xa-Sc9">
                                                                 <rect key="frame" x="0.0" y="67" width="355" height="67"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="车辆年份" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pzy-p1-XEV">
+                                                                        <rect key="frame" x="12" y="15" width="54" height="16"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                        <color key="textColor" red="0.59999999999999998" green="0.62745098040000002" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FSDSHDFEARASR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3I3-Xd-Zqe">
+                                                                        <rect key="frame" x="12" y="39" width="124.5" height="18"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                        <color key="textColor" red="0.12941176469999999" green="0.15686274510000001" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rK-3r-3x9">
+                                                                        <rect key="frame" x="12" y="66" width="331" height="1"/>
+                                                                        <color key="backgroundColor" red="0.92941176469999998" green="0.93333333330000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="1" id="PqF-y8-Jkj"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="bottom" secondItem="8rK-3r-3x9" secondAttribute="bottom" id="A15-kf-ZdI"/>
+                                                                    <constraint firstItem="Pzy-p1-XEV" firstAttribute="leading" secondItem="xpY-xa-Sc9" secondAttribute="leading" constant="12" id="CdO-T1-7qs"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="3I3-Xd-Zqe" secondAttribute="bottom" constant="10" id="XqU-eS-Oem"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="8rK-3r-3x9" secondAttribute="trailing" constant="12" id="bxM-3e-TRR"/>
+                                                                    <constraint firstItem="8rK-3r-3x9" firstAttribute="leading" secondItem="xpY-xa-Sc9" secondAttribute="leading" constant="12" id="fFM-Vy-gDj"/>
+                                                                    <constraint firstItem="3I3-Xd-Zqe" firstAttribute="leading" secondItem="Pzy-p1-XEV" secondAttribute="leading" id="jfu-8k-wo5"/>
+                                                                    <constraint firstItem="Pzy-p1-XEV" firstAttribute="top" secondItem="xpY-xa-Sc9" secondAttribute="top" constant="15" id="o9C-8F-m0K"/>
+                                                                    <constraint firstAttribute="width" secondItem="xpY-xa-Sc9" secondAttribute="height" multiplier="355:67" id="wv1-nr-hcX"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ikR-DF-XW3">
+                                                                <rect key="frame" x="0.0" y="134" width="355" height="67"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="行驶里程数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zu-kj-eh1">
                                                                         <rect key="frame" x="12" y="15" width="66.5" height="16"/>
@@ -220,7 +254,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SXC-Sn-hcr">
-                                                                <rect key="frame" x="0.0" y="134" width="355" height="67"/>
+                                                                <rect key="frame" x="0.0" y="201" width="355" height="67"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大票额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxX-1Q-aef">
                                                                         <rect key="frame" x="12" y="15" width="40" height="16"/>
@@ -254,7 +288,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHw-sk-gHm">
-                                                                <rect key="frame" x="0.0" y="201" width="355" height="67"/>
+                                                                <rect key="frame" x="0.0" y="268" width="355" height="67"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="颜色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TxI-ab-Iju">
                                                                         <rect key="frame" x="12" y="15" width="27" height="16"/>
@@ -288,7 +322,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TN4-91-0Hz">
-                                                                <rect key="frame" x="0.0" y="268" width="355" height="67"/>
+                                                                <rect key="frame" x="0.0" y="335" width="355" height="67"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否京牌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKJ-4f-xlC">
                                                                         <rect key="frame" x="12" y="15" width="53.5" height="16"/>
@@ -314,8 +348,13 @@
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstItem="SvZ-aC-eTm" firstAttribute="top" secondItem="ju1-I4-kRm" secondAttribute="top" id="1q9-4Y-NKY"/>
+                                                            <constraint firstAttribute="trailing" secondItem="xpY-xa-Sc9" secondAttribute="trailing" id="2sJ-J7-Znm"/>
                                                             <constraint firstAttribute="trailing" secondItem="SXC-Sn-hcr" secondAttribute="trailing" id="3vd-Zs-gZy"/>
                                                             <constraint firstAttribute="trailing" secondItem="ikR-DF-XW3" secondAttribute="trailing" id="BgR-pS-QMw"/>
+                                                            <constraint firstItem="xpY-xa-Sc9" firstAttribute="top" secondItem="SvZ-aC-eTm" secondAttribute="bottom" id="CcM-I8-sHe"/>
+                                                            <constraint firstItem="xpY-xa-Sc9" firstAttribute="width" secondItem="xpY-xa-Sc9" secondAttribute="height" multiplier="355:67" id="EWV-zR-3Aw"/>
+                                                            <constraint firstItem="ikR-DF-XW3" firstAttribute="top" secondItem="xpY-xa-Sc9" secondAttribute="bottom" id="HU9-fD-SFv"/>
+                                                            <constraint firstItem="xpY-xa-Sc9" firstAttribute="leading" secondItem="ju1-I4-kRm" secondAttribute="leading" id="LMP-QH-Xhu"/>
                                                             <constraint firstItem="dHw-sk-gHm" firstAttribute="leading" secondItem="ju1-I4-kRm" secondAttribute="leading" id="NEc-3N-rRZ"/>
                                                             <constraint firstItem="ikR-DF-XW3" firstAttribute="leading" secondItem="ju1-I4-kRm" secondAttribute="leading" id="O4j-x2-d2z"/>
                                                             <constraint firstItem="SvZ-aC-eTm" firstAttribute="leading" secondItem="ju1-I4-kRm" secondAttribute="leading" id="PYx-ir-asJ"/>
@@ -327,12 +366,11 @@
                                                             <constraint firstItem="dHw-sk-gHm" firstAttribute="top" secondItem="SXC-Sn-hcr" secondAttribute="bottom" id="gaV-hE-xmQ"/>
                                                             <constraint firstItem="TN4-91-0Hz" firstAttribute="top" secondItem="dHw-sk-gHm" secondAttribute="bottom" id="jRK-pc-vQT"/>
                                                             <constraint firstItem="TN4-91-0Hz" firstAttribute="leading" secondItem="ju1-I4-kRm" secondAttribute="leading" id="wnz-88-3Dq"/>
-                                                            <constraint firstItem="ikR-DF-XW3" firstAttribute="top" secondItem="SvZ-aC-eTm" secondAttribute="bottom" id="yG4-NX-IXZ"/>
                                                             <constraint firstItem="SXC-Sn-hcr" firstAttribute="leading" secondItem="ju1-I4-kRm" secondAttribute="leading" id="zwg-6G-Vz0"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KFv-tx-Aho">
-                                                        <rect key="frame" x="0.0" y="536" width="355" height="271.5"/>
+                                                        <rect key="frame" x="0.0" y="603" width="355" height="271.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否京牌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHJ-A1-g7r">
                                                                 <rect key="frame" x="12" y="15" width="61.5" height="18"/>
@@ -444,7 +482,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vks-hi-kus" customClass="DesignableView" customModule="Spring">
-                                                <rect key="frame" x="10" y="827.5" width="355" height="321"/>
+                                                <rect key="frame" x="10" y="894.5" width="355" height="321"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评估信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noo-uD-w9s">
                                                         <rect key="frame" x="10" y="15" width="61.5" height="18"/>
@@ -721,6 +759,7 @@
                         <outlet property="orderBigMoneyLabel" destination="0Z0-Sy-EoL" id="1Ka-ul-cF0"/>
                         <outlet property="orderCarBrandlabel" destination="2Dh-g1-NEV" id="qj3-Aj-wlG"/>
                         <outlet property="orderCarColorLabel" destination="7bX-gA-2zP" id="2lb-XR-XDh"/>
+                        <outlet property="orderCarYearLabel" destination="3I3-Xd-Zqe" id="91J-Ah-nbM"/>
                         <outlet property="orderIsBeiJingNumberLabel" destination="nSP-fs-jui" id="NPp-Jp-eRB"/>
                         <outlet property="orderMileageLabel" destination="ouW-eL-nq8" id="Ucl-P3-9AK"/>
                         <outlet property="orderNumberLabel" destination="dUn-9y-ZY1" id="grU-S4-oUc"/>

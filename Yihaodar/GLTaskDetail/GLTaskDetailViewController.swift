@@ -73,6 +73,14 @@ struct GLEstimateMsgModel: HandyJSON {
     var process_id: String?
     var last_update_date: String?
     var org_id: String?
+    var store_id: String?
+    var store_name: String?
+    var dep_id: String?
+    var dep_name: String?
+    var confirmed_date: String?
+    var confirmed_money: String?
+    var car_info: String?
+    var remarks: String?
     
 }
 
@@ -161,6 +169,9 @@ class GLTaskDetailViewController: GLTaskDetailBaseViewController {
          // 手动保单视图
     @IBOutlet weak var manualView: UIView!
     @IBOutlet weak var orderCarBrandlabel: UILabel!
+    
+    @IBOutlet weak var orderCarYearLabel: UILabel!
+    
     @IBOutlet weak var orderMileageLabel: UILabel!
     @IBOutlet weak var orderBigMoneyLabel: UILabel!
     @IBOutlet weak var orderCarColorLabel: UILabel!
@@ -198,9 +209,11 @@ class GLTaskDetailViewController: GLTaskDetailBaseViewController {
     /// 详情模型
     var detailModel: GLTaskDetailModel? {
         didSet{
+            
             orderNumberLabel.text = detailModel?.custId
             orderPersonLabel.text = detailModel?.quotesId
             orderSubmitDateLabel.text = detailModel?.createdDate
+            
             if detailModel?.bDType == "1" { // 手动报单
                 speedView.isHidden = true
                 manualView.isHidden = false
@@ -209,6 +222,12 @@ class GLTaskDetailViewController: GLTaskDetailBaseViewController {
                 })
                 manualView.snp.removeConstraints()
                 
+                orderCarBrandlabel.text = (detailModel?.brandSeriesName)! + (detailModel?.goodsSeriesName)!
+                orderCarYearLabel.text = detailModel?.registerTime
+                orderMileageLabel.text = detailModel?.runNumber
+                orderBigMoneyLabel.text = detailModel?.parValue
+                orderCarColorLabel.text = detailModel?.carColor
+                orderIsBeiJingNumberLabel.text = detailModel?.isBj == "0" ? "是" : "否"
                 
                 
             } else if detailModel?.bDType == "2" { // 极速报单
@@ -251,11 +270,13 @@ class GLTaskDetailViewController: GLTaskDetailBaseViewController {
     /// 评估信息模型
     var estimateMsgModel: GLEstimateMsgModel? {
         didSet{
-            if estimateMsgModel?.evaluat_status == "1" || estimateMsgModel?.evaluat_status == "2" { // 已评估
+            guard let estimateMsgModel = estimateMsgModel else { return }
+            guard let evaluat_status = estimateMsgModel.evaluat_status else { return }
+            if evaluat_status == "1" || evaluat_status == "2" { // 已评估
                 
-                if estimateMsgModel?.evaluat_status == "2" { // 已失效
+                if evaluat_status == "2" { // 已失效
                     invalidView.isHidden = false
-                    if let str = estimateMsgModel?.last_update_date {
+                    if let str = estimateMsgModel.last_update_date {
                         invalidDateLabel.text = str.substring(to: str.index(str.startIndex, offsetBy: 10))
                     }
                 } else { // 未失效
@@ -266,6 +287,10 @@ class GLTaskDetailViewController: GLTaskDetailBaseViewController {
                 estimateMsgView.isHidden = false
                 estimateMsgView.snp.removeConstraints()
                 
+                estimateDateLabel.text = estimateMsgModel.confirmed_date
+                estimatePriceLabel.text = estimateMsgModel.confirmed_money
+                estimateCarDetailMsgLabel.text = estimateMsgModel.car_info
+                estimateMemoLabel.text = estimateMsgModel.remarks
                 
             } else { // 未评估
                 bottomViewBottom.constant = 0
@@ -311,6 +336,7 @@ class GLTaskDetailViewController: GLTaskDetailBaseViewController {
         GLProvider.request(GLService.estimateDetail(custRequestId: model.executionId!, takeStatus: model.takeStatus!, partyId: GLUser.partyId!, processExampleId: model.processId!, processTaskId: model.processTaskId!)) {[weak self] (result) in
             
             if case let .success(respon) = result {
+                print(JSON(respon.data))
                 let jsonStr = JSON(respon.data).rawString()
                 
                 self?.detailModel = GLTaskDetailModel.deserialize(from: jsonStr, designatedPath: "results.dataDJ")
