@@ -63,6 +63,7 @@ struct GLWorkTableModel: HandyJSON {
             }
         }
     }
+    var btnValue: String?
     
     /// 类型: 手动/极速/定价
     enum TaskType {
@@ -92,6 +93,7 @@ class GLWorkTableListCell: UITableViewCell {
     
     @IBOutlet weak var stateBtn: DesignableButton!
     
+    @IBOutlet weak var completeStateBtn: DesignableButton!
     
     var listModel: GLWorkTableModel? {
         didSet {
@@ -99,7 +101,14 @@ class GLWorkTableListCell: UITableViewCell {
             titleNumLabel.text = listModel?.executionId ?? ""
             nameLabel.text = listModel?.executionString ?? ""
             dateLabel.text = listModel?.startDate ?? ""
-            stateBtn.setTitle(listModel?.statusBtnName ?? "", for: .normal)
+            
+            if let stateBtn = stateBtn {
+                stateBtn.setTitle(listModel?.statusBtnName ?? "", for: .normal)
+            }
+            
+            if let completeStateBtn = completeStateBtn {
+              completeStateBtn.setTitle(listModel?.btnValue ?? "", for: .normal)
+            }
         }
     }
     
@@ -159,6 +168,7 @@ class GLWorkTableBaseViewController: UITableViewController {
         case .price:
             let desVc = UIStoryboard(name: "GLTaskDetailPrice", bundle: nil).instantiateInitialViewController()
             guard let djVc = desVc as? GLTaskDetailPriceViewController else { return }
+            djVc.model = model
             parentVc.navigationController?.pushViewController(djVc, animated: true)
             
             return

@@ -29,7 +29,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="yhd_admin" placeholder="用户名" minimumFontSize="17" background="login_username_background" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Trt-sn-j4G" customClass="DesignableTextField" customModule="Spring">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="xxjkhjl" placeholder="用户名" minimumFontSize="17" background="login_username_background" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Trt-sn-j4G" customClass="DesignableTextField" customModule="Spring">
                                 <rect key="frame" x="50" y="239" width="275" height="44"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -53,7 +53,7 @@
                                     <constraint firstAttribute="width" constant="44" id="x6f-cE-xlA"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" placeholder="登陆密码" minimumFontSize="17" background="login_username_background" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="q1W-yz-D5v" customClass="DesignableTextField" customModule="Spring">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="111111" placeholder="登陆密码" minimumFontSize="17" background="login_username_background" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="q1W-yz-D5v" customClass="DesignableTextField" customModule="Spring">
                                 <rect key="frame" x="50" y="284" width="275" height="44"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

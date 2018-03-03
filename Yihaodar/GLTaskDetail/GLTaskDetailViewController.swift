@@ -59,7 +59,7 @@ import HandyJSON
 }
 */
 
-
+/// 评估信息模型
 struct GLEstimateMsgModel: HandyJSON {
     var worth_id: String?
     var org_name: String?
@@ -84,7 +84,7 @@ struct GLEstimateMsgModel: HandyJSON {
     
 }
 
-
+/// 极速保单图片模型
 struct GLTaskDetailPictureModel: HandyJSON {
     var fileTitle: String?
     var fileName: String?
@@ -93,6 +93,7 @@ struct GLTaskDetailPictureModel: HandyJSON {
     
 }
 
+/// 报单详情模型
 struct GLTaskDetailModel: HandyJSON {
     var custId: String?
     var custRequestId: String?
@@ -168,10 +169,9 @@ class GLTaskDetailViewController: GLTaskDetailBaseViewController {
     
          // 手动保单视图
     @IBOutlet weak var manualView: UIView!
+    
     @IBOutlet weak var orderCarBrandlabel: UILabel!
-    
     @IBOutlet weak var orderCarYearLabel: UILabel!
-    
     @IBOutlet weak var orderMileageLabel: UILabel!
     @IBOutlet weak var orderBigMoneyLabel: UILabel!
     @IBOutlet weak var orderCarColorLabel: UILabel!

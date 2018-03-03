@@ -34,13 +34,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckY-TA-HtQ">
-                                        <rect key="frame" x="290" y="17" width="75" height="30"/>
+                                        <rect key="frame" x="302" y="17" width="63" height="30"/>
                                         <color key="backgroundColor" red="0.098039215690000001" green="0.64313725489999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="75" id="1bM-Zq-Dxc"/>
                                             <constraint firstAttribute="height" constant="30" id="sq9-w5-oqX"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                         <state key="normal" title="待定价">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -126,6 +126,9 @@
                     <connections>
                         <outlet property="buttonBarView" destination="y4w-FZ-kS5" id="GBE-qC-dDy"/>
                         <outlet property="containerView" destination="ytC-Yj-ZuB" id="tFq-2t-qM9"/>
+                        <outlet property="priceStateBtn" destination="ckY-TA-HtQ" id="Qq6-PB-9ed"/>
+                        <outlet property="priceStoreNameLabel" destination="W1o-EG-X61" id="MwD-Ty-Y8v"/>
+                        <outlet property="priceTitleLabel" destination="sou-jc-nmd" id="m7d-0F-b5X"/>
                         <outlet property="topConstraint" destination="Qz7-Tv-KkN" id="Xig-dA-90a"/>
                     </connections>
                 </viewController>
