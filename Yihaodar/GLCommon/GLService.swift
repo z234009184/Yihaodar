@@ -39,7 +39,7 @@ struct CostumPlugin: PluginType {
             if json["type"] == "E" {
                 let msg = json["message"].stringValue
                 window.makeToast(msg)
-                if json["code"] == "TOKEN IS ERROR" {
+                if json["code"] == "TOKEN IS ERROR" || json["code"] == "TOKEN IS OVER TIME" || json["code"] == "TOKEN IS EMPTY" {
                     let user = User.read()
                     user?.clear()
                     GLUser = User()
@@ -135,7 +135,6 @@ extension GLService: TargetType {
             param["body"] = ["custRequestId": custRequestId, "takeStatus": takeStatus, "partyId": partyId, "processExampleId": processExampleId, "processTaskId": processTaskId]
         case let GLService.priceDetail(custRequestId, takeStatus, partyId, processExampleId, processTaskId):
             param["body"] = ["custRequestId": custRequestId, "takeStatus": takeStatus, "partyId": partyId, "processExampleId": processExampleId, "processTaskId": processTaskId]
-            
             
         }
         return .requestParameters(parameters: ["data": (JSON(param).rawString())!], encoding: URLEncoding.queryString)

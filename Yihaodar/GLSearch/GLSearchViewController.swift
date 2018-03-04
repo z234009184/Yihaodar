@@ -21,7 +21,6 @@ class GLSearchViewController: GLWorkTableBaseViewController {
         
         setupTableView()
         
-        
     }
     
     func loadData() {
@@ -70,7 +69,18 @@ class GLSearchViewController: GLWorkTableBaseViewController {
         let noResultsPlaceholder = Placeholder(data: noResultsData, style: PlaceholderStyle(), key: .noResultsKey)
         placeholderTableView?.placeholdersProvider.add(placeholders: noResultsPlaceholder)
         tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+//        if #available(iOS 11.0, *) {
+//            additionalSafeAreaInsets = UIEdgeInsetsMake(10, 0, 0, 0)
+//        } else {
+//            // Fallback on earlier versions
+//        }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
     
     func setupNavigationBar() -> Void {
         navigationItem.leftBarButtonItem = nil

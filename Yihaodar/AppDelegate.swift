@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rootVc = UIStoryboard(name: "GLLogin", bundle: nil).instantiateInitialViewController()
         window?.rootViewController = rootVc
         window?.makeKeyAndVisible()
+//        window?.backgroundColor = .white
         
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().enableAutoToolbar = false

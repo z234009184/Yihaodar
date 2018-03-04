@@ -118,47 +118,7 @@ struct GLTaskDetailModel: HandyJSON {
 
 
 
-
-class GLTaskDetailBaseViewController: UIViewController {
-    
-    lazy var tabBarVc = tabBarController as! GLTabBarController
-    
-    lazy var submitMessageView: GLSubmitMessageView = {
-        let accessoryView = GLSubmitMessageView()
-        let width = view.bounds.width
-        let height = width * 238.0/375.0
-        accessoryView.frame.size = CGSize(width: width, height: height)
-        accessoryView.frame.origin.x = 0
-        
-        accessoryView.submitBtnClosure = { [weak self] in
-            self?.tabBarVc.dismissCover(btn: nil)
-            self?.tabBarVc.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_success"), title: "提交成功")
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.5, execute: {
-                self?.tabBarVc.dismissCover(btn: nil)
-            })
-        }
-        
-        return accessoryView
-    }()
-    
-    func showSubmitMessageView() -> Void {
-        let mask = tabBarVc.showMaskView()
-        guard let maskView = mask else {
-            return
-        }
-        submitMessageView.frame.origin.y = maskView.frame.size.height
-        maskView.addSubview(submitMessageView)
-        
-        UIView.animate(withDuration: 0.25, animations: {
-            self.submitMessageView.frame.origin.y = maskView.frame.size.height - self.submitMessageView.frame.size.height
-        }) { (b) in
-            print(b)
-            self.submitMessageView.priceTextField.becomeFirstResponder()
-        }
-    }
-}
-
-class GLTaskDetailViewController: GLTaskDetailBaseViewController {
+class GLTaskDetailViewController: UIViewController {
     
     /// 报单信息 --------------------
     @IBOutlet weak var contentView: UIView!
@@ -344,6 +304,48 @@ class GLTaskDetailViewController: GLTaskDetailBaseViewController {
             }
         }
     }
+    
+    
+    
+    
+    lazy var tabBarVc = tabBarController as! GLTabBarController
+    lazy var submitMessageView: GLSubmitMessageView = {
+        let accessoryView = GLSubmitMessageView()
+        let width = view.bounds.width
+        let height = width * 238.0/375.0
+        accessoryView.frame.size = CGSize(width: width, height: height)
+        accessoryView.frame.origin.x = 0
+        
+        accessoryView.submitBtnClosure = { [weak self] in
+            self?.tabBarVc.dismissCover(btn: nil)
+            self?.tabBarVc.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_success"), title: "提交成功")
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.5, execute: {
+                self?.tabBarVc.dismissCover(btn: nil)
+            })
+        }
+        
+        return accessoryView
+    }()
+    
+    func showSubmitMessageView() -> Void {
+        let mask = tabBarVc.showMaskView()
+        guard let maskView = mask else {
+            return
+        }
+        submitMessageView.frame.origin.y = maskView.frame.size.height
+        maskView.addSubview(submitMessageView)
+        
+        UIView.animate(withDuration: 0.25, animations: {
+            self.submitMessageView.frame.origin.y = maskView.frame.size.height - self.submitMessageView.frame.size.height
+        }) { (b) in
+            print(b)
+            self.submitMessageView.priceTextField.becomeFirstResponder()
+        }
+    }
+    
+    
+    
+    
     
     /// 提交评估
     @IBAction func estimateBtnClick(_ sender: DesignableButton) {

@@ -745,6 +745,16 @@ class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
         loadData()
     }
     
+    override func viewSafeAreaInsetsDidChange() {
+        if #available(iOS 11.0, *) {
+            super.viewSafeAreaInsetsDidChange()
+        } else {
+            // Fallback on earlier versions
+        }
+        topConstraint.constant = 0
+        
+    }
+    
     /// 加载定价详情数据
     func loadData() -> Void {
         guard let model = model else {
