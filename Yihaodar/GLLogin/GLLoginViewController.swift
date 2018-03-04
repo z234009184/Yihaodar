@@ -73,7 +73,6 @@ class GLLoginViewController: UIViewController {
          super.viewDidAppear(animated)
         if let user = User.read() {
             GLUser = user
-            print(user)
             if user.token != nil {
                 let rootvc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
                 guard let vc = rootvc else { return }

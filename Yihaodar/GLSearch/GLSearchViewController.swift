@@ -21,10 +21,6 @@ class GLSearchViewController: GLWorkTableBaseViewController {
         
         setupTableView()
         
-        tableView.configRefreshFooter(with: GLRefreshFooter.footer()) { [weak self] in
-            self?.loadData()
-        }
-        
         
     }
     
@@ -48,6 +44,9 @@ class GLSearchViewController: GLWorkTableBaseViewController {
                     if models.count >= (self?.pageSize)! { // 大于一页 可以进行加载
                         self?.startIndex += 1
                         self?.tableView.switchRefreshFooter(to: .normal)
+                        self?.tableView.configRefreshFooter(with: GLRefreshFooter.footer()) { [weak self] in
+                            self?.loadData()
+                        }
                     } else { // 无更多数据
                         self?.tableView.switchRefreshFooter(to: .noMoreData)
                     }
@@ -70,6 +69,7 @@ class GLSearchViewController: GLWorkTableBaseViewController {
         noResultsData.image = #imageLiteral(resourceName: "tableview_nodata_img")
         let noResultsPlaceholder = Placeholder(data: noResultsData, style: PlaceholderStyle(), key: .noResultsKey)
         placeholderTableView?.placeholdersProvider.add(placeholders: noResultsPlaceholder)
+        tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
     }
     
     func setupNavigationBar() -> Void {

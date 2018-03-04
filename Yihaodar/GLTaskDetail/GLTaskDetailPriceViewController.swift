@@ -11,7 +11,7 @@ import XLPagerTabStrip
 import SnapKit
 import SwiftyJSON
 import HandyJSON
-
+import SKPhotoBrowser
 
 
 /**
@@ -177,11 +177,11 @@ struct GLPriceAssessmentModel: HandyJSON {
 
 
 struct GLPriceDetailModel: HandyJSON {
-    var attList0: [GLPricePictureModel]?
-    var attList1: [GLPricePictureModel]?
-    var attList2: [GLPricePictureModel]?
-    var attList3: [GLPricePictureModel]?
-    var attList4: [GLPricePictureModel]?
+    var attList0 = [GLPricePictureModel]()
+    var attList1 = [GLPricePictureModel]()
+    var attList2 = [GLPricePictureModel]()
+    var attList3 = [GLPricePictureModel]()
+    var attList4 = [GLPricePictureModel]()
     var parts: [GLPriceCarStateModel]?
     var priceList: [GLPriceResultModel]?
     var assessmentList: GLPriceAssessmentModel?
@@ -231,9 +231,9 @@ class GLBasicMessageViewController: UIViewController, IndicatorInfoProvider, UIS
     /// 更新界面
     public func updateUI(model: GLPriceDetailModel) {
         orderStoreLabel.text = model.assessmentList?.store_name
-        orderManagerLabel.text = model.assessmentList?.boss_party_id
-        orderSuperintendLabel.text = model.assessmentList?.executive_party_id
-        orderMajordomoLabel.text = model.assessmentList?.director_party_id
+        orderManagerLabel.text = model.assessmentList?.boss_party_id ?? "未选择"
+        orderSuperintendLabel.text = model.assessmentList?.executive_party_id ?? "未选择"
+        orderMajordomoLabel.text = model.assessmentList?.director_party_id ?? "未选择"
         
         carNameLabel.text = model.assessmentList?.ower
         carNumberLabel.text = model.assessmentList?.goods_code
@@ -246,10 +246,10 @@ class GLBasicMessageViewController: UIViewController, IndicatorInfoProvider, UIS
         carPeccancyLabel.text = (model.assessmentList?.peccancy)! == "0" ? "无" : "有"
         carEngineVersionLabel.text = model.assessmentList?.engine_code
         carFrameNumberLabel.text = model.assessmentList?.frame_code
-        carInvoicePriceLabel.text = model.assessmentList?.invoice
+        carInvoicePriceLabel.text = model.assessmentList?.invoice ?? "未选择"
         carCheckLimitDateLabel.text = model.assessmentList?.year_check
-        carTrafficLabel.text = model.assessmentList?.jq_insurance
-        carBusinessLabel.text = model.assessmentList?.sy_insurance
+        carTrafficLabel.text = model.assessmentList?.jq_insurance ?? "未选择"
+        carBusinessLabel.text = model.assessmentList?.sy_insurance ?? "未选择"
     }
     
     
@@ -325,15 +325,7 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
     
     /// 更新界面
     public func updateUI(model: GLPriceDetailModel) {
-        guard var status_id = model.assessmentList?.status_id else { return }
-        status_id = "02"
-        if status_id != "03" { // 如果不是已定价 就隐藏定价模块
-            if 定价结果View == nil { return }
-            定价结果View.snp.remakeConstraints { (make) in
-                make.height.equalTo(0)
-            }
-            定价结果View.isHidden = true
-        }
+        if 变速器Label == nil { return }
         
         
         变速器Label.text = model.assessmentList?.gearbox
@@ -346,16 +338,16 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
         燃油方式Label.text = model.assessmentList?.fuel_type
         天窗Label.text = model.assessmentList?.skylight
         空调配置Label.text = model.assessmentList?.air_conditioner
-        其他Label.text = model.assessmentList?.other
-        事故Label.text = model.assessmentList?.accident
-        车架号Label.text = model.assessmentList?.Accident_level
+        其他Label.text = model.assessmentList?.other ?? "未选择"
+        事故Label.text = model.assessmentList?.accident ?? "未选择"
+        车架号Label.text = model.assessmentList?.Accident_level ?? "未选择"
         
         评估师Label.text = model.assessmentList?.assessment_name
         评估价格Label.text = model.assessmentList?.confirmed_money
         评估备注Label.text = model.assessmentList?.remarks
         
-        定价师Label.text = model.priceList?.first?.partyName
-        定价价格Label.text = model.priceList?.first?.confirmedMoney
+        定价师Label.text = model.priceList?.first?.partyName ?? "未选择"
+        定价价格Label.text = model.priceList?.first?.confirmedMoney ?? "未选择"
         定价备注Label.text = model.priceList?.first?.appraiseRemarks
         
         
@@ -385,12 +377,14 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
                     make.right.equalTo(lastCarStateView)
                     make.height.equalTo(458).priority(249)
                 }
-                if (index == carStateDatas.count - 1) {
-                    评估结果View.snp.remakeConstraints { (make) in
-                        make.top.equalTo(carStateView.snp.bottom).offset(10)
-                    }
+            }
+            
+            if (index == carStateDatas.count - 1) {
+                评估结果View.snp.updateConstraints { (make) in
+                    make.top.equalTo(carStateView.snp.bottom).offset(10)
                 }
             }
+            
             
             // 赋值
             carStateView.partOneLabel.text = value.parts_one_id
@@ -398,15 +392,16 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
             carStateView.descLabel.text = value.accident_type
             carStateView.remarksLabel.text = value.remarks
         }
-            
-        
-            
-            
-            
-            
         
         
-        
+        guard let status_id = model.assessmentList?.status_id else { return }
+        if status_id != "03" { // 如果不是已定价 就隐藏定价模块
+            定价结果View.snp.remakeConstraints { (make) in
+                make.height.equalTo(0)
+            }
+            定价结果View.isHidden = true
+        }
+
     }
     
     
@@ -429,14 +424,55 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
 }
 
 
+
+
+/// 图片附件控制器
 class GLPictureMessageViewController: UIViewController, IndicatorInfoProvider, UIScrollViewDelegate {
     
     @IBOutlet weak var firstCollectionViewHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var firsrCollectionView: UICollectionView!
+    var firstDataArray = NSMutableArray()
+    
+    @IBOutlet weak var secondCollectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var secondCollectionView: UICollectionView!
+    var secondDataArray = NSMutableArray()
+    
+    @IBOutlet weak var thirdCollectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var thirdCollectionView: UICollectionView!
+    var thirdDataArray = NSMutableArray()
+    
+    @IBOutlet weak var fourCollectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var fourCollectionView: UICollectionView!
+    var fourDataArray = NSMutableArray()
+    
+    @IBOutlet weak var fiveCollectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var fiveCollectionView: UICollectionView!
+    var fiveDataArray = NSMutableArray()
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SKPhotoBrowserOptions.displayCounterLabel = false                         // counter label will be hidden
+        SKPhotoBrowserOptions.displayCloseButton = false
+        SKPhotoBrowserOptions.displayBackAndForwardButton = false
+        SKPhotoBrowserOptions.displayStatusbar = true
+        SKPhotoBrowserOptions.displayAction = false                               // action button will be hidden
+        SKPhotoBrowserOptions.displayHorizontalScrollIndicator = true
+        SKPhotoBrowserOptions.displayVerticalScrollIndicator = false
+        SKPhotoBrowserOptions.enableSingleTapDismiss = true
+        SKPhotoBrowserOptions.bounceAnimation = true
+        SKPhotoBrowserOptions.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        
+        SKCaptionOptions.textColor = .clear
+        
+        if let model = GLBasicMessageViewController.parentVc!.priceDetailModel {
+            GLBasicMessageViewController.parentVc!.updatePictureVcUI(priceDetailModel: model)
+        }
+        
+        
         
     }
     
@@ -444,10 +480,79 @@ class GLPictureMessageViewController: UIViewController, IndicatorInfoProvider, U
     
     /// 更新界面
     public func updateUI(model: GLPriceDetailModel) {
+        if firsrCollectionView == nil { return }
         
+        updateCollection(dataArray: model.attList0, collectionView: firsrCollectionView, collectionViewHeight: firstCollectionViewHeight, photoDataArray: firstDataArray)
+        updateCollection(dataArray: model.attList1, collectionView: secondCollectionView, collectionViewHeight: secondCollectionViewHeight, photoDataArray: secondDataArray)
+        updateCollection(dataArray: model.attList2, collectionView: thirdCollectionView, collectionViewHeight: thirdCollectionViewHeight, photoDataArray: thirdDataArray)
+        updateCollection(dataArray: model.attList3, collectionView: fourCollectionView, collectionViewHeight: fourCollectionViewHeight, photoDataArray: fourDataArray)
+        updateCollection(dataArray: model.attList4, collectionView: fiveCollectionView, collectionViewHeight: fiveCollectionViewHeight, photoDataArray: fiveDataArray)
+
+    }
+    
+    
+    func updateCollection(dataArray: [GLPricePictureModel], collectionView: UICollectionView, collectionViewHeight: NSLayoutConstraint, photoDataArray: NSMutableArray) -> Void {
+        // 布局collectionView height
+        
+        let count = dataArray.count - 1
+        let constant: CGFloat = CGFloat((Int(count)/3)+1) * 100.0 - 10
+        collectionViewHeight.constant = constant
+        if count == -1 {
+            collectionView.isHidden = true;
+            collectionViewHeight.constant = 24.0
+            return
+        }
+        
+        photoDataArray.removeAllObjects()
+        dataArray.enumerated().forEach({ (index, value) in
+            let photo = SKPhoto.photoWithImageURL((value.file_url)!)
+            photo.checkCache()
+            if (collectionView == firsrCollectionView) {
+                photo.caption = "first"
+            } else if (collectionView == secondCollectionView) {
+                photo.caption = "second"
+            } else if (collectionView == thirdCollectionView) {
+                photo.caption = "third"
+            } else if (collectionView == fourCollectionView) {
+                photo.caption = "four"
+            } else {
+                photo.caption = "five"
+            }
+            photo.index = index
+            photo.shouldCachePhotoURLImage = true
+            photo.loadUnderlyingImageAndNotify()
+            photoDataArray.add(photo)
+        })
+        NotificationCenter.default.addObserver(self, selector: #selector(GLPictureMessageViewController.loadPicture(noti:)), name: NSNotification.Name(rawValue: SKPHOTO_LOADING_DID_END_NOTIFICATION), object: nil)
+        collectionView.reloadData()
         
     }
     
+    
+    @objc func loadPicture(noti: NSNotification) -> Void {
+        guard let photo = noti.object as? SKPhoto else {return}
+        guard let caption = photo.caption else { return }
+        if caption == "first" {
+            let indexPath = IndexPath(item: photo.index, section: 0)
+            firsrCollectionView.reloadItems(at: [indexPath])
+        }
+        if caption == "second" {
+            let indexPath = IndexPath(item: photo.index, section: 0)
+            secondCollectionView.reloadItems(at: [indexPath])
+        }
+        if caption == "third" {
+            let indexPath = IndexPath(item: photo.index, section: 0)
+            thirdCollectionView.reloadItems(at: [indexPath])
+        }
+        if caption == "four" {
+            let indexPath = IndexPath(item: photo.index, section: 0)
+            fourCollectionView.reloadItems(at: [indexPath])
+        }
+        if caption == "five" {
+            let indexPath = IndexPath(item: photo.index, section: 0)
+            fiveCollectionView.reloadItems(at: [indexPath])
+        }
+    }
     
     
     // IndicatorInfoProvider
@@ -465,34 +570,110 @@ class GLPictureMessageViewController: UIViewController, IndicatorInfoProvider, U
             GLBasicMessageViewController.parentVc!.topConstraint.constant = -65
         }
     }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 fileprivate let identifier = "GLTaskDetailPictureCell"
 extension GLPictureMessageViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        let count = 5
-        if count == 0 {
-            firstCollectionViewHeight.constant = 24
-            firsrCollectionView.isHidden = true
-        } else {
-            firsrCollectionView.isHidden = false
-            firstCollectionViewHeight.constant = CGFloat(((count-1)/3 + 1) * 100 - 10)
+        switch collectionView {
+        case firsrCollectionView:
+            return firstDataArray.count
+            
+        case secondCollectionView:
+            return secondDataArray.count
+            
+        case thirdCollectionView:
+            return thirdDataArray.count
+            
+        case fourCollectionView:
+            return fourDataArray.count
+            
+        case fiveCollectionView:
+            return fiveDataArray.count
+            
+        default:
+            return 0
+            
         }
-        return count
     }
     
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
     @available(iOS 6.0, *)
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
-        guard let pictureCell = cell as? GLTaskDetailPictureCell else {
+        guard let pictureCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? GLTaskDetailPictureCell else {
             return UICollectionViewCell()
+        }
+        
+        
+        switch collectionView {
+        case firsrCollectionView:
+            pictureCell.imageView.image = (firstDataArray[indexPath.item] as! SKPhoto).underlyingImage
+            break
+        case secondCollectionView:
+            pictureCell.imageView.image = (secondDataArray[indexPath.item] as! SKPhoto).underlyingImage
+            break
+        case thirdCollectionView:
+            pictureCell.imageView.image = (thirdDataArray[indexPath.item] as! SKPhoto).underlyingImage
+            break
+        case fourCollectionView:
+            pictureCell.imageView.image = (fourDataArray[indexPath.item] as! SKPhoto).underlyingImage
+            break
+        case fiveCollectionView:
+            pictureCell.imageView.image = (fiveDataArray[indexPath.item] as! SKPhoto).underlyingImage
+            break
+        default:
+            break
         }
         return pictureCell
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? GLTaskDetailPictureCell else { return }
+        
+        guard let originImage = cell.imageView.image else { return } // some image for baseImage
+        
+        var dataArr = [SKPhoto]()
+        switch collectionView {
+        case firsrCollectionView:
+            dataArr = firstDataArray as! [SKPhoto]
+            break
+        case secondCollectionView:
+            dataArr = secondDataArray as! [SKPhoto]
+            break
+        case thirdCollectionView:
+            dataArr = thirdDataArray as! [SKPhoto]
+            break
+        case fourCollectionView:
+            dataArr = fourDataArray as! [SKPhoto]
+            break
+        case fiveCollectionView:
+            dataArr = fiveDataArray as! [SKPhoto]
+            break
+        default:
+            break
+        }
+        
+        let browser = SKPhotoBrowser(originImage: originImage, photos: dataArr, animatedFromView: cell)
+        browser.initializePageIndex(indexPath.item)
+        present(browser, animated: true, completion: nil)
+        
+    }
 }
+
+
+
+
+
+
+
 
 
 class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
@@ -574,6 +755,10 @@ class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
             
             if case let .success(respon) = result {
                 print(JSON(respon.data))
+                if JSON(respon.data)["code"] == "PROCESS_08" {
+                    self?.navigationController?.popViewController(animated: true)
+                }
+                
                 let jsonStr = JSON(respon.data).rawString()
                 self?.priceDetailModel = GLPriceDetailModel.deserialize(from: jsonStr, designatedPath: "results")
                 

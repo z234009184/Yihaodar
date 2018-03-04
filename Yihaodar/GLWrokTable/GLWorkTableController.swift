@@ -155,6 +155,7 @@ class GLWorkTableBaseViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let parentVc = parent else { return }
         
+        
         let model = dataArray[indexPath.row]
         
         switch model.status {
@@ -162,19 +163,29 @@ class GLWorkTableBaseViewController: UITableViewController {
             let desVc = UIStoryboard(name: "GLTaskDetail", bundle: nil).instantiateInitialViewController()
             guard let bdVc = desVc as? GLTaskDetailViewController else { return }
             bdVc.model = model
-            parentVc.navigationController?.pushViewController(bdVc, animated: true)
+            if let navigationVc = parentVc.navigationController {
+                navigationVc.pushViewController(bdVc, animated: true)
+            } else {
+                navigationController?.pushViewController(bdVc, animated: true)
+            }
             
             return
         case .price:
             let desVc = UIStoryboard(name: "GLTaskDetailPrice", bundle: nil).instantiateInitialViewController()
             guard let djVc = desVc as? GLTaskDetailPriceViewController else { return }
             djVc.model = model
-            parentVc.navigationController?.pushViewController(djVc, animated: true)
+            if let navigationVc = parentVc.navigationController {
+                navigationVc.pushViewController(djVc, animated: true)
+            } else {
+                navigationController?.pushViewController(djVc, animated: true)
+            }
             
             return
         default:
             return
         }
+        
+        
     }
     
 }
