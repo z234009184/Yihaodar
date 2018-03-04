@@ -216,7 +216,13 @@
                     <real key="value" value="3"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="-147" y="-147"/>
+            <connections>
+                <outlet property="descLabel" destination="Jik-ED-i6A" id="2Y2-kr-yIY"/>
+                <outlet property="partOneLabel" destination="8OQ-NU-5YL" id="IkM-y0-KA2"/>
+                <outlet property="partTwoLabel" destination="dNA-K7-yRS" id="T2W-cK-Od1"/>
+                <outlet property="remarksLabel" destination="Nyg-Xe-KY7" id="94a-3q-Xwn"/>
+            </connections>
+            <point key="canvasLocation" x="-262" y="-168"/>
         </view>
     </objects>
     <resources>

@@ -310,6 +310,8 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
     @IBOutlet weak var 定价备注Label: UILabel!
     
     
+    var carStateViews = [GLEstimateCarStateView]()
+    var carStateDatas = [GLPriceCarStateModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -317,6 +319,7 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
         if let model = GLBasicMessageViewController.parentVc!.priceDetailModel {
             GLBasicMessageViewController.parentVc!.updateEstimateVcUI(priceDetailModel: model)
         }
+        
         
     }
     
@@ -356,43 +359,52 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
         定价备注Label.text = model.priceList?.first?.appraiseRemarks
         
         
-        /// 车况信息
+        /// 布局 赋值车况信息
         guard let stateArr = model.parts else { return }
-        var arr = [GLEstimateCarStateView]()
-        for (index, value) in stateArr.enumerated() {
+        carStateDatas = stateArr
+        
+        carStateViews.removeAll()
+        for (index, value) in carStateDatas.enumerated() {
             let carStateView = Bundle.main.loadNibNamed("GLEstimateCarStateView", owner: nil, options: nil)?.first as! GLEstimateCarStateView
             contentView.addSubview(carStateView)
-            arr.append(carStateView)
+            carStateViews.append(carStateView)
             
             /// 布局
             if index == 0 {
-                carStateView.snp.updateConstraints { (make) in
+                carStateView.snp.remakeConstraints { (make) in
                     make.top.equalTo(车辆配置View.snp.bottom).offset(10)
                     make.left.equalTo(contentView).offset(10)
                     make.right.equalTo(contentView).offset(-10)
                     make.height.equalTo(458).priority(249)
                 }
             } else {
-                let lastCarStateView = arr[index-1]
-                carStateView.snp.updateConstraints { (make) in
+                let lastCarStateView = carStateViews[index-1]
+                carStateView.snp.remakeConstraints { (make) in
                     make.top.equalTo(lastCarStateView.snp.bottom).offset(10)
                     make.left.equalTo(lastCarStateView)
                     make.right.equalTo(lastCarStateView)
                     make.height.equalTo(458).priority(249)
                 }
-                if (index == 2) {
-                    评估结果View.snp.updateConstraints { (make) in
+                if (index == carStateDatas.count - 1) {
+                    评估结果View.snp.remakeConstraints { (make) in
                         make.top.equalTo(carStateView.snp.bottom).offset(10)
                     }
                 }
             }
             
-            /// 赋值
-            
-            
-            
-            
+            // 赋值
+            carStateView.partOneLabel.text = value.parts_one_id
+            carStateView.partTwoLabel.text = value.parts_two_id
+            carStateView.descLabel.text = value.accident_type
+            carStateView.remarksLabel.text = value.remarks
         }
+            
+        
+            
+            
+            
+            
+        
         
         
     }

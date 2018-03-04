@@ -9,6 +9,10 @@
 import Spring
 
 class GLEstimateCarStateView: SpringView {
+    @IBOutlet weak var partOneLabel: UILabel!
+    @IBOutlet weak var partTwoLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var remarksLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         
