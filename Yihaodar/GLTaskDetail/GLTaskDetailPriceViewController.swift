@@ -701,13 +701,13 @@ class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
             
             if let status_id = priceDetailModel?.assessmentList?.status_id {
                 if status_id == "03" {
+                    bottomViewBottomConstrain.constant = -64
                     let money = priceDetailModel?.priceList?.first?.confirmedMoney
                     guard let price = money else { return }
                     priceStateBtn.setTitle("定价:"+price+"万元", for: .normal)
                     priceStateBtn.setTitleColor(YiBlueColor, for: .normal)
                     priceStateBtn.backgroundColor = .white
                     
-                    bottomViewBottomConstrain.constant = -64
                 }
             }
             
@@ -751,8 +751,6 @@ class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
         } else {
             // Fallback on earlier versions
         }
-        topConstraint.constant = 0
-        
     }
     
     /// 加载定价详情数据
@@ -792,10 +790,45 @@ class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
         pictureVc?.updateUI(model: priceDetailModel)
     }
     
-    /// 提交评估
+    /// 提交定价
     @IBAction func estimateBtnClick(_ sender: DesignableButton) {
-        showSubmitMessageView()
+        
+        let showMsgView = showSubmitMessageView()
+        
+        
+        weak var weakShowMsgView = showMsgView
+        showMsgView.submitBtnClosure = { [weak self] in
+            
+            // 判断过滤
+            let priceText = weakShowMsgView?.priceTextField.text ?? ""
+            let remarksText = weakShowMsgView?.remarksLabel.text ?? ""
+            if priceText.count < 1 {
+                weakShowMsgView?.makeToast("请输入价格")
+                return
+            }
+            
+            
+            self?.tabBarVc.dismissCover(btn: nil)
+            self?.tabBarVc.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_loading"), title: "提交中...")
+            GLProvider.request(GLService.submitPriceDetail(custRequestId: (self?.model?.executionId)!, partyName: GLUser.partyName!, processId: (self?.model?.processId)!, processTaskId: (self?.model?.processTaskId)!, confirmedMoney: priceText, appraiseRemarks: remarksText)) { (result) in
+                if case let .success(respon) = result {
+                    if JSON(respon.data)["type"] == "S" {
+                        self?.tabBarVc.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_success"), title: "提交成功")
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                            self?.tabBarVc.dismissCover(btn: nil)
+                            self?.navigationController?.popViewController(animated: true)
+                        })
+                    } else {
+                        self?.tabBarVc.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_failure"), title: "提交失败")
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                            self?.tabBarVc.dismissCover(btn: nil)
+                        })
+                    }
+                }
+            }
+        }
     }
+    
     
     
     
@@ -807,18 +840,13 @@ class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
         accessoryView.frame.size = CGSize(width: width, height: height)
         accessoryView.frame.origin.x = 0
         
-        accessoryView.submitBtnClosure = { [weak self] in
-            self?.tabBarVc.dismissCover(btn: UIButton())
-            self?.tabBarVc.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_success"), title: "提交成功")
-        }
-        
         return accessoryView
     }()
     
-    func showSubmitMessageView() -> Void {
+    func showSubmitMessageView() -> GLSubmitMessagePriceView {
         let mask = tabBarVc.showMaskView()
         guard let maskView = mask else {
-            return
+            return submitMessageView
         }
         submitMessageView.frame.origin.y = maskView.frame.size.height
         maskView.addSubview(submitMessageView)
@@ -826,10 +854,8 @@ class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
         UIView.animate(withDuration: 0.25) {
             self.submitMessageView.frame.origin.y = maskView.frame.size.height - self.submitMessageView.frame.size.height
         }
+        return submitMessageView
     }
-    
-    
-    
     
     /// PagerTabStripDataSource
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {

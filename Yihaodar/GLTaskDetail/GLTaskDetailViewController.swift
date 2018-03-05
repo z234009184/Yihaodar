@@ -242,7 +242,7 @@ class GLTaskDetailViewController: UIViewController {
                 } else { // 未失效
                     invalidView.isHidden = true
                 }
-                
+                bottomView.isHidden = true
                 bottomViewBottom.constant = 64
                 estimateMsgView.isHidden = false
                 estimateMsgView.snp.removeConstraints()
@@ -253,6 +253,7 @@ class GLTaskDetailViewController: UIViewController {
                 estimateMemoLabel.text = estimateMsgModel.remarks
                 
             } else { // 未评估
+                bottomView.isHidden = false
                 bottomViewBottom.constant = 0
                 estimateMsgView.isHidden = true
                 estimateMsgView.snp.remakeConstraints({ (make) in
@@ -316,21 +317,21 @@ class GLTaskDetailViewController: UIViewController {
         accessoryView.frame.size = CGSize(width: width, height: height)
         accessoryView.frame.origin.x = 0
         
-        accessoryView.submitBtnClosure = { [weak self] in
-            self?.tabBarVc.dismissCover(btn: nil)
-            self?.tabBarVc.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_success"), title: "提交成功")
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.5, execute: {
-                self?.tabBarVc.dismissCover(btn: nil)
-            })
-        }
+//        accessoryView.submitBtnClosure = { [weak self] in
+//            self?.tabBarVc.dismissCover(btn: nil)
+//            self?.tabBarVc.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_success"), title: "提交成功")
+//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.5, execute: {
+//                self?.tabBarVc.dismissCover(btn: nil)
+//            })
+//        }
         
         return accessoryView
     }()
     
-    func showSubmitMessageView() -> Void {
+    func showSubmitMessageView() -> GLSubmitMessageView {
         let mask = tabBarVc.showMaskView()
         guard let maskView = mask else {
-            return
+            return submitMessageView
         }
         submitMessageView.frame.origin.y = maskView.frame.size.height
         maskView.addSubview(submitMessageView)
@@ -341,6 +342,7 @@ class GLTaskDetailViewController: UIViewController {
             print(b)
             self.submitMessageView.priceTextField.becomeFirstResponder()
         }
+        return submitMessageView
     }
     
     
@@ -349,7 +351,53 @@ class GLTaskDetailViewController: UIViewController {
     
     /// 提交评估
     @IBAction func estimateBtnClick(_ sender: DesignableButton) {
-        showSubmitMessageView()
+        let showMsgView = showSubmitMessageView()
+        
+        
+        weak var weakShowMsgView = showMsgView
+        showMsgView.submitBtnClosure = { [weak self] in
+            
+            // 判断过滤
+            let priceText = weakShowMsgView?.priceTextField.text ?? ""
+            let carMsgText = weakShowMsgView?.carMsgTextField.text ?? ""
+            let remarksText = weakShowMsgView?.memoTextField.text ?? ""
+            if priceText.count < 1 {
+                weakShowMsgView?.makeToast("请输入价格")
+                return
+            }
+            
+            if carMsgText.count < 1 {
+                weakShowMsgView?.makeToast("请输入车辆信息")
+                return
+            }
+            
+            
+            self?.tabBarVc.dismissCover(btn: nil)
+            self?.tabBarVc.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_loading"), title: "提交中...")
+            let brand = self?.detailModel?.brandSeriesName ?? ""
+            let series = self?.detailModel?.goodsSeriesName ?? ""
+            let carBrandSeries = brand + series
+            
+            GLProvider.request(GLService.submitTaskDetail(partyId: GLUser.partyId!, processId: (self?.model?.processId)!, processTaskId: (self?.model?.processTaskId)!, executionId: (self?.model?.executionId)!, confirmedMoney: priceText, remarks: remarksText, carInfo: carMsgText, carType: carBrandSeries), completion: { (result) in
+                if case let .success(respon) = result {
+                    print(JSON(respon.data))
+                    if JSON(respon.data)["type"] == "S" {
+                        self?.tabBarVc.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_success"), title: "提交成功")
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                            self?.tabBarVc.dismissCover(btn: nil)
+                            self?.navigationController?.popViewController(animated: true)
+                        })
+                    } else {
+                        self?.tabBarVc.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_failure"), title: "提交失败")
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                            self?.tabBarVc.dismissCover(btn: nil)
+                        })
+                    }
+                }
+            })
+            
+        }
+        
     }
     
     

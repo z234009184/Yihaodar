@@ -14,6 +14,8 @@ class GLSearchViewController: GLWorkTableBaseViewController {
     
     var placeholderTableView: PlaceHolderTableView?
     
+    var searchBar = UISearchBar()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,7 +28,7 @@ class GLSearchViewController: GLWorkTableBaseViewController {
     func loadData() {
         
         
-        let executionId = (navigationItem.titleView as! UISearchBar).text
+        let executionId = searchBar.text
         GLProvider.request(GLService.searchList(partyId: GLUser.partyId!, pageSize: "\(pageSize)", startIndex: "\(startIndex)", executionId: executionId!))  { [weak self] (result) in
             if self == nil {return}
             
@@ -86,32 +88,34 @@ class GLSearchViewController: GLWorkTableBaseViewController {
         navigationItem.leftBarButtonItem = nil
         navigationItem.hidesBackButton = true
         
-        // 实例化
-        let searchbar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
         
-        navigationItem.titleView = searchbar
+        let titleView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 70, height: 32))
+        // 实例化
+        searchBar = UISearchBar(frame: titleView.bounds)
+       
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "取消", style: .done, target: self, action: #selector(GLSearchViewController.cancelBtn(item:)))
         
-        searchbar.barStyle = UIBarStyle.default
+        searchBar.barStyle = UIBarStyle.default
         
-        searchbar.placeholder = "搜索"
-        searchbar.tintColor = YiSelectedTitleColor
-        searchbar.searchBarStyle = .minimal
+        searchBar.placeholder = "搜索"
+        searchBar.tintColor = YiSelectedTitleColor
+        searchBar.searchBarStyle = .minimal
         
-        searchbar.showsCancelButton = false
-        searchbar.delegate = self
+        searchBar.showsCancelButton = false
+        searchBar.delegate = self
         // 键盘类型设置
-        searchbar.returnKeyType = .search
+        searchBar.returnKeyType = .search
+        
+        titleView.addSubview(searchBar)
+        navigationItem.titleView = titleView
         
         // 第一响应，即进入编辑状态
-        searchbar.becomeFirstResponder()
-//        let uiButton = searchbar.value(forKey: "cancelButton") as! UIButton
-//        uiButton.setTitle("取消", for: .normal)
-//        uiButton.setTitleColor(YiSelectedTitleColor,for: .normal)
+        searchBar.becomeFirstResponder()
+        
     }
     
     @objc func cancelBtn(item: UIBarButtonItem)  {
-        (navigationItem.titleView as! UISearchBar).endEditing(true)
+        searchBar.endEditing(true)
         navigationController?.popViewController(animated: true)
     }
 }

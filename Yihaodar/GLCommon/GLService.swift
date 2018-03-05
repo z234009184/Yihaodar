@@ -76,7 +76,11 @@ enum GLService {
     // 详情
     case estimateDetail(custRequestId: String, takeStatus: String, partyId: String, processExampleId: String, processTaskId: String)
     case priceDetail(custRequestId: String, takeStatus: String, partyId: String, processExampleId: String, processTaskId: String)
+    // 提交
+    case submitPriceDetail(custRequestId: String, partyName: String, processId: String, processTaskId: String, confirmedMoney: String, appraiseRemarks: String)
+    case submitTaskDetail(partyId: String, processId: String, processTaskId: String, executionId: String, confirmedMoney: String, remarks: String, carInfo: String, carType: String)
     
+    // 新建车辆评估
     
 }
 
@@ -103,8 +107,10 @@ extension GLService: TargetType {
             return "/api/appGetBdInfo/getBdInfoData.shtml"
         case .priceDetail(_, _, _, _, _):
             return "/api/appCarAssecc/getCarCollateralData.shtml"
-            
-            
+        case .submitPriceDetail(_, _, _, _, _, _):
+            return "/api/appCarAssecc/submitCarCollateralData.shtml"
+        case .submitTaskDetail(_, _, _, _, _, _, _, _):
+            return "/api/appCarAssecc/submitCarCollateralData.shtml"
         }
     }
     var method: Moya.Method {
@@ -135,6 +141,11 @@ extension GLService: TargetType {
             param["body"] = ["custRequestId": custRequestId, "takeStatus": takeStatus, "partyId": partyId, "processExampleId": processExampleId, "processTaskId": processTaskId]
         case let GLService.priceDetail(custRequestId, takeStatus, partyId, processExampleId, processTaskId):
             param["body"] = ["custRequestId": custRequestId, "takeStatus": takeStatus, "partyId": partyId, "processExampleId": processExampleId, "processTaskId": processTaskId]
+            
+        case let GLService.submitPriceDetail(custRequestId, partyName, processId, processTaskId, confirmedMoney, appraiseRemarks):
+            param["body"] = ["custRequestId": custRequestId, "partyName": partyName, "processId": processId, "processTaskId": processTaskId, "confirmedMoney": confirmedMoney, "appraiseRemarks": appraiseRemarks]
+        case let GLService.submitTaskDetail(partyId, processId, processTaskId, executionId, confirmedMoney, remarks, carInfo, carType):
+            param["body"] = ["partyId": partyId, "processId": processId, "processTaskId": processTaskId, "executionId": executionId, "confirmedMoney": confirmedMoney, "remarks": remarks, "carInfo": carInfo, "carType": carType]
             
         }
         return .requestParameters(parameters: ["data": (JSON(param).rawString())!], encoding: URLEncoding.queryString)

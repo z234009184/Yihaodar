@@ -153,8 +153,9 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="priceTextField" destination="Z7I-Rb-3JQ" id="h0C-WR-isH"/>
+                <outlet property="remarksLabel" destination="y7Q-4X-oSP" id="XGc-P3-Xvq"/>
             </connections>
-            <point key="canvasLocation" x="-862" y="-271"/>
+            <point key="canvasLocation" x="-1090" y="-304"/>
         </view>
     </objects>
 </document>

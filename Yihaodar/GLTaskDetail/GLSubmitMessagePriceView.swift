@@ -11,6 +11,8 @@ import Spring
 class GLSubmitMessagePriceView: SpringView {
     @IBOutlet weak var priceTextField: DesignableTextField!
     
+    @IBOutlet weak var remarksLabel: DesignableLabel!
+    
     var submitBtnClosure: (()->())?
     
     override func awakeFromNib() {
