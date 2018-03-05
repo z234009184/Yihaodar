@@ -577,6 +577,7 @@ class GLPictureMessageViewController: UIViewController, IndicatorInfoProvider, U
         NotificationCenter.default.removeObserver(self)
         NotificationCenter.default.removeObserver(self)
         NotificationCenter.default.removeObserver(self)
+        print("priceDetailVc was deinit")
     }
 }
 
