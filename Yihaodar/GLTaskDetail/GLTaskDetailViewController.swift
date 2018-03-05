@@ -182,7 +182,7 @@ class GLTaskDetailViewController: UIViewController {
                 })
                 manualView.snp.removeConstraints()
                 
-                orderCarBrandlabel.text = (detailModel?.brandSeriesName)! + (detailModel?.goodsSeriesName)!
+                orderCarBrandlabel.text = (detailModel?.brandNameCN)! + " " + (detailModel?.brandSeriesName)! + " " + (detailModel?.goodsSeriesName)!
                 orderCarYearLabel.text = detailModel?.registerTime
                 orderMileageLabel.text = detailModel?.runNumber
                 orderBigMoneyLabel.text = detailModel?.parValue

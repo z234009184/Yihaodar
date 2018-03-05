@@ -81,7 +81,7 @@ enum GLService {
     case submitTaskDetail(partyId: String, processId: String, processTaskId: String, executionId: String, confirmedMoney: String, remarks: String, carInfo: String, carType: String)
     
     // 新建车辆评估
-    
+    case getCarOtherInfo(partyId: String)
 }
 
 // MARK: - TargetType Protocol Implementation
@@ -111,6 +111,9 @@ extension GLService: TargetType {
             return "/api/appCarAssecc/submitCarCollateralData.shtml"
         case .submitTaskDetail(_, _, _, _, _, _, _, _):
             return "/api/appCarAssecc/submitCarCollateralData.shtml"
+        case .getCarOtherInfo(_):
+            return "/api/appCarAssecc/getStoreAndOthersInfo.shtml"
+            
         }
     }
     var method: Moya.Method {
@@ -146,6 +149,9 @@ extension GLService: TargetType {
             param["body"] = ["custRequestId": custRequestId, "partyName": partyName, "processId": processId, "processTaskId": processTaskId, "confirmedMoney": confirmedMoney, "appraiseRemarks": appraiseRemarks]
         case let GLService.submitTaskDetail(partyId, processId, processTaskId, executionId, confirmedMoney, remarks, carInfo, carType):
             param["body"] = ["partyId": partyId, "processId": processId, "processTaskId": processTaskId, "executionId": executionId, "confirmedMoney": confirmedMoney, "remarks": remarks, "carInfo": carInfo, "carType": carType]
+            
+        case let GLService.getCarOtherInfo(partyId):
+            param["body"] = ["partyId": partyId]
             
         }
         return .requestParameters(parameters: ["data": (JSON(param).rawString())!], encoding: URLEncoding.queryString)

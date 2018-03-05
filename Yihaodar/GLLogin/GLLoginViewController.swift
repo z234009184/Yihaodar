@@ -13,9 +13,10 @@ import SwiftyJSON
 import HandyJSON
 import Default
 
-
+/// 本地用户
 var GLUser = User()
 
+///用户模型
 struct User: HandyJSON, Codable, DefaultStorable {
     var phoneCode: String?
     var jobName: String?
