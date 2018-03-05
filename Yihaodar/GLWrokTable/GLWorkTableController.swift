@@ -214,7 +214,7 @@ class GLDaiBanController: GLWorkTableBaseViewController, IndicatorInfoProvider {
     func loadData() {
         GLProvider.request(GLService.todoList(partyId: GLUser.partyId!, pageSize: "\(pageSize)", startIndex: "\(startIndex)"))  { [weak self] (result) in
             if self == nil {return}
-            
+            self?.tableView.switchRefreshFooter(to: .normal)
             if case let .success(response) = result {
                 if self?.startIndex == 1 {
                     self?.dataArray.removeAll()
@@ -268,7 +268,7 @@ class GLWanChengController: GLWorkTableBaseViewController, IndicatorInfoProvider
     func loadData() {
         GLProvider.request(GLService.completeList(partyId: GLUser.partyId!, pageSize: "\(pageSize)", startIndex: "\(startIndex)"))  { [weak self] (result) in
             if self == nil {return}
-            
+            self?.tableView.switchRefreshFooter(to: .normal)
             if case let .success(response) = result {
                 if self?.startIndex == 1 {
                     self?.dataArray.removeAll()

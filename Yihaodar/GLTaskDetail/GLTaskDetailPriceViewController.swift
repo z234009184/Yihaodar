@@ -243,7 +243,7 @@ class GLBasicMessageViewController: UIViewController, IndicatorInfoProvider, UIS
         carRegisterDateLabel.text = model.assessmentList?.register_date
         carMileageLabel.text = model.assessmentList?.run_number
         carExhaustLabel.text = model.assessmentList?.displacement
-        carPeccancyLabel.text = (model.assessmentList?.peccancy)! == "0" ? "无" : "有"
+        carPeccancyLabel.text = (model.assessmentList?.peccancy)! == "0" ? "无" : "罚分:\(model.assessmentList?.peccancy_fraction ?? "0")(分)  罚款:\(model.assessmentList?.peccancy_money ?? "0")(元)"
         carEngineVersionLabel.text = model.assessmentList?.engine_code
         carFrameNumberLabel.text = model.assessmentList?.frame_code
         carInvoicePriceLabel.text = model.assessmentList?.invoice ?? "未选择"

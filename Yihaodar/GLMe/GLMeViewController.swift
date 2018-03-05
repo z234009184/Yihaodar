@@ -28,7 +28,16 @@ class GLMeViewController: UIViewController {
     @IBAction func levelBtnClick(_ sender: UIButton) {
         
         let p = CGPoint(x: view.center.x, y: view.center.y - 100.0)
-        view.makeToast(GLUser.organName, point: p, title: nil, image: nil, completion: nil)
+        let arr = GLUser.allOrganName?.split(separator: ",")
+        guard let organNames = arr else { return }
+        guard organNames.count != 0 else { return }
+        var organName = ""
+        organNames.enumerated().forEach { (arg) in
+            organName.append(String(arg.element))
+            organName.append("\n")
+        }
+        
+        view.makeToast(GLUser.allOrganName, point: p, title: nil, image: nil, completion: nil)
         
     }
     @IBAction func logoutBtnClick(_ sender: UIButton) {

@@ -47,7 +47,7 @@ class GLCreateCarEstimateViewController: UIViewController {
     
     
     func loadData() -> Void {
-        GLProvider.request(GLService.getCarOtherInfoSub2(partyId: GLUser.partyId!)) { [weak self] (result) in
+        GLProvider.request(GLService.getCarOtherInfo(partyId: GLUser.partyId!)) { [weak self] (result) in
             if case let .success(respon) = result {
                 print(JSON(respon.data))
                 

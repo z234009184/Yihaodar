@@ -152,7 +152,7 @@ extension GLService: TargetType {
         case .getCarOtherInfoSub2(_):
             return "/api/appCarAssecc/getStoreAndUserItems.shtml"
         case .getCarOtherInfoSub3(_):
-            return "/api/appCarAssecc/getStoreAndOthersInfo.shtml"
+            return "/api/appCarAssecc/getCarPartsInfo.shtml"
             
         case .getCarSeries(_):
             return "/api/appCarAssecc/getSeriesNameList.shtml"
