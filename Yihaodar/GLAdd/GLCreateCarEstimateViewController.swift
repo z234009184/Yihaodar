@@ -8,6 +8,8 @@
 
 import Spring
 import HandyJSON
+import SwiftyJSON
+
 
 /// 订单信息控制器
 class GLCreateCarEstimateViewController: UIViewController {
@@ -39,8 +41,19 @@ class GLCreateCarEstimateViewController: UIViewController {
         let backItem = UIBarButtonItem()
         backItem.title = "上一步";
         navigationItem.backBarButtonItem = backItem;
+        
+        loadData()
     }
     
+    
+    func loadData() -> Void {
+        GLProvider.request(GLService.getCarOtherInfoSub2(partyId: GLUser.partyId!)) { [weak self] (result) in
+            if case let .success(respon) = result {
+                print(JSON(respon.data))
+                
+            }
+        }
+    }
     
     @IBAction func cancelBtnClick(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
