@@ -461,6 +461,9 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IbH-gY-2k8">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
+                                                                <connections>
+                                                                    <action selector="carbrandBtnClick:" destination="V3A-iC-KUW" eventType="touchUpInside" id="taM-35-CA1"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*车辆品牌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRy-Gk-DGv">
                                                                 <rect key="frame" x="10" y="15" width="59" height="16"/>
@@ -503,6 +506,9 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLq-GF-ZB5">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
+                                                                <connections>
+                                                                    <action selector="carSeriesBtnClick:" destination="V3A-iC-KUW" eventType="touchUpInside" id="ce8-7d-RSS"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*车辆系列" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8X-cV-edm">
                                                                 <rect key="frame" x="10" y="15" width="59" height="16"/>
@@ -545,6 +551,9 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wo6-4J-inD">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
+                                                                <connections>
+                                                                    <action selector="carVersionBtnClick:" destination="V3A-iC-KUW" eventType="touchUpInside" id="Tnj-3f-Mrc"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*车辆型号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5c-Bf-DMq">
                                                                 <rect key="frame" x="10" y="15" width="59" height="16"/>
@@ -669,6 +678,9 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O3h-yy-urx">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
+                                                                <connections>
+                                                                    <action selector="carRegisterDateSelected:" destination="V3A-iC-KUW" eventType="touchUpInside" id="hsB-k6-av0"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*登记日期" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNe-v9-iGP">
                                                                 <rect key="frame" x="10" y="15" width="59" height="16"/>
@@ -1075,6 +1087,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lp-sX-xG4">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
+                                                                    <action selector="carYearCheckDateSelected:" destination="V3A-iC-KUW" eventType="touchUpInside" id="Ttd-4F-RwE"/>
                                                                     <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="Up6-9a-Rbz"/>
                                                                 </connections>
                                                             </button>
@@ -1120,6 +1133,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Gt-iN-EbI">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
+                                                                    <action selector="carTrafficDateSelected:" destination="V3A-iC-KUW" eventType="touchUpInside" id="VhT-M4-Cq3"/>
                                                                     <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="6Z7-09-jv7"/>
                                                                 </connections>
                                                             </button>
@@ -1165,6 +1179,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DY4-bS-6wt">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
+                                                                    <action selector="carBusinessDateSelected:" destination="V3A-iC-KUW" eventType="touchUpInside" id="baq-Vm-Y70"/>
                                                                     <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="42N-12-mKm"/>
                                                                 </connections>
                                                             </button>

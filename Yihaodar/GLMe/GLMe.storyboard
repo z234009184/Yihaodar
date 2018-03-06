@@ -194,7 +194,7 @@
                                 <color key="textColor" red="0.46274509800000002" green="0.4941176471" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bXE-CX-zKZ" customClass="DesignableTextField" customModule="Spring">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6-20位" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bXE-CX-zKZ" customClass="DesignableTextField" customModule="Spring">
                                 <rect key="frame" x="81.5" y="54" width="278.5" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="k9E-qu-V8V"/>
@@ -208,7 +208,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mrv-mH-Sdb" customClass="DesignableTextField" customModule="Spring">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6-20位" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mrv-mH-Sdb" customClass="DesignableTextField" customModule="Spring">
                                 <rect key="frame" x="81" y="112" width="278.5" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="jqF-zW-2ZY"/>

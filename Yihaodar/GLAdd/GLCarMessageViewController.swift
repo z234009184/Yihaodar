@@ -68,6 +68,9 @@ class GLCarMessageViewController: UIViewController {
     @IBOutlet var contraints: [NSLayoutConstraint]!
     
     
+    var selectedBrandModel: GLRadioModel?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -85,10 +88,14 @@ class GLCarMessageViewController: UIViewController {
     @objc func nextBtnClick(item: UIBarButtonItem) {
         
         guard nameField.text?.isEmpty == false else {
-            view.makeToast("")
+            view.makeToast("车主姓名为空")
             return
         }
         
+        guard carNumberLabel.text?.isEmpty == false else {
+            view.makeToast("车牌号为空")
+            return
+        }
         
         
         
@@ -96,7 +103,33 @@ class GLCarMessageViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    lazy var tabBarVc = navigationController?.presentingViewController as! GLTabBarController
+    /// 车辆品牌
+    @IBAction func carbrandBtnClick(_ sender: UIButton) {
+        /// 处理数据
+        let dataArr = GLCreateCarEstimateViewController.model?.brandList.map({ [weak self] (brandModel) -> GLRadioModel in
+            let radioModel = GLRadioModel(id: brandModel.brandId, title: brandModel.brandName, subTitle: nil, isSelected: self?.selectedBrandModel?.id == brandModel.brandId ? true : false, isTextFied: false, input: nil, inputPlaceHolder: nil)
+            return radioModel
+        })
+        guard let dataArray = dataArr else { return }
+        
+        let radioVc = GLRadioViewController.jumpRadioVc(title: "选择客户经理", dataArray: dataArray, navigationVc: navigationController)
+        radioVc.closeClosure = { [weak self] (model: GLRadioModel) in
+            self?.selectedBrandModel = model
+            self?.carBrandLabel.text = model.title
+        }
+    }
+    
+    /// 车辆系列
+    @IBAction func carSeriesBtnClick(_ sender: UIButton) {
+        
+    }
+    
+    /// 车辆型号
+    @IBAction func carVersionBtnClick(_ sender: UIButton) {
+        
+    }
+    
+    
     @IBAction func carProductDateSelected(_ sender: UIButton) {
         GLDatePicker.showDatePicker(currentDate: Date()) { (date) in
             print(date)
@@ -104,6 +137,35 @@ class GLCarMessageViewController: UIViewController {
         
     }
     
+    @IBAction func carRegisterDateSelected(_ sender: UIButton) {
+        GLDatePicker.showDatePicker(currentDate: Date()) { (date) in
+            print(date)
+        }
+        
+    }
+    
+    @IBAction func carYearCheckDateSelected(_ sender: UIButton) {
+        GLDatePicker.showDatePicker(currentDate: Date()) { (date) in
+            print(date)
+        }
+        
+    }
+    
+    
+    @IBAction func carTrafficDateSelected(_ sender: UIButton) {
+        GLDatePicker.showDatePicker(currentDate: Date()) { (date) in
+            print(date)
+        }
+        
+    }
+    
+    
+    @IBAction func carBusinessDateSelected(_ sender: UIButton) {
+        GLDatePicker.showDatePicker(currentDate: Date()) { (date) in
+            print(date)
+        }
+        
+    }
     
     
     
