@@ -59,8 +59,12 @@ class GLTabBarController: UITabBarController {
             btn.addTarget(self, action: #selector(GLTabBarController.dismissCover(btn:)), for: .touchUpInside)
             
         }
-        
-        self.view.addSubview(maskView)
+        if let vc = self.presentedViewController {
+            maskView.frame = vc.view.bounds
+            vc.view.addSubview(maskView)
+        } else {
+            self.view.addSubview(maskView)
+        }
         return maskView
     }
     

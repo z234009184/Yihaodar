@@ -147,6 +147,13 @@ class GLCreateCarEstimateViewController: UIViewController {
             return
         }
         
+        /// 存入提交模型中
+        GLEstimateResultViewController.summitModel.store = selectedMendianModel?.id ?? ""
+        GLEstimateResultViewController.summitModel.store = selectedBossModel?.id ?? ""
+        GLEstimateResultViewController.summitModel.store = selectedExecutiveModel?.id ?? ""
+        GLEstimateResultViewController.summitModel.store = selectedDirectorModel?.id ?? ""
+        
+        
         let vc = UIStoryboard(name: "GLCreateCarEstimate", bundle: Bundle(for: type(of: self))).instantiateViewController(withIdentifier: "GLCarMessageViewController") as! GLCarMessageViewController
         navigationController?.pushViewController(vc, animated: true)
         

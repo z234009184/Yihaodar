@@ -83,6 +83,15 @@ class GLCarMessageViewController: UIViewController {
     
     
     @objc func nextBtnClick(item: UIBarButtonItem) {
+        
+        guard nameField.text?.isEmpty == false else {
+            view.makeToast("")
+            return
+        }
+        
+        
+        
+        
         let vc = UIStoryboard(name: "GLCreateCarEstimate", bundle: Bundle(for: type(of: self))).instantiateViewController(withIdentifier: "GLCarConfigViewController") as! GLCarConfigViewController
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -94,15 +103,6 @@ class GLCarMessageViewController: UIViewController {
         }
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     

@@ -107,7 +107,14 @@ class GLWorkTableListCell: UITableViewCell {
             }
             
             if let completeStateBtn = completeStateBtn {
-              completeStateBtn.setTitle(listModel?.btnValue ?? "", for: .normal)
+                completeStateBtn.setTitle(listModel?.btnValue ?? "", for: .normal)
+                if listModel?.btnValue == "已失效" {
+                    completeStateBtn.setTitleColor(YiNavigationBarTitleColor, for: .normal)
+                    completeStateBtn.borderColor = UIColor(hex: "CBD3DD")
+                } else {
+                    completeStateBtn.setTitleColor(YiBlueColor, for: .normal)
+                    completeStateBtn.borderColor = YiBlueColor
+                }
             }
         }
     }

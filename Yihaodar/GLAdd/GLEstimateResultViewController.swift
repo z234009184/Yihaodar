@@ -14,6 +14,7 @@ import HandyJSON
 struct GLSubmitModel: HandyJSON {
     
     var partyId = GLUser.partyId
+    var store = ""
     var boss_party_id = ""
     var executive_party_id = ""
     var director_party_id = ""
