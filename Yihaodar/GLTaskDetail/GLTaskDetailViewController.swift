@@ -188,7 +188,9 @@ class GLTaskDetailViewController: UIViewController {
                 orderBigMoneyLabel.text = detailModel?.parValue
                 orderCarColorLabel.text = detailModel?.carColor
                 orderIsBeiJingNumberLabel.text = detailModel?.isBj == "0" ? "是" : "否"
-                
+                if detailModel?.isBj?.isEmpty == true {
+                    orderIsBeiJingNumberLabel.text = "未填写"
+                }
                 
             } else if detailModel?.bDType == "2" { // 极速报单
                 speedView.isHidden = false

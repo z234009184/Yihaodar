@@ -705,7 +705,9 @@ class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
                     bottomViewBottomConstrain.constant = -64
                     let money = priceDetailModel?.priceList?.first?.confirmedMoney
                     guard let price = money else { return }
-                    priceStateBtn.setTitle("定价:"+price+"万元", for: .normal)
+                    let decimal = NSDecimalNumber(string: price)
+                    
+                    priceStateBtn.setTitle("定价:"+decimal.stringValue+"万元", for: .normal)
                     priceStateBtn.setTitleColor(YiBlueColor, for: .normal)
                     priceStateBtn.backgroundColor = .white
                     

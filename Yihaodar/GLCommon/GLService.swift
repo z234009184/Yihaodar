@@ -10,7 +10,17 @@ import Moya
 import SwiftyJSON
 import Result
 
-struct CostumPlugin: PluginType {
+struct CustomPlugin: PluginType {
+    
+    
+    static let requestTimeoutClosure = { (endpoint: Endpoint<GLService>, done: @escaping MoyaProvider<GLService>.RequestResultClosure) in
+        guard var request = try? endpoint.urlRequest() else { return }
+        request.timeoutInterval = 10    //设置请求超时时间
+        done(.success(request))
+    }
+    
+    
+    
     let tokenClosure: () -> String?
     
     func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
@@ -59,8 +69,11 @@ struct CostumPlugin: PluginType {
 }
 
 
-let GLProvider = MoyaProvider<GLService>(plugins: [
-    CostumPlugin(tokenClosure: { return GLUser.token })
+
+
+
+let GLProvider = MoyaProvider<GLService>(requestClosure: CustomPlugin.requestTimeoutClosure, plugins: [
+    CustomPlugin(tokenClosure: { return GLUser.token })
     ])
 
 

@@ -10,13 +10,14 @@ import Spring
 import HandyJSON
 
 struct GLRadioModel: HandyJSON {
-    var id: Int = 0
+    var id: String?
     var title: String?
     var subTitle: String?
     var isSelected: Bool = false
     var isTextFied: Bool = false
     var input: String?
     var inputPlaceHolder: String?
+    
 }
 
 
@@ -68,6 +69,19 @@ class GLRadioViewController: UIViewController {
         dataArrayCopy = dataArray
         textField.addTarget(self, action: #selector(GLRadioViewController.textFieldDidChange(_:)), for: .editingChanged)
     }
+    
+    /// 跳转单选控制器
+    public static func jumpRadioVc(title: String?, dataArray: [GLRadioModel], navigationVc: UINavigationController?) -> GLRadioViewController {
+        
+        let vc = UIStoryboard(name: "GLRadio", bundle: Bundle.main).instantiateInitialViewController()
+        guard let radioVc = vc as? GLRadioViewController else { return GLRadioViewController() }
+        radioVc.navigationItem.title = title
+        radioVc.dataArray = dataArray
+        navigationVc?.pushViewController(radioVc, animated: true)
+        return radioVc
+    }
+    
+    
 }
 
 extension GLRadioViewController: UITextFieldDelegate {
