@@ -10,12 +10,12 @@ import Spring
 
 class GLDatePicker: NSObject {
     static let tabBarVc = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController as! GLTabBarController
-    static var sureClosure: ((Date)->())?
+    static var sureClosure: ((String)->())?
     static var date = Date()
     static var pickerView = SpringView()
     
     
-    static func showDatePicker(currentDate: Date, sureClosure: @escaping ((Date)->())) {
+    static func showDatePicker(currentDate: Date, sureClosure: @escaping ((String)->())) {
         let mask = tabBarVc.showMaskView()
         guard let maskView = mask else {
             return
@@ -63,7 +63,8 @@ class GLDatePicker: NSObject {
     }
     @objc static func sureAction() {
         guard let sure = sureClosure else { return }
-        sure(date)
+        let dateStr = stringFromDate(date: date as NSDate, format: "yyyy-MM-dd")
+        sure(dateStr)
         pickerView.animation = "fall"
         pickerView.duration = 0.5
         pickerView.animate()

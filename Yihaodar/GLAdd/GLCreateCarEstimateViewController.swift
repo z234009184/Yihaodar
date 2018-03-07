@@ -52,6 +52,20 @@ struct GLCarBrandModel: HandyJSON {
     var brandName: String = ""
 }
 
+/// 车辆系列
+struct GLCarSeriesModel: HandyJSON {
+    var seriesId: String = ""
+    var seriesName: String = ""
+}
+
+/// 车辆型号
+struct GLCarStyleModel: HandyJSON {
+    var id: String = ""
+    var value: String = ""
+    var seriesId: String = ""
+}
+
+
 /// 车构件
 struct GLCarPartsModel: HandyJSON {
     var id: String = ""
@@ -75,6 +89,8 @@ struct GLCreateDataModel: HandyJSON {
     var executiveList: [GLExecutivModel] = []
     var directorList: [GLDirectorModel] = []
     var brandList: [GLCarBrandModel] = []
+    var brandSeriesList: [GLCarSeriesModel] = []
+    var carStyleList: [GLCarStyleModel] = []
     var partsList: [GLCarPartsModel] = []
     var tpartsList: [GLCarTPartsModel] = []
 }
@@ -149,9 +165,9 @@ class GLCreateCarEstimateViewController: UIViewController {
         
         /// 存入提交模型中
         GLEstimateResultViewController.summitModel.store = selectedMendianModel?.id ?? ""
-        GLEstimateResultViewController.summitModel.store = selectedBossModel?.id ?? ""
-        GLEstimateResultViewController.summitModel.store = selectedExecutiveModel?.id ?? ""
-        GLEstimateResultViewController.summitModel.store = selectedDirectorModel?.id ?? ""
+        GLEstimateResultViewController.summitModel.boss_party_id = selectedBossModel?.id ?? ""
+        GLEstimateResultViewController.summitModel.executive_party_id = selectedExecutiveModel?.id ?? ""
+        GLEstimateResultViewController.summitModel.director_party_id = selectedDirectorModel?.id ?? ""
         
         
         let vc = UIStoryboard(name: "GLCreateCarEstimate", bundle: Bundle(for: type(of: self))).instantiateViewController(withIdentifier: "GLCarMessageViewController") as! GLCarMessageViewController
@@ -202,7 +218,7 @@ class GLCreateCarEstimateViewController: UIViewController {
         })
         guard let dataArray = dataArr else { return }
         
-        let radioVc = GLRadioViewController.jumpRadioVc(title: "选择客户经理", dataArray: dataArray, navigationVc: navigationController)
+        let radioVc = GLRadioViewController.jumpRadioVc(title: "选择团队主管", dataArray: dataArray, navigationVc: navigationController)
         radioVc.closeClosure = { [weak self] (model: GLRadioModel) in
             self?.selectedExecutiveModel = model
             self?.主管Label.text = model.title
@@ -218,7 +234,7 @@ class GLCreateCarEstimateViewController: UIViewController {
         })
         guard let dataArray = dataArr else { return }
         
-        let radioVc = GLRadioViewController.jumpRadioVc(title: "选择客户经理", dataArray: dataArray, navigationVc: navigationController)
+        let radioVc = GLRadioViewController.jumpRadioVc(title: "选择业务总监", dataArray: dataArray, navigationVc: navigationController)
         radioVc.closeClosure = { [weak self] (model: GLRadioModel) in
             self?.selectedDirectorModel = model
             self?.总监Label.text = model.title
