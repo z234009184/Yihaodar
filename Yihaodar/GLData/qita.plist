@@ -35,6 +35,8 @@
 		<string></string>
 		<key>inputPlaceHolder</key>
 		<string>请输入气囊数量(个)</string>
+		<key>isTextFied</key>
+		<true/>
 	</dict>
 </array>
 </plist>

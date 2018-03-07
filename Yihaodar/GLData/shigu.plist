@@ -31,6 +31,12 @@
 		<string></string>
 		<key>isSelected</key>
 		<false/>
+		<key>isTextFied</key>
+		<true/>
+		<key>input</key>
+		<string></string>
+		<key>inputPlaceHolder</key>
+		<string>A/B/C/D</string>
 	</dict>
 </array>
 </plist>

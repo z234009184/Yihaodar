@@ -68,7 +68,6 @@
 		8AEEF1F420366F5600F8F5E1 /* GLCreateCarEstimate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AEEF1F320366F5600F8F5E1 /* GLCreateCarEstimate.storyboard */; };
 		8AEEF1F82037C20200F8F5E1 /* GLRadio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AEEF1F72037C20200F8F5E1 /* GLRadio.storyboard */; };
 		8AEEF1FA2037C41800F8F5E1 /* GLRadioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEEF1F92037C41800F8F5E1 /* GLRadioViewController.swift */; };
-		8AEEF1FE2039BB9100F8F5E1 /* mendian.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AEEF1FD2039BB9100F8F5E1 /* mendian.plist */; };
 		8AEEF200203FAF7700F8F5E1 /* GLSubmitLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AEEF1FF203FAF7700F8F5E1 /* GLSubmitLoadingView.xib */; };
 		8AEEF202203FB80D00F8F5E1 /* GLSubmitLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEEF201203FB80D00F8F5E1 /* GLSubmitLoadingView.swift */; };
 /* End PBXBuildFile section */
@@ -138,7 +137,6 @@
 		8AEEF1F320366F5600F8F5E1 /* GLCreateCarEstimate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLCreateCarEstimate.storyboard; sourceTree = "<group>"; };
 		8AEEF1F72037C20200F8F5E1 /* GLRadio.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLRadio.storyboard; sourceTree = "<group>"; };
 		8AEEF1F92037C41800F8F5E1 /* GLRadioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLRadioViewController.swift; sourceTree = "<group>"; };
-		8AEEF1FD2039BB9100F8F5E1 /* mendian.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = mendian.plist; sourceTree = "<group>"; };
 		8AEEF1FF203FAF7700F8F5E1 /* GLSubmitLoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLSubmitLoadingView.xib; sourceTree = "<group>"; };
 		8AEEF201203FB80D00F8F5E1 /* GLSubmitLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLSubmitLoadingView.swift; sourceTree = "<group>"; };
 		9CB69999B059A2B4CCF6A133 /* Pods-Yihaodar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yihaodar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Yihaodar/Pods-Yihaodar.release.xcconfig"; sourceTree = "<group>"; };
@@ -309,7 +307,6 @@
 		8AEEF1FB2039BA5B00F8F5E1 /* GLData */ = {
 			isa = PBXGroup;
 			children = (
-				8AEEF1FD2039BB9100F8F5E1 /* mendian.plist */,
 				8AD5E0CB2044461A00CB7CFF /* biansuqi.plist */,
 				8AD5E0CD2044468400CB7CFF /* qudongfangshi.plist */,
 				8AD5E0CF204446DF00CB7CFF /* youwu.plist */,
@@ -438,7 +435,6 @@
 				8AD5E0E420444D8500CB7CFF /* miaoshu.plist in Resources */,
 				8A1DAB99202ACE04001CBD0F /* GLMe.storyboard in Resources */,
 				8AEEF1F420366F5600F8F5E1 /* GLCreateCarEstimate.storyboard in Resources */,
-				8AEEF1FE2039BB9100F8F5E1 /* mendian.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1088,7 +1088,6 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
                                                                     <action selector="carYearCheckDateSelected:" destination="V3A-iC-KUW" eventType="touchUpInside" id="Ttd-4F-RwE"/>
-                                                                    <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="Up6-9a-Rbz"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*年检到期日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NK7-Mb-NMi">
@@ -1134,7 +1133,6 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
                                                                     <action selector="carTrafficDateSelected:" destination="V3A-iC-KUW" eventType="touchUpInside" id="VhT-M4-Cq3"/>
-                                                                    <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="6Z7-09-jv7"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="交强险" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtF-h1-d1S">
@@ -1180,7 +1178,6 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
                                                                     <action selector="carBusinessDateSelected:" destination="V3A-iC-KUW" eventType="touchUpInside" id="baq-Vm-Y70"/>
-                                                                    <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="42N-12-mKm"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商业险" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Q4-n2-Sdv">
@@ -1414,8 +1411,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3LO-VK-fHT">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
-                                                                    <action selector="carTransmissionAction:" destination="2Xf-ES-n2u" eventType="touchUpInside" id="OkD-Nn-Hz6"/>
-                                                                    <action selector="zhuguanBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="vnA-Cv-HuJ"/>
+                                                                    <action selector="gearboxAction:" destination="2Xf-ES-n2u" eventType="touchUpInside" id="LEa-sc-lPh"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*变速器" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mjk-ib-wBE">
@@ -1460,7 +1456,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veE-uW-Gfd">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
-                                                                    <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="2Ji-j7-a5J"/>
+                                                                    <action selector="drivingTypeAction:" destination="2Xf-ES-n2u" eventType="touchUpInside" id="aec-Va-iEW"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*驱动方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rtf-J5-Nz7">
@@ -1505,7 +1501,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9TD-83-aID">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
-                                                                    <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="yam-Xz-1UU"/>
+                                                                    <action selector="keylessStartupAction:" destination="2Xf-ES-n2u" eventType="touchUpInside" id="App-WI-6TM"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*无钥匙启动" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bl2-DA-VhH">
@@ -1550,7 +1546,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFt-zp-Lsd">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
-                                                                    <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="9rp-Ma-VZY"/>
+                                                                    <action selector="cruiseControlAction:" destination="2Xf-ES-n2u" eventType="touchUpInside" id="t1W-4r-iPz"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*定速巡航" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btX-le-C5c">
@@ -1595,7 +1591,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ur6-6A-l3E">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
-                                                                    <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="JBT-yU-yiA"/>
+                                                                    <action selector="navigationAction:" destination="2Xf-ES-n2u" eventType="touchUpInside" id="GmZ-vS-s1E"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*导航" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykW-ZV-ij7">
@@ -1640,7 +1636,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="73d-EJ-5H3">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
-                                                                    <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="uQd-ls-KUJ"/>
+                                                                    <action selector="hpylAction:" destination="2Xf-ES-n2u" eventType="touchUpInside" id="Qbe-BG-z0C"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*后排娱乐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgI-fY-46v">
@@ -1686,7 +1682,6 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
                                                                     <action selector="carSeatFormatAction:" destination="2Xf-ES-n2u" eventType="touchUpInside" id="stq-H4-QJE"/>
-                                                                    <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="Z3t-zs-IAy"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*座椅形式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Exf-xz-VfW">
@@ -1731,7 +1726,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8E-Ju-19d">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
-                                                                    <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="uri-NP-GyS"/>
+                                                                    <action selector="fuelTypeAction:" destination="2Xf-ES-n2u" eventType="touchUpInside" id="NP0-sq-e2s"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*燃油方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TON-MN-eKF">
@@ -1776,6 +1771,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6jL-Ti-am8">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
+                                                                    <action selector="skylightAction:" destination="2Xf-ES-n2u" eventType="touchUpInside" id="WYh-2J-aLg"/>
                                                                     <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="cnl-Wn-GtO"/>
                                                                 </connections>
                                                             </button>
@@ -1821,7 +1817,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V44-No-r25">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
-                                                                    <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="dqf-Tw-LDa"/>
+                                                                    <action selector="airConditionerAction:" destination="2Xf-ES-n2u" eventType="touchUpInside" id="3SG-VK-seN"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*空调配置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7d-X7-H52">
@@ -1866,7 +1862,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNm-Qe-Eyl">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
-                                                                    <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="5e4-1e-xq9"/>
+                                                                    <action selector="otherAction:" destination="2Xf-ES-n2u" eventType="touchUpInside" id="4zO-2e-8fI"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="其他" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Sw-t4-urw">
@@ -1911,7 +1907,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K46-dZ-rGP">
                                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="70"/>
                                                                 <connections>
-                                                                    <action selector="zongjianBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="hnU-eo-yaF"/>
+                                                                    <action selector="accidentAction:" destination="2Xf-ES-n2u" eventType="touchUpInside" id="To0-5n-Zdb"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="事故" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEb-UM-eOI">
@@ -2007,6 +2003,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="openOrFoldBtnClick:" destination="8zp-dz-x7H" eventType="touchUpInside" id="I9Q-js-dT2"/>
+                                                    <action selector="openOrFoldBtnClick:" destination="2Xf-ES-n2u" eventType="touchUpInside" id="qzA-HJ-B5e"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -2041,6 +2038,25 @@
                         <viewLayoutGuide key="safeArea" id="TYZ-AO-RBF"/>
                     </view>
                     <size key="freeformSize" width="375" height="2000"/>
+                    <connections>
+                        <outlet property="accidentLabel" destination="A3g-Wz-84d" id="uXN-25-gay"/>
+                        <outlet property="airConditionerLabel" destination="c9V-Q3-erl" id="lyb-o2-vQO"/>
+                        <outlet property="cruiseControlLabel" destination="mEW-gF-peW" id="6by-tx-wx9"/>
+                        <outlet property="drivingTypeLabel" destination="O50-Sz-nGD" id="urt-Io-wJU"/>
+                        <outlet property="fuelTypeLabel" destination="KfR-Px-fNZ" id="z5N-lW-Zaz"/>
+                        <outlet property="gearboxLabel" destination="CBd-Gj-izX" id="BKn-Mo-Cuh"/>
+                        <outlet property="hpylLabel" destination="ZU1-lm-ZHw" id="kCe-UA-QSc"/>
+                        <outlet property="keylessStartupLabel" destination="HRc-Yx-Qmg" id="TZg-tS-AjU"/>
+                        <outlet property="navigationLabel" destination="5Lb-A7-wtd" id="G5c-Mp-2vH"/>
+                        <outlet property="openOrFoldBtn" destination="w9E-Am-zwR" id="czT-F2-haF"/>
+                        <outlet property="otherLabel" destination="cK6-eU-OAB" id="RGO-vU-M0x"/>
+                        <outlet property="seatFormatLabel" destination="c8N-LX-2zO" id="Pma-ab-ZmX"/>
+                        <outlet property="skylightLabel" destination="ag1-tD-28S" id="VCV-2C-ddB"/>
+                        <outletCollection property="optionViews" destination="z78-UX-tlk" collectionClass="NSMutableArray" id="eNL-sW-rh9"/>
+                        <outletCollection property="optionViews" destination="I64-Cf-uwX" collectionClass="NSMutableArray" id="P6W-NT-g1j"/>
+                        <outletCollection property="optionViewsHeight" destination="O2H-84-sw7" collectionClass="NSMutableArray" id="ScX-4d-WlQ"/>
+                        <outletCollection property="optionViewsHeight" destination="GzV-hU-kFm" collectionClass="NSMutableArray" id="g0j-Ia-bzJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jvp-gF-myw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -16,28 +16,45 @@ class GLCheckBoxCell: UITableViewCell {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var textFieldHeight: NSLayoutConstraint!
     
+    var changeModelClosure: ((GLRadioModel)->())?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
+    
+    @IBAction func textFieldDidEditing(_ sender: UITextField) {
+        model?.input = textField.text
+        guard let changeBlock = changeModelClosure else { return }
+        guard let m = model else { return }
+        changeBlock(m)
+    }
+    
     var model: GLRadioModel?{
         didSet{
             titleLabel.text = model?.title
             
-            if model?.inputPlaceHolder != nil {
-                textFieldHeight.constant = 21
-                textField.isHidden = false
-            } else {
-                textField.isHidden = true
-                textFieldHeight.constant = 0
-            }
             
             if model?.isSelected == true {
                 selectBtn.isSelected = true
                 titleLabel.textColor = UIColor(hex: "19A4FF")
+                if model?.isTextFied == true {
+                    textFieldHeight.constant = 21
+                    textField.isHidden = false
+                    textField.text = model?.input
+                    textField.placeholder = model?.inputPlaceHolder
+                } else {
+                    textField.isHidden = true
+                    textFieldHeight.constant = 0
+                }
             } else {
                 selectBtn.isSelected = false
                 titleLabel.textColor = UIColor(hex: "99a0aa")
+                textField.isHidden = true
+                textFieldHeight.constant = 0
+            }
+            
+            UIView.animate(withDuration: 0.25) {
+                self.layoutIfNeeded()
             }
         }
     }
@@ -48,11 +65,7 @@ class GLCheckBoxCell: UITableViewCell {
 
 class GLCheckBoxViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    var dataArray = [GLRadioModel]() {
-        didSet {
-            
-        }
-    }
+    var dataArray = NSMutableArray()
     var selectArray = [GLRadioModel]()
     var closeClosure: ((_ selecArr: [GLRadioModel])->())?
     
@@ -63,40 +76,70 @@ class GLCheckBoxViewController: UIViewController {
     }
     
     @objc func sureBtnAction() {
-        //延时执行
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [weak self] in
-            guard let closure = self?.closeClosure else { return }
-            self?.selectArray.removeAll()
-            self?.dataArray.enumerated().forEach { (index, obj) in
-                if obj.isSelected == true {
-                    self?.selectArray.append(obj)
-                }
+        
+        guard let closure = closeClosure else { return }
+        selectArray = (dataArray as! [GLRadioModel]).flatMap({ (radioModel) -> GLRadioModel? in
+            if radioModel.isSelected == true {
+                return radioModel
+            } else {
+                return nil
             }
-            closure((self?.selectArray)!)
-            self?.navigationController?.popViewController(animated: true)
+        })
+        
+        if selectArray.count == 0 {
+            view.makeToast("请至少选择一项")
+            return
         }
+        
+        var requireInput = false
+        selectArray.forEach { (radioModel) in
+            if radioModel.isTextFied && radioModel.input?.isEmpty == true {
+                view.makeToast("请输入\(radioModel.title ?? "")")
+                requireInput = true
+            }
+        }
+        if requireInput == true { return }
+        
+        closure(selectArray)
+        navigationController?.popViewController(animated: true)
+        
+    }
+    
+    
+    /// 跳转多选控制器
+    public static func jumpMultiVc(title: String?, dataArray: [GLRadioModel], navigationVc: UINavigationController?) -> GLCheckBoxViewController {
+        
+        let multiVc = UIStoryboard(name: "GLCheckBox", bundle: Bundle.main).instantiateInitialViewController() as! GLCheckBoxViewController
+        multiVc.navigationItem.title = title
+        multiVc.dataArray = (dataArray as NSArray).mutableCopy() as! NSMutableArray
+        navigationVc?.pushViewController(multiVc, animated: true)
+        return multiVc
     }
     
 }
 extension GLCheckBoxViewController: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return dataArray.count
+        return dataArray.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "GLCheckBoxCell") as? GLCheckBoxCell else {
             return UITableViewCell()
         }
-        cell.model = dataArray[indexPath.row]
+        cell.model = dataArray[indexPath.row] as? GLRadioModel
+        
+        cell.changeModelClosure = { [weak self] (model) in
+            self?.dataArray.replaceObject(at: indexPath.row, with: model)
+        }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var model = dataArray[indexPath.row]
+        var model = dataArray[indexPath.row] as! GLRadioModel
         model.isSelected = !model.isSelected
-        dataArray.replaceSubrange(Range(indexPath.row...indexPath.row), with: [model])
-        tableView.reloadData()
+        dataArray.replaceObject(at: indexPath.row, with: model)
+        tableView.reloadRows(at: [indexPath], with: .fade)
     }
     
 }
