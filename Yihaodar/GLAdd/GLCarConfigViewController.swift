@@ -87,6 +87,34 @@ class GLCarConfigViewController: UIViewController {
         }
         */
         
+        /// 存入提交模型中
+        GLEstimateResultViewController.summitModel.gearbox = gearboxLabel.text ?? ""
+        GLEstimateResultViewController.summitModel.driving_type = drivingTypeLabel.text ?? ""
+        GLEstimateResultViewController.summitModel.keyless_startup = keylessStartupLabel.text ?? ""
+        GLEstimateResultViewController.summitModel.cruise_control = cruiseControlLabel.text ?? ""
+        GLEstimateResultViewController.summitModel.navigation = navigationLabel.text ?? ""
+        GLEstimateResultViewController.summitModel.hpyl = hpylLabel.text ?? ""
+        GLEstimateResultViewController.summitModel.chair_type = seatFormatLabel.text ?? ""
+        GLEstimateResultViewController.summitModel.fuel_type = fuelTypeLabel.text ?? ""
+        GLEstimateResultViewController.summitModel.skylight = skylightLabel.text ?? ""
+        GLEstimateResultViewController.summitModel.air_conditioner = airConditionerLabel.text ?? ""
+        GLEstimateResultViewController.summitModel.other = otherLabel.text ?? ""
+        GLEstimateResultViewController.summitModel.accident = accidentLabel.text ?? ""
+        
+        selectedOtherModels?.forEach({ (radioModel) in
+            if radioModel.isTextFied {
+                GLEstimateResultViewController.summitModel.airbag =  radioModel.input ?? ""
+            }
+        })
+        
+        selectedAccidentModels?.forEach({ (radioModel) in
+            if radioModel.isTextFied {
+                GLEstimateResultViewController.summitModel.accident_level = radioModel.input ?? ""
+            }
+        })
+        
+        
+        
         let vc = UIStoryboard(name: "GLCreateCarEstimate", bundle: Bundle(for: type(of: self))).instantiateViewController(withIdentifier: "GLCarStateViewController") as! GLCarStateViewController
         navigationController?.pushViewController(vc, animated: true)
     }

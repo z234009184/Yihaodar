@@ -45,6 +45,20 @@ struct GLSubmitModel: HandyJSON {
     var sy_insurance = ""
     var insurance_due_date: String?
     
+    var gearbox = ""
+    var driving_type = ""
+    var keyless_startup = ""
+    var cruise_control = ""
+    var navigation = ""
+    var hpyl = ""
+    var chair_type = ""
+    var fuel_type = ""
+    var skylight = ""
+    var air_conditioner = ""
+    var other = ""
+    var airbag = ""
+    var accident = ""
+    var accident_level = ""
     
     
 }
