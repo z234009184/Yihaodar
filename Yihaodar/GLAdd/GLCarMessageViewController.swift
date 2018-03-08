@@ -83,10 +83,16 @@ class GLCarMessageViewController: UIViewController {
         navigationItem.title = "新建车辆评估"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "下一步", style: .done, target: self, action: #selector(GLCarMessageViewController.nextBtnClick(item:)))
         carPeccancySwitch.isOn = false
+        
         peccancySwitch(carPeccancySwitch)
         openOrFoldBtnClick(openOrFoldBtn)
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
     
     @objc func nextBtnClick(item: UIBarButtonItem) {
         /*
@@ -342,18 +348,18 @@ class GLCarMessageViewController: UIViewController {
     @IBAction func openOrFoldBtnClick(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if sender.isSelected == true {
-            contraints.enumerated().forEach({ (index, obj) in
+            contraints.forEach({ (obj) in
                 obj.constant = 70
             })
-            constraintsViews.enumerated().forEach({ (index, obj) in
+            constraintsViews.forEach({ (obj) in
                 obj.isHidden = false
             })
             
         } else {
-            contraints.enumerated().forEach({ (index, obj) in
-                obj.constant = 0
+            contraints.forEach({ (obj) in
+                obj.constant = 0.0
             })
-            constraintsViews.enumerated().forEach({ (index, obj) in
+            constraintsViews.forEach({ (obj) in
                 obj.isHidden = true
             })
         }

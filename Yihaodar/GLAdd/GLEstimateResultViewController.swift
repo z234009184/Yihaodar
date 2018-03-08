@@ -60,9 +60,17 @@ struct GLSubmitModel: HandyJSON {
     var accident = ""
     var accident_level = ""
     
-    
+    var ccrpList = [GLCcrpModel]()
 }
 
+struct GLCcrpModel: HandyJSON {
+    var id: String?
+    var cust_request_id: String?
+    var parts_one_id = ""
+    var parts_two_id = ""
+    var accident_type = ""
+    var remarks: String?
+}
 
 
 

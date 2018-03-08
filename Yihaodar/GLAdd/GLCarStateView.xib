@@ -55,6 +55,9 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5WH-H7-XuV">
                             <rect key="frame" x="0.0" y="0.0" width="424" height="70"/>
+                            <connections>
+                                <action selector="partOneAction:" destination="arL-ea-99W" eventType="touchUpInside" id="GT2-AJ-z1p"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*车构件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5M-XV-dvR">
                             <rect key="frame" x="10" y="15" width="46" height="16"/>
@@ -97,6 +100,9 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyD-6T-IEd">
                             <rect key="frame" x="0.0" y="0.0" width="424" height="70"/>
+                            <connections>
+                                <action selector="partTwoAction:" destination="arL-ea-99W" eventType="touchUpInside" id="Grj-PF-5Jn"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*部件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4OS-eh-TeK">
                             <rect key="frame" x="10" y="15" width="33" height="16"/>
@@ -139,6 +145,9 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xG7-dy-sWz">
                             <rect key="frame" x="0.0" y="0.0" width="424" height="70"/>
+                            <connections>
+                                <action selector="descAction:" destination="arL-ea-99W" eventType="touchUpInside" id="Hyq-5e-m2m"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*描述" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zif-wI-he0">
                             <rect key="frame" x="10" y="15" width="33" height="16"/>
@@ -179,9 +188,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mN9-DI-Wdq">
                     <rect key="frame" x="0.0" y="254" width="424" height="72"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HIm-1O-8de">
-                            <rect key="frame" x="0.0" y="0.0" width="424" height="72"/>
-                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="补充说明" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ize-gP-X6c">
                             <rect key="frame" x="10" y="15" width="54" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -209,13 +215,9 @@
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="jEv-cT-UYo" secondAttribute="bottom" constant="8" id="1OY-bx-NyE"/>
                         <constraint firstItem="jEv-cT-UYo" firstAttribute="top" secondItem="Ize-gP-X6c" secondAttribute="bottom" constant="3" id="49A-X0-eyq"/>
-                        <constraint firstAttribute="bottom" secondItem="HIm-1O-8de" secondAttribute="bottom" id="BEp-u4-liI"/>
                         <constraint firstAttribute="trailing" secondItem="jEv-cT-UYo" secondAttribute="trailing" constant="10" id="EIp-pd-zm7"/>
-                        <constraint firstAttribute="trailing" secondItem="HIm-1O-8de" secondAttribute="trailing" id="ROj-zv-lyr"/>
-                        <constraint firstItem="HIm-1O-8de" firstAttribute="top" secondItem="mN9-DI-Wdq" secondAttribute="top" id="Rfa-E9-8zp"/>
                         <constraint firstItem="Ize-gP-X6c" firstAttribute="leading" secondItem="mN9-DI-Wdq" secondAttribute="leading" constant="10" id="RkV-qA-HJB"/>
                         <constraint firstItem="Ize-gP-X6c" firstAttribute="top" secondItem="mN9-DI-Wdq" secondAttribute="top" constant="15" id="Use-7C-7pC"/>
-                        <constraint firstItem="HIm-1O-8de" firstAttribute="leading" secondItem="mN9-DI-Wdq" secondAttribute="leading" id="iKm-f8-7Sc"/>
                         <constraint firstItem="jEv-cT-UYo" firstAttribute="leading" secondItem="mN9-DI-Wdq" secondAttribute="leading" constant="10" id="zfA-iJ-jbn"/>
                     </constraints>
                 </view>
@@ -248,9 +250,13 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="deleteBtn" destination="fNA-dj-vv6" id="S32-bS-23v"/>
+                <outlet property="descLabel" destination="nIp-G9-vds" id="WcO-Qj-nRH"/>
+                <outlet property="partOneLabel" destination="KvE-II-K2B" id="b4A-LJ-xs9"/>
+                <outlet property="partTwoLabel" destination="bCm-wS-CRL" id="RHL-R3-4Z8"/>
+                <outlet property="remarksLabel" destination="jEv-cT-UYo" id="hNu-9Y-Wld"/>
                 <outlet property="textViewHeight" destination="TrJ-Bs-MFB" id="Bdi-tN-qFs"/>
             </connections>
-            <point key="canvasLocation" x="-551" y="-746"/>
+            <point key="canvasLocation" x="-1146" y="-772"/>
         </view>
     </objects>
     <resources>

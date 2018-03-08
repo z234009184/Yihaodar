@@ -73,6 +73,12 @@ struct GLCarPartsModel: HandyJSON {
     var dname: String = ""
 }
 
+/// 部件
+struct GLCarPartsSubModel: HandyJSON {
+    var id: String = ""
+    var value: String = ""
+    var dname: String = ""
+}
 
 /// 描述
 struct GLCarTPartsModel: HandyJSON {
@@ -92,6 +98,7 @@ struct GLCreateDataModel: HandyJSON {
     var brandSeriesList: [GLCarSeriesModel] = []
     var carStyleList: [GLCarStyleModel] = []
     var partsList: [GLCarPartsModel] = []
+    var partsSubList: [GLCarPartsSubModel] = []
     var tpartsList: [GLCarTPartsModel] = []
 }
 

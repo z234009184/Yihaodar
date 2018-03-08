@@ -8,9 +8,14 @@
 
 import Spring
 import FSPagerView
+import SwiftyJSON
 
 class GLCarStateViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
+    private lazy var arr = [GLCarStateView]()
+    @IBOutlet weak var addView: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,18 +27,54 @@ class GLCarStateViewController: UIViewController {
     }
     
     @objc func nextBtnClick(item: UIBarButtonItem) {
+        
+        /// 过滤
+        var requireParam = false
+        let stateArray = arr.flatMap { [weak self] (carStateView) -> GLCcrpModel? in
+            if carStateView.selectedPartModel == nil {
+                self?.view.makeToast("请选择车构件")
+                requireParam = true
+                return nil
+            }
+            
+            if carStateView.selectedPartSubModel == nil {
+                self?.view.makeToast("请选择部件")
+                requireParam = true
+                return nil
+            }
+            
+            if carStateView.selectedTPartModel == nil {
+                view.makeToast("请选择描述")
+                requireParam = true
+                return nil
+            }
+            
+            let ccrpModel = GLCcrpModel(id: nil, cust_request_id: nil, parts_one_id: carStateView.partOneLabel.text ?? "", parts_two_id: carStateView.partTwoLabel.text ?? "", accident_type: carStateView.descLabel.text ?? "", remarks: carStateView.remarksLabel.text)
+            
+            return ccrpModel
+            
+        }
+        
+        if requireParam == true { return }
+        
+        
+        /// 赋值
+        GLEstimateResultViewController.summitModel.ccrpList = stateArray
+        
+        
         let vc = UIStoryboard(name: "GLCreateCarEstimate", bundle: Bundle(for: type(of: self))).instantiateViewController(withIdentifier: "GLUploadPictureViewController") as! GLUploadPictureViewController
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    private lazy var arr = [GLCarStateView]()
-    @IBOutlet weak var addView: UIView!
+    
+    
     @IBAction func addCarStateBtnClick(_ sender: UIButton) {
+        
         let carStateView = Bundle.main.loadNibNamed("GLCarStateView", owner: nil, options: nil)?.first as! GLCarStateView
         contentView.addSubview(carStateView)
         
-        carStateView.snp.updateConstraints { (make) in
-            
+        /// 布局
+        carStateView.snp.remakeConstraints { (make) in
             if let lastView = arr.last {
                 make.top.equalTo(lastView.snp.bottom).offset(10)
             } else {
@@ -42,14 +83,76 @@ class GLCarStateViewController: UIViewController {
             make.left.equalTo(contentView).offset(10)
             make.right.equalTo(contentView).offset(-10)
         }
-        
         addView.snp.remakeConstraints { (make) in
             make.top.equalTo(carStateView.snp.bottom).offset(40)
         }
+        UIView.animate(withDuration: 0.25, animations: {
+            self.view.layoutIfNeeded()
+        })
+        
+        weak var weakCarStateView = carStateView
+        
+        /// 设置数据
+        carStateView.partOneClosure = { [weak self] in
+            /// 处理数据
+            let dataArr = GLCreateCarEstimateViewController.model?.partsList.map({ (partsModel) -> GLRadioModel in
+                let radioModel = GLRadioModel(id: partsModel.id, title: partsModel.dname, subTitle: nil, isSelected: weakCarStateView?.selectedPartModel?.id == partsModel.id ? true : false, isTextFied: false, input: nil, inputPlaceHolder: nil)
+                return radioModel
+            })
+            guard let dataArray = dataArr else { return }
+            
+            let radioVc = GLRadioViewController.jumpRadioVc(title: "选择车构件", dataArray: dataArray, navigationVc: self?.navigationController)
+            radioVc.closeClosure = { (model: GLRadioModel) in
+                weakCarStateView?.selectedPartModel = model
+                weakCarStateView?.partOneLabel.text = model.title
+                self?.loadPartsSubData(carStateView: weakCarStateView!)
+            }
+        }
+        
+        carStateView.partTwoClosure = { [weak self] in
+            guard weakCarStateView?.selectedPartModel != nil else {
+                self?.view.makeToast("请选择车构件")
+                return
+            }
+            
+            /// 处理数据
+            let dataArr = GLCreateCarEstimateViewController.model?.partsSubList.map({ (partsSubModel) -> GLRadioModel in
+                let isSelected = weakCarStateView?.selectedPartSubModel?.id == partsSubModel.id ? true : false
+                let radioModel = GLRadioModel(id: partsSubModel.id, title: partsSubModel.dname, subTitle: nil, isSelected: isSelected, isTextFied: false, input: nil, inputPlaceHolder: nil)
+                return radioModel
+            })
+            guard let dataArray = dataArr else { return }
+            
+            let radioVc = GLRadioViewController.jumpRadioVc(title: "选择部件", dataArray: dataArray, navigationVc: self?.navigationController)
+            radioVc.closeClosure = { (model: GLRadioModel) in
+                weakCarStateView?.selectedPartSubModel = model
+                weakCarStateView?.partTwoLabel.text = model.title
+            }
+            
+        }
+        
+        carStateView.descClosure = { [weak self] in
+            /// 处理数据
+            let dataArr = GLCreateCarEstimateViewController.model?.tpartsList.map({ (tpartsModel) -> GLRadioModel in
+                let radioModel = GLRadioModel(id: tpartsModel.id, title: tpartsModel.dname, subTitle: nil, isSelected: weakCarStateView?.selectedTPartModel?.id == tpartsModel.id ? true : false, isTextFied: false, input: nil, inputPlaceHolder: nil)
+                return radioModel
+            })
+            guard let dataArray = dataArr else { return }
+            
+            let radioVc = GLRadioViewController.jumpRadioVc(title: "选择车构件", dataArray: dataArray, navigationVc: self?.navigationController)
+            radioVc.closeClosure = { (model: GLRadioModel) in
+                weakCarStateView?.selectedTPartModel = model
+                weakCarStateView?.descLabel.text = model.title
+            }
+        }
+        
+        
+        
+        /// 添加到数组中
         arr.append(carStateView)
         
         
-        weak var weakCarStateView = carStateView
+        /// 删除
         carStateView.deleteClosure = { [weak self] in
             guard let weakCarStateView = weakCarStateView else { return }
             let index = self?.arr.index(of: weakCarStateView)
@@ -74,10 +177,31 @@ class GLCarStateViewController: UIViewController {
                 self?.view.layoutIfNeeded()
             })
         }
-        UIView.animate(withDuration: 0.25, animations: {
-            self.view.layoutIfNeeded()
-        })
+        
     }
+    
+    
+    /// 加载部件数据
+    func loadPartsSubData(carStateView: GLCarStateView) -> Void {
+        guard let partOneId = carStateView.selectedPartModel?.id else {
+            self.view.makeToast("车构件ID为空")
+            return
+        }
+        self.navigationController?.view.showLoading()
+        GLProvider.request(GLService.getInfoByPid(pid: partOneId)) { [weak self] (result) in
+            if case let .success(respon) = result {
+                let jsonStr = JSON(respon.data)
+                print(jsonStr)
+                
+                GLCreateCarEstimateViewController.model?.partsSubList = [GLCarPartsSubModel].deserialize(from: jsonStr.rawString(), designatedPath: "results.data") as! [GLCarPartsSubModel]
+                
+            }
+            self?.navigationController?.view.hideLoading()
+        }
+    }
+    
+    
+    
     
     
     lazy var tabBarVc = navigationController?.presentingViewController as! GLTabBarController

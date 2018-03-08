@@ -1024,7 +1024,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CL6-Dy-UGT" customClass="DesignableTextField" customModule="Spring">
-                                                                <rect key="frame" x="10" y="36" width="330" height="28"/>
+                                                                <rect key="frame" x="10" y="41" width="330" height="18"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -1032,7 +1032,6 @@
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstItem="cQU-aW-cfB" firstAttribute="top" secondItem="CL6-Dy-UGT" secondAttribute="bottom" constant="5" id="28y-0M-IEb"/>
                                                             <constraint firstItem="zve-jM-dFC" firstAttribute="leading" secondItem="IOJ-zz-a9D" secondAttribute="leading" constant="10" id="EfP-gv-NKa"/>
                                                             <constraint firstItem="zve-jM-dFC" firstAttribute="top" secondItem="IOJ-zz-a9D" secondAttribute="top" constant="15" id="Isr-Pd-SDy"/>
                                                             <constraint firstItem="CL6-Dy-UGT" firstAttribute="leading" secondItem="zve-jM-dFC" secondAttribute="leading" id="OLt-7K-QlY"/>
@@ -1040,7 +1039,7 @@
                                                             <constraint firstAttribute="trailing" secondItem="CL6-Dy-UGT" secondAttribute="trailing" constant="15" id="bN0-s3-3eE"/>
                                                             <constraint firstAttribute="bottom" secondItem="cQU-aW-cfB" secondAttribute="bottom" id="n22-hu-wDr"/>
                                                             <constraint firstAttribute="height" constant="70" id="nBn-CQ-zQK"/>
-                                                            <constraint firstItem="CL6-Dy-UGT" firstAttribute="top" secondItem="zve-jM-dFC" secondAttribute="bottom" constant="5" id="oEN-CN-EXO"/>
+                                                            <constraint firstItem="CL6-Dy-UGT" firstAttribute="top" secondItem="zve-jM-dFC" secondAttribute="bottom" constant="10" id="oEN-CN-EXO"/>
                                                             <constraint firstAttribute="trailing" secondItem="cQU-aW-cfB" secondAttribute="trailing" id="vCI-3H-o5W"/>
                                                         </constraints>
                                                     </view>
@@ -1053,6 +1052,12 @@
                                                                 <color key="textColor" red="0.59999999999999998" green="0.62745098040000002" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ciY-Io-2TS" customClass="DesignableTextField" customModule="Spring">
+                                                                <rect key="frame" x="10" y="41" width="330" height="18"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bcA-C3-cTB">
                                                                 <rect key="frame" x="8" y="69" width="347" height="1"/>
                                                                 <color key="backgroundColor" red="0.92941176469999998" green="0.93333333330000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1060,25 +1065,18 @@
                                                                     <constraint firstAttribute="height" constant="1" id="imG-U6-FFY"/>
                                                                 </constraints>
                                                             </view>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ciY-Io-2TS" customClass="DesignableTextField" customModule="Spring">
-                                                                <rect key="frame" x="10" y="36" width="330" height="28"/>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                            </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="ciY-Io-2TS" firstAttribute="leading" secondItem="9m9-O9-xOR" secondAttribute="leading" id="Eef-CZ-ymU"/>
                                                             <constraint firstAttribute="trailing" secondItem="ciY-Io-2TS" secondAttribute="trailing" constant="15" id="Frj-f2-u2A"/>
-                                                            <constraint firstItem="bcA-C3-cTB" firstAttribute="top" secondItem="ciY-Io-2TS" secondAttribute="bottom" constant="5" id="K5y-G6-4li"/>
                                                             <constraint firstItem="bcA-C3-cTB" firstAttribute="leading" secondItem="A4N-iW-BQv" secondAttribute="leading" constant="8" id="Q2a-sQ-M5f"/>
                                                             <constraint firstItem="9m9-O9-xOR" firstAttribute="leading" secondItem="A4N-iW-BQv" secondAttribute="leading" constant="10" id="ShD-88-Abe"/>
-                                                            <constraint firstItem="ciY-Io-2TS" firstAttribute="top" secondItem="9m9-O9-xOR" secondAttribute="bottom" constant="5" id="Si6-Mn-tGg"/>
                                                             <constraint firstAttribute="height" constant="70" id="WUR-a0-hE6"/>
                                                             <constraint firstAttribute="bottom" secondItem="bcA-C3-cTB" secondAttribute="bottom" id="Wl6-W2-oRc"/>
                                                             <constraint firstItem="9m9-O9-xOR" firstAttribute="top" secondItem="A4N-iW-BQv" secondAttribute="top" constant="15" id="bgh-1A-lvK"/>
                                                             <constraint firstAttribute="trailing" secondItem="bcA-C3-cTB" secondAttribute="trailing" id="lPs-6N-VQX"/>
+                                                            <constraint firstItem="ciY-Io-2TS" firstAttribute="top" secondItem="9m9-O9-xOR" secondAttribute="bottom" constant="10" id="xuU-eh-Tvj"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vy2-us-wdW">
@@ -1319,9 +1317,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="rv8-vc-Nsc" firstAttribute="top" secondItem="UFn-45-wzx" secondAttribute="top" id="0rf-WM-1gX"/>
-                            <constraint firstAttribute="trailing" secondItem="rv8-vc-Nsc" secondAttribute="trailing" id="JCQ-zp-18h"/>
                             <constraint firstItem="L1H-t2-3Cg" firstAttribute="bottom" secondItem="rv8-vc-Nsc" secondAttribute="bottom" id="YiA-of-9WS"/>
                             <constraint firstItem="rv8-vc-Nsc" firstAttribute="leading" secondItem="L1H-t2-3Cg" secondAttribute="leading" id="aPr-RK-S9N"/>
+                            <constraint firstItem="L1H-t2-3Cg" firstAttribute="trailing" secondItem="rv8-vc-Nsc" secondAttribute="trailing" id="aUh-xs-cqp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="L1H-t2-3Cg"/>
                     </view>
