@@ -165,10 +165,10 @@ class GLCreateCarEstimateViewController: UIViewController {
     
     @IBAction func nextBtnClick(_ sender: UIBarButtonItem) {
         
-        guard selectedMendianModel != nil else {
-            view.makeToast("请选择所属门店")
-            return
-        }
+//        guard selectedMendianModel != nil else {
+//            view.makeToast("请选择所属门店")
+//            return
+//        }
         
         /// 存入提交模型中
         GLEstimateResultViewController.summitModel.store = selectedMendianModel?.id ?? ""

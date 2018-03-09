@@ -414,9 +414,18 @@ class GLTaskDetailViewController: UIViewController {
 
 class GLTaskDetailPictureCell: UICollectionViewCell {
     
+    @IBOutlet weak var deleteBtn: UIButton!
+    var deleteClosure: ((GLTaskDetailPictureCell)->())?
+    
     @IBOutlet weak var imageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    @IBAction func deleteBtnClick(_ sender: UIButton) {
+        if let deleteClosure = deleteClosure {
+            deleteClosure(self)
+        }
     }
 }
 

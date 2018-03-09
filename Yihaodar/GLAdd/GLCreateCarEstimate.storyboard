@@ -2208,9 +2208,9 @@
                                                         <color key="textColor" red="0.59999999999999998" green="0.62745098040000002" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AjH-JS-xlD">
+                                                    <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AjH-JS-xlD">
                                                         <rect key="frame" x="10" y="54" width="290" height="190"/>
-                                                        <color key="backgroundColor" red="0.098039215690000001" green="0.64313725489999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="190" id="g5Y-j8-nTq"/>
                                                             <constraint firstAttribute="width" constant="290" id="me9-6d-A7S"/>
@@ -2229,9 +2229,20 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="EUp-0s-xGO">
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_add_picture" translatesAutoresizingMaskIntoConstraints="NO" id="EUp-0s-xGO">
                                                                             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                                         </imageView>
+                                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XxM-eV-Igr">
+                                                                            <rect key="frame" x="67" y="3" width="20" height="20"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="20" id="KsI-OS-grg"/>
+                                                                                <constraint firstAttribute="height" constant="20" id="xv0-M1-Jfb"/>
+                                                                            </constraints>
+                                                                            <state key="normal" image="add_delete"/>
+                                                                            <connections>
+                                                                                <action selector="deleteBtnClick:" destination="QbI-Sk-5Qu" eventType="touchUpInside" id="JLM-Px-mZH"/>
+                                                                            </connections>
+                                                                        </button>
                                                                     </subviews>
                                                                 </view>
                                                                 <color key="backgroundColor" red="0.79607843140000001" green="0.82745098039999998" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -2240,6 +2251,8 @@
                                                                     <constraint firstAttribute="bottom" secondItem="EUp-0s-xGO" secondAttribute="bottom" id="7Dt-kf-trO"/>
                                                                     <constraint firstAttribute="trailing" secondItem="EUp-0s-xGO" secondAttribute="trailing" id="HHF-q0-1Va"/>
                                                                     <constraint firstItem="EUp-0s-xGO" firstAttribute="leading" secondItem="QbI-Sk-5Qu" secondAttribute="leading" id="e0C-0L-HkK"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="XxM-eV-Igr" secondAttribute="trailing" constant="3" id="nMX-1t-iqJ"/>
+                                                                    <constraint firstItem="XxM-eV-Igr" firstAttribute="top" secondItem="QbI-Sk-5Qu" secondAttribute="top" constant="3" id="q50-yg-EBZ"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -2259,6 +2272,7 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
+                                                                    <outlet property="deleteBtn" destination="XxM-eV-Igr" id="3PU-Ka-OJz"/>
                                                                     <outlet property="imageView" destination="EUp-0s-xGO" id="cgH-Ai-WUW"/>
                                                                 </connections>
                                                             </collectionViewCell>
@@ -2332,7 +2346,7 @@
                                                     </label>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kjx-vJ-TA1">
                                                         <rect key="frame" x="10" y="54" width="290" height="190"/>
-                                                        <color key="backgroundColor" red="0.098039215690000001" green="0.64313725489999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="190" id="Xhj-Ma-bCc"/>
                                                             <constraint firstAttribute="width" constant="290" id="iDU-Nm-M4o"/>
@@ -2351,9 +2365,20 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="mOB-CP-9eF">
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_add_picture" translatesAutoresizingMaskIntoConstraints="NO" id="mOB-CP-9eF">
                                                                             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                                         </imageView>
+                                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqZ-wU-zVO">
+                                                                            <rect key="frame" x="67" y="3" width="20" height="20"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="20" id="agb-eC-WIM"/>
+                                                                                <constraint firstAttribute="height" constant="20" id="jgt-wf-WoP"/>
+                                                                            </constraints>
+                                                                            <state key="normal" image="add_delete"/>
+                                                                            <connections>
+                                                                                <action selector="deleteBtnClick:" destination="pM9-ru-vtj" eventType="touchUpInside" id="vvi-UL-RX0"/>
+                                                                            </connections>
+                                                                        </button>
                                                                     </subviews>
                                                                 </view>
                                                                 <color key="backgroundColor" red="0.79607843140000001" green="0.82745098039999998" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -2361,6 +2386,8 @@
                                                                     <constraint firstItem="mOB-CP-9eF" firstAttribute="leading" secondItem="pM9-ru-vtj" secondAttribute="leading" id="DXG-Am-cpU"/>
                                                                     <constraint firstAttribute="trailing" secondItem="mOB-CP-9eF" secondAttribute="trailing" id="SkY-i9-o4y"/>
                                                                     <constraint firstAttribute="bottom" secondItem="mOB-CP-9eF" secondAttribute="bottom" id="nDI-Oo-d8v"/>
+                                                                    <constraint firstItem="xqZ-wU-zVO" firstAttribute="top" secondItem="pM9-ru-vtj" secondAttribute="top" constant="3" id="pMh-LY-jF7"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="xqZ-wU-zVO" secondAttribute="trailing" constant="3" id="qWB-eS-gZO"/>
                                                                     <constraint firstItem="mOB-CP-9eF" firstAttribute="top" secondItem="pM9-ru-vtj" secondAttribute="top" id="wUE-Z9-wed"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
@@ -2381,10 +2408,15 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
+                                                                    <outlet property="deleteBtn" destination="xqZ-wU-zVO" id="GnI-Nz-2fa"/>
                                                                     <outlet property="imageView" destination="mOB-CP-9eF" id="01T-YH-qIZ"/>
                                                                 </connections>
                                                             </collectionViewCell>
                                                         </cells>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="FaG-i5-sSS" id="ejC-H1-daf"/>
+                                                            <outlet property="delegate" destination="FaG-i5-sSS" id="bsv-K0-Aa8"/>
+                                                        </connections>
                                                     </collectionView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2450,7 +2482,7 @@
                                                     </label>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DJV-eX-K1o">
                                                         <rect key="frame" x="10" y="54" width="290" height="190"/>
-                                                        <color key="backgroundColor" red="0.098039215690000001" green="0.64313725489999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="290" id="XSl-oL-S88"/>
                                                             <constraint firstAttribute="height" constant="190" id="kll-wB-XDP"/>
@@ -2469,17 +2501,30 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="okk-dK-hbF">
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_add_picture" translatesAutoresizingMaskIntoConstraints="NO" id="okk-dK-hbF">
                                                                             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                                         </imageView>
+                                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCZ-N3-yym">
+                                                                            <rect key="frame" x="67" y="3" width="20" height="20"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="20" id="NeI-dT-x6B"/>
+                                                                                <constraint firstAttribute="width" constant="20" id="O3E-D8-vhF"/>
+                                                                            </constraints>
+                                                                            <state key="normal" image="add_delete"/>
+                                                                            <connections>
+                                                                                <action selector="deleteBtnClick:" destination="eNc-ro-jjm" eventType="touchUpInside" id="c1t-CJ-Y72"/>
+                                                                            </connections>
+                                                                        </button>
                                                                     </subviews>
                                                                 </view>
                                                                 <color key="backgroundColor" red="0.79607843140000001" green="0.82745098039999998" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstItem="okk-dK-hbF" firstAttribute="top" secondItem="eNc-ro-jjm" secondAttribute="top" id="3BN-Ty-Hjz"/>
+                                                                    <constraint firstItem="OCZ-N3-yym" firstAttribute="top" secondItem="eNc-ro-jjm" secondAttribute="top" constant="3" id="7WZ-f0-LMN"/>
                                                                     <constraint firstAttribute="bottom" secondItem="okk-dK-hbF" secondAttribute="bottom" id="7zl-Of-Sa3"/>
                                                                     <constraint firstItem="okk-dK-hbF" firstAttribute="leading" secondItem="eNc-ro-jjm" secondAttribute="leading" id="RY6-iJ-Lcm"/>
                                                                     <constraint firstAttribute="trailing" secondItem="okk-dK-hbF" secondAttribute="trailing" id="vCd-7f-9EW"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="OCZ-N3-yym" secondAttribute="trailing" constant="3" id="xrq-8H-e7w"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -2499,10 +2544,15 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
+                                                                    <outlet property="deleteBtn" destination="OCZ-N3-yym" id="svW-vy-apM"/>
                                                                     <outlet property="imageView" destination="okk-dK-hbF" id="5qe-6b-Mms"/>
                                                                 </connections>
                                                             </collectionViewCell>
                                                         </cells>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="FaG-i5-sSS" id="2PR-Vs-uQ2"/>
+                                                            <outlet property="delegate" destination="FaG-i5-sSS" id="xae-Hi-2SS"/>
+                                                        </connections>
                                                     </collectionView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2568,7 +2618,7 @@
                                                     </label>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bdr-aQ-7Nc">
                                                         <rect key="frame" x="10" y="54" width="290" height="190"/>
-                                                        <color key="backgroundColor" red="0.098039215690000001" green="0.64313725489999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="190" id="6ih-gC-0OC"/>
                                                             <constraint firstAttribute="width" constant="290" id="rt6-qm-87y"/>
@@ -2587,15 +2637,28 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="ahu-ub-iic">
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_add_picture" translatesAutoresizingMaskIntoConstraints="NO" id="ahu-ub-iic">
                                                                             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                                         </imageView>
+                                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cML-iJ-sK7">
+                                                                            <rect key="frame" x="67" y="3" width="20" height="20"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="20" id="CKF-Oe-Yva"/>
+                                                                                <constraint firstAttribute="height" constant="20" id="ehF-bd-X5y"/>
+                                                                            </constraints>
+                                                                            <state key="normal" image="add_delete"/>
+                                                                            <connections>
+                                                                                <action selector="deleteBtnClick:" destination="syo-ug-CgC" eventType="touchUpInside" id="70N-ha-YnK"/>
+                                                                            </connections>
+                                                                        </button>
                                                                     </subviews>
                                                                 </view>
                                                                 <color key="backgroundColor" red="0.79607843140000001" green="0.82745098039999998" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstItem="ahu-ub-iic" firstAttribute="top" secondItem="syo-ug-CgC" secondAttribute="top" id="3LY-MA-Pgs"/>
+                                                                    <constraint firstItem="cML-iJ-sK7" firstAttribute="top" secondItem="syo-ug-CgC" secondAttribute="top" constant="3" id="9dr-6Y-xXn"/>
                                                                     <constraint firstAttribute="trailing" secondItem="ahu-ub-iic" secondAttribute="trailing" id="Fgi-no-ayZ"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="cML-iJ-sK7" secondAttribute="trailing" constant="3" id="Jmb-Iy-GRZ"/>
                                                                     <constraint firstAttribute="bottom" secondItem="ahu-ub-iic" secondAttribute="bottom" id="Xsv-aa-oeY"/>
                                                                     <constraint firstItem="ahu-ub-iic" firstAttribute="leading" secondItem="syo-ug-CgC" secondAttribute="leading" id="zcK-Ee-vZE"/>
                                                                 </constraints>
@@ -2617,10 +2680,15 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
+                                                                    <outlet property="deleteBtn" destination="cML-iJ-sK7" id="rm5-1t-s6N"/>
                                                                     <outlet property="imageView" destination="ahu-ub-iic" id="9C2-pf-KGc"/>
                                                                 </connections>
                                                             </collectionViewCell>
                                                         </cells>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="FaG-i5-sSS" id="UjL-Y2-Z11"/>
+                                                            <outlet property="delegate" destination="FaG-i5-sSS" id="4Vy-Ih-ZEv"/>
+                                                        </connections>
                                                     </collectionView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2686,7 +2754,7 @@
                                                     </label>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ypm-Sr-TrF">
                                                         <rect key="frame" x="10" y="54" width="290" height="190"/>
-                                                        <color key="backgroundColor" red="0.098039215690000001" green="0.64313725489999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="290" id="OcW-wO-LoI"/>
                                                             <constraint firstAttribute="height" constant="190" id="QQs-Cb-Uuy"/>
@@ -2705,15 +2773,28 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="KA8-vg-est">
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_add_picture" translatesAutoresizingMaskIntoConstraints="NO" id="KA8-vg-est">
                                                                             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                                         </imageView>
+                                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eBy-la-GEM">
+                                                                            <rect key="frame" x="67" y="3" width="20" height="20"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="20" id="233-Gp-S33"/>
+                                                                                <constraint firstAttribute="height" constant="20" id="GjG-cM-0kO"/>
+                                                                            </constraints>
+                                                                            <state key="normal" image="add_delete"/>
+                                                                            <connections>
+                                                                                <action selector="deleteBtnClick:" destination="FUr-Q6-vf3" eventType="touchUpInside" id="dpw-ua-mAi"/>
+                                                                            </connections>
+                                                                        </button>
                                                                     </subviews>
                                                                 </view>
                                                                 <color key="backgroundColor" red="0.79607843140000001" green="0.82745098039999998" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="bottom" secondItem="KA8-vg-est" secondAttribute="bottom" id="1fq-sJ-1wK"/>
                                                                     <constraint firstItem="KA8-vg-est" firstAttribute="leading" secondItem="FUr-Q6-vf3" secondAttribute="leading" id="91B-v8-yZ5"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="eBy-la-GEM" secondAttribute="trailing" constant="3" id="Ewm-7m-jr3"/>
+                                                                    <constraint firstItem="eBy-la-GEM" firstAttribute="top" secondItem="FUr-Q6-vf3" secondAttribute="top" constant="3" id="Zjw-ZM-gEQ"/>
                                                                     <constraint firstItem="KA8-vg-est" firstAttribute="top" secondItem="FUr-Q6-vf3" secondAttribute="top" id="eEA-9f-fBy"/>
                                                                     <constraint firstAttribute="trailing" secondItem="KA8-vg-est" secondAttribute="trailing" id="uaO-Ch-jUg"/>
                                                                 </constraints>
@@ -2735,10 +2816,15 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
+                                                                    <outlet property="deleteBtn" destination="eBy-la-GEM" id="lRD-mP-wYE"/>
                                                                     <outlet property="imageView" destination="KA8-vg-est" id="xP2-LA-rLh"/>
                                                                 </connections>
                                                             </collectionViewCell>
                                                         </cells>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="FaG-i5-sSS" id="mVL-Hg-6FT"/>
+                                                            <outlet property="delegate" destination="FaG-i5-sSS" id="xJ3-AA-nNA"/>
+                                                        </connections>
                                                     </collectionView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2799,10 +2885,22 @@
                         <viewLayoutGuide key="safeArea" id="bwS-F4-Cu6"/>
                     </view>
                     <size key="freeformSize" width="375" height="2000"/>
+                    <connections>
+                        <outlet property="firstCollectionView" destination="AjH-JS-xlD" id="huc-pz-bww"/>
+                        <outlet property="firstCollectionViewHeight" destination="g5Y-j8-nTq" id="HlE-LZ-1sT"/>
+                        <outlet property="fiveCollectionView" destination="Ypm-Sr-TrF" id="ip3-D1-2JK"/>
+                        <outlet property="fiveCollectionViewHeight" destination="QQs-Cb-Uuy" id="hkf-bd-JcD"/>
+                        <outlet property="fourCollectionView" destination="bdr-aQ-7Nc" id="0rL-Og-ZQq"/>
+                        <outlet property="fourCollectionViewHeight" destination="6ih-gC-0OC" id="3mO-uV-k5k"/>
+                        <outlet property="secondCollectionView" destination="kjx-vJ-TA1" id="o1i-5z-7G6"/>
+                        <outlet property="secondCollectionViewHeight" destination="Xhj-Ma-bCc" id="vmb-Vh-OwW"/>
+                        <outlet property="thirdCollectionView" destination="DJV-eX-K1o" id="qxL-mp-KSa"/>
+                        <outlet property="thirdCollectionViewHeight" destination="kll-wB-XDP" id="1Bz-kH-hGa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NRW-8T-7gT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3401" y="-99"/>
+            <point key="canvasLocation" x="3431" y="-100"/>
         </scene>
         <!--Estimate Result View Controller-->
         <scene sceneID="gpT-0Z-znJ">
@@ -2975,8 +3073,9 @@
     </scenes>
     <resources>
         <image name="add_add" width="18" height="18"/>
+        <image name="add_add_picture" width="90" height="90"/>
+        <image name="add_delete" width="13" height="13"/>
         <image name="add_question" width="39" height="44"/>
-        <image name="avatar" width="250" height="250"/>
         <image name="worktable_cell_icon" width="6" height="17"/>
     </resources>
 </document>

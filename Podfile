@@ -53,4 +53,5 @@ target 'Yihaodar' do
     pod 'GTSDK', '2.2.0.0-noidfa' # 推送
     pod 'FSPagerView' # 轮播
     pod 'Default' # 持久化存储
+    pod 'JGProgressHUD' # 加载进度条
 end

@@ -61,6 +61,7 @@ struct GLSubmitModel: HandyJSON {
     var accident_level = ""
     
     var ccrpList = [GLCcrpModel]()
+    var ccroList = [GLCcroModel]()
 }
 
 struct GLCcrpModel: HandyJSON {
@@ -103,6 +104,5 @@ extension GLEstimateResultViewController: UITextViewDelegate {
         textViewHeight.constant = textView.contentSize.height
         
     }
-    
 }
 

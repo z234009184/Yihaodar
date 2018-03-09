@@ -126,15 +126,14 @@ enum GLService {
     
     /// 公共接口
     case getInfoByPid(pid: String) // 根据父节点ID 获取子节点信息
-    case uploadFile(file: URL) // 上传附件
-    
+    case uploadFile(multiParts: [MultipartFormData])
     
 }
 
 // MARK: - TargetType Protocol Implementation
 extension GLService: TargetType {
     var mainURL: String { return "http://192.168.5.90:8080" }
-//    var mainURL: String { return "http://httpbin.org" }
+//    var mainURL: String { return "http://192.168.6.226:8080/ROOT" }
     var baseURL: URL { return URL(string: mainURL)! }
     var path: String {
         switch self {
@@ -179,6 +178,7 @@ extension GLService: TargetType {
             
         case .getInfoByPid(_):
             return "/api/appCarAssecc/getSysTdDmByPid.shtml"
+        
         case .uploadFile(_):
             return "/frame/fileUpload.shtml"
             
@@ -242,9 +242,9 @@ extension GLService: TargetType {
         case let GLService.getInfoByPid(pid):
             param["body"] = ["pid": pid]
             
-        case let GLService.uploadFile(file):
-            return .uploadFile(file)
             
+        case let GLService.uploadFile(multiParts):
+            return .uploadMultipart(multiParts)
         }
         return .requestParameters(parameters: ["data": (JSON(param).rawString())!], encoding: URLEncoding.queryString)
     }
