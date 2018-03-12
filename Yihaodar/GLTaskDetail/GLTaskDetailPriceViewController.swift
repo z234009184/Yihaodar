@@ -338,7 +338,10 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
         燃油方式Label.text = model.assessmentList?.fuel_type
         天窗Label.text = model.assessmentList?.skylight
         空调配置Label.text = model.assessmentList?.air_conditioner
-        其他Label.text = model.assessmentList?.other?.isEmpty == false ? model.assessmentList?.other : "未选择"
+        
+        let other = model.assessmentList?.other?.isEmpty == false ? model.assessmentList?.other : "未选择"
+        let airbag = model.assessmentList?.airbag?.isEmpty == false ? (model.assessmentList?.airbag)! + "个" : ""
+        其他Label.text = other! + airbag
         事故Label.text = model.assessmentList?.accident?.isEmpty == false ? model.assessmentList?.accident : "未选择"
         
         

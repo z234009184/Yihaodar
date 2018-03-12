@@ -410,7 +410,14 @@ extension GLCarMessageViewController: UITextFieldDelegate {
         }
         
         if textField == carNumberLabel {
-            return newString.count <= 10
+            ///
+            
+            let expression = "^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$"
+            let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
+            let numberOfMatches = regex.numberOfMatches(in: newString, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (newString as NSString).length))
+            
+            return numberOfMatches != 0
+            
         }
         
         if textField == carColorLabel {

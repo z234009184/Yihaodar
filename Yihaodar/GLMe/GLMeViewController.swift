@@ -81,12 +81,14 @@ class GLMeModifyPassWordViewController: UIViewController {
     
     @objc func submitAction(item: UIBarButtonItem) {
         view.endEditing(true)
-        if (passwordField.text?.length)! < 1 || (comfirmPasswordField.text?.length)! < 1 {
-            view.makeToast("请输入密码")
+        if (passwordField.text?.length)! < 6 || (passwordField.text?.length)! > 20 {
+            view.makeToast("请输入6-20位密码")
+            return
         }
         
         if passwordField.text != comfirmPasswordField.text {
             view.makeToast("两次密码不一致，请重新输入")
+            return
         }
         
         GLProvider.request(GLService.modifyPassword(partyId: GLUser.partyId!, password: passwordField.text!.md5())) {[weak self] (result) in

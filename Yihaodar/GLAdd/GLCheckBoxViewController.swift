@@ -10,7 +10,7 @@ import Spring
 
 
 
-class GLCheckBoxCell: UITableViewCell {
+class GLCheckBoxCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var selectBtn: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
@@ -20,6 +20,7 @@ class GLCheckBoxCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        textField.delegate = self
     }
     
     @IBAction func textFieldDidEditing(_ sender: UITextField) {
@@ -59,6 +60,28 @@ class GLCheckBoxCell: UITableViewCell {
         }
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        if textField.placeholder == "请输入气囊数量(个)" {
+            let expression = "^[0-9]{0,3}$"
+            let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
+            let numberOfMatches = regex.numberOfMatches(in: newString, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (newString as NSString).length))
+            
+            return numberOfMatches != 0
+            
+        }
+        
+        if textField.placeholder == "A/B/C/D" {
+            let expression = "^[ABCD]$"
+            let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
+            let numberOfMatches = regex.numberOfMatches(in: newString, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (newString as NSString).length))
+            
+            return numberOfMatches != 0
+        }
+        
+        return true
+    }
+    
 }
 
 
@@ -80,9 +103,9 @@ class GLCheckBoxViewController: UIViewController {
         textLabel.text = "以下选项是多选"
         textLabel.textColor = YiUnselectedTitleColor
         textLabel.font = UIFont.systemFont(ofSize: 15)
+        textLabel.sizeToFit()
         textLabel.center.y = imageView.center.y
         textLabel.frame.origin.x = imageView.frame.maxX + 10
-        textLabel.sizeToFit()
         view.addSubview(textLabel)
         
         return view
@@ -90,6 +113,7 @@ class GLCheckBoxViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableHeaderView = tableViewHeaderView
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "确定", style: .done, target: self, action: #selector(GLCheckBoxViewController.sureBtnAction))
     }
     
