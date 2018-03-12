@@ -199,8 +199,8 @@ class GLCarMessageViewController: UIViewController {
         GLEstimateResultViewController.summitModel.invoice = carInvoicePriceField.text ?? ""
         GLEstimateResultViewController.summitModel.transfer_number = carTransferTimesField.text ?? ""
         GLEstimateResultViewController.summitModel.year_check = carYearlyInspectionDateLabel.text ?? ""
-        GLEstimateResultViewController.summitModel.jq_insurance = carTrafficInsuranceLabel.text ?? ""
-        GLEstimateResultViewController.summitModel.sy_insurance = carBusinessInsuranceLabel.text ?? ""
+        GLEstimateResultViewController.summitModel.jq_insurance = carTrafficInsuranceLabel.text != "请选择" ? carTrafficInsuranceLabel.text! : ""
+        GLEstimateResultViewController.summitModel.sy_insurance = carBusinessInsuranceLabel.text != "请选择" ? carBusinessInsuranceLabel.text! : ""
         GLEstimateResultViewController.summitModel.insurance_due_date = ""
         
         
@@ -272,12 +272,14 @@ class GLCarMessageViewController: UIViewController {
     
     
     @IBAction func carProductDateSelected(_ sender: UIButton) {
+        view.endEditing(true)
         GLDatePicker.showDatePicker(currentDate: Date()) { [weak self] (date) in
             self?.carProductDateLabel.text = date
         }
     }
     
     @IBAction func carRegisterDateSelected(_ sender: UIButton) {
+        view.endEditing(true)
         GLDatePicker.showDatePicker(currentDate: Date()) { [weak self] (date) in
             self?.carRegisterDateLabel.text = date
         }
@@ -285,6 +287,7 @@ class GLCarMessageViewController: UIViewController {
     }
     
     @IBAction func carYearCheckDateSelected(_ sender: UIButton) {
+        view.endEditing(true)
         GLDatePicker.showDatePicker(currentDate: Date()) { [weak self] (date) in
             self?.carYearlyInspectionDateLabel.text = date
         }
@@ -293,6 +296,7 @@ class GLCarMessageViewController: UIViewController {
     
     
     @IBAction func carTrafficDateSelected(_ sender: UIButton) {
+        view.endEditing(true)
         GLDatePicker.showDatePicker(currentDate: Date()) { [weak self] (date) in
             self?.carTrafficInsuranceLabel.text = date
         }
@@ -301,6 +305,7 @@ class GLCarMessageViewController: UIViewController {
     
     
     @IBAction func carBusinessDateSelected(_ sender: UIButton) {
+        view.endEditing(true)
         GLDatePicker.showDatePicker(currentDate: Date()) { [weak self] (date) in
             self?.carBusinessInsuranceLabel.text = date
         }

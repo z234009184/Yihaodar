@@ -110,14 +110,33 @@ class GLEstimateResultViewController: UIViewController {
             return dict
         }
         
-        
+        let tabBarVc = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController as? GLTabBarController
+        tabBarVc?.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_loading"), title: "提交中...")
         GLProvider.request(GLService.submitCreateCarEstimateWithMsg(partyId: model.partyId, store: model.store, boss_party_id: model.boss_party_id, executive_party_id: model.executive_party_id, director_party_id: model.director_party_id, ower: model.ower, goods_code: model.goods_code, brand_name: model.brand_name, brand_name_txt: model.brand_name_txt, goods_series: model.goods_series, goods_series_txt: model.goods_series_txt, goods_style: model.goods_style, goods_style_txt: model.goods_series_txt, car_color: model.car_color, production_date: model.production_date, register_date: model.register_date, run_number: model.run_number, displacement: model.displacement, peccancy: model.peccancy, peccancy_fraction: model.peccancy_fraction, peccancy_money: model.peccancy_money, engine_code: model.engine_code, frame_code: model.frame_code, invoice: model.invoice, transfer_number: model.transfer_number, year_check: model.year_check, insurance_due_date: model.insurance_due_date, jq_insurance: model.jq_insurance, sy_insurance: model.sy_insurance, gearbox: model.gearbox, driving_type: model.driving_type, keyless_startup: model.keyless_startup, cruise_control: model.cruise_control, navigation: model.navigation, hpyl: model.hpyl, chair_type: model.chair_type, fuel_type: model.fuel_type, skylight: model.skylight, air_conditioner: model.air_conditioner, other: model.other, airbag: model.airbag, accident: model.accident, accident_level: model.accident_level, ccrpList: ccrpList, ccroList: ccroList, assessment_name: model.assessment_name, confirmed_money: model.confirmed_money, remarks: model.remarks)) { [weak self] (result) in
             
             if case let .success(respon) = result {
                 print(JSON(respon.data))
+                let jsonStr = JSON(respon.data)
+                if jsonStr["type"] == "S" {
+                    tabBarVc?.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_success"), title: "提交成功")
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                        tabBarVc?.dismissCover(btn: nil)
+                        self?.navigationController?.dismiss(animated: true, completion: nil)
+                    })
+                } else {
+                    tabBarVc?.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_failure"), title: "提交失败")
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                        tabBarVc?.dismissCover(btn: nil)
+                    })
+                }
                 
-                self?.navigationController?.dismiss(animated: true, completion: nil)
+                
             }
+            
+            if case let .failure(_) = result {
+                tabBarVc?.dismissCover(btn: nil)
+            }
+            
         }
         
         

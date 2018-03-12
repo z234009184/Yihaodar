@@ -98,8 +98,8 @@ class GLCarConfigViewController: UIViewController {
         GLEstimateResultViewController.summitModel.fuel_type = fuelTypeLabel.text ?? ""
         GLEstimateResultViewController.summitModel.skylight = skylightLabel.text ?? ""
         GLEstimateResultViewController.summitModel.air_conditioner = airConditionerLabel.text ?? ""
-        GLEstimateResultViewController.summitModel.other = otherLabel.text ?? ""
-        GLEstimateResultViewController.summitModel.accident = accidentLabel.text ?? ""
+        GLEstimateResultViewController.summitModel.other = otherLabel.text != "请选择" ? otherLabel.text! : ""
+        GLEstimateResultViewController.summitModel.accident = accidentLabel.text != "请选择" ? accidentLabel.text! : ""
         
         selectedOtherModels?.forEach({ (radioModel) in
             if radioModel.isTextFied {

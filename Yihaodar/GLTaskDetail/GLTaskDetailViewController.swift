@@ -312,6 +312,7 @@ class GLTaskDetailViewController: UIViewController {
     
     
     lazy var tabBarVc = tabBarController as! GLTabBarController
+    
     lazy var submitMessageView: GLSubmitMessageView = {
         let accessoryView = GLSubmitMessageView()
         let width = view.bounds.width
@@ -319,13 +320,6 @@ class GLTaskDetailViewController: UIViewController {
         accessoryView.frame.size = CGSize(width: width, height: height)
         accessoryView.frame.origin.x = 0
         
-//        accessoryView.submitBtnClosure = { [weak self] in
-//            self?.tabBarVc.dismissCover(btn: nil)
-//            self?.tabBarVc.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_success"), title: "提交成功")
-//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.5, execute: {
-//                self?.tabBarVc.dismissCover(btn: nil)
-//            })
-//        }
         
         return accessoryView
     }()

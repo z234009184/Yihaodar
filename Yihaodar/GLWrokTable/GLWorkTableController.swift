@@ -247,7 +247,7 @@ class GLDaiBanController: GLWorkTableBaseViewController, IndicatorInfoProvider {
     
     // IndicatorInfoProvider
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "代办任务")
+        return IndicatorInfo(title: "待办任务")
     }
 }
 
