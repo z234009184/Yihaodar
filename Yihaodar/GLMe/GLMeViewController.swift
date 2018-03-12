@@ -9,6 +9,8 @@
 import Spring
 import Toast_Swift
 import SwiftyJSON
+import JGProgressHUD
+
 
 class GLMeViewController: UIViewController {
     override func viewDidLoad() {
@@ -26,8 +28,6 @@ class GLMeViewController: UIViewController {
     
     @IBOutlet weak var levelButton: UIButton!
     @IBAction func levelBtnClick(_ sender: UIButton) {
-        
-        let p = CGPoint(x: view.center.x, y: view.center.y - 100.0)
         let arr = GLUser.allOrganName?.split(separator: ",")
         guard let organNames = arr else { return }
         guard organNames.count != 0 else { return }
@@ -37,7 +37,18 @@ class GLMeViewController: UIViewController {
             organName.append("\n")
         }
         
-        view.makeToast(GLUser.allOrganName, point: p, title: nil, image: nil, completion: nil)
+        
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = organName
+        hud.indicatorView = JGProgressHUDIndicatorView()
+        hud.contentInsets = UIEdgeInsets(top: -10, left: 10, bottom: 10, right: 10)
+        
+        hud.show(in: view)
+        
+        hud.tapOutsideBlock = { phud in
+            phud.dismiss()
+        }
+        
         
     }
     @IBAction func logoutBtnClick(_ sender: UIButton) {

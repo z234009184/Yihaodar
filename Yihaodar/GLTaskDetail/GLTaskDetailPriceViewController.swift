@@ -231,9 +231,9 @@ class GLBasicMessageViewController: UIViewController, IndicatorInfoProvider, UIS
     /// 更新界面
     public func updateUI(model: GLPriceDetailModel) {
         orderStoreLabel.text = model.assessmentList?.store_name
-        orderManagerLabel.text = model.assessmentList?.boss_party_id ?? "未选择"
-        orderSuperintendLabel.text = model.assessmentList?.executive_party_id ?? "未选择"
-        orderMajordomoLabel.text = model.assessmentList?.director_party_id ?? "未选择"
+        orderManagerLabel.text = model.assessmentList?.boss_party_id?.isEmpty == false ? model.assessmentList?.boss_party_id : "未选择"
+        orderSuperintendLabel.text = model.assessmentList?.executive_party_id?.isEmpty == false ? model.assessmentList?.executive_party_id : "未选择"
+        orderMajordomoLabel.text = model.assessmentList?.director_party_id?.isEmpty == false ? model.assessmentList?.director_party_id : "未选择"
         
         carNameLabel.text = model.assessmentList?.ower
         carNumberLabel.text = model.assessmentList?.goods_code
@@ -246,10 +246,10 @@ class GLBasicMessageViewController: UIViewController, IndicatorInfoProvider, UIS
         carPeccancyLabel.text = (model.assessmentList?.peccancy)! == "0" ? "无" : "罚分:\(model.assessmentList?.peccancy_fraction ?? "0")(分)  罚款:\(model.assessmentList?.peccancy_money ?? "0")(元)"
         carEngineVersionLabel.text = model.assessmentList?.engine_code
         carFrameNumberLabel.text = model.assessmentList?.frame_code
-        carInvoicePriceLabel.text = model.assessmentList?.invoice ?? "未选择"
+        carInvoicePriceLabel.text = model.assessmentList?.invoice?.isEmpty == false ? model.assessmentList?.invoice : "未选择"
         carCheckLimitDateLabel.text = model.assessmentList?.year_check
-        carTrafficLabel.text = model.assessmentList?.jq_insurance ?? "未选择"
-        carBusinessLabel.text = model.assessmentList?.sy_insurance ?? "未选择"
+        carTrafficLabel.text = model.assessmentList?.jq_insurance?.isEmpty == false ? model.assessmentList?.jq_insurance : "未选择"
+        carBusinessLabel.text = model.assessmentList?.sy_insurance?.isEmpty == false ? model.assessmentList?.sy_insurance : "未选择"
     }
     
     
@@ -338,16 +338,16 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
         燃油方式Label.text = model.assessmentList?.fuel_type
         天窗Label.text = model.assessmentList?.skylight
         空调配置Label.text = model.assessmentList?.air_conditioner
-        其他Label.text = model.assessmentList?.other ?? "未选择"
-        事故Label.text = model.assessmentList?.accident ?? "未选择"
-        车架号Label.text = model.assessmentList?.Accident_level ?? "未选择"
+        其他Label.text = model.assessmentList?.other?.isEmpty == false ? model.assessmentList?.other : "未选择"
+        事故Label.text = model.assessmentList?.accident?.isEmpty == false ? model.assessmentList?.accident : "未选择"
+        车架号Label.text = model.assessmentList?.Accident_level?.isEmpty == false ? model.assessmentList?.Accident_level : "未选择"
         
         评估师Label.text = model.assessmentList?.assessment_name
         评估价格Label.text = model.assessmentList?.confirmed_money
         评估备注Label.text = model.assessmentList?.remarks
         
-        定价师Label.text = model.priceList?.first?.partyName ?? "未选择"
-        定价价格Label.text = model.priceList?.first?.confirmedMoney ?? "未选择"
+        定价师Label.text = model.priceList?.first?.partyName?.isEmpty == false ? model.priceList?.first?.partyName : "未选择"
+        定价价格Label.text = model.priceList?.first?.confirmedMoney?.isEmpty == false ? model.priceList?.first?.confirmedMoney : "未选择"
         定价备注Label.text = model.priceList?.first?.appraiseRemarks
         
         
