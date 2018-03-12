@@ -95,7 +95,7 @@ class GLCarMessageViewController: UIViewController {
     }
     
     @objc func nextBtnClick(item: UIBarButtonItem) {
-        /*
+        
         guard nameField.text?.isEmpty == false else {
             view.makeToast("车主姓名为空")
             return
@@ -173,7 +173,7 @@ class GLCarMessageViewController: UIViewController {
             view.makeToast("请选择年检到期日")
             return
         }
-        */
+ 
         
         
         /// 存入提交模型中

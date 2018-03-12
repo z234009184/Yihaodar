@@ -8,12 +8,14 @@
 
 import Spring
 import HandyJSON
+import IQKeyboardManagerSwift
+import SwiftyJSON
 
 
 
 struct GLSubmitModel: HandyJSON {
     
-    var partyId = GLUser.partyId
+    var partyId = GLUser.partyId!
     var store = ""
     var boss_party_id = ""
     var executive_party_id = ""
@@ -43,7 +45,7 @@ struct GLSubmitModel: HandyJSON {
     var year_check = ""
     var jq_insurance = ""
     var sy_insurance = ""
-    var insurance_due_date: String?
+    var insurance_due_date = ""
     
     var gearbox = ""
     var driving_type = ""
@@ -62,24 +64,26 @@ struct GLSubmitModel: HandyJSON {
     
     var ccrpList = [GLCcrpModel]()
     var ccroList = [GLCcroModel]()
+    
+    var assessment_name = GLUser.partyId!
+    var confirmed_money = ""
+    var remarks = ""
 }
 
-struct GLCcrpModel: HandyJSON {
-    var id: String?
-    var cust_request_id: String?
-    var parts_one_id = ""
-    var parts_two_id = ""
-    var accident_type = ""
-    var remarks: String?
-}
+
 
 
 
 
 class GLEstimateResultViewController: UIViewController {
     
+    @IBOutlet weak var textViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var priceTextField: DesignableTextField!
+    @IBOutlet weak var remarksTextView: IQTextView!
     static var summitModel = GLSubmitModel()
+    
+    
     
     
     override func viewDidLoad() {
@@ -90,14 +94,61 @@ class GLEstimateResultViewController: UIViewController {
     
     @objc func submitBtnClick(item: UIBarButtonItem) {
         
-        navigationController?.dismiss(animated: true, completion: nil)
+        if priceTextField.text?.isEmpty == true {
+            view.makeToast("请输入评估价格")
+            return
+        }
+        
+        GLEstimateResultViewController.summitModel.confirmed_money = priceTextField.text ?? "0"
+        GLEstimateResultViewController.summitModel.remarks = remarksTextView.text
+        
+        let model = GLEstimateResultViewController.summitModel
+        let ccrpList = model.ccrpList.toJSON().flatMap { (dict) -> [String: Any]? in
+            return dict
+        }
+        let ccroList = model.ccroList.toJSON().flatMap { (dict) -> [String: Any]? in
+            return dict
+        }
+        
+        
+        GLProvider.request(GLService.submitCreateCarEstimateWithMsg(partyId: model.partyId, store: model.store, boss_party_id: model.boss_party_id, executive_party_id: model.executive_party_id, director_party_id: model.director_party_id, ower: model.ower, goods_code: model.goods_code, brand_name: model.brand_name, brand_name_txt: model.brand_name_txt, goods_series: model.goods_series, goods_series_txt: model.goods_series_txt, goods_style: model.goods_style, goods_style_txt: model.goods_series_txt, car_color: model.car_color, production_date: model.production_date, register_date: model.register_date, run_number: model.run_number, displacement: model.displacement, peccancy: model.peccancy, peccancy_fraction: model.peccancy_fraction, peccancy_money: model.peccancy_money, engine_code: model.engine_code, frame_code: model.frame_code, invoice: model.invoice, transfer_number: model.transfer_number, year_check: model.year_check, insurance_due_date: model.insurance_due_date, jq_insurance: model.jq_insurance, sy_insurance: model.sy_insurance, gearbox: model.gearbox, driving_type: model.driving_type, keyless_startup: model.keyless_startup, cruise_control: model.cruise_control, navigation: model.navigation, hpyl: model.hpyl, chair_type: model.chair_type, fuel_type: model.fuel_type, skylight: model.skylight, air_conditioner: model.air_conditioner, other: model.other, airbag: model.airbag, accident: model.accident, accident_level: model.accident_level, ccrpList: ccrpList, ccroList: ccroList, assessment_name: model.assessment_name, confirmed_money: model.confirmed_money, remarks: model.remarks)) { [weak self] (result) in
+            
+            if case let .success(respon) = result {
+                print(JSON(respon.data))
+                
+                self?.navigationController?.dismiss(animated: true, completion: nil)
+            }
+        }
+        
+        
+        
+        
+        
     }
-    
-    @IBOutlet weak var textViewHeight: NSLayoutConstraint!
-    
     
     
 }
+
+extension GLEstimateResultViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        print(textField.text as Any, string)
+        if textField != priceTextField {
+            return true
+        }
+        
+        
+        let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        print(newString)
+        let expression = "^[0-9]{0,20}((\\.)[0-9]{0,2})?$"
+        let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
+        let numberOfMatches = regex.numberOfMatches(in: newString, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (newString as NSString).length))
+        
+        return numberOfMatches != 0
+        
+    }
+}
+
 
 extension GLEstimateResultViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {

@@ -9,6 +9,19 @@
 import Spring
 import FSPagerView
 import SwiftyJSON
+import HandyJSON
+
+
+struct GLCcrpModel: HandyJSON {
+    var id: String?
+    var cust_request_id: String?
+    var parts_one_id = ""
+    var parts_two_id = ""
+    var accident_type = ""
+    var remarks: String?
+}
+
+
 
 class GLCarStateViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!

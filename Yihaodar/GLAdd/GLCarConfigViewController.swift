@@ -44,7 +44,7 @@ class GLCarConfigViewController: UIViewController {
     
     
     @objc func nextBtnClick(item: UIBarButtonItem) {
-        /*
+        
         if gearboxLabel.text == "请选择" || gearboxLabel.text?.isEmpty == true {
             view.makeToast("")
             return
@@ -85,7 +85,7 @@ class GLCarConfigViewController: UIViewController {
             view.makeToast("")
             return
         }
-        */
+ 
         
         /// 存入提交模型中
         GLEstimateResultViewController.summitModel.gearbox = gearboxLabel.text ?? ""

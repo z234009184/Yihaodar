@@ -2961,7 +2961,10 @@
                                                                 <rect key="frame" x="10" y="36" width="330" height="28"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="SCQ-sV-stq" id="McH-ju-9HI"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3063,6 +3066,8 @@
                     </view>
                     <size key="freeformSize" width="375" height="2000"/>
                     <connections>
+                        <outlet property="priceTextField" destination="vlD-bF-Ra1" id="PAd-RH-fCb"/>
+                        <outlet property="remarksTextView" destination="5uQ-Dt-2Zd" id="Oec-WS-xLR"/>
                         <outlet property="textViewHeight" destination="98h-SD-0TF" id="CQz-QF-gB6"/>
                     </connections>
                 </viewController>
