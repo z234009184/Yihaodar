@@ -109,6 +109,7 @@
 		8A7D848D2041329300B5046C /* GLTaskDetailPriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLTaskDetailPriceViewController.swift; sourceTree = "<group>"; };
 		8A8E614A20455D590068EA06 /* GLDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLDatePicker.swift; sourceTree = "<group>"; };
 		8A8E614C20466D800068EA06 /* GLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLService.swift; sourceTree = "<group>"; };
+		8AB200E1205618DE00AE43A3 /* Yihaodar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Yihaodar.entitlements; sourceTree = "<group>"; };
 		8AD2E86F2020795A008D32EA /* GLTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLTabBarController.swift; sourceTree = "<group>"; };
 		8AD2E87120208366008D32EA /* GLNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLNavigationController.swift; sourceTree = "<group>"; };
 		8AD5E0BE2043D42C00CB7CFF /* GLCarStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLCarStateView.xib; sourceTree = "<group>"; };
@@ -253,6 +254,7 @@
 		8A235110201E0AC4002715E0 /* Yihaodar */ = {
 			isa = PBXGroup;
 			children = (
+				8AB200E1205618DE00AE43A3 /* Yihaodar.entitlements */,
 				8A235111201E0AC4002715E0 /* AppDelegate.swift */,
 				8A1DAB8B202AB361001CBD0F /* GLBase */,
 				8A1DAB8A202AB31A001CBD0F /* GLLogin */,
@@ -378,6 +380,14 @@
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -714,8 +724,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Yihaodar/Yihaodar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 233NVE642U;
+				DEVELOPMENT_TEAM = 8F3G9VLYG7;
 				INFOPLIST_FILE = Yihaodar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -734,8 +745,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Yihaodar/Yihaodar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 233NVE642U;
+				DEVELOPMENT_TEAM = 8F3G9VLYG7;
 				INFOPLIST_FILE = Yihaodar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

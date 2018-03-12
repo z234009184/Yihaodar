@@ -12,9 +12,9 @@ import PushKit
 import UserNotifications
 
 
-let kGtAppId:String = "iMahVVxurw6BNr7XSn9EF2"
-let kGtAppKey:String = "yIPfqwq6OMAPp6dkqgLpG5"
-let kGtAppSecret:String = "G0aBqAD6t79JfzTB6Z5lo5"
+let kGtAppId:String = "v2c1oYfvOA643tbfBjgLO2"
+let kGtAppKey:String = "jLUwBgziDE6WObmNigVK42"
+let kGtAppSecret:String = "opQyHoT0G666lJiMHtEj2"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rootVc = UIStoryboard(name: "GLLogin", bundle: nil).instantiateInitialViewController()
         window?.rootViewController = rootVc
         window?.makeKeyAndVisible()
-//        window?.backgroundColor = .white
+
         
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().enableAutoToolbar = false

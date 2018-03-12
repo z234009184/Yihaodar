@@ -28,6 +28,7 @@ struct GLBossModel: HandyJSON {
     var partyName: String = ""
     var jobName: String = ""
     var organName: String = ""
+    var allOrganName: String?
 }
 
 /// 团队主管
@@ -36,6 +37,7 @@ struct GLExecutivModel: HandyJSON {
     var partyName: String = ""
     var jobName: String = ""
     var organName: String = ""
+    var allOrganName: String?
 }
 
 /// 业务总监
@@ -44,6 +46,7 @@ struct GLDirectorModel: HandyJSON {
     var partyName: String = ""
     var jobName: String = ""
     var organName: String = ""
+    var allOrganName: String?
 }
 
 /// 车辆品牌
@@ -204,7 +207,7 @@ class GLCreateCarEstimateViewController: UIViewController {
     @IBAction func jingliBtnClick(_ sender: UIButton) {
         /// 处理数据
         let dataArr = GLCreateCarEstimateViewController.model?.bossList.map({ [weak self] (bossModel) -> GLRadioModel in
-            let radioModel = GLRadioModel(id: bossModel.partyId, title: bossModel.partyName, subTitle: bossModel.jobName + bossModel.organName, isSelected: self?.selectedBossModel?.id == bossModel.partyId ? true : false, isTextFied: false, input: nil, inputPlaceHolder: nil)
+            let radioModel = GLRadioModel(id: bossModel.partyId, title: bossModel.partyName, subTitle: bossModel.allOrganName, isSelected: self?.selectedBossModel?.id == bossModel.partyId ? true : false, isTextFied: false, input: nil, inputPlaceHolder: nil)
             return radioModel
         })
         guard let dataArray = dataArr else { return }
@@ -220,7 +223,7 @@ class GLCreateCarEstimateViewController: UIViewController {
     @IBAction func zhuguanBtnClick(_ sender: UIButton) {
         /// 处理数据
         let dataArr = GLCreateCarEstimateViewController.model?.executiveList.map({ [weak self] (executiveModel) -> GLRadioModel in
-            let radioModel = GLRadioModel(id: executiveModel.partyId, title: executiveModel.partyName, subTitle: executiveModel.jobName + executiveModel.organName, isSelected: self?.selectedExecutiveModel?.id == executiveModel.partyId ? true : false, isTextFied: false, input: nil, inputPlaceHolder: nil)
+            let radioModel = GLRadioModel(id: executiveModel.partyId, title: executiveModel.partyName, subTitle: executiveModel.allOrganName, isSelected: self?.selectedExecutiveModel?.id == executiveModel.partyId ? true : false, isTextFied: false, input: nil, inputPlaceHolder: nil)
             return radioModel
         })
         guard let dataArray = dataArr else { return }
@@ -236,7 +239,7 @@ class GLCreateCarEstimateViewController: UIViewController {
     @IBAction func zongjianBtnClick(_ sender: UIButton) {
         /// 处理数据
         let dataArr = GLCreateCarEstimateViewController.model?.directorList.map({ [weak self] (directorModel) -> GLRadioModel in
-            let radioModel = GLRadioModel(id: directorModel.partyId, title: directorModel.partyName, subTitle: directorModel.jobName + directorModel.organName, isSelected: self?.selectedDirectorModel?.id == directorModel.partyId ? true : false, isTextFied: false, input: nil, inputPlaceHolder: nil)
+            let radioModel = GLRadioModel(id: directorModel.partyId, title: directorModel.partyName, subTitle: directorModel.allOrganName, isSelected: self?.selectedDirectorModel?.id == directorModel.partyId ? true : false, isTextFied: false, input: nil, inputPlaceHolder: nil)
             return radioModel
         })
         guard let dataArray = dataArr else { return }
