@@ -302,10 +302,17 @@ class GLTaskDetailViewController: UIViewController {
             
             if case let .success(respon) = result {
                 print(JSON(respon.data))
+                
+                
                 let jsonStr = JSON(respon.data).rawString()
                 
                 self?.detailModel = GLTaskDetailModel.deserialize(from: jsonStr, designatedPath: "results.dataDJ")
                 self?.estimateMsgModel = GLEstimateMsgModel.deserialize(from: jsonStr, designatedPath: "results.dataPG")
+                
+                if JSON(respon.data)["type"] == "E" {
+                    self?.navigationController?.popViewController(animated: true)
+                }
+                
             }
         }
     }

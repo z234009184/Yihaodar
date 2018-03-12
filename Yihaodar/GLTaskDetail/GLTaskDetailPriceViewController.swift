@@ -769,7 +769,7 @@ class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
             
             if case let .success(respon) = result {
                 print(JSON(respon.data))
-                if JSON(respon.data)["code"] == "PROCESS_08" {
+                if JSON(respon.data)["type"] == "E" {
                     self?.navigationController?.popViewController(animated: true)
                 }
                 
