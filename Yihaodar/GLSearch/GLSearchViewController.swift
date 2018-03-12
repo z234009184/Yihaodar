@@ -23,6 +23,12 @@ class GLSearchViewController: GLWorkTableBaseViewController {
         
         setupTableView()
         
+        tableView.configRefreshHeader(with: GLRefreshHeader.header()) { [weak self] in
+            self?.startIndex = 1
+            self?.loadData()
+            
+        }
+        
     }
     
     func loadData() {
@@ -31,7 +37,7 @@ class GLSearchViewController: GLWorkTableBaseViewController {
         let executionId = searchBar.text
         GLProvider.request(GLService.searchList(partyId: GLUser.partyId!, pageSize: "\(pageSize)", startIndex: "\(startIndex)", executionId: executionId!))  { [weak self] (result) in
             if self == nil {return}
-            
+            self?.tableView.switchRefreshHeader(to: .normal(.success, 0.5))
             if case let .success(response) = result {
                 if self?.startIndex == 1 {
                     self?.dataArray.removeAll()

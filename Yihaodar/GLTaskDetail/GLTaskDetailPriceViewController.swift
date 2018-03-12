@@ -722,8 +722,10 @@ class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
     var estimateVc: GLEstimateMessageViewController?
     var pictureVc: GLPictureMessageViewController?
     
-    
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    
+    var refreshClosure: (()->())?
+    
     override func viewDidLoad() {
         settings.style.buttonBarBackgroundColor = YiThemeColor
         settings.style.buttonBarItemBackgroundColor = YiThemeColor
@@ -821,6 +823,8 @@ class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
                         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
                             self?.tabBarVc.dismissCover(btn: nil)
                             self?.navigationController?.popViewController(animated: true)
+                            guard let refreshClosure = self?.refreshClosure else { return }
+                            refreshClosure()
                         })
                     } else {
                         self?.tabBarVc.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_failure"), title: "提交失败")

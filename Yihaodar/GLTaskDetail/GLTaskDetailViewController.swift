@@ -269,6 +269,8 @@ class GLTaskDetailViewController: UIViewController {
     
     var imagesss = [SKPhoto]()
     var observer: NSObjectProtocol?
+    var refreshClosure: (()->())?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -382,6 +384,8 @@ class GLTaskDetailViewController: UIViewController {
                         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
                             self?.tabBarVc.dismissCover(btn: nil)
                             self?.navigationController?.popViewController(animated: true)
+                            guard let refreshClosure = self?.refreshClosure else { return }
+                            refreshClosure()
                         })
                     } else {
                         self?.tabBarVc.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_failure"), title: "提交失败")

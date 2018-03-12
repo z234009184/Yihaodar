@@ -113,12 +113,13 @@ class GLLoginViewController: UIViewController {
                         guard let vc = rootvc else { return }
                         self?.present(vc, animated: true, completion: {
                             sender.isEnabled = true
+                            sender.returnToOriginalState()
                         })
                         
                     })
                 } else {
-                    let msg = json["message"].rawString()
                     sender.returnToOriginalState()
+                    let msg = json["message"].rawString()
                     self?.view.makeToast(msg)
                 }
             }
