@@ -31,20 +31,31 @@ class GLSubmitMessagePriceView: SpringView {
 
 extension GLSubmitMessagePriceView: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
         
-        print(textField.text as Any, string)
-        if textField != priceTextField {
-            return true
+        
+        
+        if textField == priceTextField {
+            let expression = "^[0-9]{0,20}((\\.)[0-9]{0,2})?$"
+            let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
+            let numberOfMatches = regex.numberOfMatches(in: newString, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (newString as NSString).length))
+            
+            if newString.count > 20 {
+                return false
+            }
+            
+            return numberOfMatches != 0
         }
         
         
-        let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-        print(newString)
-        let expression = "^[0-9]{0,20}((\\.)[0-9]{0,2})?$"
-        let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
-        let numberOfMatches = regex.numberOfMatches(in: newString, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (newString as NSString).length))
+        if textField == remarksLabel {
+            if newString.count > 500 {
+                return false
+            }
+        }
         
-        return numberOfMatches != 0
+        return true
+        
         
     }
     

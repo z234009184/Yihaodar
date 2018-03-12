@@ -68,7 +68,25 @@ class GLCheckBoxViewController: UIViewController {
     var dataArray = NSMutableArray()
     var selectArray = [GLRadioModel]()
     var closeClosure: ((_ selecArr: [GLRadioModel])->())?
-    
+    private lazy var tableViewHeaderView: UIView = { () -> UIView in
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 44))
+        view.backgroundColor = .white
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "worktable_cell_icon"))
+        imageView.center.y = view.center.y
+        imageView.frame.origin.x = 0
+        view.addSubview(imageView)
+        
+        let textLabel = UILabel()
+        textLabel.text = "以下选项是多选"
+        textLabel.textColor = YiUnselectedTitleColor
+        textLabel.font = UIFont.systemFont(ofSize: 15)
+        textLabel.center.y = imageView.center.y
+        textLabel.frame.origin.x = imageView.frame.maxX + 10
+        textLabel.sizeToFit()
+        view.addSubview(textLabel)
+        
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()

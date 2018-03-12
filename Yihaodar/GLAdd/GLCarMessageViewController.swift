@@ -396,3 +396,73 @@ class GLCarMessageViewController: UIViewController {
     }
     
 }
+
+
+extension GLCarMessageViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        
+        
+        if textField == nameField {
+            return newString.count <= 20
+        }
+        
+        if textField == carNumberLabel {
+            return newString.count <= 10
+        }
+        
+        if textField == carColorLabel {
+            /// ^[a-zA-Z\u4e00-\u9fa5 ]{1,20}$
+            let expression = "^[a-z\\u4e00-\\u9fa5]{0,5}$"
+            let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
+            let numberOfMatches = regex.numberOfMatches(in: newString, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (newString as NSString).length))
+            
+            return numberOfMatches != 0
+        }
+        
+        if textField == carDriverMileageField || textField == carInvoicePriceField {
+            let expression = "^[0-9]{0,20}((\\.)[0-9]{0,2})?$"
+            let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
+            let numberOfMatches = regex.numberOfMatches(in: newString, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (newString as NSString).length))
+            
+            return numberOfMatches != 0
+        }
+        
+        if textField == carExhaustField {
+            let expression = "^[0-9A-Z\\.]{0,20}$"
+            let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
+            let numberOfMatches = regex.numberOfMatches(in: newString, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (newString as NSString).length))
+            
+            return numberOfMatches != 0
+        }
+        
+        if textField == carPunishScoreField || textField == carPunishMoneyField {
+            let expression = "^[0-9]{0,20}$"
+            let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
+            let numberOfMatches = regex.numberOfMatches(in: newString, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (newString as NSString).length))
+            
+            return numberOfMatches != 0
+        }
+        
+        if textField == carEngineNumberField || textField == carFrameNumberField {
+            return newString.count <= 20
+        }
+        
+        if textField == carTransferTimesField {
+            let expression = "^[0-9]{0,20}$"
+            let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
+            let numberOfMatches = regex.numberOfMatches(in: newString, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (newString as NSString).length))
+            
+            return numberOfMatches != 0
+        }
+        
+        return true
+        
+    }
+    
+}
+
+
+

@@ -290,7 +290,7 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
     @IBOutlet weak var 空调配置Label: UILabel!
     @IBOutlet weak var 其他Label: UILabel!
     @IBOutlet weak var 事故Label: UILabel!
-    @IBOutlet weak var 车架号Label: UILabel!
+    
     
     /**
      车况信息动态获取添加
@@ -340,7 +340,7 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
         空调配置Label.text = model.assessmentList?.air_conditioner
         其他Label.text = model.assessmentList?.other?.isEmpty == false ? model.assessmentList?.other : "未选择"
         事故Label.text = model.assessmentList?.accident?.isEmpty == false ? model.assessmentList?.accident : "未选择"
-        车架号Label.text = model.assessmentList?.Accident_level?.isEmpty == false ? model.assessmentList?.Accident_level : "未选择"
+        
         
         评估师Label.text = model.assessmentList?.assessment_name
         评估价格Label.text = model.assessmentList?.confirmed_money

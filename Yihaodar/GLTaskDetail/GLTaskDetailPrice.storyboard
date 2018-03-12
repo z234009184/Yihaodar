@@ -1023,10 +1023,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="2500"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jnl-fN-wzL">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1502"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1432"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bou-8c-hYi">
-                                                <rect key="frame" x="10" y="10" width="355" height="954"/>
+                                                <rect key="frame" x="10" y="10" width="355" height="884"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B52-2l-aHD">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="44"/>
@@ -1480,47 +1480,11 @@
                                                             <constraint firstAttribute="trailing" secondItem="62g-16-T5a" secondAttribute="trailing" id="tod-A0-YY7"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KAO-vo-UT1">
-                                                        <rect key="frame" x="0.0" y="884" width="355" height="70"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="车架号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Cm-Ft-gSW">
-                                                                <rect key="frame" x="10" y="15" width="40" height="16"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                <color key="textColor" red="0.59999999999999998" green="0.62745098040000002" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未选择" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dw5-7l-WH0">
-                                                                <rect key="frame" x="10" y="37" width="46" height="18"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                <color key="textColor" red="0.12941176469999999" green="0.15686274510000001" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCl-kx-LzH">
-                                                                <rect key="frame" x="8" y="69" width="347" height="1"/>
-                                                                <color key="backgroundColor" red="0.92941176469999998" green="0.93333333330000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="1" id="XXM-fl-5Mr"/>
-                                                                </constraints>
-                                                            </view>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstItem="NCl-kx-LzH" firstAttribute="leading" secondItem="KAO-vo-UT1" secondAttribute="leading" constant="8" id="AeM-2n-2U9"/>
-                                                            <constraint firstAttribute="bottom" secondItem="NCl-kx-LzH" secondAttribute="bottom" id="Fxv-AU-P5a"/>
-                                                            <constraint firstItem="7Cm-Ft-gSW" firstAttribute="leading" secondItem="KAO-vo-UT1" secondAttribute="leading" constant="10" id="HVM-E1-nPk"/>
-                                                            <constraint firstAttribute="trailing" secondItem="NCl-kx-LzH" secondAttribute="trailing" id="LVe-Rh-vS8"/>
-                                                            <constraint firstItem="7Cm-Ft-gSW" firstAttribute="top" secondItem="KAO-vo-UT1" secondAttribute="top" constant="15" id="WAq-u0-CoM"/>
-                                                            <constraint firstItem="dw5-7l-WH0" firstAttribute="leading" secondItem="KAO-vo-UT1" secondAttribute="leading" constant="10" id="Ydd-EZ-gKF"/>
-                                                            <constraint firstAttribute="bottom" secondItem="dw5-7l-WH0" secondAttribute="bottom" constant="15" id="qxQ-qY-U9c"/>
-                                                            <constraint firstAttribute="height" constant="70" id="xmK-qB-3r4"/>
-                                                        </constraints>
-                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="bnm-Up-BC7" secondAttribute="trailing" id="1Cq-J2-F9h"/>
                                                     <constraint firstItem="R1x-FP-OGp" firstAttribute="leading" secondItem="bou-8c-hYi" secondAttribute="leading" id="1m8-zk-xpE"/>
-                                                    <constraint firstItem="KAO-vo-UT1" firstAttribute="leading" secondItem="bou-8c-hYi" secondAttribute="leading" id="3tV-va-q82"/>
                                                     <constraint firstAttribute="trailing" secondItem="hVy-QK-vEg" secondAttribute="trailing" id="3ys-h3-eXv"/>
                                                     <constraint firstAttribute="trailing" secondItem="B9W-2F-PGG" secondAttribute="trailing" id="44H-bq-spm"/>
                                                     <constraint firstAttribute="trailing" secondItem="aBK-Vq-bVc" secondAttribute="trailing" id="4py-OK-mwP"/>
@@ -1529,21 +1493,19 @@
                                                     <constraint firstItem="CLf-AN-1TH" firstAttribute="top" secondItem="B52-2l-aHD" secondAttribute="bottom" id="7h6-hS-7eT"/>
                                                     <constraint firstItem="oO4-c1-nhw" firstAttribute="leading" secondItem="bou-8c-hYi" secondAttribute="leading" id="9qB-ZR-EvK"/>
                                                     <constraint firstItem="w2s-un-49L" firstAttribute="leading" secondItem="bou-8c-hYi" secondAttribute="leading" id="DYf-NZ-OQg"/>
-                                                    <constraint firstItem="KAO-vo-UT1" firstAttribute="top" secondItem="B9W-2F-PGG" secondAttribute="bottom" id="Fpr-cK-OLj"/>
                                                     <constraint firstAttribute="trailing" secondItem="R1x-FP-OGp" secondAttribute="trailing" id="HPh-L1-zLp"/>
                                                     <constraint firstItem="B52-2l-aHD" firstAttribute="leading" secondItem="bou-8c-hYi" secondAttribute="leading" id="J5N-kS-LuV"/>
                                                     <constraint firstAttribute="trailing" secondItem="oO4-c1-nhw" secondAttribute="trailing" id="Jjp-2f-pdI"/>
                                                     <constraint firstItem="aBK-Vq-bVc" firstAttribute="top" secondItem="roj-Gg-Hkz" secondAttribute="bottom" id="KgC-te-2DX"/>
                                                     <constraint firstItem="R1x-FP-OGp" firstAttribute="top" secondItem="aBK-Vq-bVc" secondAttribute="bottom" id="Kxj-f3-UMb"/>
                                                     <constraint firstItem="roj-Gg-Hkz" firstAttribute="top" secondItem="Zpc-Ge-IS0" secondAttribute="bottom" id="Nx5-ca-RIv"/>
+                                                    <constraint firstAttribute="bottom" secondItem="B9W-2F-PGG" secondAttribute="bottom" id="TV6-Hb-nPL"/>
                                                     <constraint firstItem="w2s-un-49L" firstAttribute="top" secondItem="bnm-Up-BC7" secondAttribute="bottom" id="U9A-N2-R1A"/>
                                                     <constraint firstItem="CLf-AN-1TH" firstAttribute="leading" secondItem="bou-8c-hYi" secondAttribute="leading" id="Vbb-Z9-Tps"/>
                                                     <constraint firstItem="hVy-QK-vEg" firstAttribute="leading" secondItem="bou-8c-hYi" secondAttribute="leading" id="Wqm-yy-QkM"/>
-                                                    <constraint firstAttribute="trailing" secondItem="KAO-vo-UT1" secondAttribute="trailing" id="XKE-vY-sHR"/>
                                                     <constraint firstAttribute="trailing" secondItem="Zpc-Ge-IS0" secondAttribute="trailing" id="ZXQ-Qk-l28"/>
                                                     <constraint firstAttribute="trailing" secondItem="B52-2l-aHD" secondAttribute="trailing" id="ar0-bF-Nz7"/>
                                                     <constraint firstItem="B52-2l-aHD" firstAttribute="top" secondItem="bou-8c-hYi" secondAttribute="top" id="b30-hB-wot"/>
-                                                    <constraint firstAttribute="bottom" secondItem="KAO-vo-UT1" secondAttribute="bottom" id="bAt-bm-F6o"/>
                                                     <constraint firstItem="B9W-2F-PGG" firstAttribute="leading" secondItem="bou-8c-hYi" secondAttribute="leading" id="ce7-ms-BEb"/>
                                                     <constraint firstItem="4tF-1b-2uJ" firstAttribute="top" secondItem="CLf-AN-1TH" secondAttribute="bottom" id="dar-Ob-IyK"/>
                                                     <constraint firstAttribute="trailing" secondItem="w2s-un-49L" secondAttribute="trailing" id="eR8-xT-dFG"/>
@@ -1569,7 +1531,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cyZ-Ha-O5e">
-                                                <rect key="frame" x="10" y="974" width="355" height="254"/>
+                                                <rect key="frame" x="10" y="904" width="355" height="254"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I5n-P8-Ibe">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="44"/>
@@ -1733,7 +1695,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gd3-FP-ZNt">
-                                                <rect key="frame" x="10" y="1238" width="355" height="254"/>
+                                                <rect key="frame" x="10" y="1168" width="355" height="254"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="76B-RU-u3x">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="44"/>
@@ -1954,7 +1916,6 @@
                         <outlet property="评估备注Label" destination="JWr-cH-dQk" id="ew1-7j-wfE"/>
                         <outlet property="评估师Label" destination="hCy-fL-MPy" id="bzq-eI-3tW"/>
                         <outlet property="评估结果View" destination="cyZ-Ha-O5e" id="8CT-7x-Wac"/>
-                        <outlet property="车架号Label" destination="dw5-7l-WH0" id="1UU-Ip-sBa"/>
                         <outlet property="车辆配置View" destination="bou-8c-hYi" id="T52-b3-rMe"/>
                         <outlet property="驱动方式Label" destination="fyr-gf-yLj" id="0F3-XD-VBx"/>
                     </connections>
