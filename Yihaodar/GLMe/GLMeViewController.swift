@@ -15,7 +15,7 @@ import JGProgressHUD
 class GLMeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        let str1 = NSMutableAttributedString(string: levelButton.currentTitle!)
+        let str1 = NSMutableAttributedString(string: GLUser.organName!)
         let range1 = NSRange(location: 0, length: str1.length)
         let number = NSNumber(value:NSUnderlineStyle.styleSingle.rawValue)//此处需要转换为NSNumber 不然不对,rawValue转换为integer
         str1.addAttribute(NSAttributedStringKey.underlineStyle, value: number, range: range1)
@@ -42,9 +42,7 @@ class GLMeViewController: UIViewController {
         hud.textLabel.text = organName
         hud.indicatorView = JGProgressHUDIndicatorView()
         hud.contentInsets = UIEdgeInsets(top: -10, left: 10, bottom: 10, right: 10)
-        
         hud.show(in: view)
-        
         hud.tapOutsideBlock = { phud in
             phud.dismiss()
         }

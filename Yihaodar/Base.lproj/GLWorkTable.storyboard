@@ -241,7 +241,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="worktable_cell_time" translatesAutoresizingMaskIntoConstraints="NO" id="qaz-SK-LMm" customClass="DesignableImageView" customModule="Spring">
                                                     <rect key="frame" x="15" y="103" width="16" height="16"/>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXi-Rd-VVD" customClass="DesignableButton" customModule="Spring">
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXi-Rd-VVD" customClass="DesignableButton" customModule="Spring">
                                                     <rect key="frame" x="265" y="96" width="75" height="30"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>

@@ -461,7 +461,6 @@ extension GLTaskDetailViewController: UICollectionViewDataSource, UICollectionVi
         
         guard let originImage = cell.imageView.image else { return } // some image for baseImage
         
-        
         let browser = SKPhotoBrowser(originImage: originImage, photos: imagesss, animatedFromView: cell)
         browser.initializePageIndex(indexPath.item)
         present(browser, animated: true, completion: nil)

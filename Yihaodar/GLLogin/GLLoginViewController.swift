@@ -119,8 +119,6 @@ class GLLoginViewController: UIViewController {
                     })
                 } else {
                     sender.returnToOriginalState()
-                    let msg = json["message"].rawString()
-                    self?.view.makeToast(msg)
                 }
             }
             
