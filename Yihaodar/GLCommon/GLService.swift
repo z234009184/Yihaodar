@@ -156,7 +156,7 @@ extension GLService: TargetType {
         case .submitPriceDetail(_, _, _, _, _, _):
             return "/api/appCarAssecc/submitCarCollateralData.shtml"
         case .submitTaskDetail(_, _, _, _, _, _, _, _):
-            return "/api/appCarAssecc/submitCarCollateralData.shtml"
+            return "/api/appProcess/add/submission.shtml"
         case .getCarOtherInfo(_):
             return "/api/appCarAssecc/getStoreAndOthersInfo.shtml"
         case .getCarOtherInfoSub1(_):

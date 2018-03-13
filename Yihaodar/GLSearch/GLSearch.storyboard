@@ -53,13 +53,14 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="worktable_cell_time" translatesAutoresizingMaskIntoConstraints="NO" id="x4O-le-lI4" customClass="DesignableImageView" customModule="Spring">
                                                     <rect key="frame" x="15" y="103" width="16" height="16"/>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLy-dP-ESZ" customClass="DesignableButton" customModule="Spring">
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLy-dP-ESZ" customClass="DesignableButton" customModule="Spring">
                                                     <rect key="frame" x="265" y="96" width="75" height="30"/>
                                                     <color key="backgroundColor" red="0.098039215690000001" green="0.64313725489999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="75" id="Lbs-E6-eHm"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="BW6-2I-Rwq"/>
                                                         <constraint firstAttribute="height" constant="30" id="P0m-j0-Fp9"/>
                                                     </constraints>
+                                                    <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                                     <state key="normal" title="评估">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
@@ -70,7 +71,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-02-08 13:00:04" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVT-ag-k8V" customClass="DesignableLabel" customModule="Spring">
-                                                    <rect key="frame" x="39" y="103" width="132.5" height="16"/>
+                                                    <rect key="frame" x="39" y="103" width="216" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.59999999999999998" green="0.62745098040000002" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -90,6 +91,7 @@
                                                 <constraint firstItem="vHx-fr-PbV" firstAttribute="leading" secondItem="iZI-ba-pkZ" secondAttribute="trailing" constant="10" id="Py5-UA-R2S"/>
                                                 <constraint firstItem="uQe-zI-Gmh" firstAttribute="leading" secondItem="yPF-Gt-lwc" secondAttribute="leading" constant="15" id="Q07-Um-zh1"/>
                                                 <constraint firstItem="hVT-ag-k8V" firstAttribute="leading" secondItem="x4O-le-lI4" secondAttribute="trailing" constant="8" id="QRy-5o-8Mv"/>
+                                                <constraint firstItem="qLy-dP-ESZ" firstAttribute="leading" relation="lessThanOrEqual" secondItem="hVT-ag-k8V" secondAttribute="trailing" constant="10" id="YQ0-4b-8RK"/>
                                                 <constraint firstItem="mYv-H4-gYy" firstAttribute="leading" secondItem="fiL-Xl-hrR" secondAttribute="trailing" constant="8" id="YY5-8m-TOo"/>
                                                 <constraint firstAttribute="trailing" secondItem="mYv-H4-gYy" secondAttribute="trailing" constant="15" id="aMT-3A-eyG"/>
                                                 <constraint firstItem="uQe-zI-Gmh" firstAttribute="top" secondItem="vHx-fr-PbV" secondAttribute="bottom" constant="10" id="aaq-50-QfN"/>
@@ -101,7 +103,6 @@
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hVT-ag-k8V" secondAttribute="trailing" constant="20" symbolic="YES" id="qte-9U-nFk"/>
                                                 <constraint firstAttribute="trailing" secondItem="qLy-dP-ESZ" secondAttribute="trailing" constant="15" id="rr6-IX-heV"/>
                                                 <constraint firstItem="qLy-dP-ESZ" firstAttribute="centerY" secondItem="hVT-ag-k8V" secondAttribute="centerY" id="syb-Km-VI6"/>
-                                                <constraint firstItem="qLy-dP-ESZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yPF-Gt-lwc" secondAttribute="leading" constant="20" symbolic="YES" id="ySo-bz-uop"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

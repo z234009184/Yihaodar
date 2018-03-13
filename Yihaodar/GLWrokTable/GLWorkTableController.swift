@@ -103,8 +103,25 @@ class GLWorkTableListCell: UITableViewCell {
             dateLabel.text = listModel?.startDate ?? ""
             
             if let stateBtn = stateBtn {
-                stateBtn.setTitle(listModel?.statusBtnName ?? "", for: .normal)
+                if listModel?.btnValue?.isEmpty == false {
+                    stateBtn.borderWidth = 1
+                    stateBtn.backgroundColor = .white
+                    stateBtn.setTitle(listModel?.btnValue, for: .normal)
+                    if listModel?.btnValue == "已失效" {
+                        stateBtn.setTitleColor(YiNavigationBarTitleColor, for: .normal)
+                        stateBtn.borderColor = UIColor(hex: "CBD3DD")
+                    } else {
+                        stateBtn.setTitleColor(YiBlueColor, for: .normal)
+                        stateBtn.borderColor = YiBlueColor
+                    }
+                } else {
+                    stateBtn.setTitleColor(.white, for: .normal)
+                    stateBtn.borderWidth = 0
+                    stateBtn.backgroundColor = YiBlueColor
+                    stateBtn.setTitle(listModel?.statusBtnName ?? "", for: .normal)
+                }
             }
+            
             
             if let completeStateBtn = completeStateBtn {
                 completeStateBtn.setTitle(listModel?.btnValue ?? "", for: .normal)
@@ -116,6 +133,11 @@ class GLWorkTableListCell: UITableViewCell {
                     completeStateBtn.borderColor = YiBlueColor
                 }
             }
+            
+           
+            
+            
+            
         }
     }
     

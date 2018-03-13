@@ -183,10 +183,10 @@ class GLTaskDetailViewController: UIViewController {
                 manualView.snp.removeConstraints()
                 
                 orderCarBrandlabel.text = (detailModel?.brandNameCN)! + " " + (detailModel?.brandSeriesName)! + " " + (detailModel?.goodsSeriesName)!
-                orderCarYearLabel.text = detailModel?.registerTime
-                orderMileageLabel.text = detailModel?.runNumber
-                orderBigMoneyLabel.text = detailModel?.parValue
-                orderCarColorLabel.text = detailModel?.carColor
+                orderCarYearLabel.text = detailModel?.registerTime?.isEmpty == false ? detailModel?.registerTime : "未填写"
+                orderMileageLabel.text = detailModel?.runNumber?.isEmpty == false ? detailModel?.runNumber : "未填写"
+                orderBigMoneyLabel.text = detailModel?.parValue?.isEmpty == false ? detailModel?.parValue : "未填写"
+                orderCarColorLabel.text = detailModel?.carColor?.isEmpty == false ? detailModel?.carColor : "未填写"
                 orderIsBeiJingNumberLabel.text = detailModel?.isBj == "0" ? "是" : "否"
                 if detailModel?.isBj?.isEmpty == true {
                     orderIsBeiJingNumberLabel.text = "未填写"

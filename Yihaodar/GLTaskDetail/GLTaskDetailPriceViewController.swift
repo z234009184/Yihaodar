@@ -346,7 +346,7 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
         
         
         评估师Label.text = model.assessmentList?.assessment_name
-        评估价格Label.text = model.assessmentList?.confirmed_money
+        评估价格Label.text = (model.assessmentList?.confirmed_money)! + "万元"
         评估备注Label.text = model.assessmentList?.remarks
         
         定价师Label.text = model.priceList?.first?.partyName?.isEmpty == false ? model.priceList?.first?.partyName : "未选择"
