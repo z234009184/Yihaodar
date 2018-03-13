@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AwesomeCache
 
 // MARK: - Color
 let YiThemeColor = UIColor(hex: "FFFFFF")
