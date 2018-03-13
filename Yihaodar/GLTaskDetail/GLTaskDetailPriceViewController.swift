@@ -770,6 +770,7 @@ class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
             if case let .success(respon) = result {
                 print(JSON(respon.data))
                 if JSON(respon.data)["type"] == "E" {
+                    NotificationCenter.default.post(name: YiSubmitSuccessNotificationName, object: nil)
                     self?.navigationController?.popViewController(animated: true)
                 }
                 
@@ -820,6 +821,7 @@ class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
                 if case let .success(respon) = result {
                     if JSON(respon.data)["type"] == "S" {
                         self?.tabBarVc.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_success"), title: "提交成功")
+                        NotificationCenter.default.post(name: YiSubmitSuccessNotificationName, object: nil)
                         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
                             self?.tabBarVc.dismissCover(btn: nil)
                             self?.navigationController?.popViewController(animated: true)

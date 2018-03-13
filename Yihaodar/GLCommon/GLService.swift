@@ -15,7 +15,7 @@ struct CustomPlugin: PluginType {
     
     static let requestTimeoutClosure = { (endpoint: Endpoint<GLService>, done: @escaping MoyaProvider<GLService>.RequestResultClosure) in
         guard var request = try? endpoint.urlRequest() else { return }
-        request.timeoutInterval = 10    //设置请求超时时间
+        request.timeoutInterval = 15    //设置请求超时时间
         done(.success(request))
     }
     
@@ -239,13 +239,17 @@ extension GLService: TargetType {
             
             param["body"] = ["partyId": partyId, "store": store, "boss_party_id": boss_party_id, "executive_party_id": executive_party_id, "director_party_id": director_party_id, "ower": ower, "goods_code": goods_code, "brand_name": brand_name, "brand_name_txt": brand_name_txt, "goods_series": goods_series, "goods_series_txt": goods_series_txt, "goods_style": goods_style, "goods_style_txt": goods_style_txt, "car_color": car_color, "production_date": production_date, "register_date": register_date, "run_number": run_number, "displacement": displacement, "peccancy": peccancy, "peccancy_fraction": peccancy_fraction, "peccancy_money": peccancy_money, "engine_code": engine_code, "frame_code": frame_code, "invoice": invoice, "transfer_number": transfer_number, "year_check": year_check, "insurance_due_date": insurance_due_date, "jq_insurance": jq_insurance, "sy_insurance": sy_insurance, "gearbox": gearbox, "driving_type": driving_type, "keyless_startup": keyless_startup, "cruise_control": cruise_control, "navigation": navigation, "hpyl": hpyl, "chair_type": chair_type, "fuel_type": fuel_type, "skylight": skylight, "air_conditioner": air_conditioner, "other": other, "airbag": airbag, "accident": accident, "accident_level": accident_level, "ccrpList": ccrpList, "ccroList": ccroList, "assessment_name": assessment_name, "confirmed_money": confirmed_money, "remarks": remarks]
             
+            
         case let GLService.getInfoByPid(pid):
             param["body"] = ["pid": pid]
             
-            
         case let GLService.uploadFile(multiParts):
             return .uploadMultipart(multiParts)
+            
+            
         }
+        print((JSON(param).rawString())!)
+        
         return .requestParameters(parameters: ["data": (JSON(param).rawString())!], encoding: URLEncoding.queryString)
     }
     var sampleData: Data {

@@ -269,7 +269,6 @@ class GLTaskDetailViewController: UIViewController {
     
     var imagesss = [SKPhoto]()
     var observer: NSObjectProtocol?
-    var refreshClosure: (()->())?
     
     
     override func viewDidLoad() {
@@ -310,6 +309,7 @@ class GLTaskDetailViewController: UIViewController {
                 self?.estimateMsgModel = GLEstimateMsgModel.deserialize(from: jsonStr, designatedPath: "results.dataPG")
                 
                 if JSON(respon.data)["type"] == "E" {
+                    NotificationCenter.default.post(name: YiSubmitSuccessNotificationName, object: nil)
                     self?.navigationController?.popViewController(animated: true)
                 }
                 
@@ -388,11 +388,10 @@ class GLTaskDetailViewController: UIViewController {
                     print(JSON(respon.data))
                     if JSON(respon.data)["type"] == "S" {
                         self?.tabBarVc.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_success"), title: "提交成功")
+                        NotificationCenter.default.post(name: YiSubmitSuccessNotificationName, object: nil)
                         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
                             self?.tabBarVc.dismissCover(btn: nil)
                             self?.navigationController?.popViewController(animated: true)
-                            guard let refreshClosure = self?.refreshClosure else { return }
-                            refreshClosure()
                         })
                     } else {
                         self?.tabBarVc.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_failure"), title: "提交失败")
@@ -415,6 +414,7 @@ class GLTaskDetailViewController: UIViewController {
     
     
 }
+
 
 
 class GLTaskDetailPictureCell: UICollectionViewCell {

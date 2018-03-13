@@ -26,10 +26,17 @@ class GLSearchViewController: GLWorkTableBaseViewController {
         tableView.configRefreshHeader(with: GLRefreshHeader.header()) { [weak self] in
             self?.startIndex = 1
             self?.loadData()
-            
         }
         
+        NotificationCenter.default.addObserver(self, selector:#selector(GLSearchViewController.refreshData) , name: YiSubmitSuccessNotificationName, object: nil)
+        
     }
+    
+    @objc func refreshData() {
+        startIndex = 1
+        loadData()
+    }
+    
     
     func loadData() {
         
@@ -123,6 +130,10 @@ class GLSearchViewController: GLWorkTableBaseViewController {
     @objc func cancelBtn(item: UIBarButtonItem)  {
         searchBar.endEditing(true)
         navigationController?.popViewController(animated: true)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 

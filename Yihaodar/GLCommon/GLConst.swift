@@ -17,6 +17,6 @@ let YiUnselectedTitleColor = UIColor(hex: "99A0AA")
 let YiRefreshTitleColor = YiUnselectedTitleColor
 
 
-// MARK: - Cache
-
+// MARK: - NSNotifation.Name
+let YiSubmitSuccessNotificationName = NSNotification.Name("YiSubmitSuccessNotificationName")
    

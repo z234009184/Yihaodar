@@ -170,9 +170,7 @@ class GLWorkTableBaseViewController: UITableViewController {
             let desVc = UIStoryboard(name: "GLTaskDetail", bundle: nil).instantiateInitialViewController()
             guard let bdVc = desVc as? GLTaskDetailViewController else { return }
             bdVc.model = model
-            bdVc.refreshClosure = {
-                tableView.switchRefreshHeader(to: .refreshing)
-            }
+            
             if let navigationVc = parentVc.navigationController {
                 navigationVc.pushViewController(bdVc, animated: true)
             } else {
@@ -184,9 +182,7 @@ class GLWorkTableBaseViewController: UITableViewController {
             let desVc = UIStoryboard(name: "GLTaskDetailPrice", bundle: nil).instantiateInitialViewController()
             guard let djVc = desVc as? GLTaskDetailPriceViewController else { return }
             djVc.model = model
-            djVc.refreshClosure = {
-                tableView.switchRefreshHeader(to: .refreshing)
-            }
+            
             if let navigationVc = parentVc.navigationController {
                 navigationVc.pushViewController(djVc, animated: true)
             } else {
@@ -221,8 +217,18 @@ class GLDaiBanController: GLWorkTableBaseViewController, IndicatorInfoProvider {
         tableView.configRefreshFooter(with: GLRefreshFooter.footer()) { [weak self] in
             self?.loadData()
         }
+        
         tableView.switchRefreshHeader(to: .refreshing)
+        
+        NotificationCenter.default.addObserver(self, selector:#selector(GLDaiBanController.refreshData) , name: YiSubmitSuccessNotificationName, object: nil)
+        
     }
+    
+    @objc func refreshData() {
+        startIndex = 1
+        loadData()
+    }
+    
     
     func loadData() {
         GLProvider.request(GLService.todoList(partyId: GLUser.partyId!, pageSize: "\(pageSize)", startIndex: "\(startIndex)"))  { [weak self] (result) in
@@ -255,6 +261,10 @@ class GLDaiBanController: GLWorkTableBaseViewController, IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "待办任务")
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 
@@ -277,7 +287,14 @@ class GLWanChengController: GLWorkTableBaseViewController, IndicatorInfoProvider
             self?.loadData()
         }
         tableView.switchRefreshHeader(to: .refreshing)
+        NotificationCenter.default.addObserver(self, selector:#selector(GLWanChengController.refreshData) , name: YiSubmitSuccessNotificationName, object: nil)
     }
+    
+    @objc func refreshData() {
+        startIndex = 1
+        loadData()
+    }
+    
     func loadData() {
         GLProvider.request(GLService.completeList(partyId: GLUser.partyId!, pageSize: "\(pageSize)", startIndex: "\(startIndex)"))  { [weak self] (result) in
             if self == nil {return}
@@ -307,6 +324,9 @@ class GLWanChengController: GLWorkTableBaseViewController, IndicatorInfoProvider
     // IndicatorInfoProvider
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "已完成任务")
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 

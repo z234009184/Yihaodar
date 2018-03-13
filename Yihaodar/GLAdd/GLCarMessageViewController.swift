@@ -105,6 +105,17 @@ class GLCarMessageViewController: UIViewController {
             view.makeToast("车牌号为空")
             return
         }
+        
+        let expression = "^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$"
+        
+        let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
+        let numberOfMatches = regex.numberOfMatches(in: carNumberLabel.text!, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (carNumberLabel.text! as NSString).length))
+
+        if numberOfMatches == 0 {
+            view.makeToast("请输入有效车牌号")
+            return
+        }
+        
  
  
         guard selectedBrandModel != nil else {
@@ -412,12 +423,13 @@ extension GLCarMessageViewController: UITextFieldDelegate {
         if textField == carNumberLabel {
             ///
             
-            let expression = "^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$"
-            let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
-            let numberOfMatches = regex.numberOfMatches(in: newString, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (newString as NSString).length))
+//            let expression = "^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$"
             
-            return numberOfMatches != 0
-            
+//            let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
+//            let numberOfMatches = regex.numberOfMatches(in: newString, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (newString as NSString).length))
+//
+//            return numberOfMatches != 0
+            return newString.count <= 10
         }
         
         if textField == carColorLabel {
