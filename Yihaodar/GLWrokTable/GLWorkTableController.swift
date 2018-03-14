@@ -390,20 +390,21 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
     func setupRightBarItems() -> Void {
         
         
-        let rightBarItemsView = UIView(frame: CGRect(x: 0, y: 0, width: 54, height: 18))
+        let rightBarItemsView = UIView(frame: CGRect(x: 0, y: 0, width: 70, height: 25))
+//        rightBarItemsView.backgroundColor = UIColor.red
         
         let searchBtn = UIButton(type: .custom)
-        searchBtn.frame = CGRect(x: 0, y: 0, width: 18, height: 18)
+        searchBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 25)
         searchBtn.setImage(#imageLiteral(resourceName: "navigation_search_icon"), for: .normal)
-        searchBtn.sizeToFit()
+//        searchBtn.backgroundColor = .cyan
         searchBtn.addTarget(self, action: #selector(GLWorkTableController.searchAction(_:)), for: UIControlEvents.touchUpInside)
 
         let addBtn = UIButton(type: .custom)
-        addBtn.frame = CGRect(x: 36, y: 0, width: 18, height: 18)
+        addBtn.frame = CGRect(x: 40, y: 0, width: 30, height: 25)
         addBtn.setImage(#imageLiteral(resourceName: "navigation_add_icon"), for: .normal)
-        addBtn.sizeToFit()
+
         addBtn.addTarget(self, action: #selector(GLWorkTableController.addAction(_:)), for: UIControlEvents.touchUpInside)
-        
+//        addBtn.backgroundColor = .blue
         rightBarItemsView.addSubview(searchBtn)
         rightBarItemsView.addSubview(addBtn)
         

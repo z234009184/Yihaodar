@@ -267,10 +267,10 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="Pk0-XX-h83"/>
                                                 </constraints>
-                                                <state key="normal" title="展开">
+                                                <state key="normal" backgroundImage="open_btn">
                                                     <color key="titleColor" red="0.12941176469999999" green="0.15686274510000001" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
-                                                <state key="selected" title="收起"/>
+                                                <state key="selected" backgroundImage="fold_btn"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="3"/>
@@ -1311,10 +1311,10 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="d62-OP-92N"/>
                                                 </constraints>
-                                                <state key="normal" title="展开">
+                                                <state key="normal" backgroundImage="open_btn">
                                                     <color key="titleColor" red="0.12941176469999999" green="0.15686274510000001" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
-                                                <state key="selected" title="收起"/>
+                                                <state key="selected" backgroundImage="fold_btn"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="3"/>
@@ -2023,10 +2023,10 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="z7g-M9-lmE"/>
                                                 </constraints>
-                                                <state key="normal" title="展开">
+                                                <state key="normal" backgroundImage="open_btn">
                                                     <color key="titleColor" red="0.12941176469999999" green="0.15686274510000001" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
-                                                <state key="selected" title="收起"/>
+                                                <state key="selected" backgroundImage="fold_btn"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="3"/>
@@ -3114,6 +3114,8 @@
         <image name="add_add_picture" width="90" height="90"/>
         <image name="add_delete" width="13" height="13"/>
         <image name="add_question" width="39" height="44"/>
+        <image name="fold_btn" width="355" height="44"/>
+        <image name="open_btn" width="354" height="43"/>
         <image name="worktable_cell_icon" width="6" height="17"/>
     </resources>
 </document>
