@@ -1051,7 +1051,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CL6-Dy-UGT" customClass="DesignableTextField" customModule="Spring">
-                                                                <rect key="frame" x="10" y="41" width="330" height="18"/>
+                                                                <rect key="frame" x="10" y="41" width="289" height="18"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -1059,17 +1059,25 @@
                                                                     <outlet property="delegate" destination="V3A-iC-KUW" id="ZQM-Gp-LUh"/>
                                                                 </connections>
                                                             </textField>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="万元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGd-7W-8c8">
+                                                                <rect key="frame" x="309" y="41" width="31" height="18"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <color key="textColor" red="0.12941176469999999" green="0.15686274510000001" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
+                                                            <constraint firstItem="bGd-7W-8c8" firstAttribute="centerY" secondItem="CL6-Dy-UGT" secondAttribute="centerY" id="ECC-O1-QsN"/>
                                                             <constraint firstItem="zve-jM-dFC" firstAttribute="leading" secondItem="IOJ-zz-a9D" secondAttribute="leading" constant="10" id="EfP-gv-NKa"/>
+                                                            <constraint firstAttribute="trailing" secondItem="bGd-7W-8c8" secondAttribute="trailing" constant="15" id="GmR-YG-Q1d"/>
                                                             <constraint firstItem="zve-jM-dFC" firstAttribute="top" secondItem="IOJ-zz-a9D" secondAttribute="top" constant="15" id="Isr-Pd-SDy"/>
                                                             <constraint firstItem="CL6-Dy-UGT" firstAttribute="leading" secondItem="zve-jM-dFC" secondAttribute="leading" id="OLt-7K-QlY"/>
                                                             <constraint firstItem="cQU-aW-cfB" firstAttribute="leading" secondItem="IOJ-zz-a9D" secondAttribute="leading" constant="8" id="aiF-ru-oyx"/>
-                                                            <constraint firstAttribute="trailing" secondItem="CL6-Dy-UGT" secondAttribute="trailing" constant="15" id="bN0-s3-3eE"/>
                                                             <constraint firstAttribute="bottom" secondItem="cQU-aW-cfB" secondAttribute="bottom" id="n22-hu-wDr"/>
                                                             <constraint firstAttribute="height" constant="70" id="nBn-CQ-zQK"/>
                                                             <constraint firstItem="CL6-Dy-UGT" firstAttribute="top" secondItem="zve-jM-dFC" secondAttribute="bottom" constant="10" id="oEN-CN-EXO"/>
+                                                            <constraint firstItem="bGd-7W-8c8" firstAttribute="leading" secondItem="CL6-Dy-UGT" secondAttribute="trailing" constant="10" id="pGp-ao-3yq"/>
                                                             <constraint firstAttribute="trailing" secondItem="cQU-aW-cfB" secondAttribute="trailing" id="vCI-3H-o5W"/>
                                                         </constraints>
                                                     </view>
@@ -1083,7 +1091,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ciY-Io-2TS" customClass="DesignableTextField" customModule="Spring">
-                                                                <rect key="frame" x="10" y="41" width="330" height="18"/>
+                                                                <rect key="frame" x="10" y="41" width="304" height="18"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -1098,17 +1106,25 @@
                                                                     <constraint firstAttribute="height" constant="1" id="imG-U6-FFY"/>
                                                                 </constraints>
                                                             </view>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="次" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsZ-HF-qZ4">
+                                                                <rect key="frame" x="324" y="41" width="16" height="18"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <color key="textColor" red="0.12941176469999999" green="0.15686274510000001" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="ciY-Io-2TS" firstAttribute="leading" secondItem="9m9-O9-xOR" secondAttribute="leading" id="Eef-CZ-ymU"/>
-                                                            <constraint firstAttribute="trailing" secondItem="ciY-Io-2TS" secondAttribute="trailing" constant="15" id="Frj-f2-u2A"/>
                                                             <constraint firstItem="bcA-C3-cTB" firstAttribute="leading" secondItem="A4N-iW-BQv" secondAttribute="leading" constant="8" id="Q2a-sQ-M5f"/>
+                                                            <constraint firstAttribute="trailing" secondItem="rsZ-HF-qZ4" secondAttribute="trailing" constant="15" id="Rjg-2F-hni"/>
                                                             <constraint firstItem="9m9-O9-xOR" firstAttribute="leading" secondItem="A4N-iW-BQv" secondAttribute="leading" constant="10" id="ShD-88-Abe"/>
                                                             <constraint firstAttribute="height" constant="70" id="WUR-a0-hE6"/>
                                                             <constraint firstAttribute="bottom" secondItem="bcA-C3-cTB" secondAttribute="bottom" id="Wl6-W2-oRc"/>
+                                                            <constraint firstItem="rsZ-HF-qZ4" firstAttribute="centerY" secondItem="ciY-Io-2TS" secondAttribute="centerY" id="Xa8-XB-QO3"/>
                                                             <constraint firstItem="9m9-O9-xOR" firstAttribute="top" secondItem="A4N-iW-BQv" secondAttribute="top" constant="15" id="bgh-1A-lvK"/>
                                                             <constraint firstAttribute="trailing" secondItem="bcA-C3-cTB" secondAttribute="trailing" id="lPs-6N-VQX"/>
+                                                            <constraint firstItem="rsZ-HF-qZ4" firstAttribute="leading" secondItem="ciY-Io-2TS" secondAttribute="trailing" constant="10" id="vKO-6y-0Cj"/>
                                                             <constraint firstItem="ciY-Io-2TS" firstAttribute="top" secondItem="9m9-O9-xOR" secondAttribute="bottom" constant="10" id="xuU-eh-Tvj"/>
                                                         </constraints>
                                                     </view>

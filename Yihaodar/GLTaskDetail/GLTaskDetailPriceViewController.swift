@@ -213,6 +213,8 @@ class GLBasicMessageViewController: UIViewController, IndicatorInfoProvider, UIS
     @IBOutlet weak var carFrameNumberLabel: UILabel!
     @IBOutlet weak var carInvoicePriceLabel: UILabel!
     
+    @IBOutlet weak var carChangeMasterTimesLabel: UILabel!
+    
     @IBOutlet weak var carCheckLimitDateLabel: UILabel!
     
     @IBOutlet weak var carTrafficLabel: UILabel!
@@ -241,12 +243,13 @@ class GLBasicMessageViewController: UIViewController, IndicatorInfoProvider, UIS
         carColorLabel.text = model.assessmentList?.car_color
         carProductDateLabel.text = model.assessmentList?.production_date
         carRegisterDateLabel.text = model.assessmentList?.register_date
-        carMileageLabel.text = model.assessmentList?.run_number
+        carMileageLabel.text = (model.assessmentList?.run_number)! + "万公里"
         carExhaustLabel.text = model.assessmentList?.displacement
         carPeccancyLabel.text = (model.assessmentList?.peccancy)! == "0" ? "无" : "罚分:\(model.assessmentList?.peccancy_fraction ?? "0")(分)  罚款:\(model.assessmentList?.peccancy_money ?? "0")(元)"
         carEngineVersionLabel.text = model.assessmentList?.engine_code
         carFrameNumberLabel.text = model.assessmentList?.frame_code
-        carInvoicePriceLabel.text = model.assessmentList?.invoice?.isEmpty == false ? model.assessmentList?.invoice : "未选择"
+        carInvoicePriceLabel.text = model.assessmentList?.invoice?.isEmpty == false ? (model.assessmentList?.invoice)! + "万元" : "未填写"
+        carChangeMasterTimesLabel.text = model.assessmentList?.transfer_number?.isEmpty == false ? (model.assessmentList?.transfer_number)! + "次" : "未填写"
         carCheckLimitDateLabel.text = model.assessmentList?.year_check
         carTrafficLabel.text = model.assessmentList?.jq_insurance?.isEmpty == false ? model.assessmentList?.jq_insurance : "未选择"
         carBusinessLabel.text = model.assessmentList?.sy_insurance?.isEmpty == false ? model.assessmentList?.sy_insurance : "未选择"
@@ -350,7 +353,7 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
         评估备注Label.text = model.assessmentList?.remarks
         
         定价师Label.text = model.priceList?.first?.partyName?.isEmpty == false ? model.priceList?.first?.partyName : "未选择"
-        定价价格Label.text = model.priceList?.first?.confirmedMoney?.isEmpty == false ? model.priceList?.first?.confirmedMoney : "未选择"
+        定价价格Label.text = model.priceList?.first?.confirmedMoney?.isEmpty == false ? (model.priceList?.first?.confirmedMoney)! + "万元" : "未选择"
         定价备注Label.text = model.priceList?.first?.appraiseRemarks
         
         
