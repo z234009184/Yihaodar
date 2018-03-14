@@ -27,7 +27,7 @@ struct GLWorkTableModel: HandyJSON {
         get{
             var str: String?
             if let d = executionData?.data(using: String.Encoding.utf8) {
-                str = JSON(d)["brandStyle"].stringValue + JSON(d)["brandName"].stringValue + JSON(d)["brandSeries"].stringValue
+                str = JSON(d)["brandName"].stringValue + " " + JSON(d)["brandSeries"].stringValue + " " + JSON(d)["brandStyle"].stringValue
                 if str?.trimmingCharacters(in: .whitespaces).isEmpty == true {
                     str = "此单含有车辆证件照片"
                 }
