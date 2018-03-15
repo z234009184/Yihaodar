@@ -837,6 +837,8 @@ class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
                             self?.tabBarVc.dismissCover(btn: nil)
                         })
                     }
+                } else {
+                    self?.tabBarVc.dismissCover(btn: nil)
                 }
             }
         }
