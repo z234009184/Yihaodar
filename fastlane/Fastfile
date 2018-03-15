@@ -1,0 +1,20 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+    build_app(workspace: "Yihaodar.xcworkspace", scheme: "Yihaodar", export_method: "development")
+  pgyer(api_key: "03df3a8f19f7bea8f31ba9c6d0f6ddf3", user_key: "39aefc3cfc3e87829b53d7b8791a41f1")
+  end
+end

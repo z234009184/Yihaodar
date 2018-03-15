@@ -72,7 +72,7 @@ class GLCheckBoxCell: UITableViewCell, UITextFieldDelegate {
         }
         
         if textField.placeholder == "A/B/C/D" {
-            let expression = "^[ABCD]$"
+            let expression = "^[ABCD]{0,1}$"
             let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
             let numberOfMatches = regex.numberOfMatches(in: newString, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (newString as NSString).length))
             

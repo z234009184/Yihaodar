@@ -297,8 +297,8 @@ class GLCarConfigViewController: UIViewController {
             self?.seatFormatLabel.text = arr.reduce("", { (result, radioModel) -> String in
                 let title = radioModel.title ?? ""
                 let input = radioModel.input ?? ""
-                let str = result.isEmpty ? "" : ","
-                return result + str + title + " " + input
+                let str = result.isEmpty ? "" : "、"
+                return result + str + title + input
             })
         }
     }
@@ -324,14 +324,14 @@ class GLCarConfigViewController: UIViewController {
             })
         }
         
-        let multiVc = GLCheckBoxViewController.jumpMultiVc(title: "选择然后方式", dataArray: dataArray, navigationVc: navigationController)
+        let multiVc = GLCheckBoxViewController.jumpMultiVc(title: "选择燃油方式", dataArray: dataArray, navigationVc: navigationController)
         multiVc.closeClosure = { [weak self] (arr) in
             self?.selectedFuelTypeModels = arr
             self?.fuelTypeLabel.text = arr.reduce("", { (result, radioModel) -> String in
                 let title = radioModel.title ?? ""
                 let input = radioModel.input ?? ""
-                let str = result.isEmpty ? "" : ","
-                return result + str + title + " " + input
+                let str = result.isEmpty ? "" : "、"
+                return result + str + title + input
             })
         }
         
@@ -388,8 +388,8 @@ class GLCarConfigViewController: UIViewController {
             self?.airConditionerLabel.text = arr.reduce("", { (result, radioModel) -> String in
                 let title = radioModel.title ?? ""
                 let input = radioModel.input ?? ""
-                let str = result.isEmpty ? "" : ","
-                return result + str + title + " " + input
+                let str = result.isEmpty ? "" : "、"
+                return result + str + title + input
             })
         }
     }
@@ -420,9 +420,9 @@ class GLCarConfigViewController: UIViewController {
             self?.selectedOtherModels = arr
             self?.otherLabel.text = arr.reduce("", { (result, radioModel) -> String in
                 let title = radioModel.title ?? ""
-                let input = radioModel.input ?? ""
-                let str = result.isEmpty ? "" : ","
-                return result + str + title + " " + input
+//                let input = radioModel.input ?? ""
+                let str = result.isEmpty ? "" : "、"
+                return result + str + title
             })
         }
         
@@ -455,8 +455,8 @@ class GLCarConfigViewController: UIViewController {
             self?.accidentLabel.text = arr.reduce("", { (result, radioModel) -> String in
                 let title = radioModel.title ?? ""
                 let input = radioModel.input ?? ""
-                let str = result.isEmpty ? "" : ","
-                return result + str + title + " " + input
+                let str = result.isEmpty ? "" : "、"
+                return result + str + title + input
             })
         }
     }
