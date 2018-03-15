@@ -399,6 +399,8 @@ class GLTaskDetailViewController: UIViewController {
                             self?.tabBarVc.dismissCover(btn: nil)
                         })
                     }
+                } else {
+                    self?.tabBarVc.dismissCover(btn: nil)
                 }
             })
             
