@@ -250,7 +250,7 @@ class GLTaskDetailViewController: UIViewController {
                 estimateMsgView.snp.removeConstraints()
                 
                 estimateDateLabel.text = estimateMsgModel.confirmed_date
-                estimatePriceLabel.text = estimateMsgModel.confirmed_money
+                estimatePriceLabel.text = (estimateMsgModel.confirmed_money)!.decimalString() + "万元"
                 estimateCarDetailMsgLabel.text = estimateMsgModel.car_info
                 estimateMemoLabel.text = estimateMsgModel.remarks
                 

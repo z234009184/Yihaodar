@@ -3007,7 +3007,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vlD-bF-Ra1" customClass="DesignableTextField" customModule="Spring">
-                                                                <rect key="frame" x="10" y="36" width="330" height="28"/>
+                                                                <rect key="frame" x="10" y="36" width="289" height="28"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -3015,13 +3015,21 @@
                                                                     <outlet property="delegate" destination="SCQ-sV-stq" id="McH-ju-9HI"/>
                                                                 </connections>
                                                             </textField>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="万元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zM1-x5-I7u">
+                                                                <rect key="frame" x="309" y="41" width="31" height="18"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <color key="textColor" red="0.12941176469999999" green="0.15686274510000001" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="vlD-bF-Ra1" firstAttribute="top" secondItem="QxU-gP-43Y" secondAttribute="bottom" constant="5" id="4XP-M4-VUD"/>
+                                                            <constraint firstItem="zM1-x5-I7u" firstAttribute="centerY" secondItem="vlD-bF-Ra1" secondAttribute="centerY" id="6a1-9f-uif"/>
+                                                            <constraint firstAttribute="trailing" secondItem="zM1-x5-I7u" secondAttribute="trailing" constant="15" id="9ZE-UF-TTz"/>
                                                             <constraint firstAttribute="height" constant="70" id="9wK-L6-cMl"/>
+                                                            <constraint firstItem="zM1-x5-I7u" firstAttribute="leading" secondItem="vlD-bF-Ra1" secondAttribute="trailing" constant="10" id="DE0-sK-Ggl"/>
                                                             <constraint firstItem="vlD-bF-Ra1" firstAttribute="leading" secondItem="QxU-gP-43Y" secondAttribute="leading" id="Hgy-y6-3zc"/>
-                                                            <constraint firstAttribute="trailing" secondItem="vlD-bF-Ra1" secondAttribute="trailing" constant="15" id="LKf-ZX-CJp"/>
                                                             <constraint firstItem="QxU-gP-43Y" firstAttribute="top" secondItem="L7q-iz-d8p" secondAttribute="top" constant="15" id="OYR-E7-e7U"/>
                                                             <constraint firstAttribute="trailing" secondItem="QJc-cG-4uj" secondAttribute="trailing" id="Tb3-Sy-VPa"/>
                                                             <constraint firstAttribute="bottom" secondItem="QJc-cG-4uj" secondAttribute="bottom" id="ZJ2-C0-G1R"/>

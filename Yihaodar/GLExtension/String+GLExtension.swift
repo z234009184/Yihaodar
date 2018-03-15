@@ -23,5 +23,20 @@ extension String {
         
         return String(format: hash as String)
     }
+    
+    func decimalString() -> String {
+        
+        let price = Double(self)
+        
+        guard let priceNum = price else { return self}
+        
+        let format = NumberFormatter()
+        //设置numberStyle（有多种格式）
+        format.numberStyle = .decimal
+        //转换后的string
+        let string = format.string(from: NSNumber(value: priceNum))
+        
+        return string ?? self
+    }
 }
 

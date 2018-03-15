@@ -248,7 +248,7 @@ class GLBasicMessageViewController: UIViewController, IndicatorInfoProvider, UIS
         carPeccancyLabel.text = (model.assessmentList?.peccancy)! == "0" ? "无" : "罚分:\(model.assessmentList?.peccancy_fraction ?? "0")(分)  罚款:\(model.assessmentList?.peccancy_money ?? "0")(元)"
         carEngineVersionLabel.text = model.assessmentList?.engine_code
         carFrameNumberLabel.text = model.assessmentList?.frame_code
-        carInvoicePriceLabel.text = model.assessmentList?.invoice?.isEmpty == false ? (model.assessmentList?.invoice)! + "万元" : "未填写"
+        carInvoicePriceLabel.text = model.assessmentList?.invoice?.isEmpty == false ? (model.assessmentList?.invoice)!.decimalString() + "万元" : "未填写"
         carChangeMasterTimesLabel.text = model.assessmentList?.transfer_number?.isEmpty == false ? (model.assessmentList?.transfer_number)! + "次" : "未填写"
         carCheckLimitDateLabel.text = model.assessmentList?.year_check
         carTrafficLabel.text = model.assessmentList?.jq_insurance?.isEmpty == false ? model.assessmentList?.jq_insurance : "未选择"
@@ -349,11 +349,11 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
         
         
         评估师Label.text = model.assessmentList?.assessment_name
-        评估价格Label.text = (model.assessmentList?.confirmed_money)! + "万元"
+        评估价格Label.text = (model.assessmentList?.confirmed_money)!.decimalString() + "万元"
         评估备注Label.text = model.assessmentList?.remarks
         
         定价师Label.text = model.priceList?.first?.partyName?.isEmpty == false ? model.priceList?.first?.partyName : "未选择"
-        定价价格Label.text = model.priceList?.first?.confirmedMoney?.isEmpty == false ? (model.priceList?.first?.confirmedMoney)! + "万元" : "未选择"
+        定价价格Label.text = model.priceList?.first?.confirmedMoney?.isEmpty == false ? (model.priceList?.first?.confirmedMoney)!.decimalString() + "万元" : "未选择"
         定价备注Label.text = model.priceList?.first?.appraiseRemarks
         
         
@@ -711,7 +711,7 @@ class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
                     bottomViewBottomConstrain.constant = -64
                     guard let money = priceDetailModel?.priceList?.first?.confirmedMoney else { return }
                     
-                    priceStateBtn.setTitle("定价:" + money + "万元", for: .normal)
+                    priceStateBtn.setTitle("定价:" + money.decimalString() + "万元", for: .normal)
                     priceStateBtn.setTitleColor(YiBlueColor, for: .normal)
                     priceStateBtn.backgroundColor = .white
                     
