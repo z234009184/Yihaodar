@@ -52,7 +52,6 @@ struct CustomPlugin: PluginType {
                 if json["code"] == "TOKEN IS ERROR" || json["code"] == "TOKEN IS OVER TIME" || json["code"] == "TOKEN IS EMPTY" {
                     let user = User.read()
                     user?.clear()
-                    GLUser = User()
                     window.rootViewController?.presentedViewController?.dismiss(animated: true, completion: nil)
                 }
             }

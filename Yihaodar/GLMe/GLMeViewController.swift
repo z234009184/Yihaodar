@@ -51,7 +51,10 @@ class GLMeViewController: UIViewController {
     }
     @IBAction func logoutBtnClick(_ sender: UIButton) {
         
+        
+        view.showLoading()
         GLProvider.request(GLService.logout(partyId: GLUser.partyId!)) { (result) in
+            self.view.hideLoading()
             if case let .success(respon) = result {
                 let json = JSON(respon.data)
                 print(json)
@@ -61,7 +64,6 @@ class GLMeViewController: UIViewController {
                 self.tabBarController?.dismiss(animated: true, completion: nil)
             }
         }
-        
     }
 }
 
