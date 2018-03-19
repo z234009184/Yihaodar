@@ -46,43 +46,43 @@ class GLCarConfigViewController: UIViewController {
     @objc func nextBtnClick(item: UIBarButtonItem) {
         
         if gearboxLabel.text == "请选择" || gearboxLabel.text?.isEmpty == true {
-            view.makeToast("")
+            view.makeToast("请选择变速器")
             return
         }
         if drivingTypeLabel.text == "请选择" || drivingTypeLabel.text?.isEmpty == true {
-            view.makeToast("")
+            view.makeToast("请选择驱动方式")
             return
         }
         if keylessStartupLabel.text == "请选择" || keylessStartupLabel.text?.isEmpty == true {
-            view.makeToast("")
+            view.makeToast("请选择有无钥匙启动")
             return
         }
         if cruiseControlLabel.text == "请选择" || cruiseControlLabel.text?.isEmpty == true {
-            view.makeToast("")
+            view.makeToast("请选择定速巡航")
             return
         }
         if navigationLabel.text == "请选择" || navigationLabel.text?.isEmpty == true {
-            view.makeToast("")
+            view.makeToast("请选择导航")
             return
         }
         if hpylLabel.text == "请选择" || hpylLabel.text?.isEmpty == true {
-            view.makeToast("")
+            view.makeToast("请选择后排娱乐")
             return
         }
         if seatFormatLabel.text == "请选择" || seatFormatLabel.text?.isEmpty == true {
-            view.makeToast("")
+            view.makeToast("请选择座椅形式")
             return
         }
         if fuelTypeLabel.text == "请选择" || fuelTypeLabel.text?.isEmpty == true {
-            view.makeToast("")
+            view.makeToast("请选择燃油方式")
             return
         }
         if skylightLabel.text == "请选择" || skylightLabel.text?.isEmpty == true {
-            view.makeToast("")
+            view.makeToast("请选择天窗")
             return
         }
         if airConditionerLabel.text == "请选择" || airConditionerLabel.text?.isEmpty == true {
-            view.makeToast("")
+            view.makeToast("请选择空调配置")
             return
         }
  

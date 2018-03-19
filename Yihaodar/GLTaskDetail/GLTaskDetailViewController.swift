@@ -371,10 +371,6 @@ class GLTaskDetailViewController: UIViewController {
                 return
             }
             
-            if carMsgText.count < 1 {
-                weakShowMsgView?.makeToast("请输入车辆信息")
-                return
-            }
             
             
             self?.tabBarVc.dismissCover(btn: nil)
