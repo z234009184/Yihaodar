@@ -116,9 +116,13 @@ class GLCarStateViewController: UIViewController {
             
             let radioVc = GLRadioViewController.jumpRadioVc(title: "选择车构件", dataArray: dataArray, navigationVc: self?.navigationController)
             radioVc.closeClosure = { (model: GLRadioModel) in
-                weakCarStateView?.selectedPartModel = model
-                weakCarStateView?.partOneLabel.text = model.title
-                self?.loadPartsSubData(carStateView: weakCarStateView!)
+                if weakCarStateView?.selectedPartModel?.id != model.id {
+                    weakCarStateView?.selectedPartModel = model
+                    weakCarStateView?.partOneLabel.text = model.title
+                    self?.loadPartsSubData(carStateView: weakCarStateView!)
+                    weakCarStateView?.selectedPartSubModel = nil
+                    weakCarStateView?.partTwoLabel.text = "请选择"
+                }
             }
         }
         
@@ -220,13 +224,13 @@ class GLCarStateViewController: UIViewController {
     lazy var tabBarVc = navigationController?.presentingViewController as! GLTabBarController
     lazy var imgs = [#imageLiteral(resourceName: "car_state_1"), #imageLiteral(resourceName: "car_state_2")]
     @IBAction func questionMarkBtnClick(_ sender: UIButton) {
-
+        
         
         let mask = tabBarVc.showMaskView()
         guard let maskView = mask else {
             return
         }
-    
+        
         
         // Create a pager view
         let pagerView = FSPagerView()

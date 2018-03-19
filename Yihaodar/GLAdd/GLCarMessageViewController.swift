@@ -32,10 +32,10 @@ class GLCarMessageViewController: UIViewController {
     @IBOutlet weak var carExhaustField: DesignableTextField!
     /// 是否违章开关
     @IBOutlet weak var carPeccancySwitch: UISwitch!
-   
+    
     /// 是否罚分Field
     @IBOutlet weak var carPunishScoreField: DesignableTextField!
-   
+    
     /// 是否罚款Field
     @IBOutlet weak var carPunishMoneyField: DesignableTextField!
     /// 发动机引擎号码Field
@@ -45,7 +45,7 @@ class GLCarMessageViewController: UIViewController {
     
     /// 开票价格Field
     @IBOutlet weak var carInvoicePriceField: DesignableTextField!
-   
+    
     /// 过户次数Field
     @IBOutlet weak var carTransferTimesField: DesignableTextField!
     /// 年检到期日
@@ -110,19 +110,19 @@ class GLCarMessageViewController: UIViewController {
         
         let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
         let numberOfMatches = regex.numberOfMatches(in: carNumberLabel.text!, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (carNumberLabel.text! as NSString).length))
-
+        
         if numberOfMatches == 0 {
             view.makeToast("请输入有效车牌号")
             return
         }
         
- 
- 
+        
+        
         guard selectedBrandModel != nil else {
             view.makeToast("请选择车辆品牌")
             return
         }
- 
+        
         
         guard selectedSeriesModel != nil else {
             view.makeToast("请选择车辆系列")
@@ -184,7 +184,7 @@ class GLCarMessageViewController: UIViewController {
             view.makeToast("请选择年检到期日")
             return
         }
- 
+        
         
         
         /// 存入提交模型中
@@ -230,9 +230,16 @@ class GLCarMessageViewController: UIViewController {
         
         let radioVc = GLRadioViewController.jumpRadioVc(title: "选择车辆品牌", dataArray: dataArray, navigationVc: navigationController)
         radioVc.closeClosure = { [weak self] (model: GLRadioModel) in
-            self?.selectedBrandModel = model
-            self?.carBrandLabel.text = model.title
-            self?.loadCarSeriesData()
+            if self?.selectedBrandModel?.id != model.id {
+                self?.selectedBrandModel = model
+                self?.carBrandLabel.text = model.title
+                self?.loadCarSeriesData()
+                self?.selectedSeriesModel = nil
+                self?.carSeriesLabel.text = "请选择"
+                self?.selectedStyleModel = nil
+                self?.carVersionLabel.text = "请选择"
+            }
+            
         }
     }
     
@@ -252,13 +259,20 @@ class GLCarMessageViewController: UIViewController {
         
         let radioVc = GLRadioViewController.jumpRadioVc(title: "选择车辆系列", dataArray: dataArray, navigationVc: navigationController)
         radioVc.closeClosure = { [weak self] (model: GLRadioModel) in
-            self?.selectedSeriesModel = model
-            self?.carSeriesLabel.text = model.title
-            self?.loadCarStyleData()
+            
+            if self?.selectedSeriesModel?.id != model.id {
+                self?.selectedSeriesModel = model
+                self?.carSeriesLabel.text = model.title
+                self?.loadCarStyleData()
+                self?.selectedStyleModel = nil
+                self?.carVersionLabel.text = "请选择"
+            }
+            
+            
         }
         
     }
-
+    
     
     /// 车辆型号
     @IBAction func carVersionBtnClick(_ sender: UIButton) {
@@ -423,12 +437,12 @@ extension GLCarMessageViewController: UITextFieldDelegate {
         if textField == carNumberLabel {
             ///
             
-//            let expression = "^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$"
+            //            let expression = "^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$"
             
-//            let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
-//            let numberOfMatches = regex.numberOfMatches(in: newString, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (newString as NSString).length))
-//
-//            return numberOfMatches != 0
+            //            let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
+            //            let numberOfMatches = regex.numberOfMatches(in: newString, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (newString as NSString).length))
+            //
+            //            return numberOfMatches != 0
             return newString.count <= 10
         }
         
