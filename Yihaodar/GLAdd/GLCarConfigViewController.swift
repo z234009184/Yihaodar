@@ -420,9 +420,9 @@ class GLCarConfigViewController: UIViewController {
             self?.selectedOtherModels = arr
             self?.otherLabel.text = arr.reduce("", { (result, radioModel) -> String in
                 let title = radioModel.title ?? ""
-//                let input = radioModel.input ?? ""
+                let input = (radioModel.input != nil) ? (radioModel.input)! + "个" : ""
                 let str = result.isEmpty ? "" : "、"
-                return result + str + title
+                return result + str + title + input
             })
         }
         

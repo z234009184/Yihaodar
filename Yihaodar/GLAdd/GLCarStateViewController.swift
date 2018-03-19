@@ -262,5 +262,7 @@ extension GLCarStateViewController: FSPagerViewDataSource, FSPagerViewDelegate {
         return cell
     }
     
-    
+    func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
+        tabBarVc.dismissCover(btn: nil)
+    }
 }

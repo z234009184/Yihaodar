@@ -343,8 +343,8 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
         空调配置Label.text = model.assessmentList?.air_conditioner
         
         let other = model.assessmentList?.other?.isEmpty == false ? model.assessmentList?.other : "未选择"
-        let airbag = model.assessmentList?.airbag?.isEmpty == false ? (model.assessmentList?.airbag)! + "个" : ""
-        其他Label.text = other! + airbag
+//        let airbag = model.assessmentList?.airbag?.isEmpty == false ? (model.assessmentList?.airbag)! + "个" : ""
+        其他Label.text = other
         事故Label.text = model.assessmentList?.accident?.isEmpty == false ? model.assessmentList?.accident : "未选择"
         
         
