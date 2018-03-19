@@ -15,7 +15,7 @@ struct CustomPlugin: PluginType {
     
     static let requestTimeoutClosure = { (endpoint: Endpoint<GLService>, done: @escaping MoyaProvider<GLService>.RequestResultClosure) in
         guard var request = try? endpoint.urlRequest() else { return }
-        request.timeoutInterval = 15    //设置请求超时时间
+        request.timeoutInterval = 60    //设置请求超时时间
         done(.success(request))
     }
     
@@ -131,7 +131,7 @@ enum GLService {
 
 // MARK: - TargetType Protocol Implementation
 extension GLService: TargetType {
-    var mainURL: String { return "http://192.168.5.90:8080" }
+    var mainURL: String { return "http://192.168.5.235:8080" }
 //    var mainURL: String { return "http://192.168.6.226:8080/ROOT" }
     var baseURL: URL { return URL(string: mainURL)! }
     var path: String {

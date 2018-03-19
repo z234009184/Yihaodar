@@ -88,13 +88,33 @@ class GLUploadPictureViewController: UIViewController, UIImagePickerControllerDe
     }
     
     @objc func nextBtnClick(item: UIBarButtonItem) {
-        firstDataArray.removeLast()
-        secondDataArray.removeLast()
-        thirdDataArray.removeLast()
-        fourDataArray.removeLast()
-        fiveDataArray.removeLast()
+        let firstArr = firstDataArray.flatMap { (ccroModel) -> GLCcroModel? in
+            if ccroModel.fileTypeName.isEmpty == true { return nil}
+            return ccroModel
+        }
         
-        let ccroList = firstDataArray + secondDataArray + thirdDataArray + fourDataArray + fiveDataArray
+        let secondArr = secondDataArray.flatMap { (ccroModel) -> GLCcroModel? in
+            if ccroModel.fileTypeName.isEmpty == true { return nil}
+            return ccroModel
+        }
+        
+        let thirdArr = thirdDataArray.flatMap { (ccroModel) -> GLCcroModel? in
+            if ccroModel.fileTypeName.isEmpty == true { return nil}
+            return ccroModel
+        }
+        
+        let fourArr = fourDataArray.flatMap { (ccroModel) -> GLCcroModel? in
+            if ccroModel.fileTypeName.isEmpty == true { return nil}
+            return ccroModel
+        }
+        
+        let fiveArr = fiveDataArray.flatMap { (ccroModel) -> GLCcroModel? in
+            if ccroModel.fileTypeName.isEmpty == true { return nil}
+            return ccroModel
+        }
+        
+        
+        let ccroList = firstArr + secondArr + thirdArr + fourArr + fiveArr
         
         GLEstimateResultViewController.summitModel.ccroList = ccroList
         
