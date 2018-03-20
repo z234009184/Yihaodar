@@ -103,8 +103,9 @@ class GLWorkTableListCell: UITableViewCell {
             dateLabel.text = listModel?.startDate ?? ""
             
             if let stateBtn = stateBtn {
-                dateLabel.text = listModel?.startDate ?? ""
+                
                 if listModel?.btnValue?.isEmpty == false {
+                    dateLabel.text = listModel?.endDate ?? ""
                     stateBtn.borderWidth = 1
                     stateBtn.backgroundColor = .white
                     stateBtn.setTitle(listModel?.btnValue, for: .normal)
@@ -116,6 +117,7 @@ class GLWorkTableListCell: UITableViewCell {
                         stateBtn.borderColor = YiBlueColor
                     }
                 } else {
+                    dateLabel.text = listModel?.startDate ?? ""
                     stateBtn.setTitleColor(.white, for: .normal)
                     stateBtn.borderWidth = 0
                     stateBtn.backgroundColor = YiBlueColor
