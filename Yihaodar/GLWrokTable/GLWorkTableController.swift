@@ -103,6 +103,7 @@ class GLWorkTableListCell: UITableViewCell {
             dateLabel.text = listModel?.startDate ?? ""
             
             if let stateBtn = stateBtn {
+                dateLabel.text = listModel?.startDate ?? ""
                 if listModel?.btnValue?.isEmpty == false {
                     stateBtn.borderWidth = 1
                     stateBtn.backgroundColor = .white
@@ -124,6 +125,7 @@ class GLWorkTableListCell: UITableViewCell {
             
             
             if let completeStateBtn = completeStateBtn {
+                dateLabel.text = listModel?.endDate ?? ""
                 completeStateBtn.setTitle(listModel?.btnValue ?? "", for: .normal)
                 if listModel?.btnValue == "已失效" {
                     completeStateBtn.setTitleColor(YiNavigationBarTitleColor, for: .normal)
