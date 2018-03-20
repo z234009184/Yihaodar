@@ -9,6 +9,7 @@
 import Moya
 import SwiftyJSON
 import Result
+import HandyJSON
 
 struct CustomPlugin: PluginType {
     
@@ -247,9 +248,12 @@ extension GLService: TargetType {
             
             
         }
-        print((JSON(param).rawString())!)
         
-        return .requestParameters(parameters: ["data": (JSON(param).rawString())!], encoding: URLEncoding.queryString)
+        var resultStr = (JSON(param).rawString(options: []))!.replacingOccurrences(of: "\\", with: "")
+        resultStr = resultStr.replacingOccurrences(of: "＼", with: "")
+        
+        print(resultStr)
+        return .requestParameters(parameters: ["data": resultStr], encoding: URLEncoding.queryString)
     }
     var sampleData: Data {
         return Data()

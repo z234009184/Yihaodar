@@ -207,10 +207,11 @@ class GLCarStateViewController: UIViewController {
         self.navigationController?.view.showLoading()
         GLProvider.request(GLService.getInfoByPid(pid: partOneId)) { [weak self] (result) in
             if case let .success(respon) = result {
-                let jsonStr = JSON(respon.data)
+                let jsonStr = JSON(respon.data).rawString()
+                
                 print(jsonStr)
                 
-                GLCreateCarEstimateViewController.model?.partsSubList = [GLCarPartsSubModel].deserialize(from: jsonStr.rawString(), designatedPath: "results.data") as! [GLCarPartsSubModel]
+                GLCreateCarEstimateViewController.model?.partsSubList = [GLCarPartsSubModel].deserialize(from: jsonStr, designatedPath: "results.data") as! [GLCarPartsSubModel]
                 
             }
             self?.navigationController?.view.hideLoading()

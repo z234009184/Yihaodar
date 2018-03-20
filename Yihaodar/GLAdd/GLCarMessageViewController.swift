@@ -346,9 +346,10 @@ class GLCarMessageViewController: UIViewController {
         navigationController?.view.showLoading()
         GLProvider.request(GLService.getCarSeries(brandId: brandId)) { [weak self] (result) in
             if case let .success(respon) = result {
-                let jsonStr = JSON(respon.data)
+                let jsonStr = JSON(respon.data).rawString()
+                
                 print(jsonStr)
-                GLCreateCarEstimateViewController.model?.brandSeriesList = [GLCarSeriesModel].deserialize(from: jsonStr.rawString(), designatedPath: "results.brandSeriesList") as! [GLCarSeriesModel]
+                GLCreateCarEstimateViewController.model?.brandSeriesList = [GLCarSeriesModel].deserialize(from: jsonStr, designatedPath: "results.brandSeriesList") as! [GLCarSeriesModel]
                 
             }
             self?.navigationController?.view.hideLoading()
@@ -365,9 +366,10 @@ class GLCarMessageViewController: UIViewController {
         navigationController?.view.showLoading()
         GLProvider.request(GLService.getCarVersion(seriesId: seriesId)) { [weak self] (result) in
             if case let .success(respon) = result {
-                let jsonStr = JSON(respon.data)
+                let jsonStr = JSON(respon.data).rawString()
+                
                 print(jsonStr)
-                GLCreateCarEstimateViewController.model?.carStyleList = [GLCarStyleModel].deserialize(from: jsonStr.rawString(), designatedPath: "results.carStyleList") as! [GLCarStyleModel]
+                GLCreateCarEstimateViewController.model?.carStyleList = [GLCarStyleModel].deserialize(from: jsonStr, designatedPath: "results.carStyleList") as! [GLCarStyleModel]
                 
             }
             self?.navigationController?.view.hideLoading()

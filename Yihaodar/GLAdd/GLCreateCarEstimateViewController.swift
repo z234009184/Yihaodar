@@ -155,9 +155,10 @@ class GLCreateCarEstimateViewController: UIViewController {
         navigationController?.view.showLoading()
         GLProvider.request(GLService.getCarOtherInfo(partyId: GLUser.partyId!)) { [weak self] (result) in
             if case let .success(respon) = result {
-                let jsonStr = JSON(respon.data)
+                let jsonStr = JSON(respon.data).rawString()
+                
                 print(jsonStr)
-                GLCreateCarEstimateViewController.model = GLCreateDataModel.deserialize(from: jsonStr.rawString(), designatedPath: "results")
+                GLCreateCarEstimateViewController.model = GLCreateDataModel.deserialize(from: jsonStr, designatedPath: "results")
                 
             }
             self?.navigationController?.view.hideLoading()

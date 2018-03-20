@@ -777,7 +777,7 @@ class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
                     self?.navigationController?.popViewController(animated: true)
                 }
                 
-                let jsonStr = JSON(respon.data).rawString()
+                let jsonStr = JSON(respon.data).rawString(options: [])
                 self?.priceDetailModel = GLPriceDetailModel.deserialize(from: jsonStr, designatedPath: "results")
                 
                 /// 更新子控制器UI

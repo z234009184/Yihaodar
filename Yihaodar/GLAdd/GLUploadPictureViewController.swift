@@ -347,7 +347,7 @@ extension GLUploadPictureViewController: UICollectionViewDataSource, UICollectio
                 print(JSON(respon.data))
                 let jsonStr = JSON(respon.data)
                 if jsonStr["type"] == "S" {
-                    var ccroModel = GLCcroModel(fileTypeName: "0", fileName: jsonStr["fileName"].rawString()!, fileUrl: jsonStr["url"].rawString()!, fileSize: String((imageData as NSData).length), image: pickedImage)
+                    var ccroModel = GLCcroModel(fileTypeName: "0", fileName: jsonStr["fileName"].stringValue, fileUrl: jsonStr["url"].stringValue, fileSize: jsonStr["fileLength"].stringValue, image: pickedImage)
                     
                     guard let selectedView = self?.selectedCollectionView else { return }
                     switch selectedView {

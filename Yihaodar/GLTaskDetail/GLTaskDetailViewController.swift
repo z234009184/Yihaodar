@@ -303,7 +303,7 @@ class GLTaskDetailViewController: UIViewController {
                 print(JSON(respon.data))
                 
                 
-                let jsonStr = JSON(respon.data).rawString()
+                let jsonStr = JSON(respon.data).rawString(options: [])
                 
                 self?.detailModel = GLTaskDetailModel.deserialize(from: jsonStr, designatedPath: "results.dataDJ")
                 self?.estimateMsgModel = GLEstimateMsgModel.deserialize(from: jsonStr, designatedPath: "results.dataPG")
