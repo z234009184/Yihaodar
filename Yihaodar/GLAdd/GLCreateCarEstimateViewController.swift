@@ -144,10 +144,15 @@ class GLCreateCarEstimateViewController: UIViewController {
         let backItem = UIBarButtonItem()
         backItem.title = "上一步";
         navigationItem.backBarButtonItem = backItem;
-        navigationItem.rightBarButtonItem?.tintColor = YiSelectedTitleColor
+        
         
         
         loadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.rightBarButtonItem?.tintColor = YiSelectedTitleColor
     }
     
     
