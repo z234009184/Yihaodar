@@ -353,6 +353,24 @@ public extension SKPhotoBrowser {
         activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
         activityViewController.completionWithItemsHandler = {
             (activity, success, items, error) in
+            if activity == .saveToCameraRoll {
+                if success == true {
+                    let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 35))
+                    label.text = "保存成功"
+                    label.textColor = .white
+                    label.font = UIFont.systemFont(ofSize: 14)
+                    label.textAlignment = .center
+                    label.backgroundColor = .black
+                    label.center = (UIApplication.shared.preferredApplicationWindow?.center)!
+                    label.layer.cornerRadius = 10
+                    label.layer.masksToBounds = true
+                    UIApplication.shared.preferredApplicationWindow?.addSubview(label)
+                    
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
+                        label.removeFromSuperview()
+                    })
+                }
+            }
             self.hideControlsAfterDelay()
             self.activityViewController = nil
         }

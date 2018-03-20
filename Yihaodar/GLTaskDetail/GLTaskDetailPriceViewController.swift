@@ -202,7 +202,12 @@ class GLBasicMessageViewController: UIViewController, IndicatorInfoProvider, UIS
     // 车辆信息
     @IBOutlet weak var carNameLabel: UILabel!
     @IBOutlet weak var carNumberLabel: UILabel!
+    
+    
+    @IBOutlet weak var carBrandLabel: UILabel!
     @IBOutlet weak var carSeriesLabel: UILabel!
+    
+    @IBOutlet weak var carStyleLabel: UILabel!
     @IBOutlet weak var carColorLabel: UILabel!
     @IBOutlet weak var carProductDateLabel: UILabel!
     @IBOutlet weak var carRegisterDateLabel: UILabel!
@@ -239,13 +244,15 @@ class GLBasicMessageViewController: UIViewController, IndicatorInfoProvider, UIS
         
         carNameLabel.text = model.assessmentList?.ower
         carNumberLabel.text = model.assessmentList?.goods_code
+        carBrandLabel.text = model.assessmentList?.brand_name
         carSeriesLabel.text = model.assessmentList?.series_name
+        carStyleLabel.text = model.assessmentList?.style_name
         carColorLabel.text = model.assessmentList?.car_color
         carProductDateLabel.text = model.assessmentList?.production_date
         carRegisterDateLabel.text = model.assessmentList?.register_date
         carMileageLabel.text = (model.assessmentList?.run_number)! + "万公里"
         carExhaustLabel.text = model.assessmentList?.displacement
-        carPeccancyLabel.text = (model.assessmentList?.peccancy)! == "0" ? "无" : "罚分:\(model.assessmentList?.peccancy_fraction ?? "0")(分)  罚款:\(model.assessmentList?.peccancy_money ?? "0")(元)"
+        carPeccancyLabel.text = (model.assessmentList?.peccancy)! == "0" ? "无" : "罚分:\(model.assessmentList?.peccancy_fraction ?? "0")(分)  罚款:\(model.assessmentList?.peccancy_money?.decimalString() ?? "0")(元)"
         carEngineVersionLabel.text = model.assessmentList?.engine_code
         carFrameNumberLabel.text = model.assessmentList?.frame_code
         carInvoicePriceLabel.text = model.assessmentList?.invoice?.isEmpty == false ? (model.assessmentList?.invoice)!.decimalString() + "万元" : "未填写"

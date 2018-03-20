@@ -110,7 +110,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="3ry-yo-UOl"/>
                             </constraints>
-                            <state key="normal" title="提交评估"/>
+                            <state key="normal" title="提交信息"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                     <real key="value" value="2"/>
