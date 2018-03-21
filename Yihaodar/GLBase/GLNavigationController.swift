@@ -13,12 +13,20 @@ import UIKit
 /// 导航控制器
 class GLNavigationController:UINavigationController {
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        tabBarItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : YiSelectedTitleColor], for: .normal)
+        tabBarItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : YiBlueColor], for: .selected)
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         navigationBar.isTranslucent = false
         navigationBar.setBackgroundImage(UIImage(), for: .default)

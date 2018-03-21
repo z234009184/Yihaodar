@@ -28,6 +28,12 @@ class GLSearchViewController: GLWorkTableBaseViewController {
             self?.loadData()
         }
         
+        tableView.configRefreshFooter(with: GLRefreshFooter.footer()) { [weak self] in
+            self?.loadData()
+        }
+        
+        tableView.switchRefreshFooter(to: .removed)
+        
         NotificationCenter.default.addObserver(self, selector:#selector(GLSearchViewController.refreshData) , name: YiSubmitSuccessNotificationName, object: nil)
         
     }
@@ -42,6 +48,11 @@ class GLSearchViewController: GLWorkTableBaseViewController {
         
         
         let executionId = searchBar.text
+        if executionId?.isEmpty == true {
+            tableView.switchRefreshHeader(to: .normal(.success, 0.5))
+            return
+        }
+        
         GLProvider.request(GLService.searchList(partyId: GLUser.partyId!, pageSize: "\(pageSize)", startIndex: "\(startIndex)", executionId: executionId!))  { [weak self] (result) in
             if self == nil {return}
             self?.tableView.switchRefreshHeader(to: .normal(.success, 0.5))
@@ -93,7 +104,8 @@ class GLSearchViewController: GLWorkTableBaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        // 第一响应，即进入编辑状态
+        searchBar.becomeFirstResponder()
     }
     
     
@@ -122,10 +134,10 @@ class GLSearchViewController: GLWorkTableBaseViewController {
         titleView.addSubview(searchBar)
         navigationItem.titleView = titleView
         
-        // 第一响应，即进入编辑状态
-        searchBar.becomeFirstResponder()
-        
     }
+    
+    
+    
     
     @objc func cancelBtn(item: UIBarButtonItem)  {
         searchBar.endEditing(true)
