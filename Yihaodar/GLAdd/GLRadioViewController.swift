@@ -138,11 +138,9 @@ extension GLRadioViewController: UITableViewDataSource, UITableViewDelegate {
         model.isSelected = true
         dataArray.replaceSubrange(Range(indexPath.row...indexPath.row), with: [model])
         tableView.reloadData()
-        //延时执行
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [weak self] in
-            guard let closure = self?.closeClosure else { return }
-            closure(model)
-            self?.navigationController?.popViewController(animated: true)
-        }
+        guard let closure = self.closeClosure else { return }
+        closure(model)
+        self.navigationController?.popViewController(animated: true)
+        
     }
 }
