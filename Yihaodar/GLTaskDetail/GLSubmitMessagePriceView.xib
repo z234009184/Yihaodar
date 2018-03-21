@@ -83,6 +83,9 @@
                                     <real key="value" value="3"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outlet property="delegate" destination="c8d-ft-bqG" id="uu7-c0-dLU"/>
+                            </connections>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备     注" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7Q-4X-oSP" customClass="DesignableLabel" customModule="Spring">
                             <rect key="frame" x="10" y="22.5" width="74.5" height="18"/>
@@ -153,9 +156,9 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="priceTextField" destination="Z7I-Rb-3JQ" id="h0C-WR-isH"/>
-                <outlet property="remarksLabel" destination="y7Q-4X-oSP" id="XGc-P3-Xvq"/>
+                <outlet property="remarksLabel" destination="hRH-Ry-9xH" id="XWS-ep-TW4"/>
             </connections>
-            <point key="canvasLocation" x="-1090" y="-304"/>
+            <point key="canvasLocation" x="-1408" y="-276"/>
         </view>
     </objects>
 </document>

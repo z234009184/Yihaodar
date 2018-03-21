@@ -11,7 +11,7 @@ import Spring
 class GLSubmitMessagePriceView: SpringView {
     @IBOutlet weak var priceTextField: DesignableTextField!
     
-    @IBOutlet weak var remarksLabel: DesignableLabel!
+    @IBOutlet weak var remarksLabel: DesignableTextField!
     
     var submitBtnClosure: (()->())?
     
