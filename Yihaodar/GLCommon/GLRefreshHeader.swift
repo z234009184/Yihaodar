@@ -52,7 +52,7 @@ open class GLRefreshHeader: UIView, RefreshableHeader {
     open override func layoutSubviews() {
         super.layoutSubviews()
         imageView.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
-        textLabel.center = CGPoint(x: frame.size.width/2, y: frame.size.height/2);
+        textLabel.center = CGPoint(x: frame.size.width/2 + 20, y: frame.size.height/2);
         imageView.center = CGPoint(x: textLabel.frame.origin.x - 20, y: frame.size.height/2)
         spinner.center = imageView.center
     }

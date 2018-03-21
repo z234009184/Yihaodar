@@ -48,7 +48,9 @@
         <scene sceneID="5ps-d7-Faa">
             <objects>
                 <navigationController id="52s-X4-U67" customClass="GLNavigationController" customModule="Yihaodar" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="工作台" image="tabbar_work" selectedImage="tabbar_work_selected" id="AIM-kL-Ltr" customClass="GLTabBarItem" customModule="Yihaodar" customModuleProvider="target"/>
+                    <tabBarItem key="tabBarItem" title="工作台" image="tabbar_work" selectedImage="tabbar_work_selected" id="AIM-kL-Ltr" customClass="GLTabBarItem" customModule="Yihaodar" customModuleProvider="target">
+                        <color key="badgeColor" red="0.79500168561935425" green="0.82687407732009888" blue="0.86846619844436646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorImage="navigation_back" id="Anx-BX-f9c">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

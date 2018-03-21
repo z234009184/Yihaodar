@@ -15,6 +15,7 @@ let YiBlueColor = UIColor(hex: "19A4FF")
 let YiSelectedTitleColor = UIColor(hex: "212832")
 let YiUnselectedTitleColor = UIColor(hex: "99A0AA")
 let YiRefreshTitleColor = YiUnselectedTitleColor
+let YiCBD3DD = UIColor(hex: "CBD3DD")
 
 
 // MARK: - NSNotifation.Name
