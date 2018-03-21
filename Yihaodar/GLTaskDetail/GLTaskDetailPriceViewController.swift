@@ -748,6 +748,7 @@ class GLTaskDetailPriceViewController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarLeftContentInset = 1
         settings.style.buttonBarRightContentInset = 1
         
+        
         changeCurrentIndexProgressive = {  (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
             oldCell?.label.textColor = YiUnselectedTitleColor
