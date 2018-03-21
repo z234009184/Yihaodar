@@ -257,7 +257,7 @@ class GLBasicMessageViewController: UIViewController, IndicatorInfoProvider, UIS
             orderMajordomoLabel.text = model.assessmentList?.director_party_id
         } else {
             orderMajordomoLabel.text = "未填写"
-            orderManagerLabel.textColor = YiUnselectedTitleColor
+            orderMajordomoLabel.textColor = YiUnselectedTitleColor
         }
         
         
@@ -295,14 +295,14 @@ class GLBasicMessageViewController: UIViewController, IndicatorInfoProvider, UIS
         if model.assessmentList?.jq_insurance?.isEmpty == false {
             carTrafficLabel.text = model.assessmentList?.jq_insurance
         } else {
-            carTrafficLabel.text = "未选择"
+            carTrafficLabel.text = "未填写"
             carTrafficLabel.textColor = YiUnselectedTitleColor
         }
         
         if model.assessmentList?.sy_insurance?.isEmpty == false {
             carBusinessLabel.text = model.assessmentList?.sy_insurance
         } else {
-            carBusinessLabel.text = "未选择"
+            carBusinessLabel.text = "未填写"
             carBusinessLabel.textColor = YiUnselectedTitleColor
         }
         
