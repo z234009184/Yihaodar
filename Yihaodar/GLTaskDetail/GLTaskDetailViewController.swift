@@ -217,6 +217,7 @@ class GLTaskDetailViewController: UIViewController {
                     orderIsBeiJingNumberLabel.text = detailModel?.isBj == "0" ? "是" : "否"
                 } else {
                     orderIsBeiJingNumberLabel.text = "未填写"
+                    orderIsBeiJingNumberLabel.textColor = YiUnselectedTitleColor
                 }
                 
             } else if detailModel?.bDType == "2" { // 极速报单
