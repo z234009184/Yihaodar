@@ -251,8 +251,20 @@ class GLTaskDetailViewController: UIViewController {
                 
                 estimateDateLabel.text = estimateMsgModel.confirmed_date
                 estimatePriceLabel.text = (estimateMsgModel.confirmed_money)!.decimalString() + "万元"
-                estimateCarDetailMsgLabel.text = estimateMsgModel.car_info
-                estimateMemoLabel.text = estimateMsgModel.remarks
+                if estimateMsgModel.car_info?.isEmpty == false {
+                    estimateCarDetailMsgLabel.text = estimateMsgModel.car_info
+                } else {
+                    estimateCarDetailMsgLabel.text = "未填写"
+                    estimateCarDetailMsgLabel.textColor = YiUnselectedTitleColor
+                }
+                
+                if estimateMsgModel.remarks?.isEmpty == false {
+                    estimateMemoLabel.text = estimateMsgModel.remarks
+                } else {
+                    estimateMemoLabel.text = "未填写"
+                    estimateMemoLabel.textColor = YiUnselectedTitleColor
+                }
+                
                 
             } else { // 未评估
                 bottomView.isHidden = false

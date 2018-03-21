@@ -297,43 +297,43 @@ class GLCarMessageViewController: UIViewController {
     
     
     @IBAction func carProductDateSelected(_ sender: UIButton) {
-        view.endEditing(true)
         GLDatePicker.showDatePicker(currentDate: Date()) { [weak self] (date) in
             self?.carProductDateLabel.text = date
         }
+        view.endEditing(true)
     }
     
     @IBAction func carRegisterDateSelected(_ sender: UIButton) {
-        view.endEditing(true)
         GLDatePicker.showDatePicker(currentDate: Date()) { [weak self] (date) in
             self?.carRegisterDateLabel.text = date
         }
+        view.endEditing(true)
         
     }
     
     @IBAction func carYearCheckDateSelected(_ sender: UIButton) {
-        view.endEditing(true)
         GLDatePicker.showDatePicker(currentDate: Date()) { [weak self] (date) in
             self?.carYearlyInspectionDateLabel.text = date
         }
+        view.endEditing(true)
         
     }
     
     
     @IBAction func carTrafficDateSelected(_ sender: UIButton) {
-        view.endEditing(true)
         GLDatePicker.showDatePicker(currentDate: Date()) { [weak self] (date) in
             self?.carTrafficInsuranceLabel.text = date
         }
+        view.endEditing(true)
         
     }
     
     
     @IBAction func carBusinessDateSelected(_ sender: UIButton) {
-        view.endEditing(true)
         GLDatePicker.showDatePicker(currentDate: Date()) { [weak self] (date) in
             self?.carBusinessInsuranceLabel.text = date
         }
+        view.endEditing(true)
     }
     
     /// 加载车辆系列
