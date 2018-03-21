@@ -357,11 +357,22 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
         
         评估师Label.text = model.assessmentList?.assessment_name
         评估价格Label.text = (model.assessmentList?.confirmed_money)!.decimalString() + "万元"
-        评估备注Label.text = model.assessmentList?.remarks
+        if model.assessmentList?.remarks?.isEmpty == false {
+            评估备注Label.text = model.assessmentList?.remarks
+        } else {
+            评估备注Label.text = "未填写"
+            评估备注Label.textColor = YiUnselectedTitleColor
+        }
+        
         
         定价师Label.text = model.priceList?.first?.partyName?.isEmpty == false ? model.priceList?.first?.partyName : "未选择"
         定价价格Label.text = model.priceList?.first?.confirmedMoney?.isEmpty == false ? (model.priceList?.first?.confirmedMoney)!.decimalString() + "万元" : "未选择"
-        定价备注Label.text = model.priceList?.first?.appraiseRemarks
+        if model.priceList?.first?.appraiseRemarks?.isEmpty == false {
+            定价备注Label.text = model.priceList?.first?.appraiseRemarks
+        } else {
+            定价备注Label.text = "未填写"
+            定价备注Label.textColor = YiUnselectedTitleColor
+        }
         
         
         /// 布局 赋值车况信息
