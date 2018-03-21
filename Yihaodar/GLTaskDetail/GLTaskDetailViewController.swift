@@ -183,12 +183,39 @@ class GLTaskDetailViewController: UIViewController {
                 manualView.snp.removeConstraints()
                 
                 orderCarBrandlabel.text = (detailModel?.brandNameCN)! + " " + (detailModel?.brandSeriesName)! + " " + (detailModel?.goodsSeriesName)!
-                orderCarYearLabel.text = detailModel?.registerTime?.isEmpty == false ? (detailModel?.registerTime)! + "年" : "未填写"
-                orderMileageLabel.text = detailModel?.runNumber?.isEmpty == false ? (detailModel?.runNumber)! + "公里" : "未填写"
-                orderBigMoneyLabel.text = detailModel?.parValue?.isEmpty == false ? (detailModel?.parValue)!.decimalString() + "元" : "未填写"
-                orderCarColorLabel.text = detailModel?.carColor?.isEmpty == false ? detailModel?.carColor : "未填写"
-                orderIsBeiJingNumberLabel.text = detailModel?.isBj == "0" ? "是" : "否"
-                if detailModel?.isBj?.isEmpty == true {
+                
+                if detailModel?.registerTime?.isEmpty == false {
+                    orderCarYearLabel.text = (detailModel?.registerTime)! + "年"
+                } else {
+                    orderCarYearLabel.text = "未填写"
+                    orderCarYearLabel.textColor = YiUnselectedTitleColor
+                }
+                
+                
+                if detailModel?.runNumber?.isEmpty == false {
+                    orderMileageLabel.text = (detailModel?.runNumber)! + "公里"
+                } else {
+                    orderMileageLabel.text = "未填写"
+                    orderMileageLabel.textColor = YiUnselectedTitleColor
+                }
+                
+                if detailModel?.parValue?.isEmpty == false {
+                    orderBigMoneyLabel.text = (detailModel?.parValue)!.decimalString() + "元"
+                } else {
+                    orderBigMoneyLabel.text = "未填写"
+                    orderBigMoneyLabel.textColor = YiUnselectedTitleColor
+                }
+                
+                if detailModel?.carColor?.isEmpty == false {
+                    orderCarColorLabel.text = detailModel?.carColor
+                } else {
+                    orderCarColorLabel.text = "未填写"
+                    orderCarColorLabel.textColor = YiUnselectedTitleColor
+                }
+                
+                if detailModel?.isBj?.isEmpty == false {
+                    orderIsBeiJingNumberLabel.text = detailModel?.isBj == "0" ? "是" : "否"
+                } else {
                     orderIsBeiJingNumberLabel.text = "未填写"
                 }
                 
@@ -298,9 +325,7 @@ class GLTaskDetailViewController: UIViewController {
         SKPhotoBrowserOptions.bounceAnimation = true
         SKPhotoBrowserOptions.backgroundColor = UIColor(white: 0, alpha: 0.5)
         
-        
-        
-        
+    
         loadData()
     }
     

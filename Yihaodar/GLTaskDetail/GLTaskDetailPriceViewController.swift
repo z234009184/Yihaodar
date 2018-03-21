@@ -255,8 +255,20 @@ class GLBasicMessageViewController: UIViewController, IndicatorInfoProvider, UIS
         carPeccancyLabel.text = (model.assessmentList?.peccancy)! == "0" ? "无" : "罚分:\(model.assessmentList?.peccancy_fraction ?? "0")(分)  罚款:\(model.assessmentList?.peccancy_money?.decimalString() ?? "0")(元)"
         carEngineVersionLabel.text = model.assessmentList?.engine_code
         carFrameNumberLabel.text = model.assessmentList?.frame_code
-        carInvoicePriceLabel.text = model.assessmentList?.invoice?.isEmpty == false ? (model.assessmentList?.invoice)!.decimalString() + "万元" : "未填写"
-        carChangeMasterTimesLabel.text = model.assessmentList?.transfer_number?.isEmpty == false ? (model.assessmentList?.transfer_number)! + "次" : "未填写"
+        if model.assessmentList?.invoice?.isEmpty == false {
+            carInvoicePriceLabel.text = (model.assessmentList?.invoice)!.decimalString() + "万元"
+        } else {
+            carInvoicePriceLabel.text = "未填写"
+            carInvoicePriceLabel.textColor = YiUnselectedTitleColor
+        }
+        
+        if model.assessmentList?.transfer_number?.isEmpty == false {
+            carChangeMasterTimesLabel.text = (model.assessmentList?.transfer_number)! + "次"
+        } else {
+            carChangeMasterTimesLabel.text = "未填写"
+            carChangeMasterTimesLabel.textColor = YiUnselectedTitleColor
+        }
+        
         carCheckLimitDateLabel.text = model.assessmentList?.year_check
         carTrafficLabel.text = model.assessmentList?.jq_insurance?.isEmpty == false ? model.assessmentList?.jq_insurance : "未选择"
         carBusinessLabel.text = model.assessmentList?.sy_insurance?.isEmpty == false ? model.assessmentList?.sy_insurance : "未选择"
