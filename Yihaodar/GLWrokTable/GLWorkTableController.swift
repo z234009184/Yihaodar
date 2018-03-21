@@ -276,6 +276,11 @@ class GLDaiBanController: GLWorkTableBaseViewController, IndicatorInfoProvider {
                     } else { // 无更多数据
                         self?.tableView.switchRefreshFooter(to: .noMoreData)
                     }
+                    
+                    if self?.dataArray.isEmpty == true {
+                        self?.tableView.switchRefreshFooter(to: .removed)
+                    }
+                    
                 }
             }
             self?.tableView.switchRefreshHeader(to: .normal(.success, 0.5))
@@ -340,6 +345,10 @@ class GLWanChengController: GLWorkTableBaseViewController, IndicatorInfoProvider
                         self?.tableView.switchRefreshFooter(to: .normal)
                     } else { // 无更多数据
                         self?.tableView.switchRefreshFooter(to: .noMoreData)
+                    }
+                    
+                    if self?.dataArray.isEmpty == true {
+                        self?.tableView.switchRefreshFooter(to: .removed)
                     }
                 }
             }

@@ -119,6 +119,9 @@ class GLLoginViewController: UIViewController {
                     })
                 } else {
                     sender.returnToOriginalState()
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                        sender.returnToOriginalState()
+                    })
                 }
             }
             

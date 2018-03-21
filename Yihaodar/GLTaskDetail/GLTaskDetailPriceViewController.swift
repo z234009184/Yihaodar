@@ -238,9 +238,29 @@ class GLBasicMessageViewController: UIViewController, IndicatorInfoProvider, UIS
     /// 更新界面
     public func updateUI(model: GLPriceDetailModel) {
         orderStoreLabel.text = model.assessmentList?.store_name
-        orderManagerLabel.text = model.assessmentList?.boss_party_id?.isEmpty == false ? model.assessmentList?.boss_party_id : "未选择"
-        orderSuperintendLabel.text = model.assessmentList?.executive_party_id?.isEmpty == false ? model.assessmentList?.executive_party_id : "未选择"
-        orderMajordomoLabel.text = model.assessmentList?.director_party_id?.isEmpty == false ? model.assessmentList?.director_party_id : "未选择"
+        
+        if model.assessmentList?.boss_party_id?.isEmpty == false {
+            orderManagerLabel.text = model.assessmentList?.boss_party_id
+        } else {
+            orderManagerLabel.text = "未填写"
+            orderManagerLabel.textColor = YiUnselectedTitleColor
+        }
+        
+        if model.assessmentList?.executive_party_id?.isEmpty == false {
+            orderSuperintendLabel.text = model.assessmentList?.executive_party_id
+        } else {
+            orderSuperintendLabel.text = "未填写"
+            orderSuperintendLabel.textColor = YiUnselectedTitleColor
+        }
+        
+        if model.assessmentList?.director_party_id?.isEmpty == false {
+            orderMajordomoLabel.text = model.assessmentList?.director_party_id
+        } else {
+            orderMajordomoLabel.text = "未填写"
+            orderManagerLabel.textColor = YiUnselectedTitleColor
+        }
+        
+        
         
         carNameLabel.text = model.assessmentList?.ower
         carNumberLabel.text = model.assessmentList?.goods_code
@@ -270,8 +290,22 @@ class GLBasicMessageViewController: UIViewController, IndicatorInfoProvider, UIS
         }
         
         carCheckLimitDateLabel.text = model.assessmentList?.year_check
-        carTrafficLabel.text = model.assessmentList?.jq_insurance?.isEmpty == false ? model.assessmentList?.jq_insurance : "未选择"
-        carBusinessLabel.text = model.assessmentList?.sy_insurance?.isEmpty == false ? model.assessmentList?.sy_insurance : "未选择"
+        
+        
+        if model.assessmentList?.jq_insurance?.isEmpty == false {
+            carTrafficLabel.text = model.assessmentList?.jq_insurance
+        } else {
+            carTrafficLabel.text = "未选择"
+            carTrafficLabel.textColor = YiUnselectedTitleColor
+        }
+        
+        if model.assessmentList?.sy_insurance?.isEmpty == false {
+            carBusinessLabel.text = model.assessmentList?.sy_insurance
+        } else {
+            carBusinessLabel.text = "未选择"
+            carBusinessLabel.textColor = YiUnselectedTitleColor
+        }
+        
     }
     
     
@@ -361,11 +395,17 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
         天窗Label.text = model.assessmentList?.skylight
         空调配置Label.text = model.assessmentList?.air_conditioner
         
-        let other = model.assessmentList?.other?.isEmpty == false ? model.assessmentList?.other : "未选择"
-//        let airbag = model.assessmentList?.airbag?.isEmpty == false ? (model.assessmentList?.airbag)! + "个" : ""
+        let other = model.assessmentList?.other?.isEmpty == false ? model.assessmentList?.other : "未填写"
         其他Label.text = other
-        事故Label.text = model.assessmentList?.accident?.isEmpty == false ? model.assessmentList?.accident : "未选择"
         
+        if model.assessmentList?.other?.isEmpty == true {
+            其他Label.textColor = YiUnselectedTitleColor
+        }
+        
+        事故Label.text = model.assessmentList?.accident?.isEmpty == false ? model.assessmentList?.accident : "未填写"
+        if model.assessmentList?.accident?.isEmpty == true {
+            事故Label.textColor = YiUnselectedTitleColor
+        }
         
         评估师Label.text = model.assessmentList?.assessment_name
         评估价格Label.text = (model.assessmentList?.confirmed_money)!.decimalString() + "万元"
