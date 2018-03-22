@@ -310,21 +310,12 @@ class GLTaskDetailViewController: UIViewController {
     var imagesss = [SKPhoto]()
     var observer: NSObjectProtocol?
     
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "任务详情"
         
-        SKPhotoBrowserOptions.displayCounterLabel = false                         // counter label will be hidden
-        SKPhotoBrowserOptions.displayCloseButton = false
-        SKPhotoBrowserOptions.displayBackAndForwardButton = false
-        SKPhotoBrowserOptions.displayStatusbar = true
-        SKPhotoBrowserOptions.displayAction = false                               // action button will be hidden
-        SKPhotoBrowserOptions.displayHorizontalScrollIndicator = true
-        SKPhotoBrowserOptions.displayVerticalScrollIndicator = false
-        SKPhotoBrowserOptions.enableSingleTapDismiss = true
-        SKPhotoBrowserOptions.bounceAnimation = true
-        SKPhotoBrowserOptions.backgroundColor = UIColor(white: 0, alpha: 0.5)
         
     
         loadData()
@@ -340,16 +331,15 @@ class GLTaskDetailViewController: UIViewController {
             if case let .success(respon) = result {
                 print(JSON(respon.data))
                 
-                
-                let jsonStr = JSON(respon.data).rawString(options: [])
-                
-                self?.detailModel = GLTaskDetailModel.deserialize(from: jsonStr, designatedPath: "results.dataDJ")
-                self?.estimateMsgModel = GLEstimateMsgModel.deserialize(from: jsonStr, designatedPath: "results.dataPG")
-                
                 if JSON(respon.data)["type"] == "E" {
                     NotificationCenter.default.post(name: YiRefreshNotificationName, object: nil)
                     self?.navigationController?.popViewController(animated: true)
+                    return
                 }
+                
+                let jsonStr = JSON(respon.data).rawString()
+                self?.detailModel = GLTaskDetailModel.deserialize(from: jsonStr, designatedPath: "results.dataDJ")
+                self?.estimateMsgModel = GLEstimateMsgModel.deserialize(from: jsonStr, designatedPath: "results.dataPG")
                 
             }
         }

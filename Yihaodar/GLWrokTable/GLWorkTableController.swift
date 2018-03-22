@@ -12,6 +12,7 @@ import PullToRefreshKit
 import Spring
 import SwiftyJSON
 import HandyJSON
+import SKPhotoBrowser
 
 /// 列表模型
 struct GLWorkTableModel: HandyJSON {
@@ -376,6 +377,8 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
         
 //        edgesForExtendedLayout = UIRectEdge(rawValue: 0)
         
+        
+        /// 设置buttonBar属性
         settings.style.buttonBarBackgroundColor = YiThemeColor
         settings.style.buttonBarItemBackgroundColor = YiThemeColor
         settings.style.selectedBarBackgroundColor = YiBlueColor
@@ -392,6 +395,19 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
             oldCell?.label.textColor = YiUnselectedTitleColor
             newCell?.label.textColor = YiSelectedTitleColor
         }
+        
+        /// 设置全局图片浏览器
+        SKPhotoBrowserOptions.displayCounterLabel = false                         // counter label will be hidden
+        SKPhotoBrowserOptions.displayCloseButton = false
+        SKPhotoBrowserOptions.displayBackAndForwardButton = false
+        SKPhotoBrowserOptions.displayStatusbar = true
+        SKPhotoBrowserOptions.displayAction = false                               // action button will be hidden
+        SKPhotoBrowserOptions.displayHorizontalScrollIndicator = true
+        SKPhotoBrowserOptions.displayVerticalScrollIndicator = false
+        SKPhotoBrowserOptions.enableSingleTapDismiss = true
+        SKPhotoBrowserOptions.bounceAnimation = true
+        SKPhotoBrowserOptions.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        SKCaptionOptions.textColor = .black
         
         super.viewDidLoad()
         

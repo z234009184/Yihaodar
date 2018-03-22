@@ -531,25 +531,9 @@ class GLPictureMessageViewController: UIViewController, IndicatorInfoProvider, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SKPhotoBrowserOptions.displayCounterLabel = false                         // counter label will be hidden
-        SKPhotoBrowserOptions.displayCloseButton = false
-        SKPhotoBrowserOptions.displayBackAndForwardButton = false
-        SKPhotoBrowserOptions.displayStatusbar = true
-        SKPhotoBrowserOptions.displayAction = false                               // action button will be hidden
-        SKPhotoBrowserOptions.displayHorizontalScrollIndicator = true
-        SKPhotoBrowserOptions.displayVerticalScrollIndicator = false
-        SKPhotoBrowserOptions.enableSingleTapDismiss = true
-        SKPhotoBrowserOptions.bounceAnimation = true
-        SKPhotoBrowserOptions.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        
-        SKCaptionOptions.textColor = .clear
-        
         if let model = GLBasicMessageViewController.parentVc!.priceDetailModel {
             GLBasicMessageViewController.parentVc!.updatePictureVcUI(priceDetailModel: model)
         }
-        
-        
-        
     }
     
     
