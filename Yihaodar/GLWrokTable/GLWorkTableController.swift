@@ -23,6 +23,7 @@ struct GLWorkTableModel: HandyJSON {
     var processName: String?
     var processTaskId: String?
     var executionData: String?
+    /// 自定义字段
     var executionString: String? {
         get{
             var str: String?
@@ -41,22 +42,24 @@ struct GLWorkTableModel: HandyJSON {
     var organiser: String?
     var processType: String?
     var store_name: String?
+    /// 自定义字段
     var status : TaskType {
         get {
-            if taskType == "BDGOODS_ASSESS_TASK" {
+            if taskType == TaskType.bdEstimate.rawValue {
                 return TaskType.bdEstimate
-            } else if taskType == "CARS_ASSESS_TASK" {
+            } else if taskType == TaskType.price.rawValue {
                 return TaskType.price
             } else {
                 return TaskType.unknow
             }
         }
     }
+    /// 自定义字段
     var statusBtnName : String? {
         get {
-            if taskType == "BDGOODS_ASSESS_TASK" {
+            if status == .bdEstimate {
                 return "评估"
-            } else if taskType == "CARS_ASSESS_TASK" {
+            } else if status == .price {
                 return "定价"
             } else {
                 return "未知"
@@ -65,11 +68,12 @@ struct GLWorkTableModel: HandyJSON {
     }
     var btnValue: String?
     
+    /// 自定义字段
     /// 类型: 手动/极速/定价
-    enum TaskType {
-        case bdEstimate
-        case price
-        case unknow
+    enum TaskType: String {
+        case bdEstimate = "BDGOODS_ASSESS_TASK"
+        case price = "CARS_ASSESS_TASK"
+        case unknow = ""
     }
     
 }
@@ -104,7 +108,7 @@ class GLWorkTableListCell: UITableViewCell {
             
             if let stateBtn = stateBtn {
                 
-                if listModel?.btnValue?.isEmpty == false {
+                if listModel?.btnValue?.isEmpty == false { // 已完成的item
                     dateLabel.text = listModel?.endDate ?? ""
                     stateBtn.borderWidth = 1
                     stateBtn.backgroundColor = .white
@@ -116,7 +120,7 @@ class GLWorkTableListCell: UITableViewCell {
                         stateBtn.setTitleColor(YiBlueColor, for: .normal)
                         stateBtn.borderColor = YiBlueColor
                     }
-                } else {
+                } else { // 待办的item
                     dateLabel.text = listModel?.startDate ?? ""
                     stateBtn.setTitleColor(.white, for: .normal)
                     stateBtn.borderWidth = 0
@@ -137,11 +141,7 @@ class GLWorkTableListCell: UITableViewCell {
                     completeStateBtn.borderColor = YiBlueColor
                 }
             }
-            
-           
-            
-            
-            
+   
         }
     }
     
@@ -403,7 +403,6 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
         
         
         let rightBarItemsView = UIView(frame: CGRect(x: 0, y: 0, width: 70, height: 25))
-//        rightBarItemsView.backgroundColor = UIColor.red
         
         let searchBtn = UIButton(type: .custom)
         searchBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 25)

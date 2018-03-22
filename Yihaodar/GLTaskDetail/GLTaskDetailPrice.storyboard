@@ -91,7 +91,7 @@
                                 </userDefinedRuntimeAttributes>
                             </collectionView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ytC-Yj-ZuB">
-                                <rect key="frame" x="0.0" y="135" width="375" height="468"/>
+                                <rect key="frame" x="0.0" y="136" width="375" height="467"/>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oks-hm-GDc">
                                 <rect key="frame" x="0.0" y="603" width="375" height="64"/>
@@ -130,7 +130,7 @@
                             <constraint firstItem="y4w-FZ-kS5" firstAttribute="leading" secondItem="7oO-Px-zcr" secondAttribute="leading" id="qgd-uX-6aG"/>
                             <constraint firstItem="y4w-FZ-kS5" firstAttribute="top" secondItem="Dfx-hH-23V" secondAttribute="bottom" id="r5T-MZ-KeM"/>
                             <constraint firstItem="ytC-Yj-ZuB" firstAttribute="leading" secondItem="7oO-Px-zcr" secondAttribute="leading" id="rwv-nG-CPH"/>
-                            <constraint firstItem="ytC-Yj-ZuB" firstAttribute="top" secondItem="y4w-FZ-kS5" secondAttribute="bottom" id="sGb-i6-T4J"/>
+                            <constraint firstItem="ytC-Yj-ZuB" firstAttribute="top" secondItem="y4w-FZ-kS5" secondAttribute="bottom" constant="1" id="sGb-i6-T4J"/>
                             <constraint firstItem="7oO-Px-zcr" firstAttribute="trailing" secondItem="oks-hm-GDc" secondAttribute="trailing" id="sah-CA-WdQ"/>
                             <constraint firstItem="oks-hm-GDc" firstAttribute="top" secondItem="ytC-Yj-ZuB" secondAttribute="bottom" id="t7o-Pm-MRI"/>
                             <constraint firstItem="Dfx-hH-23V" firstAttribute="leading" secondItem="7oO-Px-zcr" secondAttribute="leading" id="thN-wo-9qi"/>

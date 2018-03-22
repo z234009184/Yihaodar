@@ -326,7 +326,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <outlet property="completeStateBtn" destination="dXi-Rd-VVD" id="Mes-AG-jFk"/>
+                                    <outlet property="completeStateBtn" destination="dXi-Rd-VVD" id="1Mp-sn-vwf"/>
                                     <outlet property="dateLabel" destination="6xb-Sl-XjK" id="RSI-xy-cSg"/>
                                     <outlet property="nameLabel" destination="4KJ-gi-Jzy" id="yG3-LA-pRa"/>
                                     <outlet property="titleNumLabel" destination="cEb-gn-oib" id="Yza-G4-msW"/>
