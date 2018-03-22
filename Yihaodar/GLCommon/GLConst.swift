@@ -19,5 +19,5 @@ let YiCBD3DD = UIColor(hex: "CBD3DD")
 
 
 // MARK: - NSNotifation.Name
-let YiSubmitSuccessNotificationName = NSNotification.Name("YiSubmitSuccessNotificationName")
+let YiRefreshNotificationName = NSNotification.Name("YiRefreshNotificationName")
    

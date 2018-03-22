@@ -25,7 +25,7 @@ class GLSearchViewController: GLWorkTableBaseViewController {
         
         tableView.switchRefreshFooter(to: .removed)
         
-        NotificationCenter.default.addObserver(self, selector:#selector(GLSearchViewController.refreshData) , name: YiSubmitSuccessNotificationName, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(GLSearchViewController.refreshData) , name: YiRefreshNotificationName, object: nil)
         
     }
     

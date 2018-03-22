@@ -119,7 +119,7 @@ class GLEstimateResultViewController: UIViewController {
                 let jsonStr = JSON(respon.data)
                 if jsonStr["type"] == "S" {
                     tabBarVc?.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_success"), title: "提交成功")
-                    NotificationCenter.default.post(name: YiSubmitSuccessNotificationName, object: nil)
+                    NotificationCenter.default.post(name: YiRefreshNotificationName, object: nil)
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
                         tabBarVc?.dismissCover(btn: nil)
                         self?.navigationController?.dismiss(animated: true, completion: nil)

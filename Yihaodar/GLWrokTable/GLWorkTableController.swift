@@ -259,7 +259,7 @@ class GLDaiBanController: GLWorkTableBaseViewController, IndicatorInfoProvider {
         
         tableView.switchRefreshHeader(to: .refreshing)
         
-        NotificationCenter.default.addObserver(self, selector:#selector(GLDaiBanController.refreshData) , name: YiSubmitSuccessNotificationName, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(GLDaiBanController.refreshData) , name: YiRefreshNotificationName, object: nil)
         
     }
     
@@ -321,7 +321,7 @@ class GLWanChengController: GLWorkTableBaseViewController, IndicatorInfoProvider
         super.viewDidLoad()
         
         tableView.switchRefreshHeader(to: .refreshing)
-        NotificationCenter.default.addObserver(self, selector:#selector(GLWanChengController.refreshData) , name: YiSubmitSuccessNotificationName, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(GLWanChengController.refreshData) , name: YiRefreshNotificationName, object: nil)
     }
     
     
