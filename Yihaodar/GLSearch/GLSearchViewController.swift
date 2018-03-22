@@ -23,28 +23,15 @@ class GLSearchViewController: GLWorkTableBaseViewController {
         
         setupTableView()
         
-        tableView.configRefreshHeader(with: GLRefreshHeader.header()) { [weak self] in
-            self?.startIndex = 1
-            self?.loadData()
-        }
-        
-        tableView.configRefreshFooter(with: GLRefreshFooter.footer()) { [weak self] in
-            self?.loadData()
-        }
-        
         tableView.switchRefreshFooter(to: .removed)
         
         NotificationCenter.default.addObserver(self, selector:#selector(GLSearchViewController.refreshData) , name: YiSubmitSuccessNotificationName, object: nil)
         
     }
     
-    @objc func refreshData() {
-        startIndex = 1
-        loadData()
-    }
     
     
-    func loadData() {
+    override func loadData() {
         
         
         let executionId = searchBar.text
@@ -69,9 +56,9 @@ class GLSearchViewController: GLWorkTableBaseViewController {
                     if models.count >= (self?.pageSize)! { // 大于一页 可以进行加载
                         self?.startIndex += 1
                         self?.tableView.switchRefreshFooter(to: .normal)
-                        self?.tableView.configRefreshFooter(with: GLRefreshFooter.footer()) { [weak self] in
+                        self?.tableView.configRefreshFooter(with: GLRefreshFooter.footer(), action: {
                             self?.loadData()
-                        }
+                        })
                     } else { // 无更多数据
                         self?.tableView.switchRefreshFooter(to: .noMoreData)
                     }

@@ -84,8 +84,6 @@ class GLEstimateResultViewController: UIViewController {
     static var summitModel = GLSubmitModel()
     
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "新建车辆评估"

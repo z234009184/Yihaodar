@@ -172,6 +172,26 @@ class GLWorkTableBaseViewController: UITableViewController {
     open var startIndex = 1
     open var dataArray = [GLWorkTableModel]()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.configRefreshHeader(with: GLRefreshHeader.header()) { [weak self] in
+            self?.refreshData()
+            
+        }
+        tableView.configRefreshFooter(with: GLRefreshFooter.footer()) { [weak self] in
+            self?.loadData()
+        }
+    }
+    
+    /// 子类实现的方法
+    func loadData() { }
+    
+    @objc func refreshData () {
+        startIndex = 1
+        loadData()
+    }
+    
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
@@ -235,14 +255,7 @@ class GLDaiBanController: GLWorkTableBaseViewController, IndicatorInfoProvider {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.configRefreshHeader(with: GLRefreshHeader.header()) { [weak self] in
-            self?.startIndex = 1
-            self?.loadData()
-            
-        }
-        tableView.configRefreshFooter(with: GLRefreshFooter.footer()) { [weak self] in
-            self?.loadData()
-        }
+        
         
         tableView.switchRefreshHeader(to: .refreshing)
         
@@ -250,13 +263,10 @@ class GLDaiBanController: GLWorkTableBaseViewController, IndicatorInfoProvider {
         
     }
     
-    @objc func refreshData() {
-        startIndex = 1
-        loadData()
-    }
     
     
-    func loadData() {
+    
+    override func loadData() {
         GLProvider.request(GLService.todoList(partyId: GLUser.partyId!, pageSize: "\(pageSize)", startIndex: "\(startIndex)"))  { [weak self] (result) in
             if self == nil {return}
             self?.tableView.switchRefreshFooter(to: .normal)
@@ -267,8 +277,6 @@ class GLDaiBanController: GLWorkTableBaseViewController, IndicatorInfoProvider {
                 let json = JSON(response.data)
                 print(json)
                 if let models = [GLWorkTableModel].deserialize(from: json["results"]["rows"].arrayObject) as? [GLWorkTableModel] {
-                    // 拼接数据
-                    self?.dataArray = (self?.dataArray)! + models
                     
                     if models.count >= (self?.pageSize)! { // 大于一页 可以进行加载
                         self?.startIndex += 1
@@ -276,6 +284,8 @@ class GLDaiBanController: GLWorkTableBaseViewController, IndicatorInfoProvider {
                     } else { // 无更多数据
                         self?.tableView.switchRefreshFooter(to: .noMoreData)
                     }
+                    // 拼接数据
+                    self?.dataArray = (self?.dataArray)! + models
                     
                     if self?.dataArray.isEmpty == true {
                         self?.tableView.switchRefreshFooter(to: .removed)
@@ -309,24 +319,13 @@ class GLWanChengController: GLWorkTableBaseViewController, IndicatorInfoProvider
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.configRefreshHeader(with: GLRefreshHeader.header()) { [weak self] in
-            self?.startIndex = 1
-            self?.loadData()
-            
-        }
-        tableView.configRefreshFooter(with: GLRefreshFooter.footer()) { [weak self] in
-            self?.loadData()
-        }
+        
         tableView.switchRefreshHeader(to: .refreshing)
         NotificationCenter.default.addObserver(self, selector:#selector(GLWanChengController.refreshData) , name: YiSubmitSuccessNotificationName, object: nil)
     }
     
-    @objc func refreshData() {
-        startIndex = 1
-        loadData()
-    }
     
-    func loadData() {
+    override func loadData() {
         GLProvider.request(GLService.completeList(partyId: GLUser.partyId!, pageSize: "\(pageSize)", startIndex: "\(startIndex)"))  { [weak self] (result) in
             if self == nil {return}
             self?.tableView.switchRefreshFooter(to: .normal)
@@ -464,7 +463,6 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
             }
             
             self?.present(vc, animated: true, completion: nil)
-            
             self?.dismissCover(btn: btn)
         }
     }
@@ -479,11 +477,18 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
     /// PagerTabStripDataSource
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
-        let daibanVc = UIStoryboard(name: "GLWorkTable", bundle: Bundle.main).instantiateViewController(withIdentifier: "GLDaiBanController")
-        let wanchengVc = UIStoryboard(name: "GLWorkTable", bundle: Bundle.main).instantiateViewController(withIdentifier: "GLWanChengController")
         return [daibanVc, wanchengVc]
     }
     
+    lazy var daibanVc = { () -> GLDaiBanController in
+         let daibanVc = UIStoryboard(name: "GLWorkTable", bundle: Bundle.main).instantiateViewController(withIdentifier: "GLDaiBanController") as! GLDaiBanController
+        return daibanVc
+    }()
+    
+    lazy var wanchengVc = { () -> GLWanChengController in
+        let wanchengVc = UIStoryboard(name: "GLWorkTable", bundle: Bundle.main).instantiateViewController(withIdentifier: "GLWanChengController") as! GLWanChengController
+        return wanchengVc
+    }()
     
 }
 
