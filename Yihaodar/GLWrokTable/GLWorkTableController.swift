@@ -366,17 +366,11 @@ class GLWanChengController: GLWorkTableBaseViewController, IndicatorInfoProvider
 }
 
 
-
-
-// MARK: - 工作台控制器
-/// 工作台控制器
-class GLWorkTableController: ButtonBarPagerTabStripViewController {
+class GLButtonBarPagerTabStripViewController: ButtonBarPagerTabStripViewController {
+  
     
     
     override func viewDidLoad() {
-        
-//        edgesForExtendedLayout = UIRectEdge(rawValue: 0)
-        
         
         /// 设置buttonBar属性
         settings.style.buttonBarBackgroundColor = YiThemeColor
@@ -408,6 +402,19 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
         SKPhotoBrowserOptions.bounceAnimation = true
         SKPhotoBrowserOptions.backgroundColor = UIColor(white: 0, alpha: 0.5)
         SKCaptionOptions.textColor = .black
+        
+        super.viewDidLoad()
+    }
+}
+
+// MARK: - 工作台控制器
+/// 工作台控制器
+class GLWorkTableController: GLButtonBarPagerTabStripViewController {
+    
+    
+    override func viewDidLoad() {
+        
+//        edgesForExtendedLayout = UIRectEdge(rawValue: 0)
         
         super.viewDidLoad()
         
@@ -504,7 +511,9 @@ class GLWorkTableController: ButtonBarPagerTabStripViewController {
         let wanchengVc = UIStoryboard(name: "GLWorkTable", bundle: Bundle.main).instantiateViewController(withIdentifier: "GLWanChengController") as! GLWanChengController
         return wanchengVc
     }()
-    
 }
+
+
+
 
 
