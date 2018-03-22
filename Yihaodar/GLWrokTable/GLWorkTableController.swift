@@ -366,46 +366,6 @@ class GLWanChengController: GLWorkTableBaseViewController, IndicatorInfoProvider
 }
 
 
-class GLButtonBarPagerTabStripViewController: ButtonBarPagerTabStripViewController {
-  
-    
-    
-    override func viewDidLoad() {
-        
-        /// 设置buttonBar属性
-        settings.style.buttonBarBackgroundColor = YiThemeColor
-        settings.style.buttonBarItemBackgroundColor = YiThemeColor
-        settings.style.selectedBarBackgroundColor = YiBlueColor
-        settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 17)
-        settings.style.selectedBarHeight = 4.0
-        settings.style.buttonBarMinimumLineSpacing = 0
-        settings.style.buttonBarItemTitleColor = YiSelectedTitleColor
-        settings.style.buttonBarItemsShouldFillAvailableWidth = true
-        settings.style.buttonBarLeftContentInset = 1
-        settings.style.buttonBarRightContentInset = 1
-        
-        changeCurrentIndexProgressive = {  (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
-            guard changeCurrentIndex == true else { return }
-            oldCell?.label.textColor = YiUnselectedTitleColor
-            newCell?.label.textColor = YiSelectedTitleColor
-        }
-        
-        /// 设置全局图片浏览器
-        SKPhotoBrowserOptions.displayCounterLabel = false                         // counter label will be hidden
-        SKPhotoBrowserOptions.displayCloseButton = false
-        SKPhotoBrowserOptions.displayBackAndForwardButton = false
-        SKPhotoBrowserOptions.displayStatusbar = true
-        SKPhotoBrowserOptions.displayAction = false                               // action button will be hidden
-        SKPhotoBrowserOptions.displayHorizontalScrollIndicator = true
-        SKPhotoBrowserOptions.displayVerticalScrollIndicator = false
-        SKPhotoBrowserOptions.enableSingleTapDismiss = true
-        SKPhotoBrowserOptions.bounceAnimation = true
-        SKPhotoBrowserOptions.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        SKCaptionOptions.textColor = .black
-        
-        super.viewDidLoad()
-    }
-}
 
 // MARK: - 工作台控制器
 /// 工作台控制器
@@ -515,5 +475,45 @@ class GLWorkTableController: GLButtonBarPagerTabStripViewController {
 
 
 
+class GLButtonBarPagerTabStripViewController: ButtonBarPagerTabStripViewController {
+    
+    
+    
+    override func viewDidLoad() {
+        
+        /// 设置buttonBar属性
+        settings.style.buttonBarBackgroundColor = YiThemeColor
+        settings.style.buttonBarItemBackgroundColor = YiThemeColor
+        settings.style.selectedBarBackgroundColor = YiBlueColor
+        settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 17)
+        settings.style.selectedBarHeight = 4.0
+        settings.style.buttonBarMinimumLineSpacing = 0
+        settings.style.buttonBarItemTitleColor = YiSelectedTitleColor
+        settings.style.buttonBarItemsShouldFillAvailableWidth = true
+        settings.style.buttonBarLeftContentInset = 1
+        settings.style.buttonBarRightContentInset = 1
+        
+        changeCurrentIndexProgressive = {  (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
+            guard changeCurrentIndex == true else { return }
+            oldCell?.label.textColor = YiUnselectedTitleColor
+            newCell?.label.textColor = YiSelectedTitleColor
+        }
+        
+        /// 设置全局图片浏览器
+        SKPhotoBrowserOptions.displayCounterLabel = false                         // counter label will be hidden
+        SKPhotoBrowserOptions.displayCloseButton = false
+        SKPhotoBrowserOptions.displayBackAndForwardButton = false
+        SKPhotoBrowserOptions.displayStatusbar = true
+        SKPhotoBrowserOptions.displayAction = false                               // action button will be hidden
+        SKPhotoBrowserOptions.displayHorizontalScrollIndicator = true
+        SKPhotoBrowserOptions.displayVerticalScrollIndicator = false
+        SKPhotoBrowserOptions.enableSingleTapDismiss = true
+        SKPhotoBrowserOptions.bounceAnimation = true
+        SKPhotoBrowserOptions.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        SKCaptionOptions.textColor = .black
+        
+        super.viewDidLoad()
+    }
+}
 
 

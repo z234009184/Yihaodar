@@ -16,6 +16,8 @@ import Default
 /// 本地用户
 var GLUser = User()
 
+
+
 ///用户模型
 struct User: HandyJSON, Codable, DefaultStorable {
     var phoneCode: String?
@@ -68,6 +70,9 @@ class GLLoginViewController: UIViewController {
         clearBtnPsd?.setImage(UIImage(named: "login_clear"), for: .normal)
         clearBtnPsd?.setImage(UIImage(named: "login_clear"), for: .highlighted)
         
+        if let username = UserDefaults.standard.string(forKey: "username") {
+            usernameField.text = username
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -107,6 +112,7 @@ class GLLoginViewController: UIViewController {
                     user.write()
                     GLUser = user
                     print(user)
+                    UserDefaults.standard.set(self?.usernameField.text!, forKey: "username")
                     
                     sender.startFinishAnimation(0.3, completion: {
                         let rootvc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
