@@ -223,12 +223,7 @@
 				8A7D848B2041325800B5046C /* GLTaskDetailPrice.storyboard */,
 				8A54560E204255340039D127 /* GLEstimateCarStateView.swift */,
 				8A54560C204255290039D127 /* GLEstimateCarStateView.xib */,
-				8A24F7A7202F314000FDC669 /* GLSubmitMessageView.swift */,
-				8A24F7A5202F0E1200FDC669 /* GLSubmitMessageView.xib */,
-				8A5456142042A9930039D127 /* GLSubmitMessagePriceView.swift */,
-				8A5456122042A9850039D127 /* GLSubmitMessagePriceView.xib */,
-				8AEEF201203FB80D00F8F5E1 /* GLSubmitLoadingView.swift */,
-				8AEEF1FF203FAF7700F8F5E1 /* GLSubmitLoadingView.xib */,
+				8AB994572064A43A00EF21B5 /* Views */,
 			);
 			path = GLTaskDetail;
 			sourceTree = "<group>";
@@ -281,6 +276,19 @@
 				8A24F7A920329A6400FDC669 /* GLSearch.storyboard */,
 			);
 			path = GLSearch;
+			sourceTree = "<group>";
+		};
+		8AB994572064A43A00EF21B5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8A24F7A7202F314000FDC669 /* GLSubmitMessageView.swift */,
+				8A24F7A5202F0E1200FDC669 /* GLSubmitMessageView.xib */,
+				8A5456142042A9930039D127 /* GLSubmitMessagePriceView.swift */,
+				8A5456122042A9850039D127 /* GLSubmitMessagePriceView.xib */,
+				8AEEF201203FB80D00F8F5E1 /* GLSubmitLoadingView.swift */,
+				8AEEF1FF203FAF7700F8F5E1 /* GLSubmitLoadingView.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8AEEF1EC20346F9700F8F5E1 /* GLAdd */ = {
