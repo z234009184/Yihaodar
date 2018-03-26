@@ -209,11 +209,18 @@ class GLWorkTableBaseViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let parentVc = parent else { return }
         
+        guard let vc = UIStoryboard(name: "GLTaskDetailGPS", bundle: nil).instantiateInitialViewController() else { return }
+        if let navigationVc = parentVc.navigationController {
+            navigationVc.pushViewController(vc, animated: true)
+        } else {
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        return
         
         let model = dataArray[indexPath.row]
         
         switch model.status {
-        case .bdEstimate:
+        case .bdEstimate: // 报单详情
             let desVc = UIStoryboard(name: "GLTaskDetail", bundle: nil).instantiateInitialViewController()
             guard let bdVc = desVc as? GLTaskDetailViewController else { return }
             bdVc.model = model
@@ -225,7 +232,7 @@ class GLWorkTableBaseViewController: UITableViewController {
             }
             
             return
-        case .price:
+        case .price: // 定价详情
             let desVc = UIStoryboard(name: "GLTaskDetailPrice", bundle: nil).instantiateInitialViewController()
             guard let djVc = desVc as? GLTaskDetailPriceViewController else { return }
             djVc.model = model

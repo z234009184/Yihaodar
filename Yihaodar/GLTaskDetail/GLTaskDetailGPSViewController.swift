@@ -9,59 +9,124 @@
 import Spring
 import XLPagerTabStrip
 
-class GLTaskDetailItemCell: UITableViewCell {
+
+class GLTaskDetailItemHeader: UITableViewHeaderFooterView {
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.contentView.backgroundColor = .white
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
         
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+}
+
+
+class GLTaskDetailItemCell: UITableViewCell {
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subTitleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+    }
+}
+
+class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    open lazy var tableView: UITableView = {
+        
+        let tableView = UITableView(frame: CGRect(x: 8, y: 0, width: view.frame.size.width-16, height: view.frame.size.height), style: UITableViewStyle.grouped)
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.estimatedRowHeight = 40
+        tableView.delegate = self
+        tableView.dataSource = self
+        let nib = UINib(nibName: "GLTaskDetailItemCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: GLTaskDetailItemCellId)
+        tableView.register(UINib(nibName: "GLTaskDetailItemHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: GLTaskDetailItemHeaderId)
+        tableView.contentInset = UIEdgeInsetsMake(8, 0, 0, 0)
+        return tableView
+    }()
+    
+    fileprivate let GLTaskDetailItemCellId = "GLTaskDetailItemCellId"
+    fileprivate let GLTaskDetailItemHeaderId = "GLTaskDetailItemHeaderId"
+    
+    open var dataArray: [Any] = []
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.addSubview(tableView)
+        
         
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.frame = CGRect(x: 8, y: 0, width: view.frame.size.width-16, height: view.frame.size.height)
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: GLTaskDetailItemCellId) else {
+            return Bundle.main.loadNibNamed("GLTaskDetailItemCell", owner: nil, options: nil)?.first as! GLTaskDetailItemCell
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: GLTaskDetailItemHeaderId) else {
+            return GLTaskDetailItemHeader(reuseIdentifier: GLTaskDetailItemHeaderId)
+        }
+        
+        return sectionHeader
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 8
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+    }
     
 }
 
 
 
-
-class GL基本信息TableViewController: UITableViewController {
-    
-    fileprivate let GLTaskDetailItemCellId = "GLTaskDetailItemCellId"
+class GL基本信息ViewController: GLTaskDetailBaseViewController, IndicatorInfoProvider {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let nib = UINib(nibName: "GLTaskDetailItemCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: GLTaskDetailItemCellId)
-        
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: "基本信息")
     }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: GLTaskDetailItemCellId) else {
-            return Bundle.main.loadNibNamed("GLTaskDetailItemCell", owner: nil, options: nil)?.first as! GLTaskDetailItemCell
-        }
-        
-        
-        
-        return cell
-    }
-    
 }
 
 
@@ -91,7 +156,7 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "任务详情"
-        
+        settings.style.buttonBarItemLeftRightMargin = 15
     }
     
     
@@ -102,17 +167,19 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
-        return [basicVc, basicVc2]
+        return [basicVc, basicVc2, basicVc3]
     }
     
-    lazy var basicVc = { () -> GL基本信息TableViewController in
-       let basicVc = UIStoryboard(name: "GLTaskDetailGPS", bundle: Bundle.main).instantiateViewController(withIdentifier: "GL基本信息ViewController") as! GL基本信息TableViewController
-        return basicVc
+    lazy var basicVc = { () -> GL基本信息ViewController in
+        return GL基本信息ViewController()
     }()
     
-    lazy var basicVc2 = { () -> GL基本信息TableViewController in
-        let basicVc = UIStoryboard(name: "GLTaskDetailGPS", bundle: Bundle.main).instantiateViewController(withIdentifier: "GL基本信息ViewController") as! GL基本信息TableViewController
-        return basicVc
+    lazy var basicVc2 = { () -> GL基本信息ViewController in
+        return GL基本信息ViewController()
+    }()
+    
+    lazy var basicVc3 = { () -> GL基本信息ViewController in
+        return GL基本信息ViewController()
     }()
     
 }

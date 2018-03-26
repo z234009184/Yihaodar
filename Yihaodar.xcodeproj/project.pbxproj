@@ -43,6 +43,7 @@
 		8AB994592067583D00EF21B5 /* GLTaskDetailGPS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AB994582067583D00EF21B5 /* GLTaskDetailGPS.storyboard */; };
 		8AB9945B2067585600EF21B5 /* GLTaskDetailGPSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB9945A2067585600EF21B5 /* GLTaskDetailGPSViewController.swift */; };
 		8AB9945D2067928200EF21B5 /* GLTaskDetailItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AB9945C2067928200EF21B5 /* GLTaskDetailItemCell.xib */; };
+		8AB9945F2068B74400EF21B5 /* GLTaskDetailItemHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AB9945E2068B74300EF21B5 /* GLTaskDetailItemHeader.xib */; };
 		8AD2E8702020795A008D32EA /* GLTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD2E86F2020795A008D32EA /* GLTabBarController.swift */; };
 		8AD2E87220208366008D32EA /* GLNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD2E87120208366008D32EA /* GLNavigationController.swift */; };
 		8AD5E0BF2043D42C00CB7CFF /* GLCarStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5E0BE2043D42C00CB7CFF /* GLCarStateView.xib */; };
@@ -116,6 +117,7 @@
 		8AB994582067583D00EF21B5 /* GLTaskDetailGPS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLTaskDetailGPS.storyboard; sourceTree = "<group>"; };
 		8AB9945A2067585600EF21B5 /* GLTaskDetailGPSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLTaskDetailGPSViewController.swift; sourceTree = "<group>"; };
 		8AB9945C2067928200EF21B5 /* GLTaskDetailItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLTaskDetailItemCell.xib; sourceTree = "<group>"; };
+		8AB9945E2068B74300EF21B5 /* GLTaskDetailItemHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLTaskDetailItemHeader.xib; sourceTree = "<group>"; };
 		8AD2E86F2020795A008D32EA /* GLTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLTabBarController.swift; sourceTree = "<group>"; };
 		8AD2E87120208366008D32EA /* GLNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLNavigationController.swift; sourceTree = "<group>"; };
 		8AD5E0BE2043D42C00CB7CFF /* GLCarStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLCarStateView.xib; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				8AB9945A2067585600EF21B5 /* GLTaskDetailGPSViewController.swift */,
 				8AB994582067583D00EF21B5 /* GLTaskDetailGPS.storyboard */,
 				8AB9945C2067928200EF21B5 /* GLTaskDetailItemCell.xib */,
+				8AB9945E2068B74300EF21B5 /* GLTaskDetailItemHeader.xib */,
 				8A54560E204255340039D127 /* GLEstimateCarStateView.swift */,
 				8A54560C204255290039D127 /* GLEstimateCarStateView.xib */,
 				8AB994572064A43A00EF21B5 /* Views */,
@@ -461,6 +464,7 @@
 				8AD5E0D62044485F00CB7CFF /* tianchuang.plist in Resources */,
 				8A235117201E0AC4002715E0 /* Main.storyboard in Resources */,
 				8A5456132042A9850039D127 /* GLSubmitMessagePriceView.xib in Resources */,
+				8AB9945F2068B74400EF21B5 /* GLTaskDetailItemHeader.xib in Resources */,
 				8AD5E0E420444D8500CB7CFF /* miaoshu.plist in Resources */,
 				8A1DAB99202ACE04001CBD0F /* GLMe.storyboard in Resources */,
 				8AEEF1F420366F5600F8F5E1 /* GLCreateCarEstimate.storyboard in Resources */,

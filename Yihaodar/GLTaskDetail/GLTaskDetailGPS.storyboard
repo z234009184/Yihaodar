@@ -152,23 +152,5 @@
             </objects>
             <point key="canvasLocation" x="-868" y="-356"/>
         </scene>
-        <!--L基本信息 Table View Controller-->
-        <scene sceneID="26E-DD-yOB">
-            <objects>
-                <tableViewController id="16J-3q-Url" customClass="GL基本信息TableViewController" customModule="Yihaodar" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="MMR-M3-aFd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <connections>
-                            <outlet property="dataSource" destination="16J-3q-Url" id="gtx-GT-7KY"/>
-                            <outlet property="delegate" destination="16J-3q-Url" id="wmk-g3-4Zj"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JBw-IP-2ZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-81" y="-357"/>
-        </scene>
     </scenes>
 </document>

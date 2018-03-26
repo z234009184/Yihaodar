@@ -88,7 +88,7 @@ open class TKTransitionSubmitButton : UIButton, UIViewControllerTransitioningDel
     }
     
     open func returnToOriginalState() {
-        
+        self.layer.cornerRadius = 3
         self.layer.removeAllAnimations()
         self.setTitle(self.cachedTitle, for: UIControlState())
         self.spiner.stopAnimation()

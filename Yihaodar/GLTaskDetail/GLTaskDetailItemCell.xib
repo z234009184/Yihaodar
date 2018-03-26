@@ -13,26 +13,26 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GLTaskDetailItemCell" customModule="Yihaodar" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="400" height="98"/>
+            <rect key="frame" x="0.0" y="0.0" width="400" height="202"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GrB-je-zGQ">
-                    <rect key="frame" x="0.0" y="0.0" width="400" height="70"/>
+                    <rect key="frame" x="0.0" y="0.0" width="400" height="202"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所属门店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cD-co-n5e">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="所属门店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cD-co-n5e">
                             <rect key="frame" x="10" y="15" width="53.5" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.59999999999999998" green="0.62745098040000002" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朝阳事业部" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjC-1D-8ep">
-                            <rect key="frame" x="10" y="37" width="76.5" height="18"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朝阳事业部" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjC-1D-8ep">
+                            <rect key="frame" x="10" y="37" width="375" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.12941176469999999" green="0.15686274510000001" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ar-Et-sFN">
-                            <rect key="frame" x="8" y="69" width="392" height="1"/>
+                            <rect key="frame" x="8" y="201" width="392" height="1"/>
                             <color key="backgroundColor" red="0.92941176469999998" green="0.93333333330000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="lWS-ni-EGN"/>
@@ -45,9 +45,10 @@
                         <constraint firstItem="6cD-co-n5e" firstAttribute="leading" secondItem="GrB-je-zGQ" secondAttribute="leading" constant="10" id="HER-gG-fxU"/>
                         <constraint firstItem="6cD-co-n5e" firstAttribute="top" secondItem="GrB-je-zGQ" secondAttribute="top" constant="15" id="Icx-un-iGh"/>
                         <constraint firstAttribute="bottom" secondItem="3Ar-Et-sFN" secondAttribute="bottom" id="Krq-Gb-1Tb"/>
-                        <constraint firstAttribute="bottom" secondItem="tjC-1D-8ep" secondAttribute="bottom" constant="15" id="M3l-Va-NOc"/>
-                        <constraint firstAttribute="height" constant="70" id="ObZ-e9-gQ9"/>
+                        <constraint firstAttribute="bottom" secondItem="tjC-1D-8ep" secondAttribute="bottom" priority="250" constant="15" id="M3l-Va-NOc"/>
+                        <constraint firstAttribute="trailing" secondItem="tjC-1D-8ep" secondAttribute="trailing" constant="15" id="Vg5-Rc-Og2"/>
                         <constraint firstItem="3Ar-Et-sFN" firstAttribute="leading" secondItem="GrB-je-zGQ" secondAttribute="leading" constant="8" id="l4I-Fx-CQG"/>
+                        <constraint firstItem="tjC-1D-8ep" firstAttribute="top" secondItem="6cD-co-n5e" secondAttribute="bottom" constant="6" id="sRt-G2-O8r"/>
                         <constraint firstAttribute="trailing" secondItem="3Ar-Et-sFN" secondAttribute="trailing" id="sqJ-ss-mIg"/>
                     </constraints>
                 </view>
@@ -61,7 +62,11 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="1" y="-232"/>
+            <connections>
+                <outlet property="subTitleLabel" destination="tjC-1D-8ep" id="35P-Au-FWR"/>
+                <outlet property="titleLabel" destination="6cD-co-n5e" id="1IM-q6-zka"/>
+            </connections>
+            <point key="canvasLocation" x="-278" y="-213"/>
         </view>
     </objects>
 </document>

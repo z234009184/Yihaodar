@@ -132,8 +132,8 @@ enum GLService {
 
 // MARK: - TargetType Protocol Implementation
 extension GLService: TargetType {
-//    var mainURL: String { return "http://192.168.5.235:8080" }
-    var mainURL: String { return "http://yijiaren.yihaodar.com" }
+    var mainURL: String { return "http://192.168.5.235:8080" }
+//    var mainURL: String { return "http://yijiaren.yihaodar.com" }
     var baseURL: URL { return URL(string: mainURL)! }
     var path: String {
         switch self {
