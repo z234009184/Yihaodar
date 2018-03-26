@@ -75,8 +75,14 @@ class GLLoginViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        passwordField.text = ""
+        
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
-         super.viewDidAppear(animated)
+        super.viewDidAppear(animated)
         if let user = User.read() {
             GLUser = user
             if user.token != nil {
