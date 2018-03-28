@@ -39,6 +39,7 @@ target 'Yihaodar' do
     pod 'Toast-Swift'  #吐司提示
 #    pod 'Hero' # 各种交互动画
 
+
     pod 'Spring' # 动画库
     pod 'PullToRefreshKit' # 下拉刷新
     pod 'XLPagerTabStrip' # 顶部tab标签切换库
@@ -48,10 +49,11 @@ target 'Yihaodar' do
     pod 'SnapKit' # autoLayout布局库
     pod 'HGPlaceholders' # tableView 占位视图
     pod 'SKPhotoBrowser' # 图片浏览器
-    pod 'TKSubmitTransition', :git => 'https://github.com/entotsu/TKSubmitTransition.git', :tag => '2.0' # 登陆动画按钮
-    
+#    pod 'TKSubmitTransition', :git => 'https://github.com/entotsu/TKSubmitTransition.git', :tag => '2.0' # 登陆动画按钮
+
     pod 'GTSDK', '2.2.0.0-noidfa' # 推送
     pod 'FSPagerView' # 轮播
     pod 'Default' # 持久化存储
     pod 'JGProgressHUD' # 加载进度条
+    pod 'WCDB.swift'
 end

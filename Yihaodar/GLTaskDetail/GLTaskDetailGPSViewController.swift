@@ -8,11 +8,30 @@
 
 import Spring
 import XLPagerTabStrip
+import HandyJSON
+
+struct GLItemModel: HandyJSON {
+    var title = ""
+    var subTitle = ""
+}
+
+/// 数据层
+struct GLSectionModel: HandyJSON {
+    var title = ""
+    var items: [GLItemModel] = []
+}
+
 
 
 class GLTaskDetailItemHeader: UITableViewHeaderFooterView {
     
     @IBOutlet weak var titleLabel: UILabel!
+    
+    var sectionModel: GLSectionModel? {
+        didSet{
+            titleLabel.text = sectionModel?.title
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,9 +51,22 @@ class GLTaskDetailItemCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     
+    var itemModel: GLItemModel? {
+        didSet{
+            titleLabel.text = itemModel?.title
+            subTitleLabel.text = itemModel?.subTitle
+            
+            if subTitleLabel.text?.isEmpty == true {
+                subTitleLabel.text = "未填写"
+                subTitleLabel.textColor = YiUnselectedTitleColor
+            } else {
+                subTitleLabel.textColor = YiSelectedTitleColor
+            }
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.selectionStyle = .none
     }
 }
 
@@ -43,6 +75,7 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
     open lazy var tableView: UITableView = {
         let tableView = UITableView(frame: CGRect(x: 8, y: 0, width: view.frame.size.width-16, height: view.frame.size.height), style: UITableViewStyle.grouped)
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+
         tableView.estimatedRowHeight = 40
         tableView.delegate = self
         tableView.dataSource = self
@@ -56,9 +89,7 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
     fileprivate let GLTaskDetailItemCellId = "GLTaskDetailItemCellId"
     fileprivate let GLTaskDetailItemHeaderId = "GLTaskDetailItemHeaderId"
     
-    open var dataArray: [Any] = []
-    
-    
+    open var dataArray: [GLSectionModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,25 +105,31 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return dataArray.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        let sectionModel = dataArray[section]
+        return sectionModel.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: GLTaskDetailItemCellId) else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: GLTaskDetailItemCellId) as? GLTaskDetailItemCell else {
             return Bundle.main.loadNibNamed("GLTaskDetailItemCell", owner: nil, options: nil)?.first as! GLTaskDetailItemCell
         }
+        let sectionModel = dataArray[indexPath.section]
+        let itemModel = sectionModel.items[indexPath.row]
+        cell.itemModel = itemModel
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: GLTaskDetailItemHeaderId) else {
+        guard let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: GLTaskDetailItemHeaderId) as? GLTaskDetailItemHeader else {
             return GLTaskDetailItemHeader(reuseIdentifier: GLTaskDetailItemHeaderId)
         }
+        sectionHeader.sectionModel = dataArray[section]
         
         return sectionHeader
     }
@@ -106,12 +143,14 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == dataArray.count - 1 {
+            return 0.01
+        }
         return 8
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -136,6 +175,14 @@ class GL基本信息ViewController: GLTaskDetailBaseViewController, IndicatorInf
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let dataArr = (parent as? GLTaskDetailGPSViewController)?.dataArray {
+            updateUI(dataArr: dataArr)
+        }
+    }
+    
+    func updateUI(dataArr: [GLSectionModel]) {
+        dataArray = dataArr
+        tableView.reloadData()
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -148,7 +195,9 @@ class GL评估信息ViewController: GLTaskDetailBaseViewController, IndicatorInf
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
+    
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "评估信息")
@@ -228,16 +277,37 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     /// 列表cell模型
     var model: GLWorkTableModel?
     
+    var dataArray: [GLSectionModel] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "任务详情"
 //        settings.style.buttonBarItemLeftRightMargin = 8
+        
+        loadData()
+    }
+    
+    func loadData() {
+        
+        let section1 = GLSectionModel(title: "订单信息", items: [GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部")])
+        
+        let section2 = GLSectionModel(title: "车辆信息", items: [GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: ""), GLItemModel(title: "所属门店", subTitle: ""), GLItemModel(title: "所属门店", subTitle: ""), GLItemModel(title: "所属门店", subTitle: "")])
+        
+        
+        dataArray.append(section1)
+        dataArray.append(section2)
+        
+        updateSubVcUI(dataArr: dataArray)
+    }
+    
+    func updateSubVcUI(dataArr: [GLSectionModel]) {
+        vc1.updateUI(dataArr: dataArr)
     }
     
     
+    
     @IBAction func submitBtnClick(_ sender: DesignableButton) {
-        
         
     }
     

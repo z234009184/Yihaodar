@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import TKSubmitTransition
 import Spring
 import SwiftyJSON
 import HandyJSON

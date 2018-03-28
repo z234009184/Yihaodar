@@ -27,6 +27,11 @@
 		8A37F34F202C2EAD004FD467 /* GLRefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37F34E202C2EAD004FD467 /* GLRefreshHeader.swift */; };
 		8A4982D82027F63A00EB4BEF /* GLConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4982D72027F63A00EB4BEF /* GLConst.swift */; };
 		8A4982DA20282BF200EB4BEF /* GLLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4982D920282BF200EB4BEF /* GLLoginViewController.swift */; };
+		8A4FCB21206B465C00869687 /* SpinerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FCB1C206B465C00869687 /* SpinerLayer.swift */; };
+		8A4FCB22206B465C00869687 /* CGRectEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FCB1D206B465C00869687 /* CGRectEx.swift */; };
+		8A4FCB23206B465C00869687 /* TransitionSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FCB1E206B465C00869687 /* TransitionSubmitButton.swift */; };
+		8A4FCB24206B465C00869687 /* FadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FCB1F206B465C00869687 /* FadeTransition.swift */; };
+		8A4FCB25206B465C00869687 /* TimerEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FCB20206B465C00869687 /* TimerEx.swift */; };
 		8A54560D204255290039D127 /* GLEstimateCarStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A54560C204255290039D127 /* GLEstimateCarStateView.xib */; };
 		8A54560F204255340039D127 /* GLEstimateCarStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A54560E204255340039D127 /* GLEstimateCarStateView.swift */; };
 		8A5456112042920E0039D127 /* GLMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5456102042920E0039D127 /* GLMeViewController.swift */; };
@@ -100,6 +105,11 @@
 		8A37F34E202C2EAD004FD467 /* GLRefreshHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLRefreshHeader.swift; sourceTree = "<group>"; };
 		8A4982D72027F63A00EB4BEF /* GLConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLConst.swift; sourceTree = "<group>"; };
 		8A4982D920282BF200EB4BEF /* GLLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLLoginViewController.swift; sourceTree = "<group>"; };
+		8A4FCB1C206B465C00869687 /* SpinerLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinerLayer.swift; sourceTree = "<group>"; };
+		8A4FCB1D206B465C00869687 /* CGRectEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectEx.swift; sourceTree = "<group>"; };
+		8A4FCB1E206B465C00869687 /* TransitionSubmitButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionSubmitButton.swift; sourceTree = "<group>"; };
+		8A4FCB1F206B465C00869687 /* FadeTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransition.swift; sourceTree = "<group>"; };
+		8A4FCB20206B465C00869687 /* TimerEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerEx.swift; sourceTree = "<group>"; };
 		8A54560C204255290039D127 /* GLEstimateCarStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLEstimateCarStateView.xib; sourceTree = "<group>"; };
 		8A54560E204255340039D127 /* GLEstimateCarStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLEstimateCarStateView.swift; sourceTree = "<group>"; };
 		8A5456102042920E0039D127 /* GLMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLMeViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +218,7 @@
 				8A4982D72027F63A00EB4BEF /* GLConst.swift */,
 				8A37F34E202C2EAD004FD467 /* GLRefreshHeader.swift */,
 				8A3775E02033449700F921F8 /* GLRefreshFooter.swift */,
+				8A4FCB1B206B465C00869687 /* SubmitTransition */,
 				8A24F7A1202DB5C000FDC669 /* Yihaodar-Bridging-Header.h */,
 			);
 			path = GLCommon;
@@ -288,6 +299,18 @@
 				8A24F7A920329A6400FDC669 /* GLSearch.storyboard */,
 			);
 			path = GLSearch;
+			sourceTree = "<group>";
+		};
+		8A4FCB1B206B465C00869687 /* SubmitTransition */ = {
+			isa = PBXGroup;
+			children = (
+				8A4FCB1C206B465C00869687 /* SpinerLayer.swift */,
+				8A4FCB1D206B465C00869687 /* CGRectEx.swift */,
+				8A4FCB1E206B465C00869687 /* TransitionSubmitButton.swift */,
+				8A4FCB1F206B465C00869687 /* FadeTransition.swift */,
+				8A4FCB20206B465C00869687 /* TimerEx.swift */,
+			);
+			path = SubmitTransition;
 			sourceTree = "<group>";
 		};
 		8AB994572064A43A00EF21B5 /* Views */ = {
@@ -496,8 +519,8 @@
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Spring/Spring.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/TKSubmitTransition/TKSubmitTransition.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/WCDB.swift/WCDBSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -517,8 +540,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spring.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TKSubmitTransition.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WCDBSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,6 +591,7 @@
 			files = (
 				8AB9945B2067585600EF21B5 /* GLTaskDetailGPSViewController.swift in Sources */,
 				8AD5E0C12043D43600CB7CFF /* GLCarStateView.swift in Sources */,
+				8A4FCB22206B465C00869687 /* CGRectEx.swift in Sources */,
 				8A1DAB9C202B002B001CBD0F /* GLTaskDetailViewController.swift in Sources */,
 				8A7D848E2041329300B5046C /* GLTaskDetailPriceViewController.swift in Sources */,
 				8A1DAB89202AB282001CBD0F /* UIColor+GLExtension.swift in Sources */,
@@ -575,8 +599,10 @@
 				8A6587802021C97A0031DD3D /* GLWorkTableController.swift in Sources */,
 				8A37F34D202BE9F2004FD467 /* GLSearchViewController.swift in Sources */,
 				8AEEF1FA2037C41800F8F5E1 /* GLRadioViewController.swift in Sources */,
+				8A4FCB24206B465C00869687 /* FadeTransition.swift in Sources */,
 				8AD5E0C520440AD300CB7CFF /* GLEstimateResultViewController.swift in Sources */,
 				8A1DAB92202AC3A8001CBD0F /* UIView+GLExtension.swift in Sources */,
+				8A4FCB25206B465C00869687 /* TimerEx.swift in Sources */,
 				8A54560F204255340039D127 /* GLEstimateCarStateView.swift in Sources */,
 				8A5456152042A9930039D127 /* GLSubmitMessagePriceView.swift in Sources */,
 				8A5456192043C8800039D127 /* GLCarConfigViewController.swift in Sources */,
@@ -584,6 +610,7 @@
 				8A5456112042920E0039D127 /* GLMeViewController.swift in Sources */,
 				8A4982D82027F63A00EB4BEF /* GLConst.swift in Sources */,
 				8AD5E0C32043FC0800CB7CFF /* GLUploadPictureViewController.swift in Sources */,
+				8A4FCB23206B465C00869687 /* TransitionSubmitButton.swift in Sources */,
 				8A8E614D20466D800068EA06 /* GLService.swift in Sources */,
 				8AD2E8702020795A008D32EA /* GLTabBarController.swift in Sources */,
 				8A8E614B20455D590068EA06 /* GLDatePicker.swift in Sources */,
@@ -594,6 +621,7 @@
 				8AEEF1F02035971000F8F5E1 /* GLAddView.swift in Sources */,
 				8A37F34F202C2EAD004FD467 /* GLRefreshHeader.swift in Sources */,
 				8AEEF202203FB80D00F8F5E1 /* GLSubmitLoadingView.swift in Sources */,
+				8A4FCB21206B465C00869687 /* SpinerLayer.swift in Sources */,
 				8A24F7A8202F314000FDC669 /* GLSubmitMessageView.swift in Sources */,
 				8A5456172043A5100039D127 /* GLCarMessageViewController.swift in Sources */,
 				8A235112201E0AC4002715E0 /* AppDelegate.swift in Sources */,
