@@ -53,6 +53,8 @@
 		8AB9945F2068B74400EF21B5 /* GLTaskDetailItemHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AB9945E2068B74300EF21B5 /* GLTaskDetailItemHeader.xib */; };
 		8AC76E68206BA3430000214F /* GLInstallDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AC76E67206BA3430000214F /* GLInstallDetailView.xib */; };
 		8AC76E6A206BA3680000214F /* GLInstallDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC76E69206BA3680000214F /* GLInstallDetailView.swift */; };
+		8AC76E6E206C99940000214F /* ContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC76E6C206C99940000214F /* ContentViewCell.swift */; };
+		8AC76E6F206C99940000214F /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC76E6D206C99940000214F /* SheetView.swift */; };
 		8AD2E8702020795A008D32EA /* GLTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD2E86F2020795A008D32EA /* GLTabBarController.swift */; };
 		8AD2E87220208366008D32EA /* GLNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD2E87120208366008D32EA /* GLNavigationController.swift */; };
 		8AD5E0BF2043D42C00CB7CFF /* GLCarStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5E0BE2043D42C00CB7CFF /* GLCarStateView.xib */; };
@@ -136,6 +138,8 @@
 		8AB9945E2068B74300EF21B5 /* GLTaskDetailItemHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLTaskDetailItemHeader.xib; sourceTree = "<group>"; };
 		8AC76E67206BA3430000214F /* GLInstallDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLInstallDetailView.xib; sourceTree = "<group>"; };
 		8AC76E69206BA3680000214F /* GLInstallDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLInstallDetailView.swift; sourceTree = "<group>"; };
+		8AC76E6C206C99940000214F /* ContentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewCell.swift; sourceTree = "<group>"; };
+		8AC76E6D206C99940000214F /* SheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 		8AD2E86F2020795A008D32EA /* GLTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLTabBarController.swift; sourceTree = "<group>"; };
 		8AD2E87120208366008D32EA /* GLNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLNavigationController.swift; sourceTree = "<group>"; };
 		8AD5E0BE2043D42C00CB7CFF /* GLCarStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLCarStateView.xib; sourceTree = "<group>"; };
@@ -226,6 +230,7 @@
 				8A4982D72027F63A00EB4BEF /* GLConst.swift */,
 				8A37F34E202C2EAD004FD467 /* GLRefreshHeader.swift */,
 				8A3775E02033449700F921F8 /* GLRefreshFooter.swift */,
+				8AC76E6B206C99940000214F /* SheetView */,
 				8A4FCB1B206B465C00869687 /* SubmitTransition */,
 				8A24F7A1202DB5C000FDC669 /* Yihaodar-Bridging-Header.h */,
 			);
@@ -336,6 +341,15 @@
 				8AC76E67206BA3430000214F /* GLInstallDetailView.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8AC76E6B206C99940000214F /* SheetView */ = {
+			isa = PBXGroup;
+			children = (
+				8AC76E6C206C99940000214F /* ContentViewCell.swift */,
+				8AC76E6D206C99940000214F /* SheetView.swift */,
+			);
+			path = SheetView;
 			sourceTree = "<group>";
 		};
 		8AEEF1EC20346F9700F8F5E1 /* GLAdd */ = {
@@ -633,6 +647,8 @@
 				8A4982DA20282BF200EB4BEF /* GLLoginViewController.swift in Sources */,
 				8A3775E12033449700F921F8 /* GLRefreshFooter.swift in Sources */,
 				8AEEF1F220366F3000F8F5E1 /* GLCreateCarEstimateViewController.swift in Sources */,
+				8AC76E6E206C99940000214F /* ContentViewCell.swift in Sources */,
+				8AC76E6F206C99940000214F /* SheetView.swift in Sources */,
 				8AEEF1F02035971000F8F5E1 /* GLAddView.swift in Sources */,
 				8A37F34F202C2EAD004FD467 /* GLRefreshHeader.swift in Sources */,
 				8AC76E6A206BA3680000214F /* GLInstallDetailView.swift in Sources */,
