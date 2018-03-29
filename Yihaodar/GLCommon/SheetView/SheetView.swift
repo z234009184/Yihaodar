@@ -62,9 +62,6 @@ class SheetView: UIView, UITableViewDelegate, UITableViewDataSource, UICollectio
         super.init(frame: frame)
 
         
-        self.layer.borderColor = UIColor(red: 0xe5 / 255.0, green: 0xe5 / 255.0, blue: 0xe5 / 255.0, alpha: 1.0).cgColor
-        self.layer.cornerRadius = 1.0
-        self.layer.borderWidth = 1.0
         
         //leftview
         
@@ -79,7 +76,7 @@ class SheetView: UIView, UITableViewDelegate, UITableViewDataSource, UICollectio
         //topview
         
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 1.0
+        layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0.0
         layout.scrollDirection = UICollectionViewScrollDirection.horizontal
         self.topView = SheetTopView(frame: CGRect.zero, collectionViewLayout: layout)
@@ -140,6 +137,7 @@ class SheetView: UIView, UITableViewDelegate, UITableViewDataSource, UICollectio
         self.sheetHeadLabel?.textColor = UIColor(red: 0x99 / 255.0, green: 0xa0 / 255.0, blue: 0xaa / 255.0, alpha: 1.0)
         self.sheetHeadLabel?.textAlignment = NSTextAlignment.center
         self.sheetHeadLabel?.backgroundColor = .white
+        self.sheetHeadLabel?.font = UIFont.systemFont(ofSize: 12)
         self.sheetHeadLabel?.layer.borderColor = UIColor(red: 0xed / 255.0, green: 0xee / 255.0, blue: 0xf1 / 255.0, alpha: 1.0).cgColor
         self.sheetHeadLabel?.layer.borderWidth = 0.5
         self.addSubview(self.sheetHeadLabel!)
@@ -170,20 +168,17 @@ class SheetView: UIView, UITableViewDelegate, UITableViewDataSource, UICollectio
             if leftCell == nil {
                 leftCell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: leftViewCellId)
                 leftCell?.selectionStyle = UITableViewCellSelectionStyle.none
+                leftCell?.backgroundColor = .white
+                leftCell?.layer.borderColor = UIColor(red: 0xed / 255.0, green: 0xee / 255.0, blue: 0xf1 / 255.0, alpha: 1.0).cgColor
+                leftCell?.layer.borderWidth = 0.5
+                
+                leftCell?.textLabel?.textColor = UIColor.black
+                leftCell?.textLabel?.textAlignment = NSTextAlignment.center
+                leftCell?.textLabel?.font = UIFont.systemFont(ofSize: 12)
+                
             }
-            for item in (leftCell?.contentView.subviews)! {
-                let subView = item as UIView
-                subView.removeFromSuperview()
-            }
-            leftCell?.backgroundColor = .white
-            leftCell?.layer.borderColor = UIColor(red: 0xed / 255.0, green: 0xee / 255.0, blue: 0xf1 / 255.0, alpha: 1.0).cgColor
-            leftCell?.layer.borderWidth = 0.5
-            let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.titleColWidth, height: height!))
-            label.text = self.dataSource?.sheetView(sheetView: self, cellForLeftColAtIndexPath: indexPath as NSIndexPath)
-            label.textColor = UIColor.black
-            label.textAlignment = NSTextAlignment.center
-            leftCell?.contentView.addSubview(label)
             
+            leftCell?.textLabel?.text = self.dataSource?.sheetView(sheetView: self, cellForLeftColAtIndexPath: indexPath as NSIndexPath)
             return leftCell!
         }
         
@@ -259,16 +254,13 @@ class SheetView: UIView, UITableViewDelegate, UITableViewDataSource, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let topCell = collectionView.dequeueReusableCell(withReuseIdentifier: topViewCellId, for: indexPath)
-        for item in topCell.contentView.subviews {
-            let view = item as UIView
-            view.removeFromSuperview()
-        }
         topCell.backgroundColor = .white
         let width = self.delegate?.sheetView(sheetView: self, widthForColAtIndexPath: indexPath as NSIndexPath)
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: width!, height: self.titleRowHeight))
         label.text = self.dataSource?.sheetView(sheetView: self, cellForTopRowAtIndexPath: indexPath as NSIndexPath)
         label.textAlignment = NSTextAlignment.center
         label.textColor = UIColor(red: 0x99 / 255.0, green: 0xa0 / 255.0, blue: 0xaa / 255.0, alpha: 1.0)
+        label.font = UIFont.systemFont(ofSize: 12)
         topCell.contentView.addSubview(label)
         
         topCell.layer.borderColor = UIColor(red: 0xed / 255.0, green: 0xee / 255.0, blue: 0xf1 / 255.0, alpha: 1.0).cgColor

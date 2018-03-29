@@ -60,10 +60,6 @@ class ContentViewCell: UITableViewCell, UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let innerCell = collectionView.dequeueReusableCell(withReuseIdentifier: "inner.cell", for: indexPath)
-        for item in innerCell.contentView.subviews {
-            let view = item as UIView
-            view.removeFromSuperview()
-        }
 //        var hasColor = false
 //        if self.cellWithColorAtIndexPathClosure != nil {
 //            hasColor = self.cellWithColorAtIndexPathClosure!(indexPath as NSIndexPath)
@@ -74,6 +70,7 @@ class ContentViewCell: UITableViewCell, UICollectionViewDataSource, UICollection
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
         label.text = self.cellForItemAtIndexPathClosure!(indexPath as NSIndexPath)
         label.textColor = UIColor.black
+        label.font = UIFont.systemFont(ofSize: 12)
         label.textAlignment = NSTextAlignment.center
         innerCell.contentView.addSubview(label)
         innerCell.layer.borderColor = UIColor(red: 0xed / 255.0, green: 0xee / 255.0, blue: 0xf1 / 255.0, alpha: 1.0).cgColor

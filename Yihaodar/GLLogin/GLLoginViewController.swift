@@ -52,13 +52,16 @@ struct User: HandyJSON, Codable, DefaultStorable {
 
 
 
+/// 登陆控制器
 class GLLoginViewController: UIViewController {
     
+    /// logo
     @IBOutlet weak var logoImgView: DesignableImageView!
     @IBOutlet weak var usernameField: DesignableTextField!
     @IBOutlet weak var passwordField: DesignableTextField!
     @IBOutlet weak var loginBtn: TKTransitionSubmitButton!
     
+    /// 视图加载完成
     override func viewDidLoad() {
         super.viewDidLoad()
         let clearBtn = usernameField.value(forKey: "clearButton") as? UIButton
@@ -92,6 +95,11 @@ class GLLoginViewController: UIViewController {
         }
     }
     
+    
+    
+    /// 登陆触发
+    ///
+    /// - Parameter sender: 登陆按钮
     @IBAction func loginBtnClick(_ sender: TKTransitionSubmitButton) {
         view.endEditing(true)
         if ((usernameField.text?.length)! < 1) || ((passwordField.text?.length)! < 1) {

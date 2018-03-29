@@ -9,6 +9,8 @@
 import UIKit
 import SwiftyJSON
 
+
+/// 标签栏模型
 class GLTabBarItem: UITabBarItem {
     override init() {
         super.init()
@@ -22,6 +24,7 @@ class GLTabBarItem: UITabBarItem {
 }
 
 
+/// 标签栏控制器
 class GLTabBarController: UITabBarController {
     
     override open func viewDidLoad() {
@@ -45,6 +48,12 @@ class GLTabBarController: UITabBarController {
         }
         maskView = nil
     }
+    
+    
+    /// 显示遮罩
+    ///
+    /// - Parameter isDismiss: 是否点击阴影处消失
+    /// - Returns: 返回遮罩
     func showMaskView(isDismiss: Bool=true) -> UIView? {
         dismissCover(btn: nil)
         maskView = UIView(frame: self.view.bounds)
@@ -68,6 +77,11 @@ class GLTabBarController: UITabBarController {
         return maskView
     }
     
+    /// 显示自定义加载弹框
+    ///
+    /// - Parameters:
+    ///   - img: 图片
+    ///   - title: 文字
     func showLoadingView(img: UIImage?, title: String?) -> Void {
         _ = showMaskView(isDismiss: false)
         guard let maskView = maskView else {

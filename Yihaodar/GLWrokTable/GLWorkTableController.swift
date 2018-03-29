@@ -167,6 +167,7 @@ class PlaceHolderTableView: TableView {
 
 
 
+/// 工作台列表父类
 class GLWorkTableBaseViewController: UITableViewController {
     open let reusableIdentifier = "GLWorkTableListCell"
     open let pageSize = 8
@@ -374,8 +375,8 @@ class GLWanChengController: GLWorkTableBaseViewController, IndicatorInfoProvider
 
 
 
-// MARK: - 工作台控制器
-/// 工作台控制器
+// MARK: - 最外层工作台控制器
+/// 最外层工作台控制器
 class GLWorkTableController: GLButtonBarPagerTabStripViewController {
     
     
@@ -482,9 +483,9 @@ class GLWorkTableController: GLButtonBarPagerTabStripViewController {
 
 
 
+
+/// 多项标签栏控制器
 class GLButtonBarPagerTabStripViewController: ButtonBarPagerTabStripViewController {
-    
-    
     
     override func viewDidLoad() {
         

@@ -10,17 +10,26 @@ import Spring
 import XLPagerTabStrip
 import HandyJSON
 
+/// 条目展示的模型
 struct GLItemModel: HandyJSON {
     var title = ""
     var subTitle = ""
+    
 }
 
-/// 数据层
+
+/// 表格模型
+struct GLFormModel: HandyJSON {
+    var titles: [String] = []
+    var dataArray: [[String]] = []
+}
+
+
+/// 数据层（组模型）
 struct GLSectionModel: HandyJSON {
     var title = ""
-    var items: [GLItemModel] = []
+    var items: [Any] = []
 }
-
 
 
 class GLTaskDetailItemHeader: UITableViewHeaderFooterView {
@@ -70,24 +79,125 @@ class GLTaskDetailItemCell: UITableViewCell {
     }
 }
 
+class GLTaskDetailFormCell: UITableViewCell, SheetViewDelegate, SheetViewDataSource {
+    
+    lazy var sheetView = { () -> SheetView in
+       let sheet = SheetView()
+        sheet.dataSource = self
+        sheet.delegate = self
+        sheet.sheetHead = "sheet"
+        sheet.titleRowHeight = 33
+        sheet.backgroundColor = .red
+        return sheet
+    }()
+    
+    var topArr: [String] = []
+    var contentArr: [[String]] = []
+    var leftArr: [String] = []
+    
+    var formModel: GLFormModel? {
+        didSet {
+            sheetView.sheetHead = formModel?.titles.first
+            
+            formModel?.titles.removeFirst()
+            topArr = (formModel?.titles)!
+            leftArr = (formModel?.dataArray)!.flatMap { (formItemModel) -> String? in
+                return formItemModel.first
+            }
+            
+            
+            contentArr = (formModel?.dataArray)!.flatMap({ (strArr) -> [String]? in
+                var strArr = strArr
+                strArr.removeFirst()
+                return strArr
+            })
+            
+            
+        }
+    }
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.contentView.addSubview(sheetView)
+        sheetView.snp.remakeConstraints { (make) in
+            make.top.left.right.equalTo(self)
+            make.bottom.equalTo(self)
+        }
+        
+    }
+    
+    
+    func sheetView(sheetView: SheetView, numberOfRowsInSection section: Int) -> Int {
+        return contentArr.count
+    }
+    
+    func sheetView(sheetView: SheetView, numberOfColsInSection section: Int) -> Int {
+        return topArr.count
+    }
+    
+    func sheetView(sheetView: SheetView, cellForContentItemAtIndexRow indexRow: NSIndexPath?, indexCol: NSIndexPath?) -> String {
+    
+        let formArr = contentArr[indexRow!.row]
+        
+        return formArr[indexCol!.row]
+        
+    }
+    
+    func sheetView(sheetView: SheetView, cellForLeftColAtIndexPath indexPath: NSIndexPath?) -> String {
+        return leftArr[indexPath!.row]
+        
+    }
+    
+    func sheetView(sheetView: SheetView, cellForTopRowAtIndexPath indexPath: NSIndexPath?) -> String {
+        return topArr[indexPath!.row]
+    }
+    
+    func sheetView(sheetView: SheetView, cellWithColorAtIndexRow indexRow: NSIndexPath?) -> Bool {
+        return ((indexRow?.row)! % 2 == 1) ? true : false
+    }
+    
+    func sheetView(sheetView: SheetView, heightForRowAtIndexPath indexPath: NSIndexPath?) -> CGFloat {
+        return 33
+    }
+    
+    func sheetView(sheetView: SheetView, widthForColAtIndexPath indexPath: NSIndexPath?) -> CGFloat {
+        return (sheetView.frame.size.width - sheetView.titleColWidth) / 2
+    }
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    func sheetView(sheetView: SheetView, cellDidSelectedAtIndexRow indexRow: NSIndexPath?, indexCol: NSIndexPath?) {
+        print("点击 row \(String(describing: indexRow!.row)) col \(String(describing: indexCol!.row))")
+    }
+    
+}
+
+
 class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     open lazy var tableView: UITableView = {
         let tableView = UITableView(frame: CGRect(x: 8, y: 0, width: view.frame.size.width-16, height: view.frame.size.height), style: UITableViewStyle.grouped)
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-
-        tableView.estimatedRowHeight = 40
+        
+        tableView.estimatedRowHeight = 80
         tableView.delegate = self
         tableView.dataSource = self
         let nib = UINib(nibName: "GLTaskDetailItemCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: GLTaskDetailItemCellId)
+        
+        tableView.register(GLTaskDetailFormCell.self, forCellReuseIdentifier: GLTaskDetailFormCellId)
+        
         tableView.register(UINib(nibName: "GLTaskDetailItemHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: GLTaskDetailItemHeaderId)
+        
         tableView.contentInset = UIEdgeInsetsMake(8, 0, 0, 0)
         return tableView
     }()
     
     fileprivate let GLTaskDetailItemCellId = "GLTaskDetailItemCellId"
     fileprivate let GLTaskDetailItemHeaderId = "GLTaskDetailItemHeaderId"
+    fileprivate let GLTaskDetailFormCellId = "GLTaskDetailFormCellId"
     
     open var dataArray: [GLSectionModel] = []
     
@@ -114,15 +224,27 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: GLTaskDetailItemCellId) as? GLTaskDetailItemCell else {
-            return Bundle.main.loadNibNamed("GLTaskDetailItemCell", owner: nil, options: nil)?.first as! GLTaskDetailItemCell
-        }
         let sectionModel = dataArray[indexPath.section]
-        let itemModel = sectionModel.items[indexPath.row]
-        cell.itemModel = itemModel
+        let model = sectionModel.items[indexPath.row]
         
-        return cell
+        if let itemModel = model as? GLItemModel {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: GLTaskDetailItemCellId) as? GLTaskDetailItemCell else {
+                return Bundle.main.loadNibNamed("GLTaskDetailItemCell", owner: nil, options: nil)?.first as! GLTaskDetailItemCell
+            }
+            
+            cell.itemModel = itemModel
+            
+            return cell
+        }
+        if let formModel = model as? GLFormModel {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "GLTaskDetailFormCellId") as? GLTaskDetailFormCell else {
+                return GLTaskDetailFormCell()
+            }
+            cell.formModel = formModel
+            return cell
+        }
+        
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -132,6 +254,16 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
         sectionHeader.sectionModel = dataArray[section]
         
         return sectionHeader
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let sectionModel = dataArray[indexPath.section]
+        let model = sectionModel.items[indexPath.row]
+        if let model = model as? GLFormModel {
+            return CGFloat((model.dataArray.count+1)*33)
+        }
+        
+        return UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -283,16 +415,19 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "任务详情"
-//        settings.style.buttonBarItemLeftRightMargin = 8
+        //        settings.style.buttonBarItemLeftRightMargin = 8
         
         loadData()
     }
     
+    
+    /// 加载数据 数据驱动
     func loadData() {
         
-        let section1 = GLSectionModel(title: "订单信息", items: [GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部")])
+        let section1 = GLSectionModel(title: "订单信息", items: [GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部")])
         
-        let section2 = GLSectionModel(title: "车辆信息", items: [GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: ""), GLItemModel(title: "所属门店", subTitle: ""), GLItemModel(title: "所属门店", subTitle: ""), GLItemModel(title: "所属门店", subTitle: "")])
+        
+        let section2 = GLSectionModel(title: "车辆信息", items: [GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLFormModel(titles: ["1", "2", "3"], dataArray: [["好","世界","ga ga"], ["你","世界","f d f d f"], ["你好","世界","呵呵"]])])
         
         
         dataArray.append(section1)

@@ -19,10 +19,13 @@ class GLNavigationController:UINavigationController {
         tabBarItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : YiBlueColor], for: .selected)
     }
     
+    /// 状态栏颜色
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
     
+    
+    /// 视图加载完成
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,6 +56,7 @@ class GLNavigationController:UINavigationController {
         vc?.navigationItem.backBarButtonItem = backItem;
     }
     
+    /// 拦截所有Push
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         if (self.viewControllers.count > 0) {
             
@@ -74,6 +78,8 @@ class GLNavigationController:UINavigationController {
 //    }
 }
 
+
+// MARK: - 导航控制器手势代理判断
 extension GLNavigationController: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return childViewControllers.count > 1
