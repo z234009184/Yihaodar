@@ -308,7 +308,8 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     
     
     @IBAction func submitBtnClick(_ sender: DesignableButton) {
-        
+        guard let installGPSNaVc = UIStoryboard(name: "GLInstallGPS", bundle: nil).instantiateInitialViewController() else { return }
+        present(installGPSNaVc, animated: true, completion: nil)
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
