@@ -77,6 +77,8 @@
 		8AD5E0E220444CE000CB7CFF /* jiegoujian.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5E0E120444CE000CB7CFF /* jiegoujian.plist */; };
 		8AD5E0E420444D8500CB7CFF /* miaoshu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5E0E320444D8400CB7CFF /* miaoshu.plist */; };
 		8ADBF9E620468B86009F2052 /* String+GLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADBF9E520468B86009F2052 /* String+GLExtension.swift */; };
+		8AE3E24A206DCF7700C95E1B /* GLUnderhouse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3E249206DCF7700C95E1B /* GLUnderhouse.storyboard */; };
+		8AE3E24C206DCF8D00C95E1B /* GLUnderhouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE3E24B206DCF8D00C95E1B /* GLUnderhouseViewController.swift */; };
 		8AEEF1EE203482AE00F8F5E1 /* GLAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AEEF1ED203482AE00F8F5E1 /* GLAddView.xib */; };
 		8AEEF1F02035971000F8F5E1 /* GLAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEEF1EF2035971000F8F5E1 /* GLAddView.swift */; };
 		8AEEF1F220366F3000F8F5E1 /* GLCreateCarEstimateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEEF1F120366F3000F8F5E1 /* GLCreateCarEstimateViewController.swift */; };
@@ -162,6 +164,8 @@
 		8AD5E0E120444CE000CB7CFF /* jiegoujian.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = jiegoujian.plist; sourceTree = "<group>"; };
 		8AD5E0E320444D8400CB7CFF /* miaoshu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = miaoshu.plist; sourceTree = "<group>"; };
 		8ADBF9E520468B86009F2052 /* String+GLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+GLExtension.swift"; sourceTree = "<group>"; };
+		8AE3E249206DCF7700C95E1B /* GLUnderhouse.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLUnderhouse.storyboard; sourceTree = "<group>"; };
+		8AE3E24B206DCF8D00C95E1B /* GLUnderhouseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLUnderhouseViewController.swift; sourceTree = "<group>"; };
 		8AEEF1ED203482AE00F8F5E1 /* GLAddView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLAddView.xib; sourceTree = "<group>"; };
 		8AEEF1EF2035971000F8F5E1 /* GLAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLAddView.swift; sourceTree = "<group>"; };
 		8AEEF1F120366F3000F8F5E1 /* GLCreateCarEstimateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLCreateCarEstimateViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +261,8 @@
 				8AB994582067583D00EF21B5 /* GLTaskDetailGPS.storyboard */,
 				8A4832D0206B9F2C00BCD623 /* GLInstallGPSViewController.swift */,
 				8A4832CE206B9B0A00BCD623 /* GLInstallGPS.storyboard */,
+				8AE3E24B206DCF8D00C95E1B /* GLUnderhouseViewController.swift */,
+				8AE3E249206DCF7700C95E1B /* GLUnderhouse.storyboard */,
 				8AB994572064A43A00EF21B5 /* Views */,
 			);
 			path = GLTaskDetail;
@@ -512,6 +518,7 @@
 				8AD5E0E020444BCB00CB7CFF /* fugaijian.plist in Resources */,
 				8A7D848C2041325800B5046C /* GLTaskDetailPrice.storyboard in Resources */,
 				8AD5E0BF2043D42C00CB7CFF /* GLCarStateView.xib in Resources */,
+				8AE3E24A206DCF7700C95E1B /* GLUnderhouse.storyboard in Resources */,
 				8AD5E0D62044485F00CB7CFF /* tianchuang.plist in Resources */,
 				8A235117201E0AC4002715E0 /* Main.storyboard in Resources */,
 				8A5456132042A9850039D127 /* GLSubmitMessagePriceView.xib in Resources */,
@@ -621,6 +628,7 @@
 				8AD5E0C12043D43600CB7CFF /* GLCarStateView.swift in Sources */,
 				8A4FCB22206B465C00869687 /* CGRectEx.swift in Sources */,
 				8A1DAB9C202B002B001CBD0F /* GLTaskDetailViewController.swift in Sources */,
+				8AE3E24C206DCF8D00C95E1B /* GLUnderhouseViewController.swift in Sources */,
 				8A7D848E2041329300B5046C /* GLTaskDetailPriceViewController.swift in Sources */,
 				8A1DAB89202AB282001CBD0F /* UIColor+GLExtension.swift in Sources */,
 				8ADBF9E620468B86009F2052 /* String+GLExtension.swift in Sources */,

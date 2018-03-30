@@ -32,6 +32,8 @@ struct GLSectionModel: HandyJSON {
 }
 
 
+
+/// 区头部
 class GLTaskDetailItemHeader: UITableViewHeaderFooterView {
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -55,6 +57,8 @@ class GLTaskDetailItemHeader: UITableViewHeaderFooterView {
 }
 
 
+
+/// 条目Cell
 class GLTaskDetailItemCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -79,6 +83,8 @@ class GLTaskDetailItemCell: UITableViewCell {
     }
 }
 
+
+/// 表格cell
 class GLTaskDetailFormCell: UITableViewCell, SheetViewDelegate, SheetViewDataSource {
     
     lazy var sheetView = { () -> SheetView in
@@ -175,6 +181,9 @@ class GLTaskDetailFormCell: UITableViewCell, SheetViewDelegate, SheetViewDataSou
 }
 
 
+
+
+/// 各个自模块控制器的父类控制器
 class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     open lazy var tableView: UITableView = {
@@ -392,6 +401,13 @@ class GL费用及放款ViewController: GLTaskDetailBaseViewController, Indicator
 }
 
 
+
+
+
+
+
+
+/// 二期GPS 下户 抵押 审批 框架控制器
 class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -443,8 +459,15 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     
     
     @IBAction func submitBtnClick(_ sender: DesignableButton) {
-        guard let installGPSNaVc = UIStoryboard(name: "GLInstallGPS", bundle: nil).instantiateInitialViewController() else { return }
-        present(installGPSNaVc, animated: true, completion: nil)
+        
+        // 安装GPS
+//        guard let installGPSNaVc = UIStoryboard(name: "GLInstallGPS", bundle: nil).instantiateInitialViewController() else { return }
+//        present(installGPSNaVc, animated: true, completion: nil)
+        
+        // 下户
+        guard let underHouseVc = UIStoryboard(name: "GLUnderhouse", bundle: nil).instantiateInitialViewController() else { return }
+        present(underHouseVc, animated: true, completion: nil)
+        
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {

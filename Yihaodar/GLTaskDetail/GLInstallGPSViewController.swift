@@ -9,6 +9,10 @@
 import Spring
 import SnapKit
 
+
+
+
+/// 安装GPS控制器
 class GLInstallGPSViewController: UIViewController {
     /// 内容View
     @IBOutlet weak var contentView: UIView!
