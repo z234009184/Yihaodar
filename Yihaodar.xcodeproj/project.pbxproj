@@ -47,6 +47,8 @@
 		8A7D848E2041329300B5046C /* GLTaskDetailPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D848D2041329300B5046C /* GLTaskDetailPriceViewController.swift */; };
 		8A8E614B20455D590068EA06 /* GLDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E614A20455D590068EA06 /* GLDatePicker.swift */; };
 		8A8E614D20466D800068EA06 /* GLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E614C20466D800068EA06 /* GLService.swift */; };
+		8AB74B17206E109D00F58BE5 /* GLPledge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AB74B16206E109D00F58BE5 /* GLPledge.storyboard */; };
+		8AB74B19206E10B100F58BE5 /* GLPledgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB74B18206E10B100F58BE5 /* GLPledgeViewController.swift */; };
 		8AB994592067583D00EF21B5 /* GLTaskDetailGPS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AB994582067583D00EF21B5 /* GLTaskDetailGPS.storyboard */; };
 		8AB9945B2067585600EF21B5 /* GLTaskDetailGPSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB9945A2067585600EF21B5 /* GLTaskDetailGPSViewController.swift */; };
 		8AB9945D2067928200EF21B5 /* GLTaskDetailItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AB9945C2067928200EF21B5 /* GLTaskDetailItemCell.xib */; };
@@ -134,6 +136,8 @@
 		8A8E614A20455D590068EA06 /* GLDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLDatePicker.swift; sourceTree = "<group>"; };
 		8A8E614C20466D800068EA06 /* GLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLService.swift; sourceTree = "<group>"; };
 		8AB200E1205618DE00AE43A3 /* Yihaodar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Yihaodar.entitlements; sourceTree = "<group>"; };
+		8AB74B16206E109D00F58BE5 /* GLPledge.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLPledge.storyboard; sourceTree = "<group>"; };
+		8AB74B18206E10B100F58BE5 /* GLPledgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLPledgeViewController.swift; sourceTree = "<group>"; };
 		8AB994582067583D00EF21B5 /* GLTaskDetailGPS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLTaskDetailGPS.storyboard; sourceTree = "<group>"; };
 		8AB9945A2067585600EF21B5 /* GLTaskDetailGPSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLTaskDetailGPSViewController.swift; sourceTree = "<group>"; };
 		8AB9945C2067928200EF21B5 /* GLTaskDetailItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLTaskDetailItemCell.xib; sourceTree = "<group>"; };
@@ -263,6 +267,8 @@
 				8A4832CE206B9B0A00BCD623 /* GLInstallGPS.storyboard */,
 				8AE3E24B206DCF8D00C95E1B /* GLUnderhouseViewController.swift */,
 				8AE3E249206DCF7700C95E1B /* GLUnderhouse.storyboard */,
+				8AB74B18206E10B100F58BE5 /* GLPledgeViewController.swift */,
+				8AB74B16206E109D00F58BE5 /* GLPledge.storyboard */,
 				8AB994572064A43A00EF21B5 /* Views */,
 			);
 			path = GLTaskDetail;
@@ -499,6 +505,7 @@
 				8AEEF1EE203482AE00F8F5E1 /* GLAddView.xib in Resources */,
 				8A54560D204255290039D127 /* GLEstimateCarStateView.xib in Resources */,
 				8AD5E0D4204447DD00CB7CFF /* ranyoufangshi.plist in Resources */,
+				8AB74B17206E109D00F58BE5 /* GLPledge.storyboard in Resources */,
 				8A24F7A6202F0E1200FDC669 /* GLSubmitMessageView.xib in Resources */,
 				8A24F7AA20329A6400FDC669 /* GLSearch.storyboard in Resources */,
 				8A235119201E0AC4002715E0 /* Assets.xcassets in Resources */,
@@ -555,7 +562,6 @@
 				"${BUILT_PRODUCTS_DIR}/Spring/Spring.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
-				"${BUILT_PRODUCTS_DIR}/WCDB.swift/WCDBSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -576,7 +582,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spring.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WCDBSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -657,6 +662,7 @@
 				8AEEF1F220366F3000F8F5E1 /* GLCreateCarEstimateViewController.swift in Sources */,
 				8AC76E6E206C99940000214F /* ContentViewCell.swift in Sources */,
 				8AC76E6F206C99940000214F /* SheetView.swift in Sources */,
+				8AB74B19206E10B100F58BE5 /* GLPledgeViewController.swift in Sources */,
 				8AEEF1F02035971000F8F5E1 /* GLAddView.swift in Sources */,
 				8A37F34F202C2EAD004FD467 /* GLRefreshHeader.swift in Sources */,
 				8AC76E6A206BA3680000214F /* GLInstallDetailView.swift in Sources */,
