@@ -379,6 +379,11 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
         
     }
     
+    func createCarStateView() -> GLEstimateCarStateView {
+        return Bundle.main.loadNibNamed("GLEstimateCarStateView", owner: nil, options: nil)?.first as! GLEstimateCarStateView
+    }
+    
+    
     /// 更新界面
     public func updateUI(model: GLPriceDetailModel) {
         if 变速器Label == nil { return }
@@ -433,7 +438,7 @@ class GLEstimateMessageViewController: UIViewController, IndicatorInfoProvider, 
         
         carStateViews.removeAll()
         for (index, value) in carStateDatas.enumerated() {
-            let carStateView = Bundle.main.loadNibNamed("GLEstimateCarStateView", owner: nil, options: nil)?.first as! GLEstimateCarStateView
+            let carStateView = createCarStateView()
             contentView.addSubview(carStateView)
             carStateViews.append(carStateView)
             
