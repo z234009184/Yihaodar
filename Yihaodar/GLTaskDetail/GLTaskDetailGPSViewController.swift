@@ -465,8 +465,12 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
 //        present(installGPSNaVc, animated: true, completion: nil)
         
         // 下户
-        guard let underHouseVc = UIStoryboard(name: "GLUnderhouse", bundle: nil).instantiateInitialViewController() else { return }
-        present(underHouseVc, animated: true, completion: nil)
+//        guard let underHouseVc = UIStoryboard(name: "GLUnderhouse", bundle: nil).instantiateInitialViewController() else { return }
+//        present(underHouseVc, animated: true, completion: nil)
+        
+        // 抵质押办理
+        guard let pledgeVc = UIStoryboard(name: "GLPledge", bundle: nil).instantiateInitialViewController() else { return }
+        present(pledgeVc, animated: true, completion: nil)
         
     }
     
