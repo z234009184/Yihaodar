@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="261" id="IGR-Sq-rII" customClass="GLTaskDetailTableViewPictureCell" customModule="Yihaodar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="341" height="261"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IGR-Sq-rII" id="cix-4M-7Tm">
+                <rect key="frame" x="0.0" y="0.0" width="341" height="260.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未上传附件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2E-sQ-CPK">
+                        <rect key="frame" x="20" y="10" width="76.5" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="dwI-3V-neD"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.62745098040000002" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="2uI-Nj-WiO">
+                        <rect key="frame" x="10" y="10" width="290" height="190"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="290" id="BQS-g1-xQ9"/>
+                            <constraint firstAttribute="height" constant="190" id="rhi-N1-z3y"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dPv-Et-iG6">
+                            <size key="itemSize" width="90" height="90"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="IGR-Sq-rII" id="Ig3-5p-bvX"/>
+                            <outlet property="delegate" destination="IGR-Sq-rII" id="elh-Wk-hgc"/>
+                        </connections>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="O2E-sQ-CPK" firstAttribute="leading" secondItem="cix-4M-7Tm" secondAttribute="leading" constant="20" id="FnF-Kn-upb"/>
+                    <constraint firstItem="O2E-sQ-CPK" firstAttribute="top" secondItem="cix-4M-7Tm" secondAttribute="top" constant="10" id="Krt-un-VsE"/>
+                    <constraint firstItem="2uI-Nj-WiO" firstAttribute="leading" secondItem="cix-4M-7Tm" secondAttribute="leading" constant="10" id="SiV-5i-UHI"/>
+                    <constraint firstAttribute="bottom" secondItem="O2E-sQ-CPK" secondAttribute="bottom" priority="250" constant="10" id="ha7-ev-nx0"/>
+                    <constraint firstItem="2uI-Nj-WiO" firstAttribute="top" secondItem="cix-4M-7Tm" secondAttribute="top" constant="10" id="jQD-mp-sqj"/>
+                    <constraint firstAttribute="bottom" secondItem="2uI-Nj-WiO" secondAttribute="bottom" priority="750" constant="10" id="wdi-88-TVU"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="collectionView" destination="2uI-Nj-WiO" id="fJQ-zu-WZa"/>
+                <outlet property="collectionViewHeight" destination="rhi-N1-z3y" id="UJK-eL-sOH"/>
+            </connections>
+            <point key="canvasLocation" x="-190" y="-25"/>
+        </tableViewCell>
+    </objects>
+</document>

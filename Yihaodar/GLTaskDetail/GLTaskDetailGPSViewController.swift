@@ -9,6 +9,8 @@
 import Spring
 import XLPagerTabStrip
 import HandyJSON
+import SKPhotoBrowser
+
 
 /// 条目展示的模型
 struct GLItemModel: HandyJSON {
@@ -22,6 +24,12 @@ struct GLItemModel: HandyJSON {
 struct GLFormModel: HandyJSON {
     var titles: [String] = []
     var dataArray: [[String]] = []
+}
+
+
+/// 图片模型
+struct GLPictureModel: HandyJSON {
+    var pictures: [String] = []
 }
 
 
@@ -183,6 +191,102 @@ class GLTaskDetailFormCell: UITableViewCell, SheetViewDelegate, SheetViewDataSou
 
 
 
+/// 图片整体TableViewCell
+class GLTaskDetailTableViewPictureCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
+    fileprivate let identifier = "GLTaskDetailPictureCell"
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+    var pictureArray = [SKPhoto]()
+    private var observer: NSObjectProtocol?
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        
+        collectionView.register(UINib(nibName: "GLTaskDetailPictureCell", bundle: nil), forCellWithReuseIdentifier: identifier)
+        
+        observer = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: SKPHOTO_LOADING_DID_END_NOTIFICATION), object: nil, queue: OperationQueue.main, using: {[weak self] (noti) in
+            guard let photo = noti.object as? SKPhoto else {return}
+            let indexPath = IndexPath(item: photo.index, section: 0)
+            self?.collectionView.reloadItems(at: [indexPath])
+        })
+        
+    }
+    
+    deinit {
+        guard let observer = observer else { return }
+        NotificationCenter.default.removeObserver(observer)
+    }
+    
+    
+    /// 图片模型
+    var pictureModel: GLPictureModel? {
+        didSet{
+            var arr = [SKPhoto]()
+            pictureModel?.pictures.enumerated().forEach({ (index, value) in
+                let photo = SKPhoto.photoWithImageURL(value)
+                photo.checkCache()
+                photo.index = index
+                photo.shouldCachePhotoURLImage = true
+                photo.loadUnderlyingImageAndNotify()
+                arr.append(photo)
+            })
+            pictureArray = arr
+            
+            
+            let count = (pictureModel?.pictures.count)!
+            let constant = CGFloat((Int(count-1)/3)+1) * 100.0 - 10
+            collectionViewHeight.constant = constant
+            
+            collectionView.reloadData()
+        }
+    }
+    
+    
+    // MARK - collectionViewDelegate
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return pictureArray.count
+    }
+    
+    @available(iOS 6.0, *)
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+        guard let pictureCell = cell as? GLTaskDetailPictureCell else {
+            return UICollectionViewCell()
+        }
+        pictureCell.imageView.image = pictureArray[indexPath.item].underlyingImage
+        return pictureCell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? GLTaskDetailPictureCell else { return }
+        
+        guard let originImage = cell.imageView.image else { return } // some image for baseImage
+        
+        let browser = SKPhotoBrowser(originImage: originImage, photos: pictureArray, animatedFromView: cell)
+        browser.initializePageIndex(indexPath.item)
+        let vc = cell.viewController()
+        vc?.present(browser, animated: true, completion: nil)
+    }
+    
+}
+
+
+
+
+
 /// 各个自模块控制器的父类控制器
 class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -193,20 +297,25 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
         tableView.estimatedRowHeight = 80
         tableView.delegate = self
         tableView.dataSource = self
-        let nib = UINib(nibName: "GLTaskDetailItemCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: GLTaskDetailItemCellId)
+        
+        tableView.register(UINib(nibName: "GLTaskDetailItemHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: GLTaskDetailItemHeaderId)
+        
+        tableView.register(UINib(nibName: "GLTaskDetailItemCell", bundle: nil), forCellReuseIdentifier: GLTaskDetailItemCellId)
         
         tableView.register(GLTaskDetailFormCell.self, forCellReuseIdentifier: GLTaskDetailFormCellId)
         
-        tableView.register(UINib(nibName: "GLTaskDetailItemHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: GLTaskDetailItemHeaderId)
+        tableView.register(UINib(nibName: "GLTaskDetailTableViewPictureCell", bundle: nil), forCellReuseIdentifier: GLTaskDetailTableViewPictureCellId)
         
         tableView.contentInset = UIEdgeInsetsMake(8, 0, 0, 0)
         return tableView
     }()
     
+    
+    /// 重用标识符
     fileprivate let GLTaskDetailItemCellId = "GLTaskDetailItemCellId"
     fileprivate let GLTaskDetailItemHeaderId = "GLTaskDetailItemHeaderId"
     fileprivate let GLTaskDetailFormCellId = "GLTaskDetailFormCellId"
+    fileprivate let GLTaskDetailTableViewPictureCellId = "GLTaskDetailTableViewPictureCellId"
     
     open var dataArray: [GLSectionModel] = []
     
@@ -214,7 +323,6 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
         super.viewDidLoad()
         
         view.addSubview(tableView)
-        
         
     }
     
@@ -238,18 +346,28 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
         
         if let itemModel = model as? GLItemModel {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: GLTaskDetailItemCellId) as? GLTaskDetailItemCell else {
-                return Bundle.main.loadNibNamed("GLTaskDetailItemCell", owner: nil, options: nil)?.first as! GLTaskDetailItemCell
+                return GLTaskDetailItemCell()
             }
             
             cell.itemModel = itemModel
             
             return cell
         }
+        
         if let formModel = model as? GLFormModel {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "GLTaskDetailFormCellId") as? GLTaskDetailFormCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: GLTaskDetailFormCellId) as? GLTaskDetailFormCell else {
                 return GLTaskDetailFormCell()
             }
             cell.formModel = formModel
+            return cell
+        }
+        
+        if let pictureModel = model as? GLPictureModel {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: GLTaskDetailTableViewPictureCellId) as? GLTaskDetailTableViewPictureCell else {
+                return GLTaskDetailTableViewPictureCell()
+            }
+            
+            cell.pictureModel = pictureModel
             return cell
         }
         
@@ -404,9 +522,6 @@ class GL费用及放款ViewController: GLTaskDetailBaseViewController, Indicator
 
 
 
-
-
-
 /// 二期GPS 下户 抵押 审批 框架控制器
 class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     @IBOutlet weak var titleLabel: UILabel!
@@ -443,11 +558,16 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
         let section1 = GLSectionModel(title: "订单信息", items: [GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部")])
         
         
-        let section2 = GLSectionModel(title: "车辆信息", items: [GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLFormModel(titles: ["1", "2", "3"], dataArray: [["好","世界","ga ga"], ["你","世界","f d f d f"], ["你好","世界","呵呵"]])])
+        let section2 = GLSectionModel(title: "车辆信息", items: [GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLFormModel(titles: ["1", "2", "3", "3"], dataArray: [["好","世界","ss","ss"], ["你","世界","ff","ss"], ["你好","世界","呵呵","ss"]])])
+        
+        
+        
+        let section3 = GLSectionModel(title: "图片图片", items: [GLPictureModel(pictures: ["http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg", "http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg", "http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg", "http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg", "http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg", "http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg", "http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg"])])
         
         
         dataArray.append(section1)
         dataArray.append(section2)
+        dataArray.append(section3)
         
         updateSubVcUI(dataArr: dataArray)
     }
