@@ -72,6 +72,8 @@ class ContentViewCell: UITableViewCell, UICollectionViewDataSource, UICollection
         label.textColor = UIColor.black
         label.font = UIFont.systemFont(ofSize: 12)
         label.textAlignment = NSTextAlignment.center
+        label.numberOfLines = 0
+        label.adjustsFontSizeToFitWidth = true
         innerCell.contentView.addSubview(label)
         innerCell.layer.borderColor = UIColor(red: 0xed / 255.0, green: 0xee / 255.0, blue: 0xf1 / 255.0, alpha: 1.0).cgColor
         innerCell.layer.borderWidth = 0.5

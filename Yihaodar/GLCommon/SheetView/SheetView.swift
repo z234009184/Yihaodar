@@ -175,7 +175,7 @@ class SheetView: UIView, UITableViewDelegate, UITableViewDataSource, UICollectio
                 leftCell?.textLabel?.textColor = UIColor.black
                 leftCell?.textLabel?.textAlignment = NSTextAlignment.center
                 leftCell?.textLabel?.font = UIFont.systemFont(ofSize: 12)
-                
+                leftCell?.textLabel?.numberOfLines = 0
             }
             
             leftCell?.textLabel?.text = self.dataSource?.sheetView(sheetView: self, cellForLeftColAtIndexPath: indexPath as NSIndexPath)
@@ -261,6 +261,7 @@ class SheetView: UIView, UITableViewDelegate, UITableViewDataSource, UICollectio
         label.textAlignment = NSTextAlignment.center
         label.textColor = UIColor(red: 0x99 / 255.0, green: 0xa0 / 255.0, blue: 0xaa / 255.0, alpha: 1.0)
         label.font = UIFont.systemFont(ofSize: 12)
+        label.numberOfLines = 0
         topCell.contentView.addSubview(label)
         
         topCell.layer.borderColor = UIColor(red: 0xed / 255.0, green: 0xee / 255.0, blue: 0xf1 / 255.0, alpha: 1.0).cgColor

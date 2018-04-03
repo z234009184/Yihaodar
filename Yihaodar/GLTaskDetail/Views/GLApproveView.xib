@@ -47,6 +47,9 @@
                                 <color key="titleColor" red="0.59999999999999998" green="0.62745098040000002" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <state key="selected" image="add_check"/>
+                            <connections>
+                                <action selector="agreeOrDeclineBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="zyT-9O-RES"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -135,7 +138,7 @@
                 <outlet property="declineBtn" destination="b2q-Oh-m8c" id="T4s-2O-ogm"/>
                 <outlet property="remarksTextField" destination="CZU-7G-GpK" id="3u5-cg-tfx"/>
             </connections>
-            <point key="canvasLocation" x="-115" y="50"/>
+            <point key="canvasLocation" x="-238" y="52"/>
         </view>
     </objects>
     <resources>

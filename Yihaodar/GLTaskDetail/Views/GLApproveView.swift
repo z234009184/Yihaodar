@@ -23,8 +23,9 @@ class GLApproveView: UIView {
     
     
     @IBAction func agreeOrDeclineBtnClick(_ sender: UIButton) {
-        sender.isSelected = true
+        
         lastBtn?.isSelected = false
+        sender.isSelected = true
         lastBtn = sender
     }
     

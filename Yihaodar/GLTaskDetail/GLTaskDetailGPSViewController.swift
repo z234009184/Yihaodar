@@ -94,13 +94,15 @@ class GLTaskDetailItemCell: UITableViewCell {
 
 /// 表格cell
 class GLTaskDetailFormCell: UITableViewCell, SheetViewDelegate, SheetViewDataSource {
+    static let margin: CGFloat = 3
+    static let rowHeight: CGFloat = 40 * UIScreen.main.bounds.size.width / 375.0
     
     lazy var sheetView = { () -> SheetView in
        let sheet = SheetView()
         sheet.dataSource = self
         sheet.delegate = self
         sheet.sheetHead = "sheet"
-        sheet.titleRowHeight = 33
+        sheet.titleRowHeight = GLTaskDetailFormCell.rowHeight
         sheet.backgroundColor = .red
         return sheet
     }()
@@ -132,10 +134,13 @@ class GLTaskDetailFormCell: UITableViewCell, SheetViewDelegate, SheetViewDataSou
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.backgroundColor = .clear
+        self.contentView.backgroundColor = .clear
         self.contentView.addSubview(sheetView)
         sheetView.snp.remakeConstraints { (make) in
-            make.top.left.right.equalTo(self)
+            make.left.right.equalTo(self)
             make.bottom.equalTo(self)
+            make.top.equalTo(self).offset(3)
         }
         
     }
@@ -171,7 +176,7 @@ class GLTaskDetailFormCell: UITableViewCell, SheetViewDelegate, SheetViewDataSou
     }
     
     func sheetView(sheetView: SheetView, heightForRowAtIndexPath indexPath: NSIndexPath?) -> CGFloat {
-        return 33
+        return sheetView.titleRowHeight
     }
     
     func sheetView(sheetView: SheetView, widthForColAtIndexPath indexPath: NSIndexPath?) -> CGFloat {
@@ -391,7 +396,7 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
         let sectionModel = dataArray[indexPath.section]
         let model = sectionModel.items[indexPath.row]
         if let model = model as? GLFormModel {
-            return CGFloat((model.dataArray.count+1)*33)
+            return CGFloat((model.dataArray.count+1)) * GLTaskDetailFormCell.rowHeight + GLTaskDetailFormCell.margin
         }
         
         return UITableViewAutomaticDimension
@@ -562,7 +567,7 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
         let section1 = GLSectionModel(title: "订单信息", items: [GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部")])
         
         
-        let section2 = GLSectionModel(title: "车辆信息", items: [GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLFormModel(titles: ["1", "2", "3", "3"], dataArray: [["好","世界","ss","ss"], ["你","世界","ff","ss"], ["你好","世界","呵呵","ss"]])])
+        let section2 = GLSectionModel(title: "车辆信息", items: [GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLFormModel(titles: ["1", "2", "3", "3"], dataArray: [["好","世界","ss","ss"], ["你","世界","ff","大家看风景看电视了就分开了多少积分卡圣诞节快乐附件圣诞快乐附件肯定是老骥伏枥看电视剧开发大家看风景看电视了就分开了多少积分卡圣诞节快乐附件圣诞快乐附件肯定是老骥伏枥看电视剧开发大家看风景看电视了就分开了多少积分卡圣诞节快乐附件圣诞快乐附件肯定是老骥伏枥看电视剧开发大家看风景看电视了就分开了多少积分卡圣诞节快乐附件圣诞快乐附件肯定是老骥伏枥看电视剧开发"], ["你好","世界","呵呵","ss"]])])
         
         
         
@@ -593,10 +598,41 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
 //        present(underHouseVc, animated: true, completion: nil)
         
         // 抵质押办理
-        guard let pledgeVc = UIStoryboard(name: "GLPledge", bundle: nil).instantiateInitialViewController() else { return }
-        present(pledgeVc, animated: true, completion: nil)
+//        guard let pledgeVc = UIStoryboard(name: "GLPledge", bundle: nil).instantiateInitialViewController() else { return }
+//        present(pledgeVc, animated: true, completion: nil)
+        
+        
+        /// 显示信息视图
+        let showMsgView = showSubmitMessageView()
         
     }
+    
+    
+    lazy var tabBarVc = tabBarController as! GLTabBarController
+    lazy var submitMessageView: GLApproveView = {
+        let accessoryView = Bundle.main.loadNibNamed("GLApproveView", owner: nil, options: nil)?.first as! GLApproveView
+        let width = view.bounds.width
+        accessoryView.frame.size.width = width
+        accessoryView.frame.origin.x = 0
+        
+        return accessoryView
+    }()
+    
+    func showSubmitMessageView() -> GLApproveView {
+        let mask = tabBarVc.showMaskView()
+        guard let maskView = mask else {
+            return submitMessageView
+        }
+        submitMessageView.frame.origin.y = maskView.frame.size.height
+        maskView.addSubview(submitMessageView)
+        
+        UIView.animate(withDuration: 0.25) {
+            self.submitMessageView.frame.origin.y = maskView.frame.size.height - self.submitMessageView.frame.size.height
+        }
+        return submitMessageView
+    }
+    
+    
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
