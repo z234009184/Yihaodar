@@ -18,14 +18,19 @@ import JGProgressHUD
 /// 下户控制器
 class GLUnderhouseViewController: UIViewController, UITextViewDelegate {
     
+    /// 下户日期
     @IBOutlet weak var underDateLabel: UILabel!
     
+    /// 下户地址是否相同
     @IBOutlet weak var underAdressSameLabel: UILabel!
     
+    /// 下户来源
     @IBOutlet weak var underHouseSourceLabel: UILabel!
     
+    /// 下户使用
     @IBOutlet weak var underHouseUseLabel: UILabel!
     
+    /// 下户环境
     @IBOutlet weak var underHouseEnvironmentLabel: UILabel!
     
     @IBOutlet weak var underInHouseContrabandLabel: UILabel!

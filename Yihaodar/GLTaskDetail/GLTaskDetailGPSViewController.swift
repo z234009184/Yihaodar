@@ -235,11 +235,15 @@ class GLTaskDetailTableViewPictureCell: UITableViewCell, UICollectionViewDataSou
         didSet{
             var arr = [SKPhoto]()
             pictureModel?.pictures.enumerated().forEach({ (index, value) in
-                let photo = SKPhoto.photoWithImageURL(value)
+                var photo = SKPhoto.photoWithImageURL(value)
+                if let image = SKCache.sharedCache.imageForKey(value) {
+                    photo = SKPhoto.photoWithImage(image)
+                }
                 photo.checkCache()
                 photo.index = index
                 photo.shouldCachePhotoURLImage = true
                 photo.loadUnderlyingImageAndNotify()
+                
                 arr.append(photo)
             })
             pictureArray = arr

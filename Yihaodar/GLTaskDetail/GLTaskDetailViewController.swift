@@ -230,7 +230,11 @@ class GLTaskDetailViewController: UIViewController {
                 
                 
                 detailModel?.vehicles?.enumerated().forEach({ (index, value) in
-                    let photo = SKPhoto.photoWithImageURL((value.fileUrl)!)
+                    var photo = SKPhoto.photoWithImageURL((value.fileUrl)!)
+                    if let image = SKCache.sharedCache.imageForKey((value.fileUrl)!) {
+                        photo = SKPhoto.photoWithImage(image)
+                    }
+                    
                     photo.checkCache()
                     photo.index = index
                     photo.shouldCachePhotoURLImage = true
