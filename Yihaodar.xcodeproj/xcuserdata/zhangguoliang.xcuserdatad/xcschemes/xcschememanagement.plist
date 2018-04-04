@@ -7,6 +7,11 @@
 		<key>Yihaodar.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>YihaodarDev.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>20</integer>
 		</dict>
 	</dict>

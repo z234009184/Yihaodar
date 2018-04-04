@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64BD20FEA7293BE6C36BA044 /* Pods_CommonPods_Yihaodar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF1F8DA5F5C42818A503C6C /* Pods_CommonPods_Yihaodar.framework */; };
 		6868217ACE580F5D4E867FA7 /* Pods_Yihaodar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345B0B2259BEFB9AEECD9CD0 /* Pods_Yihaodar.framework */; };
+		7A1DB37AE619F66C40A23EA3 /* Pods_CommonPods_YihaodarDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43D15C46FB20F319189E932 /* Pods_CommonPods_YihaodarDev.framework */; };
 		8A1DAB89202AB282001CBD0F /* UIColor+GLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DAB88202AB282001CBD0F /* UIColor+GLExtension.swift */; };
 		8A1DAB90202AB43B001CBD0F /* GLLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DAB8F202AB43B001CBD0F /* GLLogin.storyboard */; };
 		8A1DAB92202AC3A8001CBD0F /* UIView+GLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DAB91202AC3A8001CBD0F /* UIView+GLExtension.swift */; };
@@ -95,10 +97,101 @@
 		8AF1C4BD20720C95009D6F7D /* GLTaskDetailPictureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AF1C4BC20720C95009D6F7D /* GLTaskDetailPictureCell.xib */; };
 		8AF1C4BF2073867A009D6F7D /* GLGPSComplete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AF1C4BE2073867A009D6F7D /* GLGPSComplete.storyboard */; };
 		8AF1C4C120738694009D6F7D /* GLGPSCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF1C4C020738694009D6F7D /* GLGPSCompleteViewController.swift */; };
+		8AF90BBE20746850009DD32E /* GLTaskDetailGPSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB9945A2067585600EF21B5 /* GLTaskDetailGPSViewController.swift */; };
+		8AF90BBF20746850009DD32E /* GLCarStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD5E0C02043D43600CB7CFF /* GLCarStateView.swift */; };
+		8AF90BC020746850009DD32E /* CGRectEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FCB1D206B465C00869687 /* CGRectEx.swift */; };
+		8AF90BC120746850009DD32E /* GLTaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DAB9B202B002B001CBD0F /* GLTaskDetailViewController.swift */; };
+		8AF90BC220746850009DD32E /* GLUnderhouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE3E24B206DCF8D00C95E1B /* GLUnderhouseViewController.swift */; };
+		8AF90BC320746850009DD32E /* GLTaskDetailPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D848D2041329300B5046C /* GLTaskDetailPriceViewController.swift */; };
+		8AF90BC420746850009DD32E /* UIColor+GLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DAB88202AB282001CBD0F /* UIColor+GLExtension.swift */; };
+		8AF90BC520746850009DD32E /* GLGPSCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF1C4C020738694009D6F7D /* GLGPSCompleteViewController.swift */; };
+		8AF90BC620746850009DD32E /* String+GLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADBF9E520468B86009F2052 /* String+GLExtension.swift */; };
+		8AF90BC720746850009DD32E /* GLWorkTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65877F2021C97A0031DD3D /* GLWorkTableController.swift */; };
+		8AF90BC820746850009DD32E /* GLApproveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF1C4B82071C909009D6F7D /* GLApproveView.swift */; };
+		8AF90BC920746850009DD32E /* GLSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37F34C202BE9F2004FD467 /* GLSearchViewController.swift */; };
+		8AF90BCA20746850009DD32E /* GLRadioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEEF1F92037C41800F8F5E1 /* GLRadioViewController.swift */; };
+		8AF90BCB20746850009DD32E /* FadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FCB1F206B465C00869687 /* FadeTransition.swift */; };
+		8AF90BCC20746850009DD32E /* GLEstimateResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD5E0C420440AD300CB7CFF /* GLEstimateResultViewController.swift */; };
+		8AF90BCD20746850009DD32E /* UIView+GLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DAB91202AC3A8001CBD0F /* UIView+GLExtension.swift */; };
+		8AF90BCE20746850009DD32E /* TimerEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FCB20206B465C00869687 /* TimerEx.swift */; };
+		8AF90BCF20746850009DD32E /* GLEstimateCarStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A54560E204255340039D127 /* GLEstimateCarStateView.swift */; };
+		8AF90BD020746850009DD32E /* GLSubmitMessagePriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5456142042A9930039D127 /* GLSubmitMessagePriceView.swift */; };
+		8AF90BD120746850009DD32E /* GLCarConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5456182043C8800039D127 /* GLCarConfigViewController.swift */; };
+		8AF90BD220746850009DD32E /* GLCarStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A54561A2043D1E70039D127 /* GLCarStateViewController.swift */; };
+		8AF90BD320746850009DD32E /* GLMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5456102042920E0039D127 /* GLMeViewController.swift */; };
+		8AF90BD420746850009DD32E /* GLConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4982D72027F63A00EB4BEF /* GLConst.swift */; };
+		8AF90BD520746850009DD32E /* GLUploadPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD5E0C22043FC0800CB7CFF /* GLUploadPictureViewController.swift */; };
+		8AF90BD620746850009DD32E /* TransitionSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FCB1E206B465C00869687 /* TransitionSubmitButton.swift */; };
+		8AF90BD720746850009DD32E /* GLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E614C20466D800068EA06 /* GLService.swift */; };
+		8AF90BD820746850009DD32E /* GLTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD2E86F2020795A008D32EA /* GLTabBarController.swift */; };
+		8AF90BD920746850009DD32E /* GLDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E614A20455D590068EA06 /* GLDatePicker.swift */; };
+		8AF90BDA20746850009DD32E /* GLCheckBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD5E0C72044208C00CB7CFF /* GLCheckBoxViewController.swift */; };
+		8AF90BDB20746850009DD32E /* GLInstallGPSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4832D0206B9F2C00BCD623 /* GLInstallGPSViewController.swift */; };
+		8AF90BDC20746850009DD32E /* GLLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4982D920282BF200EB4BEF /* GLLoginViewController.swift */; };
+		8AF90BDD20746850009DD32E /* GLRefreshFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3775E02033449700F921F8 /* GLRefreshFooter.swift */; };
+		8AF90BDE20746850009DD32E /* GLCreateCarEstimateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEEF1F120366F3000F8F5E1 /* GLCreateCarEstimateViewController.swift */; };
+		8AF90BDF20746850009DD32E /* ContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC76E6C206C99940000214F /* ContentViewCell.swift */; };
+		8AF90BE020746850009DD32E /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC76E6D206C99940000214F /* SheetView.swift */; };
+		8AF90BE120746850009DD32E /* GLPledgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB74B18206E10B100F58BE5 /* GLPledgeViewController.swift */; };
+		8AF90BE220746850009DD32E /* GLAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEEF1EF2035971000F8F5E1 /* GLAddView.swift */; };
+		8AF90BE320746850009DD32E /* GLRefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37F34E202C2EAD004FD467 /* GLRefreshHeader.swift */; };
+		8AF90BE420746850009DD32E /* GLInstallDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC76E69206BA3680000214F /* GLInstallDetailView.swift */; };
+		8AF90BE520746850009DD32E /* GLSubmitLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEEF201203FB80D00F8F5E1 /* GLSubmitLoadingView.swift */; };
+		8AF90BE620746850009DD32E /* SpinerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4FCB1C206B465C00869687 /* SpinerLayer.swift */; };
+		8AF90BE720746850009DD32E /* GLSubmitMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A24F7A7202F314000FDC669 /* GLSubmitMessageView.swift */; };
+		8AF90BE820746850009DD32E /* GLCarMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5456162043A5100039D127 /* GLCarMessageViewController.swift */; };
+		8AF90BE920746850009DD32E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A235111201E0AC4002715E0 /* AppDelegate.swift */; };
+		8AF90BEA20746850009DD32E /* GLNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD2E87120208366008D32EA /* GLNavigationController.swift */; };
+		8AF90BEC20746850009DD32E /* Pods_Yihaodar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345B0B2259BEFB9AEECD9CD0 /* Pods_Yihaodar.framework */; };
+		8AF90BEE20746850009DD32E /* GLTaskDetailPictureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AF1C4BC20720C95009D6F7D /* GLTaskDetailPictureCell.xib */; };
+		8AF90BEF20746850009DD32E /* shigu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5E0DB20444A8A00CB7CFF /* shigu.plist */; };
+		8AF90BF020746850009DD32E /* GLApproveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AF1C4B62071C8F9009D6F7D /* GLApproveView.xib */; };
+		8AF90BF120746850009DD32E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A23511A201E0AC4002715E0 /* LaunchScreen.storyboard */; };
+		8AF90BF220746850009DD32E /* GLLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DAB8F202AB43B001CBD0F /* GLLogin.storyboard */; };
+		8AF90BF320746850009DD32E /* GLCheckBox.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5E0C9204420B100CB7CFF /* GLCheckBox.storyboard */; };
+		8AF90BF420746850009DD32E /* GLTaskDetailTableViewPictureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AF1C4BA2071DB74009D6F7D /* GLTaskDetailTableViewPictureCell.xib */; };
+		8AF90BF520746850009DD32E /* qita.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5E0D9204449B800CB7CFF /* qita.plist */; };
+		8AF90BF620746850009DD32E /* youwu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5E0CF204446DF00CB7CFF /* youwu.plist */; };
+		8AF90BF720746850009DD32E /* GLRadio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AEEF1F72037C20200F8F5E1 /* GLRadio.storyboard */; };
+		8AF90BF820746850009DD32E /* GLAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AEEF1ED203482AE00F8F5E1 /* GLAddView.xib */; };
+		8AF90BF920746850009DD32E /* GLEstimateCarStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A54560C204255290039D127 /* GLEstimateCarStateView.xib */; };
+		8AF90BFA20746850009DD32E /* ranyoufangshi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5E0D3204447DD00CB7CFF /* ranyoufangshi.plist */; };
+		8AF90BFB20746850009DD32E /* GLPledge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AB74B16206E109D00F58BE5 /* GLPledge.storyboard */; };
+		8AF90BFC20746850009DD32E /* GLSubmitMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A24F7A5202F0E1200FDC669 /* GLSubmitMessageView.xib */; };
+		8AF90BFD20746850009DD32E /* GLSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A24F7A920329A6400FDC669 /* GLSearch.storyboard */; };
+		8AF90BFE20746850009DD32E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A235118201E0AC4002715E0 /* Assets.xcassets */; };
+		8AF90BFF20746850009DD32E /* GLTaskDetailItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AB9945C2067928200EF21B5 /* GLTaskDetailItemCell.xib */; };
+		8AF90C0020746850009DD32E /* GLSubmitLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AEEF1FF203FAF7700F8F5E1 /* GLSubmitLoadingView.xib */; };
+		8AF90C0120746850009DD32E /* jiegoujian.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5E0E120444CE000CB7CFF /* jiegoujian.plist */; };
+		8AF90C0220746850009DD32E /* chegoujian.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5E0DD20444B7300CB7CFF /* chegoujian.plist */; };
+		8AF90C0320746850009DD32E /* qudongfangshi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5E0CD2044468400CB7CFF /* qudongfangshi.plist */; };
+		8AF90C0420746850009DD32E /* kongtiaopeizhi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5E0D7204448CC00CB7CFF /* kongtiaopeizhi.plist */; };
+		8AF90C0520746850009DD32E /* GLWorkTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DAB94202ACBA3001CBD0F /* GLWorkTable.storyboard */; };
+		8AF90C0620746850009DD32E /* GLInstallDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AC76E67206BA3430000214F /* GLInstallDetailView.xib */; };
+		8AF90C0720746850009DD32E /* zuoyixingshi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5E0D12044471800CB7CFF /* zuoyixingshi.plist */; };
+		8AF90C0820746850009DD32E /* GLTaskDetailGPS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AB994582067583D00EF21B5 /* GLTaskDetailGPS.storyboard */; };
+		8AF90C0920746850009DD32E /* biansuqi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5E0CB2044461A00CB7CFF /* biansuqi.plist */; };
+		8AF90C0A20746850009DD32E /* GLTaskDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DAB9D202B003F001CBD0F /* GLTaskDetail.storyboard */; };
+		8AF90C0B20746850009DD32E /* GLInstallGPS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A4832CE206B9B0A00BCD623 /* GLInstallGPS.storyboard */; };
+		8AF90C0C20746850009DD32E /* fugaijian.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5E0DF20444BCB00CB7CFF /* fugaijian.plist */; };
+		8AF90C0D20746850009DD32E /* GLTaskDetailPrice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A7D848B2041325800B5046C /* GLTaskDetailPrice.storyboard */; };
+		8AF90C0E20746850009DD32E /* GLCarStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5E0BE2043D42C00CB7CFF /* GLCarStateView.xib */; };
+		8AF90C0F20746850009DD32E /* GLUnderhouse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AE3E249206DCF7700C95E1B /* GLUnderhouse.storyboard */; };
+		8AF90C1020746850009DD32E /* tianchuang.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5E0D52044485F00CB7CFF /* tianchuang.plist */; };
+		8AF90C1120746850009DD32E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A235115201E0AC4002715E0 /* Main.storyboard */; };
+		8AF90C1220746850009DD32E /* GLSubmitMessagePriceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A5456122042A9850039D127 /* GLSubmitMessagePriceView.xib */; };
+		8AF90C1320746850009DD32E /* GLTaskDetailItemHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AB9945E2068B74300EF21B5 /* GLTaskDetailItemHeader.xib */; };
+		8AF90C1420746850009DD32E /* miaoshu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD5E0E320444D8400CB7CFF /* miaoshu.plist */; };
+		8AF90C1520746850009DD32E /* GLMe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DAB98202ACE04001CBD0F /* GLMe.storyboard */; };
+		8AF90C1620746850009DD32E /* GLCreateCarEstimate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AEEF1F320366F5600F8F5E1 /* GLCreateCarEstimate.storyboard */; };
+		8AF90C1720746850009DD32E /* GLGPSComplete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AF1C4BE2073867A009D6F7D /* GLGPSComplete.storyboard */; };
+		8AF90C20207469D2009DD32E /* YihaodarDev-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AF90C1F207469D1009DD32E /* YihaodarDev-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2EF1F8DA5F5C42818A503C6C /* Pods_CommonPods_Yihaodar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonPods_Yihaodar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		345B0B2259BEFB9AEECD9CD0 /* Pods_Yihaodar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yihaodar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CAC3B8953C87BFDB1EC0DF1 /* Pods-CommonPods-Yihaodar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-Yihaodar.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-Yihaodar/Pods-CommonPods-Yihaodar.release.xcconfig"; sourceTree = "<group>"; };
 		8A1DAB88202AB282001CBD0F /* UIColor+GLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+GLExtension.swift"; sourceTree = "<group>"; };
 		8A1DAB8F202AB43B001CBD0F /* GLLogin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLLogin.storyboard; sourceTree = "<group>"; };
 		8A1DAB91202AC3A8001CBD0F /* UIView+GLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+GLExtension.swift"; sourceTree = "<group>"; };
@@ -190,8 +283,14 @@
 		8AF1C4BC20720C95009D6F7D /* GLTaskDetailPictureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLTaskDetailPictureCell.xib; sourceTree = "<group>"; };
 		8AF1C4BE2073867A009D6F7D /* GLGPSComplete.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLGPSComplete.storyboard; sourceTree = "<group>"; };
 		8AF1C4C020738694009D6F7D /* GLGPSCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLGPSCompleteViewController.swift; sourceTree = "<group>"; };
+		8AF90C1D20746850009DD32E /* YihaodarDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YihaodarDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AF90C1F207469D1009DD32E /* YihaodarDev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "YihaodarDev-Info.plist"; sourceTree = "<group>"; };
+		8C9FBF8E4CCEB0B7CCAA2047 /* Pods-CommonPods-YihaodarDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-YihaodarDev.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-YihaodarDev/Pods-CommonPods-YihaodarDev.release.xcconfig"; sourceTree = "<group>"; };
 		9CB69999B059A2B4CCF6A133 /* Pods-Yihaodar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yihaodar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Yihaodar/Pods-Yihaodar.release.xcconfig"; sourceTree = "<group>"; };
+		B43D15C46FB20F319189E932 /* Pods_CommonPods_YihaodarDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonPods_YihaodarDev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B680B68F5D769927FEBDA177 /* Pods-Yihaodar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yihaodar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Yihaodar/Pods-Yihaodar.debug.xcconfig"; sourceTree = "<group>"; };
+		BF4587FD9636E48E2C2919C2 /* Pods-CommonPods-Yihaodar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-Yihaodar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-Yihaodar/Pods-CommonPods-Yihaodar.debug.xcconfig"; sourceTree = "<group>"; };
+		F16819E537495FD0649CC90A /* Pods-CommonPods-YihaodarDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-YihaodarDev.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-YihaodarDev/Pods-CommonPods-YihaodarDev.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +299,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				6868217ACE580F5D4E867FA7 /* Pods_Yihaodar.framework in Frameworks */,
+				64BD20FEA7293BE6C36BA044 /* Pods_CommonPods_Yihaodar.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AF90BEB20746850009DD32E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AF90BEC20746850009DD32E /* Pods_Yihaodar.framework in Frameworks */,
+				7A1DB37AE619F66C40A23EA3 /* Pods_CommonPods_YihaodarDev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				8A23510E201E0AC4002715E0 /* Yihaodar.app */,
+				8AF90C1D20746850009DD32E /* YihaodarDev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -325,6 +435,7 @@
 				8A235118201E0AC4002715E0 /* Assets.xcassets */,
 				8A23511A201E0AC4002715E0 /* LaunchScreen.storyboard */,
 				8A23511D201E0AC4002715E0 /* Info.plist */,
+				8AF90C1F207469D1009DD32E /* YihaodarDev-Info.plist */,
 			);
 			path = Yihaodar;
 			sourceTree = "<group>";
@@ -430,6 +541,10 @@
 			children = (
 				B680B68F5D769927FEBDA177 /* Pods-Yihaodar.debug.xcconfig */,
 				9CB69999B059A2B4CCF6A133 /* Pods-Yihaodar.release.xcconfig */,
+				BF4587FD9636E48E2C2919C2 /* Pods-CommonPods-Yihaodar.debug.xcconfig */,
+				6CAC3B8953C87BFDB1EC0DF1 /* Pods-CommonPods-Yihaodar.release.xcconfig */,
+				F16819E537495FD0649CC90A /* Pods-CommonPods-YihaodarDev.debug.xcconfig */,
+				8C9FBF8E4CCEB0B7CCAA2047 /* Pods-CommonPods-YihaodarDev.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -438,6 +553,8 @@
 			isa = PBXGroup;
 			children = (
 				345B0B2259BEFB9AEECD9CD0 /* Pods_Yihaodar.framework */,
+				2EF1F8DA5F5C42818A503C6C /* Pods_CommonPods_Yihaodar.framework */,
+				B43D15C46FB20F319189E932 /* Pods_CommonPods_YihaodarDev.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -465,6 +582,26 @@
 			productReference = 8A23510E201E0AC4002715E0 /* Yihaodar.app */;
 			productType = "com.apple.product-type.application";
 		};
+		8AF90BBB20746850009DD32E /* YihaodarDev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8AF90C1A20746850009DD32E /* Build configuration list for PBXNativeTarget "YihaodarDev" */;
+			buildPhases = (
+				8AF90BBC20746850009DD32E /* [CP] Check Pods Manifest.lock */,
+				8AF90BBD20746850009DD32E /* Sources */,
+				8AF90BEB20746850009DD32E /* Frameworks */,
+				8AF90BED20746850009DD32E /* Resources */,
+				8AF90C1820746850009DD32E /* [CP] Embed Pods Frameworks */,
+				8AF90C1920746850009DD32E /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YihaodarDev;
+			productName = Yihaodar;
+			productReference = 8AF90C1D20746850009DD32E /* YihaodarDev.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -488,6 +625,9 @@
 							};
 						};
 					};
+					8AF90BBB20746850009DD32E = {
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 8A235109201E0AC4002715E0 /* Build configuration list for PBXProject "Yihaodar" */;
@@ -504,6 +644,7 @@
 			projectRoot = "";
 			targets = (
 				8A23510D201E0AC4002715E0 /* Yihaodar */,
+				8AF90BBB20746850009DD32E /* YihaodarDev */,
 			);
 		};
 /* End PBXProject section */
@@ -558,6 +699,56 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8AF90BED20746850009DD32E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AF90BEE20746850009DD32E /* GLTaskDetailPictureCell.xib in Resources */,
+				8AF90BEF20746850009DD32E /* shigu.plist in Resources */,
+				8AF90BF020746850009DD32E /* GLApproveView.xib in Resources */,
+				8AF90BF120746850009DD32E /* LaunchScreen.storyboard in Resources */,
+				8AF90BF220746850009DD32E /* GLLogin.storyboard in Resources */,
+				8AF90BF320746850009DD32E /* GLCheckBox.storyboard in Resources */,
+				8AF90BF420746850009DD32E /* GLTaskDetailTableViewPictureCell.xib in Resources */,
+				8AF90BF520746850009DD32E /* qita.plist in Resources */,
+				8AF90BF620746850009DD32E /* youwu.plist in Resources */,
+				8AF90BF720746850009DD32E /* GLRadio.storyboard in Resources */,
+				8AF90BF820746850009DD32E /* GLAddView.xib in Resources */,
+				8AF90BF920746850009DD32E /* GLEstimateCarStateView.xib in Resources */,
+				8AF90BFA20746850009DD32E /* ranyoufangshi.plist in Resources */,
+				8AF90BFB20746850009DD32E /* GLPledge.storyboard in Resources */,
+				8AF90BFC20746850009DD32E /* GLSubmitMessageView.xib in Resources */,
+				8AF90BFD20746850009DD32E /* GLSearch.storyboard in Resources */,
+				8AF90BFE20746850009DD32E /* Assets.xcassets in Resources */,
+				8AF90BFF20746850009DD32E /* GLTaskDetailItemCell.xib in Resources */,
+				8AF90C0020746850009DD32E /* GLSubmitLoadingView.xib in Resources */,
+				8AF90C20207469D2009DD32E /* YihaodarDev-Info.plist in Resources */,
+				8AF90C0120746850009DD32E /* jiegoujian.plist in Resources */,
+				8AF90C0220746850009DD32E /* chegoujian.plist in Resources */,
+				8AF90C0320746850009DD32E /* qudongfangshi.plist in Resources */,
+				8AF90C0420746850009DD32E /* kongtiaopeizhi.plist in Resources */,
+				8AF90C0520746850009DD32E /* GLWorkTable.storyboard in Resources */,
+				8AF90C0620746850009DD32E /* GLInstallDetailView.xib in Resources */,
+				8AF90C0720746850009DD32E /* zuoyixingshi.plist in Resources */,
+				8AF90C0820746850009DD32E /* GLTaskDetailGPS.storyboard in Resources */,
+				8AF90C0920746850009DD32E /* biansuqi.plist in Resources */,
+				8AF90C0A20746850009DD32E /* GLTaskDetail.storyboard in Resources */,
+				8AF90C0B20746850009DD32E /* GLInstallGPS.storyboard in Resources */,
+				8AF90C0C20746850009DD32E /* fugaijian.plist in Resources */,
+				8AF90C0D20746850009DD32E /* GLTaskDetailPrice.storyboard in Resources */,
+				8AF90C0E20746850009DD32E /* GLCarStateView.xib in Resources */,
+				8AF90C0F20746850009DD32E /* GLUnderhouse.storyboard in Resources */,
+				8AF90C1020746850009DD32E /* tianchuang.plist in Resources */,
+				8AF90C1120746850009DD32E /* Main.storyboard in Resources */,
+				8AF90C1220746850009DD32E /* GLSubmitMessagePriceView.xib in Resources */,
+				8AF90C1320746850009DD32E /* GLTaskDetailItemHeader.xib in Resources */,
+				8AF90C1420746850009DD32E /* miaoshu.plist in Resources */,
+				8AF90C1520746850009DD32E /* GLMe.storyboard in Resources */,
+				8AF90C1620746850009DD32E /* GLCreateCarEstimate.storyboard in Resources */,
+				8AF90C1720746850009DD32E /* GLGPSComplete.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -567,7 +758,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Yihaodar/Pods-Yihaodar-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-CommonPods-Yihaodar/Pods-CommonPods-Yihaodar-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Default/Default.framework",
 				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
@@ -608,7 +799,90 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Yihaodar/Pods-Yihaodar-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CommonPods-Yihaodar/Pods-CommonPods-Yihaodar-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8AF90BBC20746850009DD32E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CommonPods-YihaodarDev-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8AF90C1820746850009DD32E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CommonPods-YihaodarDev/Pods-CommonPods-YihaodarDev-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Default/Default.framework",
+				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
+				"${BUILT_PRODUCTS_DIR}/HGPlaceholders/HGPlaceholders.framework",
+				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/PullToRefreshKit/PullToRefreshKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SKPhotoBrowser/SKPhotoBrowser.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Spring/Spring.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Default.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HGPlaceholders.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PullToRefreshKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SKPhotoBrowser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spring.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CommonPods-YihaodarDev/Pods-CommonPods-YihaodarDev-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8AF90C1920746850009DD32E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CommonPods-YihaodarDev/Pods-CommonPods-YihaodarDev-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9513397DF211ADAA115878AC /* [CP] Check Pods Manifest.lock */ = {
@@ -622,7 +896,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Yihaodar-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-CommonPods-Yihaodar-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -641,7 +915,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Yihaodar/Pods-Yihaodar-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CommonPods-Yihaodar/Pods-CommonPods-Yihaodar-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -696,6 +970,58 @@
 				8A5456172043A5100039D127 /* GLCarMessageViewController.swift in Sources */,
 				8A235112201E0AC4002715E0 /* AppDelegate.swift in Sources */,
 				8AD2E87220208366008D32EA /* GLNavigationController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AF90BBD20746850009DD32E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AF90BBE20746850009DD32E /* GLTaskDetailGPSViewController.swift in Sources */,
+				8AF90BBF20746850009DD32E /* GLCarStateView.swift in Sources */,
+				8AF90BC020746850009DD32E /* CGRectEx.swift in Sources */,
+				8AF90BC120746850009DD32E /* GLTaskDetailViewController.swift in Sources */,
+				8AF90BC220746850009DD32E /* GLUnderhouseViewController.swift in Sources */,
+				8AF90BC320746850009DD32E /* GLTaskDetailPriceViewController.swift in Sources */,
+				8AF90BC420746850009DD32E /* UIColor+GLExtension.swift in Sources */,
+				8AF90BC520746850009DD32E /* GLGPSCompleteViewController.swift in Sources */,
+				8AF90BC620746850009DD32E /* String+GLExtension.swift in Sources */,
+				8AF90BC720746850009DD32E /* GLWorkTableController.swift in Sources */,
+				8AF90BC820746850009DD32E /* GLApproveView.swift in Sources */,
+				8AF90BC920746850009DD32E /* GLSearchViewController.swift in Sources */,
+				8AF90BCA20746850009DD32E /* GLRadioViewController.swift in Sources */,
+				8AF90BCB20746850009DD32E /* FadeTransition.swift in Sources */,
+				8AF90BCC20746850009DD32E /* GLEstimateResultViewController.swift in Sources */,
+				8AF90BCD20746850009DD32E /* UIView+GLExtension.swift in Sources */,
+				8AF90BCE20746850009DD32E /* TimerEx.swift in Sources */,
+				8AF90BCF20746850009DD32E /* GLEstimateCarStateView.swift in Sources */,
+				8AF90BD020746850009DD32E /* GLSubmitMessagePriceView.swift in Sources */,
+				8AF90BD120746850009DD32E /* GLCarConfigViewController.swift in Sources */,
+				8AF90BD220746850009DD32E /* GLCarStateViewController.swift in Sources */,
+				8AF90BD320746850009DD32E /* GLMeViewController.swift in Sources */,
+				8AF90BD420746850009DD32E /* GLConst.swift in Sources */,
+				8AF90BD520746850009DD32E /* GLUploadPictureViewController.swift in Sources */,
+				8AF90BD620746850009DD32E /* TransitionSubmitButton.swift in Sources */,
+				8AF90BD720746850009DD32E /* GLService.swift in Sources */,
+				8AF90BD820746850009DD32E /* GLTabBarController.swift in Sources */,
+				8AF90BD920746850009DD32E /* GLDatePicker.swift in Sources */,
+				8AF90BDA20746850009DD32E /* GLCheckBoxViewController.swift in Sources */,
+				8AF90BDB20746850009DD32E /* GLInstallGPSViewController.swift in Sources */,
+				8AF90BDC20746850009DD32E /* GLLoginViewController.swift in Sources */,
+				8AF90BDD20746850009DD32E /* GLRefreshFooter.swift in Sources */,
+				8AF90BDE20746850009DD32E /* GLCreateCarEstimateViewController.swift in Sources */,
+				8AF90BDF20746850009DD32E /* ContentViewCell.swift in Sources */,
+				8AF90BE020746850009DD32E /* SheetView.swift in Sources */,
+				8AF90BE120746850009DD32E /* GLPledgeViewController.swift in Sources */,
+				8AF90BE220746850009DD32E /* GLAddView.swift in Sources */,
+				8AF90BE320746850009DD32E /* GLRefreshHeader.swift in Sources */,
+				8AF90BE420746850009DD32E /* GLInstallDetailView.swift in Sources */,
+				8AF90BE520746850009DD32E /* GLSubmitLoadingView.swift in Sources */,
+				8AF90BE620746850009DD32E /* SpinerLayer.swift in Sources */,
+				8AF90BE720746850009DD32E /* GLSubmitMessageView.swift in Sources */,
+				8AF90BE820746850009DD32E /* GLCarMessageViewController.swift in Sources */,
+				8AF90BE920746850009DD32E /* AppDelegate.swift in Sources */,
+				8AF90BEA20746850009DD32E /* GLNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,13 +1164,17 @@
 		};
 		8A235121201E0AC4002715E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B680B68F5D769927FEBDA177 /* Pods-Yihaodar.debug.xcconfig */;
+			baseConfigurationReference = BF4587FD9636E48E2C2919C2 /* Pods-CommonPods-Yihaodar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Yihaodar/Yihaodar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8F3G9VLYG7;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
 				INFOPLIST_FILE = Yihaodar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -859,18 +1189,75 @@
 		};
 		8A235122201E0AC4002715E0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9CB69999B059A2B4CCF6A133 /* Pods-Yihaodar.release.xcconfig */;
+			baseConfigurationReference = 6CAC3B8953C87BFDB1EC0DF1 /* Pods-CommonPods-Yihaodar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Yihaodar/Yihaodar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8F3G9VLYG7;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
 				INFOPLIST_FILE = Yihaodar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yihaodar.Yihaodar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Yihaodar/GLCommon/Yihaodar-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		8AF90C1B20746850009DD32E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F16819E537495FD0649CC90A /* Pods-CommonPods-YihaodarDev.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Yihaodar/Yihaodar.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8F3G9VLYG7;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Yihaodar/YihaodarDev-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yihaodar.Yihaodar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG DEVELOPMENT";
+				SWIFT_OBJC_BRIDGING_HEADER = "Yihaodar/GLCommon/Yihaodar-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		8AF90C1C20746850009DD32E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C9FBF8E4CCEB0B7CCAA2047 /* Pods-CommonPods-YihaodarDev.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Yihaodar/Yihaodar.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8F3G9VLYG7;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Yihaodar/YihaodarDev-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yihaodar.Yihaodar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEVELOPMENT;
 				SWIFT_OBJC_BRIDGING_HEADER = "Yihaodar/GLCommon/Yihaodar-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -894,6 +1281,15 @@
 			buildConfigurations = (
 				8A235121201E0AC4002715E0 /* Debug */,
 				8A235122201E0AC4002715E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8AF90C1A20746850009DD32E /* Build configuration list for PBXNativeTarget "YihaodarDev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8AF90C1B20746850009DD32E /* Debug */,
+				8AF90C1C20746850009DD32E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
