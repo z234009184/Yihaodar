@@ -1,0 +1,6 @@
+framework module Pods_CommonPods_Yihaodar {
+  umbrella header "Pods-CommonPods-Yihaodar-umbrella.h"
+
+  export *
+  module * { export * }
+}

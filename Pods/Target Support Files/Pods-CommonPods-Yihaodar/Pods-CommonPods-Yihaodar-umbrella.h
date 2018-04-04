@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_YihaodarVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_YihaodarVersionString[];
+FOUNDATION_EXPORT double Pods_CommonPods_YihaodarVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_CommonPods_YihaodarVersionString[];
 
