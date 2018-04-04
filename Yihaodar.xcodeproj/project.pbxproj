@@ -8,21 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		64BD20FEA7293BE6C36BA044 /* Pods_CommonPods_Yihaodar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF1F8DA5F5C42818A503C6C /* Pods_CommonPods_Yihaodar.framework */; };
-		7A1DB37AE619F66C40A23EA3 /* Pods_CommonPods_YihaodarDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43D15C46FB20F319189E932 /* Pods_CommonPods_YihaodarDev.framework */; };
 		8A1DAB89202AB282001CBD0F /* UIColor+GLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DAB88202AB282001CBD0F /* UIColor+GLExtension.swift */; };
 		8A1DAB90202AB43B001CBD0F /* GLLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DAB8F202AB43B001CBD0F /* GLLogin.storyboard */; };
 		8A1DAB92202AC3A8001CBD0F /* UIView+GLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DAB91202AC3A8001CBD0F /* UIView+GLExtension.swift */; };
-		8A1DAB96202ACBA3001CBD0F /* GLWorkTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DAB94202ACBA3001CBD0F /* GLWorkTable.storyboard */; };
 		8A1DAB99202ACE04001CBD0F /* GLMe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DAB98202ACE04001CBD0F /* GLMe.storyboard */; };
 		8A1DAB9C202B002B001CBD0F /* GLTaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DAB9B202B002B001CBD0F /* GLTaskDetailViewController.swift */; };
 		8A1DAB9E202B003F001CBD0F /* GLTaskDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DAB9D202B003F001CBD0F /* GLTaskDetail.storyboard */; };
 		8A235112201E0AC4002715E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A235111201E0AC4002715E0 /* AppDelegate.swift */; };
-		8A235117201E0AC4002715E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A235115201E0AC4002715E0 /* Main.storyboard */; };
 		8A235119201E0AC4002715E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A235118201E0AC4002715E0 /* Assets.xcassets */; };
-		8A23511C201E0AC4002715E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A23511A201E0AC4002715E0 /* LaunchScreen.storyboard */; };
 		8A24F7A6202F0E1200FDC669 /* GLSubmitMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A24F7A5202F0E1200FDC669 /* GLSubmitMessageView.xib */; };
 		8A24F7A8202F314000FDC669 /* GLSubmitMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A24F7A7202F314000FDC669 /* GLSubmitMessageView.swift */; };
 		8A24F7AA20329A6400FDC669 /* GLSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A24F7A920329A6400FDC669 /* GLSearch.storyboard */; };
+		8A362E5A2074D8F100B1E2C6 /* GLWorkTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DAB94202ACBA3001CBD0F /* GLWorkTable.storyboard */; };
+		8A362E5B2074D8F800B1E2C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A235115201E0AC4002715E0 /* Main.storyboard */; };
+		8A362E5C2074D8F800B1E2C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A23511A201E0AC4002715E0 /* LaunchScreen.storyboard */; };
+		8A362E5D2074D90B00B1E2C6 /* GLWorkTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DAB94202ACBA3001CBD0F /* GLWorkTable.storyboard */; };
+		8A362E5E2074D90B00B1E2C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A235115201E0AC4002715E0 /* Main.storyboard */; };
+		8A362E5F2074D90B00B1E2C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A23511A201E0AC4002715E0 /* LaunchScreen.storyboard */; };
 		8A3775E12033449700F921F8 /* GLRefreshFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3775E02033449700F921F8 /* GLRefreshFooter.swift */; };
 		8A37F34D202BE9F2004FD467 /* GLSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37F34C202BE9F2004FD467 /* GLSearchViewController.swift */; };
 		8A37F34F202C2EAD004FD467 /* GLRefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37F34E202C2EAD004FD467 /* GLRefreshHeader.swift */; };
@@ -47,7 +49,6 @@
 		8A7D848C2041325800B5046C /* GLTaskDetailPrice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A7D848B2041325800B5046C /* GLTaskDetailPrice.storyboard */; };
 		8A7D848E2041329300B5046C /* GLTaskDetailPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D848D2041329300B5046C /* GLTaskDetailPriceViewController.swift */; };
 		8A8BA2AF2074B8F2003F7421 /* Pods_CommonPods_Yihaodar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF1F8DA5F5C42818A503C6C /* Pods_CommonPods_Yihaodar.framework */; };
-		8A8BA2B12074B977003F7421 /* Pods_CommonPods_YihaodarDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8BA2B02074B977003F7421 /* Pods_CommonPods_YihaodarDev.framework */; };
 		8A8E614B20455D590068EA06 /* GLDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E614A20455D590068EA06 /* GLDatePicker.swift */; };
 		8A8E614D20466D800068EA06 /* GLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E614C20466D800068EA06 /* GLService.swift */; };
 		8AB74B17206E109D00F58BE5 /* GLPledge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AB74B16206E109D00F58BE5 /* GLPledge.storyboard */; };
@@ -229,7 +230,6 @@
 		8A65877F2021C97A0031DD3D /* GLWorkTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLWorkTableController.swift; sourceTree = "<group>"; };
 		8A7D848B2041325800B5046C /* GLTaskDetailPrice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLTaskDetailPrice.storyboard; sourceTree = "<group>"; };
 		8A7D848D2041329300B5046C /* GLTaskDetailPriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLTaskDetailPriceViewController.swift; sourceTree = "<group>"; };
-		8A8BA2B02074B977003F7421 /* Pods_CommonPods_YihaodarDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_CommonPods_YihaodarDev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A8E614A20455D590068EA06 /* GLDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLDatePicker.swift; sourceTree = "<group>"; };
 		8A8E614C20466D800068EA06 /* GLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLService.swift; sourceTree = "<group>"; };
 		8AB200E1205618DE00AE43A3 /* Yihaodar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Yihaodar.entitlements; sourceTree = "<group>"; };
@@ -284,7 +284,6 @@
 		8AF90C1D20746850009DD32E /* YihaodarDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YihaodarDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AF90C1F207469D1009DD32E /* YihaodarDev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "YihaodarDev-Info.plist"; sourceTree = "<group>"; };
 		8C9FBF8E4CCEB0B7CCAA2047 /* Pods-CommonPods-YihaodarDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-YihaodarDev.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-YihaodarDev/Pods-CommonPods-YihaodarDev.release.xcconfig"; sourceTree = "<group>"; };
-		B43D15C46FB20F319189E932 /* Pods_CommonPods_YihaodarDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonPods_YihaodarDev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4587FD9636E48E2C2919C2 /* Pods-CommonPods-Yihaodar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-Yihaodar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-Yihaodar/Pods-CommonPods-Yihaodar.debug.xcconfig"; sourceTree = "<group>"; };
 		F16819E537495FD0649CC90A /* Pods-CommonPods-YihaodarDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-YihaodarDev.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-YihaodarDev/Pods-CommonPods-YihaodarDev.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -295,7 +294,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				64BD20FEA7293BE6C36BA044 /* Pods_CommonPods_Yihaodar.framework in Frameworks */,
-				8A8BA2B12074B977003F7421 /* Pods_CommonPods_YihaodarDev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,7 +302,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A8BA2AF2074B8F2003F7421 /* Pods_CommonPods_Yihaodar.framework in Frameworks */,
-				7A1DB37AE619F66C40A23EA3 /* Pods_CommonPods_YihaodarDev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,10 +543,8 @@
 		B244A3AEDF5982D8BAD7598C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8A8BA2B02074B977003F7421 /* Pods_CommonPods_YihaodarDev.framework */,
 				345B0B2259BEFB9AEECD9CD0 /* Pods_Yihaodar.framework */,
 				2EF1F8DA5F5C42818A503C6C /* Pods_CommonPods_Yihaodar.framework */,
-				B43D15C46FB20F319189E932 /* Pods_CommonPods_YihaodarDev.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -649,10 +644,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A362E5B2074D8F800B1E2C6 /* Main.storyboard in Resources */,
+				8A362E5C2074D8F800B1E2C6 /* LaunchScreen.storyboard in Resources */,
+				8A362E5A2074D8F100B1E2C6 /* GLWorkTable.storyboard in Resources */,
 				8AF1C4BD20720C95009D6F7D /* GLTaskDetailPictureCell.xib in Resources */,
 				8AD5E0DC20444A8A00CB7CFF /* shigu.plist in Resources */,
 				8AF1C4B72071C8F9009D6F7D /* GLApproveView.xib in Resources */,
-				8A23511C201E0AC4002715E0 /* LaunchScreen.storyboard in Resources */,
 				8A1DAB90202AB43B001CBD0F /* GLLogin.storyboard in Resources */,
 				8AD5E0CA204420B100CB7CFF /* GLCheckBox.storyboard in Resources */,
 				8AF1C4BB2071DB74009D6F7D /* GLTaskDetailTableViewPictureCell.xib in Resources */,
@@ -672,7 +669,6 @@
 				8AD5E0DE20444B7300CB7CFF /* chegoujian.plist in Resources */,
 				8AD5E0CE2044468400CB7CFF /* qudongfangshi.plist in Resources */,
 				8AD5E0D8204448CC00CB7CFF /* kongtiaopeizhi.plist in Resources */,
-				8A1DAB96202ACBA3001CBD0F /* GLWorkTable.storyboard in Resources */,
 				8AC76E68206BA3430000214F /* GLInstallDetailView.xib in Resources */,
 				8AD5E0D22044471800CB7CFF /* zuoyixingshi.plist in Resources */,
 				8AB994592067583D00EF21B5 /* GLTaskDetailGPS.storyboard in Resources */,
@@ -684,7 +680,6 @@
 				8AD5E0BF2043D42C00CB7CFF /* GLCarStateView.xib in Resources */,
 				8AE3E24A206DCF7700C95E1B /* GLUnderhouse.storyboard in Resources */,
 				8AD5E0D62044485F00CB7CFF /* tianchuang.plist in Resources */,
-				8A235117201E0AC4002715E0 /* Main.storyboard in Resources */,
 				8A5456132042A9850039D127 /* GLSubmitMessagePriceView.xib in Resources */,
 				8AB9945F2068B74400EF21B5 /* GLTaskDetailItemHeader.xib in Resources */,
 				8AD5E0E420444D8500CB7CFF /* miaoshu.plist in Resources */,
@@ -698,6 +693,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A362E5D2074D90B00B1E2C6 /* GLWorkTable.storyboard in Resources */,
+				8A362E5E2074D90B00B1E2C6 /* Main.storyboard in Resources */,
+				8A362E5F2074D90B00B1E2C6 /* LaunchScreen.storyboard in Resources */,
 				8AF90BEE20746850009DD32E /* GLTaskDetailPictureCell.xib in Resources */,
 				8AF90BEF20746850009DD32E /* shigu.plist in Resources */,
 				8AF90BF020746850009DD32E /* GLApproveView.xib in Resources */,
