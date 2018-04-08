@@ -10,6 +10,7 @@ import Spring
 import XLPagerTabStrip
 import HandyJSON
 import SKPhotoBrowser
+import HGPlaceholders
 
 
 /// 条目展示的模型
@@ -294,14 +295,22 @@ class GLTaskDetailTableViewPictureCell: UITableViewCell, UICollectionViewDataSou
 
 
 
-
-
 /// 各个自模块控制器的父类控制器
 class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    open lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: CGRect(x: 8, y: 0, width: view.frame.size.width-16, height: view.frame.size.height), style: UITableViewStyle.grouped)
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+    open lazy var tableView: TableView = {
+        let tableView = TableView(frame: CGRect(x: 8, y: 0, width: view.frame.size.width-16, height: view.frame.size.height), style: UITableViewStyle.grouped)
+        
+        
+        tableView.placeholdersAlwaysBounceVertical = true
+        tableView.placeholdersProvider = .default
+        var noResultsData: PlaceholderData = .noResults
+        noResultsData.title = ""
+        noResultsData.action = nil
+        noResultsData.subtitle = "暂无相关查看权限"
+        noResultsData.image = #imageLiteral(resourceName: "taskdetail_authority")
+        let noResultsPlaceholder = Placeholder(data: noResultsData, style: PlaceholderStyle(), key: .noResultsKey)
+        tableView.placeholdersProvider.add(placeholders: noResultsPlaceholder)
         
         tableView.estimatedRowHeight = 80
         tableView.delegate = self
@@ -315,7 +324,12 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
         
         tableView.register(UINib(nibName: "GLTaskDetailTableViewPictureCell", bundle: nil), forCellReuseIdentifier: GLTaskDetailTableViewPictureCellId)
         
-        tableView.contentInset = UIEdgeInsetsMake(8, 0, 0, 0)
+        tableView.contentInset = UIEdgeInsetsMake(8, 0, -20, 0)
+        
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.separatorColor = .clear
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
+        
         return tableView
     }()
     
@@ -338,6 +352,7 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = CGRect(x: 8, y: 0, width: view.frame.size.width-16, height: view.frame.size.height)
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
