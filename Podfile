@@ -37,7 +37,6 @@ abstract_target 'CommonPods' do
     pod 'SwiftyJSON'    # JSON 解析库
     pod 'HandyJSON','4.0.0-beta.1'     # json/字典 映射 模型
     pod 'Toast-Swift'  #吐司提示
-    #    pod 'Hero' # 各种交互动画
     
     
     pod 'Spring' # 动画库
@@ -46,6 +45,8 @@ abstract_target 'CommonPods' do
     pod 'IQKeyboardManagerSwift' # 键盘管理者
     
     pod 'RxSwift' # 函数响应式编程库
+    pod 'RxCocoa'
+    
     pod 'SnapKit' # autoLayout布局库
     pod 'HGPlaceholders' # tableView 占位视图
     pod 'SKPhotoBrowser' # 图片浏览器

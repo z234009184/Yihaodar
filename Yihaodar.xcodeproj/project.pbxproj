@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46F437935764F76F385B8C48 /* Pods_CommonPods_YihaodarDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C11DAB82FCC913D2FA1FE06 /* Pods_CommonPods_YihaodarDev.framework */; };
 		64BD20FEA7293BE6C36BA044 /* Pods_CommonPods_Yihaodar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF1F8DA5F5C42818A503C6C /* Pods_CommonPods_Yihaodar.framework */; };
 		8A1DAB89202AB282001CBD0F /* UIColor+GLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DAB88202AB282001CBD0F /* UIColor+GLExtension.swift */; };
 		8A1DAB90202AB43B001CBD0F /* GLLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DAB8F202AB43B001CBD0F /* GLLogin.storyboard */; };
@@ -189,6 +190,7 @@
 /* Begin PBXFileReference section */
 		2EF1F8DA5F5C42818A503C6C /* Pods_CommonPods_Yihaodar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonPods_Yihaodar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		345B0B2259BEFB9AEECD9CD0 /* Pods_Yihaodar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yihaodar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C11DAB82FCC913D2FA1FE06 /* Pods_CommonPods_YihaodarDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonPods_YihaodarDev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CAC3B8953C87BFDB1EC0DF1 /* Pods-CommonPods-Yihaodar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-Yihaodar.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-Yihaodar/Pods-CommonPods-Yihaodar.release.xcconfig"; sourceTree = "<group>"; };
 		8A1DAB88202AB282001CBD0F /* UIColor+GLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+GLExtension.swift"; sourceTree = "<group>"; };
 		8A1DAB8F202AB43B001CBD0F /* GLLogin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLLogin.storyboard; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A8BA2AF2074B8F2003F7421 /* Pods_CommonPods_Yihaodar.framework in Frameworks */,
+				46F437935764F76F385B8C48 /* Pods_CommonPods_YihaodarDev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +548,7 @@
 			children = (
 				345B0B2259BEFB9AEECD9CD0 /* Pods_Yihaodar.framework */,
 				2EF1F8DA5F5C42818A503C6C /* Pods_CommonPods_Yihaodar.framework */,
+				4C11DAB82FCC913D2FA1FE06 /* Pods_CommonPods_YihaodarDev.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -759,6 +763,7 @@
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/PullToRefreshKit/PullToRefreshKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SKPhotoBrowser/SKPhotoBrowser.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -779,6 +784,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PullToRefreshKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SKPhotoBrowser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -827,6 +833,7 @@
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/PullToRefreshKit/PullToRefreshKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SKPhotoBrowser/SKPhotoBrowser.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -847,6 +854,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PullToRefreshKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SKPhotoBrowser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
