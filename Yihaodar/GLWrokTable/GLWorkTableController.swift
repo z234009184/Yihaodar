@@ -210,13 +210,26 @@ class GLWorkTableBaseViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let parentVc = parent else { return }
         
-        guard let vc = UIStoryboard(name: "GLTaskDetailGPS", bundle: nil).instantiateInitialViewController() else { return }
+        
+//        guard let vc = UIStoryboard(name: "GLTaskDetailGPS", bundle: nil).instantiateInitialViewController() else { return }
+//        if let navigationVc = parentVc.navigationController {
+//            navigationVc.pushViewController(vc, animated: true)
+//        } else {
+//            navigationController?.pushViewController(vc, animated: true)
+//        }
+//        return
+        
+        
+        
+        guard let vc = UIStoryboard(name: "GLGPSComplete", bundle: nil).instantiateInitialViewController() else { return }
         if let navigationVc = parentVc.navigationController {
             navigationVc.pushViewController(vc, animated: true)
         } else {
             navigationController?.pushViewController(vc, animated: true)
         }
         return
+        
+        
         
         let model = dataArray[indexPath.row]
         

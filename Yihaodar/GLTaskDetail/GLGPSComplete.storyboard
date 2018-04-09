@@ -1,7 +1,87 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eN1-hg-hL3">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Complete View Controller-->
+        <scene sceneID="rC3-hZ-wbZ">
+            <objects>
+                <viewController id="eN1-hg-hL3" customClass="GLGPSCompleteViewController" customModule="Yihaodar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jom-R7-Zbu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="suv-td-oSr">
+                                <rect key="frame" x="0.0" y="20" width="375" height="65"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dfdsffewfwe13214323" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ro-UP-MkF">
+                                        <rect key="frame" x="15" y="15" width="153" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.12941176469999999" green="0.15686274510000001" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朝阳事业部" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01v-R1-nUl">
+                                        <rect key="frame" x="15" y="37" width="66.5" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.59999999999999998" green="0.62745098040000002" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Acz-05-826">
+                                        <rect key="frame" x="302" y="17" width="63" height="30"/>
+                                        <color key="backgroundColor" red="0.098039215690000001" green="0.64313725489999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="U1T-O8-eF0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                        <state key="normal" title="待定价">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="01v-R1-nUl" secondAttribute="bottom" constant="12" id="0tt-ez-Bif"/>
+                                    <constraint firstAttribute="height" constant="65" id="I9S-Td-4os"/>
+                                    <constraint firstAttribute="trailing" secondItem="Acz-05-826" secondAttribute="trailing" constant="10" id="RWb-WQ-sjL"/>
+                                    <constraint firstItem="01v-R1-nUl" firstAttribute="leading" secondItem="suv-td-oSr" secondAttribute="leading" constant="15" id="dfl-xF-5Ib"/>
+                                    <constraint firstItem="7ro-UP-MkF" firstAttribute="leading" secondItem="suv-td-oSr" secondAttribute="leading" constant="15" id="iLB-P8-5Td"/>
+                                    <constraint firstItem="7ro-UP-MkF" firstAttribute="top" secondItem="suv-td-oSr" secondAttribute="top" constant="15" id="v0L-ZQ-NDm"/>
+                                    <constraint firstItem="Acz-05-826" firstAttribute="centerY" secondItem="suv-td-oSr" secondAttribute="centerY" id="vfE-dp-Gtc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92916911840000005" green="0.93318682909999995" blue="0.94551080470000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="suv-td-oSr" firstAttribute="top" secondItem="heh-sy-Jct" secondAttribute="top" id="Nps-4g-hJG"/>
+                            <constraint firstItem="heh-sy-Jct" firstAttribute="trailing" secondItem="suv-td-oSr" secondAttribute="trailing" id="OAl-e4-yiR"/>
+                            <constraint firstItem="suv-td-oSr" firstAttribute="leading" secondItem="heh-sy-Jct" secondAttribute="leading" id="UKe-1S-0H4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="heh-sy-Jct"/>
+                    </view>
+                    <connections>
+                        <outlet property="stateBtn" destination="Acz-05-826" id="BIh-hp-k99"/>
+                        <outlet property="subTitleLabel" destination="01v-R1-nUl" id="Yw1-Zp-v2D"/>
+                        <outlet property="titleLabel" destination="7ro-UP-MkF" id="jWp-sb-UeC"/>
+                        <outlet property="topView" destination="suv-td-oSr" id="4Jj-Ra-GrZ"/>
+                        <outlet property="topViewTopConstraint" destination="Nps-4g-hJG" id="q07-uV-5Ri"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aNC-Gp-ukW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-593" y="94"/>
+        </scene>
+    </scenes>
 </document>
