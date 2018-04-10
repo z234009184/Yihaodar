@@ -11,7 +11,7 @@ import XLPagerTabStrip
 import HandyJSON
 import SKPhotoBrowser
 import HGPlaceholders
-
+import SwiftyJSON
 
 /// 条目展示的模型
 struct GLItemModel: HandyJSON {
@@ -562,7 +562,11 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     @IBOutlet weak var bottomViewBottomConstraint: NSLayoutConstraint!
     
     /// 列表cell模型
-    var model: GLWorkTableModel?
+    var model: GLWorkTableModel? {
+        didSet {
+            
+        }
+    }
     
     var dataArray: [GLSectionModel] = []
     
@@ -570,16 +574,57 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "任务详情"
-        //        settings.style.buttonBarItemLeftRightMargin = 8
+        taskDetailTypeAndStatus()
         
         loadData()
+    }
+    
+    func taskDetailTypeAndStatus() -> Void {
+        titleLabel.text = model?.executionId
+        switch model?.status {
+        case GLWorkTableModel.StatusEnum.notDeal.rawValue: // 未完成
+            if model?.statusType == GLWorkTableModel.TaskType.GPS {
+                typeButton.setTitle("待装GPS", for: .normal)
+                submitBtn.setTitle("安装GPS", for: .normal)
+            } else if model?.statusType == GLWorkTableModel.TaskType.underHouse {
+                typeButton.setTitle("待下户", for: .normal)
+                submitBtn.setTitle("下户", for: .normal)
+            } else if model?.statusType == GLWorkTableModel.TaskType.pledge {
+                typeButton.setTitle("待抵质押", for: .normal)
+                submitBtn.setTitle("抵质押办理", for: .normal)
+            } else if model?.statusType == GLWorkTableModel.TaskType.approve {
+                typeButton.setTitle("待审批", for: .normal)
+                submitBtn.setTitle("审批", for: .normal)
+            }
+            break
+        case GLWorkTableModel.StatusEnum.yetDeal.rawValue: // 已完成
+            typeButton.backgroundColor = .white
+            typeButton.setTitleColor(YiBlueColor, for: .normal)
+            bottomViewBottomConstraint.constant = -64
+            
+            if model?.statusType == GLWorkTableModel.TaskType.approve { // 已经审批的
+                typeButton.setTitle("同意放款/拒绝放款", for: .normal)
+            }
+            break
+        default:
+            return
+        }
+        
+        
+        
     }
     
     
     /// 加载数据 数据驱动
     func loadData() {
         
-//        GLProvider.request(GLService.GPSDetail(partyId: GLUser.partyId!, l_number: <#T##String#>, custRequestId: <#T##String#>), completion: <#T##Completion##Completion##(Result<Response, MoyaError>) -> Void#>)
+        GLProvider.request(GLService.GPSDetail(partyId: GLUser.partyId!, l_number: (model?.executionId)!)) { (result) in
+            if case let .success(respon) = result {
+                print(JSON(respon.data))
+                
+                
+            }
+        }
         
         
         let section1 = GLSectionModel(title: "订单信息", items: [GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部")])
@@ -607,21 +652,28 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     
     @IBAction func submitBtnClick(_ sender: DesignableButton) {
         
-        // 安装GPS
-//        guard let installGPSNaVc = UIStoryboard(name: "GLInstallGPS", bundle: nil).instantiateInitialViewController() else { return }
-//        present(installGPSNaVc, animated: true, completion: nil)
+        if model?.statusType == GLWorkTableModel.TaskType.GPS {
+            // 安装GPS
+            guard let installGPSNaVc = UIStoryboard(name: "GLInstallGPS", bundle: nil).instantiateInitialViewController() else { return }
+            present(installGPSNaVc, animated: true, completion: nil)
+            
+        } else if model?.statusType == GLWorkTableModel.TaskType.underHouse {
+            
+            // 下户
+            guard let underHouseVc = UIStoryboard(name: "GLUnderhouse", bundle: nil).instantiateInitialViewController() else { return }
+            present(underHouseVc, animated: true, completion: nil)
+            
+        } else if model?.statusType == GLWorkTableModel.TaskType.pledge {
+            
+            // 抵质押办理
+            guard let pledgeVc = UIStoryboard(name: "GLPledge", bundle: nil).instantiateInitialViewController() else { return }
+            present(pledgeVc, animated: true, completion: nil)
+        } else if model?.statusType == GLWorkTableModel.TaskType.approve {
+            /// 显示信息视图
+            let showMsgView = showSubmitMessageView()
+            
+        }
         
-        // 下户
-//        guard let underHouseVc = UIStoryboard(name: "GLUnderhouse", bundle: nil).instantiateInitialViewController() else { return }
-//        present(underHouseVc, animated: true, completion: nil)
-        
-        // 抵质押办理
-//        guard let pledgeVc = UIStoryboard(name: "GLPledge", bundle: nil).instantiateInitialViewController() else { return }
-//        present(pledgeVc, animated: true, completion: nil)
-        
-        
-        /// 显示信息视图
-        let showMsgView = showSubmitMessageView()
         
     }
     

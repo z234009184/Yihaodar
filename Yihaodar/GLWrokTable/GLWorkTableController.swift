@@ -44,7 +44,13 @@ struct GLWorkTableModel: HandyJSON {
     var processType: String?
     var store_name: String?
     var status: String?
+    
     /// 自定义字段
+    enum StatusEnum: String {
+        case notDeal = "2" // 代办
+        case yetDeal = "3" // 已完成
+    }
+    
     var statusType : TaskType {
         get {
             switch taskType {
@@ -165,7 +171,7 @@ class GLWorkTableListCell: UITableViewCell {
                     completeStateBtn.borderColor = YiBlueColor
                 }
             }
-   
+            
         }
     }
     
@@ -261,34 +267,46 @@ class GLWorkTableBaseViewController: UITableViewController {
                 
                 return
                 
-            case .GPS, .underHouse, .pledge, .approve: // GPS
-                guard let GPSVc = UIStoryboard(name: "GLTaskDetailGPS", bundle: nil).instantiateInitialViewController() as? GLTaskDetailGPSViewController else { return }
-                
-                GPSVc.model = model
-                
-                if let navigationVc = parentVc.navigationController {
-                    navigationVc.pushViewController(GPSVc, animated: true)
-                } else {
-                    self?.navigationController?.pushViewController(GPSVc, animated: true)
+            case .GPS, .underHouse, .pledge : // GPS
+                if model.status == GLWorkTableModel.StatusEnum.notDeal.rawValue {
+                    self?.jumpGPSDetailVc(model: model, parentVc: parentVc)
+                    
+                } else if model.status == GLWorkTableModel.StatusEnum.yetDeal.rawValue {
+                    
+                    guard let GPSCompleteVc = UIStoryboard(name: "GLGPSComplete", bundle: nil).instantiateInitialViewController() as? GLGPSCompleteViewController else { return }
+                    
+                    GPSCompleteVc.model = model
+                    
+                    if let navigationVc = parentVc.navigationController {
+                        navigationVc.pushViewController(GPSCompleteVc, animated: true)
+                    } else {
+                        self?.navigationController?.pushViewController(GPSCompleteVc, animated: true)
+                    }
                 }
                 
                 return
                 
+            case .approve: // 审批
+                self?.jumpGPSDetailVc(model: model, parentVc: parentVc)
+                return
             default:
                 return
             }
         }
         
-        
-//        guard let vc = UIStoryboard(name: "GLGPSComplete", bundle: nil).instantiateInitialViewController() else { return }
-//        if let navigationVc = parentVc.navigationController {
-//            navigationVc.pushViewController(vc, animated: true)
-//        } else {
-//            navigationController?.pushViewController(vc, animated: true)
-//        }
-//        return
-        
     }
+    
+    /// 跳转 待装GPS 待下户 待抵质押 待审批 已审批 控制器
+    func jumpGPSDetailVc(model: GLWorkTableModel, parentVc: UIViewController) -> Void {
+        guard let GPSVc = UIStoryboard(name: "GLTaskDetailGPS", bundle: nil).instantiateInitialViewController() as? GLTaskDetailGPSViewController else { return }
+        GPSVc.model = model
+        if let navigationVc = parentVc.navigationController {
+            navigationVc.pushViewController(GPSVc, animated: true)
+        } else {
+            navigationController?.pushViewController(GPSVc, animated: true)
+        }
+    }
+    
     
     /// 通用领单
     func taskTakeOrder(model: GLWorkTableModel, success: (()->())?) -> Void {
@@ -454,7 +472,7 @@ class GLWorkTableController: GLButtonBarPagerTabStripViewController {
     
     override func viewDidLoad() {
         
-//        edgesForExtendedLayout = UIRectEdge(rawValue: 0)
+        //        edgesForExtendedLayout = UIRectEdge(rawValue: 0)
         
         super.viewDidLoad()
         
@@ -470,15 +488,15 @@ class GLWorkTableController: GLButtonBarPagerTabStripViewController {
         let searchBtn = UIButton(type: .custom)
         searchBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 25)
         searchBtn.setImage(#imageLiteral(resourceName: "navigation_search_icon"), for: .normal)
-//        searchBtn.backgroundColor = .cyan
+        //        searchBtn.backgroundColor = .cyan
         searchBtn.addTarget(self, action: #selector(GLWorkTableController.searchAction(_:)), for: UIControlEvents.touchUpInside)
-
+        
         let addBtn = UIButton(type: .custom)
         addBtn.frame = CGRect(x: 40, y: 0, width: 30, height: 25)
         addBtn.setImage(#imageLiteral(resourceName: "navigation_add_icon"), for: .normal)
-
+        
         addBtn.addTarget(self, action: #selector(GLWorkTableController.addAction(_:)), for: UIControlEvents.touchUpInside)
-//        addBtn.backgroundColor = .blue
+        //        addBtn.backgroundColor = .blue
         rightBarItemsView.addSubview(searchBtn)
         rightBarItemsView.addSubview(addBtn)
         
@@ -534,7 +552,7 @@ class GLWorkTableController: GLButtonBarPagerTabStripViewController {
         btn.superview?.removeFromSuperview()
     }
     
-  
+    
     
     /// PagerTabStripDataSource
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
@@ -543,7 +561,7 @@ class GLWorkTableController: GLButtonBarPagerTabStripViewController {
     }
     
     lazy var daibanVc = { () -> GLDaiBanController in
-         let daibanVc = UIStoryboard(name: "GLWorkTable", bundle: Bundle.main).instantiateViewController(withIdentifier: "GLDaiBanController") as! GLDaiBanController
+        let daibanVc = UIStoryboard(name: "GLWorkTable", bundle: Bundle.main).instantiateViewController(withIdentifier: "GLDaiBanController") as! GLDaiBanController
         return daibanVc
     }()
     
