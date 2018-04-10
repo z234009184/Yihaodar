@@ -43,8 +43,9 @@ struct GLWorkTableModel: HandyJSON {
     var organiser: String?
     var processType: String?
     var store_name: String?
+    var status: String?
     /// 自定义字段
-    var status : TaskType {
+    var statusType : TaskType {
         get {
             switch taskType {
             case TaskType.bdEstimate.rawValue:
@@ -67,7 +68,7 @@ struct GLWorkTableModel: HandyJSON {
     /// 自定义字段
     var statusBtnName : String? {
         get {
-            switch status {
+            switch statusType {
             case .bdEstimate:
                 return "评估"
             case .price:
@@ -230,17 +231,53 @@ class GLWorkTableBaseViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let parentVc = parent else { return }
-        
-        
-        guard let vc = UIStoryboard(name: "GLTaskDetailGPS", bundle: nil).instantiateInitialViewController() else { return }
-        if let navigationVc = parentVc.navigationController {
-            navigationVc.pushViewController(vc, animated: true)
-        } else {
-            navigationController?.pushViewController(vc, animated: true)
+        let model = dataArray[indexPath.row]
+        taskTakeOrder(model: model) { [weak self] in // 如果通用领单成功则执行 闭包内容
+            guard let parentVc = self?.parent else { return }
+            
+            switch model.statusType {
+            case .bdEstimate: // 报单详情
+                let desVc = UIStoryboard(name: "GLTaskDetail", bundle: nil).instantiateInitialViewController()
+                guard let bdVc = desVc as? GLTaskDetailViewController else { return }
+                bdVc.model = model
+                
+                if let navigationVc = parentVc.navigationController {
+                    navigationVc.pushViewController(bdVc, animated: true)
+                } else {
+                    self?.navigationController?.pushViewController(bdVc, animated: true)
+                }
+                
+                return
+            case .price: // 定价详情
+                let desVc = UIStoryboard(name: "GLTaskDetailPrice", bundle: nil).instantiateInitialViewController()
+                guard let djVc = desVc as? GLTaskDetailPriceViewController else { return }
+                djVc.model = model
+                
+                if let navigationVc = parentVc.navigationController {
+                    navigationVc.pushViewController(djVc, animated: true)
+                } else {
+                    self?.navigationController?.pushViewController(djVc, animated: true)
+                }
+                
+                return
+                
+            case .GPS, .underHouse, .pledge, .approve: // GPS
+                guard let GPSVc = UIStoryboard(name: "GLTaskDetailGPS", bundle: nil).instantiateInitialViewController() as? GLTaskDetailGPSViewController else { return }
+                
+                GPSVc.model = model
+                
+                if let navigationVc = parentVc.navigationController {
+                    navigationVc.pushViewController(GPSVc, animated: true)
+                } else {
+                    self?.navigationController?.pushViewController(GPSVc, animated: true)
+                }
+                
+                return
+                
+            default:
+                return
+            }
         }
-        return
-        
         
         
 //        guard let vc = UIStoryboard(name: "GLGPSComplete", bundle: nil).instantiateInitialViewController() else { return }
@@ -251,41 +288,41 @@ class GLWorkTableBaseViewController: UITableViewController {
 //        }
 //        return
         
+    }
+    
+    /// 通用领单
+    func taskTakeOrder(model: GLWorkTableModel, success: (()->())?) -> Void {
+        if model.status != "2" { /// 如果不是执行状态中的任务
+            if let success = success {
+                success()
+            }
+            return
+        }
         
-        
-        let model = dataArray[indexPath.row]
-        
-        switch model.status {
-        case .bdEstimate: // 报单详情
-            let desVc = UIStoryboard(name: "GLTaskDetail", bundle: nil).instantiateInitialViewController()
-            guard let bdVc = desVc as? GLTaskDetailViewController else { return }
-            bdVc.model = model
-            
-            if let navigationVc = parentVc.navigationController {
-                navigationVc.pushViewController(bdVc, animated: true)
-            } else {
-                navigationController?.pushViewController(bdVc, animated: true)
+        view.showLoading()
+        GLProvider.request(GLService.taskTakeApp(partyId: GLUser.partyId!, processExampleId: model.processId!, processTaskId: model.processTaskId!, taskType: model.taskType!, l_number: model.executionId!)) {[weak self] (result) in
+            self?.view.hideLoading()
+            if case let .success(respon) = result {
+                let json = JSON(respon.data)
+                print(json)
+                if json["type"] != "S" {  // 如果领单失败 则刷新列表
+                    if let msg = json["message"].rawString() {
+                        self?.view.makeToast(msg)
+                        
+                        self?.refreshData()
+                    }
+                } else {
+                    if let success = success {
+                        success()
+                    }
+                }
             }
             
-            return
-        case .price: // 定价详情
-            let desVc = UIStoryboard(name: "GLTaskDetailPrice", bundle: nil).instantiateInitialViewController()
-            guard let djVc = desVc as? GLTaskDetailPriceViewController else { return }
-            djVc.model = model
-            
-            if let navigationVc = parentVc.navigationController {
-                navigationVc.pushViewController(djVc, animated: true)
-            } else {
-                navigationController?.pushViewController(djVc, animated: true)
-            }
-            
-            return
-        default:
-            return
         }
         
         
     }
+    
     
 }
 

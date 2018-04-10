@@ -71,7 +71,7 @@ struct CustomPlugin: PluginType {
 
 
 
-
+/// 请求类
 let GLProvider = MoyaProvider<GLService>(requestClosure: CustomPlugin.requestTimeoutClosure, plugins: [
     CustomPlugin(tokenClosure: { return GLUser.token })
     ])
@@ -128,11 +128,11 @@ enum GLService {
     case getInfoByPid(pid: String) // 根据父节点ID 获取子节点信息
     case uploadFile(multiParts: [MultipartFormData])
     
-    /// 通用领单接口 /api/appProcess/taskTakeApp.shtml
+    /// 通用领单接口
     case taskTakeApp(partyId: String, processExampleId: String, processTaskId: String, taskType: String, l_number: String)
     
     /// 安装GPS、下户、审批、抵押贷款详情页面
-    case GPSDetail(partyId: String, l_number: String, custRequestId: String)
+    case GPSDetail(partyId: String, l_number: String)
     
 }
 
@@ -194,10 +194,10 @@ extension GLService: TargetType {
             return "/frame/fileUpload.shtml"
             
         case .taskTakeApp(_, _, _, _, _):
-            return "/frame/fileUpload.shtml"
+            return "/api/appProcess/taskTakeApp.shtml"
             
             
-        case .GPSDetail(_, _, _):
+        case .GPSDetail(_, _):
             return "/api/loan/toLoanDetail.shtml"
             
         }
@@ -214,62 +214,71 @@ extension GLService: TargetType {
             
         case let GLService.login(username, password):
             param["body"] = ["username": username, "password": password]
+            break
         case let GLService.logout(partyId):
             param["body"] = ["partyId": partyId]
+            break
         case let GLService.modifyPassword(partyId, password):
             param["body"] = ["partyId": partyId, "password": password]
-            
+            break
         case let GLService.todoList(partyId, pageSize, startIndex):
             param["body"] = ["partyId": partyId, "pageSize": pageSize, "startIndex": startIndex]
-            
+            break
         case let GLService.completeList(partyId, pageSize, startIndex):
             param["body"] = ["partyId": partyId, "pageSize": pageSize, "startIndex": startIndex]
-            
+            break
         case let GLService.searchList(partyId, pageSize, startIndex, executionId):
             param["body"] = ["partyId": partyId, "pageSize": pageSize, "startIndex": startIndex, "executionId": executionId]
+            break
         case let GLService.estimateDetail(custRequestId, takeStatus, partyId, processExampleId, processTaskId):
             param["body"] = ["custRequestId": custRequestId, "takeStatus": takeStatus, "partyId": partyId, "processExampleId": processExampleId, "processTaskId": processTaskId]
+            break
         case let GLService.priceDetail(custRequestId, takeStatus, partyId, processExampleId, processTaskId):
             param["body"] = ["custRequestId": custRequestId, "takeStatus": takeStatus, "partyId": partyId, "processExampleId": processExampleId, "processTaskId": processTaskId]
-            
+            break
         case let GLService.submitPriceDetail(custRequestId, partyName, processId, processTaskId, confirmedMoney, appraiseRemarks):
             param["body"] = ["custRequestId": custRequestId, "partyName": partyName, "processId": processId, "processTaskId": processTaskId, "confirmedMoney": confirmedMoney, "appraiseRemarks": appraiseRemarks]
+            break
         case let GLService.submitTaskDetail(partyId, processId, processTaskId, executionId, confirmedMoney, remarks, carInfo, carType):
             param["body"] = ["partyId": partyId, "processId": processId, "processTaskId": processTaskId, "executionId": executionId, "confirmedMoney": confirmedMoney, "remarks": remarks, "carInfo": carInfo, "carType": carType]
-            
+            break
         case let GLService.getCarOtherInfo(partyId):
             param["body"] = ["partyId": partyId]
+            break
         case let GLService.getCarOtherInfoSub1(partyId):
             param["body"] = ["partyId": partyId]
+            break
         case let GLService.getCarOtherInfoSub2(partyId):
             param["body"] = ["partyId": partyId]
+            break
         case let GLService.getCarOtherInfoSub3(partyId):
             param["body"] = ["partyId": partyId]
-            
+            break
             
         case let GLService.getCarSeries(brandId):
             param["body"] = ["brandId": brandId]
+            break
         case let GLService.getCarVersion(seriesId):
             param["body"] = ["seriesId": seriesId]
-            
+            break
             
         case let GLService.submitCreateCarEstimateWithMsg(partyId, store, boss_party_id, executive_party_id, director_party_id, ower, goods_code, brand_name, brand_name_txt, goods_series, goods_series_txt, goods_style, goods_style_txt, car_color, production_date, register_date, run_number, displacement, peccancy, peccancy_fraction, peccancy_money, engine_code, frame_code, invoice, transfer_number, year_check, insurance_due_date, jq_insurance, sy_insurance, gearbox, driving_type, keyless_startup, cruise_control, navigation, hpyl, chair_type, fuel_type, skylight, air_conditioner, other, airbag, accident, accident_level, ccrpList, ccroList, assessment_name, confirmed_money, remarks):
             
             param["body"] = ["partyId": partyId, "store": store, "boss_party_id": boss_party_id, "executive_party_id": executive_party_id, "director_party_id": director_party_id, "ower": ower, "goods_code": goods_code, "brand_name": brand_name, "brand_name_txt": brand_name_txt, "goods_series": goods_series, "goods_series_txt": goods_series_txt, "goods_style": goods_style, "goods_style_txt": goods_style_txt, "car_color": car_color, "production_date": production_date, "register_date": register_date, "run_number": run_number, "displacement": displacement, "peccancy": peccancy, "peccancy_fraction": peccancy_fraction, "peccancy_money": peccancy_money, "engine_code": engine_code, "frame_code": frame_code, "invoice": invoice, "transfer_number": transfer_number, "year_check": year_check, "insurance_due_date": insurance_due_date, "jq_insurance": jq_insurance, "sy_insurance": sy_insurance, "gearbox": gearbox, "driving_type": driving_type, "keyless_startup": keyless_startup, "cruise_control": cruise_control, "navigation": navigation, "hpyl": hpyl, "chair_type": chair_type, "fuel_type": fuel_type, "skylight": skylight, "air_conditioner": air_conditioner, "other": other, "airbag": airbag, "accident": accident, "accident_level": accident_level, "ccrpList": ccrpList, "ccroList": ccroList, "assessment_name": assessment_name, "confirmed_money": confirmed_money, "remarks": remarks]
-            
+            break
             
         case let GLService.getInfoByPid(pid):
             param["body"] = ["pid": pid]
-            
+            break
         case let GLService.uploadFile(multiParts):
             return .uploadMultipart(multiParts)
-           
+            
         case let GLService.taskTakeApp(partyId, processExampleId, processTaskId, taskType, l_number):
             param["body"] = ["partyId": partyId, "processExampleId": processExampleId, "processTaskId": processTaskId, "taskType": taskType, "l_number": l_number]
-            
-        case let GLService.GPSDetail(partyId, l_number, custRequestId):
-            param["body"] = ["partyId": partyId, "l_number": l_number, "custRequestId": custRequestId]
-            
+            break
+        case let GLService.GPSDetail(partyId, l_number):
+            param["body"] = ["partyId": partyId, "l_number": l_number]
+            break
             
         }
         
