@@ -579,6 +579,9 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     /// 加载数据 数据驱动
     func loadData() {
         
+//        GLProvider.request(GLService.GPSDetail(partyId: GLUser.partyId!, l_number: <#T##String#>, custRequestId: <#T##String#>), completion: <#T##Completion##Completion##(Result<Response, MoyaError>) -> Void#>)
+        
+        
         let section1 = GLSectionModel(title: "订单信息", items: [GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部")])
         
         

@@ -128,6 +128,12 @@ enum GLService {
     case getInfoByPid(pid: String) // 根据父节点ID 获取子节点信息
     case uploadFile(multiParts: [MultipartFormData])
     
+    /// 通用领单接口 /api/appProcess/taskTakeApp.shtml
+    case taskTakeApp(partyId: String, processExampleId: String, processTaskId: String, taskType: String, l_number: String)
+    
+    /// 安装GPS、下户、审批、抵押贷款详情页面
+    case GPSDetail(partyId: String, l_number: String, custRequestId: String)
+    
 }
 
 
@@ -186,6 +192,13 @@ extension GLService: TargetType {
         
         case .uploadFile(_):
             return "/frame/fileUpload.shtml"
+            
+        case .taskTakeApp(_, _, _, _, _):
+            return "/frame/fileUpload.shtml"
+            
+            
+        case .GPSDetail(_, _, _):
+            return "/api/loan/toLoanDetail.shtml"
             
         }
         
@@ -250,6 +263,12 @@ extension GLService: TargetType {
             
         case let GLService.uploadFile(multiParts):
             return .uploadMultipart(multiParts)
+           
+        case let GLService.taskTakeApp(partyId, processExampleId, processTaskId, taskType, l_number):
+            param["body"] = ["partyId": partyId, "processExampleId": processExampleId, "processTaskId": processTaskId, "taskType": taskType, "l_number": l_number]
+            
+        case let GLService.GPSDetail(partyId, l_number, custRequestId):
+            param["body"] = ["partyId": partyId, "l_number": l_number, "custRequestId": custRequestId]
             
             
         }

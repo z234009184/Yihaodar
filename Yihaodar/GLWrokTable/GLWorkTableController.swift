@@ -46,11 +46,20 @@ struct GLWorkTableModel: HandyJSON {
     /// 自定义字段
     var status : TaskType {
         get {
-            if taskType == TaskType.bdEstimate.rawValue {
+            switch taskType {
+            case TaskType.bdEstimate.rawValue:
                 return TaskType.bdEstimate
-            } else if taskType == TaskType.price.rawValue {
+            case TaskType.price.rawValue:
                 return TaskType.price
-            } else {
+            case TaskType.GPS.rawValue:
+                return TaskType.GPS
+            case TaskType.underHouse.rawValue:
+                return TaskType.underHouse
+            case TaskType.pledge.rawValue:
+                return TaskType.pledge
+            case TaskType.approve.rawValue:
+                return TaskType.approve
+            default:
                 return TaskType.unknow
             }
         }
@@ -58,11 +67,20 @@ struct GLWorkTableModel: HandyJSON {
     /// 自定义字段
     var statusBtnName : String? {
         get {
-            if status == .bdEstimate {
+            switch status {
+            case .bdEstimate:
                 return "评估"
-            } else if status == .price {
+            case .price:
                 return "定价"
-            } else {
+            case .GPS:
+                return "安装GPS"
+            case .underHouse:
+                return "下户"
+            case .pledge:
+                return "抵质押办理"
+            case .approve:
+                return "审批"
+            default:
                 return "未知"
             }
         }
@@ -74,6 +92,10 @@ struct GLWorkTableModel: HandyJSON {
     enum TaskType: String {
         case bdEstimate = "BDGOODS_ASSESS_TASK"
         case price = "CARS_ASSESS_TASK"
+        case GPS = "LOAN_APPLY_GPS_INSTALL"
+        case underHouse = "LOAN_APPLY_PAUPER"
+        case pledge = "LOAN_APPLY_PLEDGE"
+        case approve = "DAIKUANSHENQING_SELF_SHENGPI"
         case unknow = ""
     }
     
@@ -211,23 +233,23 @@ class GLWorkTableBaseViewController: UITableViewController {
         guard let parentVc = parent else { return }
         
         
-//        guard let vc = UIStoryboard(name: "GLTaskDetailGPS", bundle: nil).instantiateInitialViewController() else { return }
-//        if let navigationVc = parentVc.navigationController {
-//            navigationVc.pushViewController(vc, animated: true)
-//        } else {
-//            navigationController?.pushViewController(vc, animated: true)
-//        }
-//        return
-        
-        
-        
-        guard let vc = UIStoryboard(name: "GLGPSComplete", bundle: nil).instantiateInitialViewController() else { return }
+        guard let vc = UIStoryboard(name: "GLTaskDetailGPS", bundle: nil).instantiateInitialViewController() else { return }
         if let navigationVc = parentVc.navigationController {
             navigationVc.pushViewController(vc, animated: true)
         } else {
             navigationController?.pushViewController(vc, animated: true)
         }
         return
+        
+        
+        
+//        guard let vc = UIStoryboard(name: "GLGPSComplete", bundle: nil).instantiateInitialViewController() else { return }
+//        if let navigationVc = parentVc.navigationController {
+//            navigationVc.pushViewController(vc, animated: true)
+//        } else {
+//            navigationController?.pushViewController(vc, animated: true)
+//        }
+//        return
         
         
         
