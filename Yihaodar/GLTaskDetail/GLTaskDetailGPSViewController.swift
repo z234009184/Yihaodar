@@ -13,6 +13,548 @@ import SKPhotoBrowser
 import HGPlaceholders
 import SwiftyJSON
 
+
+
+
+/// 附件模型
+struct GLGPSAccessoryModel: HandyJSON {
+    var ishadall = ""
+    var file_name = ""
+    var file_type_name = ""
+    var file_url = ""
+    var file_size = ""
+}
+
+
+/// 放款时间金额模型
+struct GLJqskTimeModel {
+    
+    /// 申请放款时间
+    var fksq_sqfksj = ""
+    /// 申请放款额
+    var fksq_sqfke = ""
+    /// 实际放款时间
+    var fk_sjfksj = ""
+    /// 实际放款额
+    var fk_sjfke = ""
+}
+
+/// 下户尽调
+struct GLPauperInfoModel: HandyJSON {
+    /// 下户日期
+    var crea_date = ""
+    /// 下户与申请地址是否一致
+    var pauper_agreement = ""
+    /// 房屋居住来源
+    var pauper_source = ""
+    /// 房屋用途
+    var pauper_purpose = ""
+    /// 周围环境
+    var pauper_environment = ""
+    /// 有无违禁品
+    var pauper_contraband = ""
+    /// 下户意见
+    var pauper_opinion = ""
+    
+    var p_id = ""
+    var l_id = ""
+    var iscache = ""
+    var party_id = ""
+    var attachmentList = ""
+    var attachmentSet = ""
+}
+
+/// 放款基本信息&经纪人信息
+struct GLAppInfoModel: HandyJSON {
+    /// 合同开始日期
+    var ht_start = ""
+    /// 合同结束日期
+    var ht_end = ""
+    /// 固定还息日
+    var gdhxr = ""
+    /// 经纪人名称
+    var a_name = ""
+    /// 联系方式
+    var a_contact_way = ""
+    /// 微信
+    var a_wechat = ""
+    /// 户名
+    var a_card_name = ""
+    /// 银行卡号
+    var a_card_code = ""
+    /// 开户行
+    var a_card_bank = ""
+    /// 支行信息
+    var a_bank_branch = ""
+    
+    
+    
+    var party_name = ""
+    var boss_party_id = ""
+    var executive_party_id = ""
+    var director_party_id = ""
+    
+    var c_name = ""
+    var c_idcard = ""
+    var lr_amount = ""
+    var lr_term = ""
+    var lr_loanmortgage_rate = ""
+    var lr_rate_gsmonthrate = ""
+    var lr_rate_gsservicefee = ""
+    var lr_rate_khmonthrate = ""
+    var lr_rate_khservicefee = ""
+    var lr_mortagetype = ""
+    var lr_repaytype = ""
+    var l_amount = ""
+    var c_card_name = ""
+    var c_card_code = ""
+    var c_card_bank = ""
+    var c_bank_branch = ""
+    var fksq_sqfksj = ""
+    var fksq_sqfke = ""
+    var fk_sjfksj = ""
+    var fk_sjfke = ""
+}
+
+
+
+
+/// Gps安装明细
+struct GLGPSInfoModel: HandyJSON {
+    
+    /// 安装人员
+    var g_personnel = ""
+    /// 安装日期
+    var install_Date = ""
+    /// 安装人员
+    var gpsSet = [GLGPSSetModel]()
+    
+    
+    /// 安装明细集合模型
+    struct GLGPSSetModel: HandyJSON {
+        /// 设备类型
+        var gps_type = ""
+        /// 设备型号
+        var gps_version = ""
+        /// 设备编号
+        var gps_number = ""
+        /// 安装位置
+        var gps_position = ""
+        /// 设备SIM卡号
+        var gps_sim_card = ""
+        /// 备注
+        var gps_remark = ""
+    }
+}
+
+/// 经纪人返费模型
+struct GLAgentBackModel: HandyJSON {
+    /// 预计返费时间
+    var backtime = ""
+    /// 返费金额
+    var backamount = ""
+    /// 备注
+    var backremark = ""
+}
+
+
+/// 车况信息模型
+struct GLCarinfodataModel: HandyJSON {
+    /// 车构件
+    var partsOneId = ""
+    /// 部件
+    var partsTwoId = ""
+    /// 描述
+    var accidentType = ""
+    /// 补充说明
+    var remarks = ""
+}
+
+/// 风险控制模型
+struct GLLoanRiskerModel: HandyJSON {
+    /// 借款用途
+    var lrPurpose = ""
+    
+    /// 面签意见
+    var lrSuggestion = ""
+    /// 批贷金额
+    var lrAmount = ""
+    /// 批贷期限
+    var lrTerm = ""
+    /// 还款方式 0：先息后本 1：等额本息   2：等本等息
+    var lrRepaytype = ""
+    /// 借款抵押率（0.02就是2%）
+    var lrLoanmortgageRate = ""
+    /// 借款类型 1：押手续 2：押车 3：双押
+    var lrMortagetype = ""
+    /// 出借人
+    var lrLenderName = ""
+    /// 公司月息
+    var lrRateGsmonthrate = ""
+    /// 公司服务费
+    var lrRateGsservicefee = ""
+    /// 客户月息
+    var lrRateKhmonthrate = ""
+    /// 客户服务费
+    var lrRateKhservicefee = ""
+    /// 是否转单 1：是 0：否
+    var lrPreIszhuandan = ""
+    /// 垫资费
+    var lrPreAdvance = ""
+    /// 是否需要安装GPS 1：是 0：否
+    var lrPreIsgps = ""
+    /// GPS安装费
+    var lrPreGpsfee = ""
+    /// 是否需要下户 1：是 0：否
+    var lrPreIspauper = ""
+    
+    /// 下户费
+    var lrPrePauperfee = ""
+    /// 有无风险保证金 1：有 0：无
+    var lrPreIsriskMargin = ""
+    /// 风险保证金（金额）
+    var lrPreRiskmargin = ""
+    /// 有无证件不押金 1：有 0：无
+    var lrPreIsmortageCertificates = ""
+    /// 证件不押金（金额）
+    var lrPreIsmortageFee = ""
+}
+
+
+struct GLDataAuth: HandyJSON {
+    
+}
+
+
+/// 缴费明细列表模型
+struct GLPayListModel: HandyJSON {
+    
+    /// 缴费项目ID
+    var pay_id = ""
+    /// 应收费用
+    var alreadyPaid = ""
+    /// 实收费用
+    var unpaid = ""
+    /// 备注
+    var content = ""
+    
+}
+
+/// 缴费选项模型（与明细对应）
+struct GLOptionsModel: HandyJSON {
+    /// 选项ID（与缴费项目ID对应）
+    var id = ""
+    /// 选项名称
+    var dname = ""
+    /// 选项类型 1：费用 2：押金
+    var value = ""
+}
+
+/// 借款订单信息
+struct GLLoanApply: HandyJSON {
+    /// 所属门店
+    var l_store = ""
+    /// 客户经理
+    var boss_party_id = ""
+    /// 团队主管
+    var executive_party_id = ""
+    /// 业务总监
+    var director_party_id = ""
+    /// 借款申请金额
+    var l_amount = ""
+    /// 借款期限
+    var l_term = ""
+    /// 借款类型
+    var l_type = ""
+    /// 借款申请抵押率（0.01就是1%）
+    var l_mortgage_rate = ""
+    /// 面签里的合同编号
+    var contract_number = ""
+    /// 借款人集合
+    var ltcSet = [GLLtcSetModel]()
+    
+    /// 借款人集合Model
+    struct GLLtcSetModel: HandyJSON {
+        /// 是否为共借人 0：借款人 1：共借人
+        var is_together = ""
+        
+        /// 借款人或者共借人具体字段
+        var lc = GLLtcSetlcModel()
+        
+        /// 借款人或者共借人Model
+        struct GLLtcSetlcModel: HandyJSON {
+            /// 借款人姓名
+            var c_name = ""
+            /// 年龄
+            var c_age = ""
+            /// 性别
+            var c_sex = ""
+            /// 身份证
+            var c_idcard = ""
+            /// 手机号1
+            var c_phone1 = ""
+            /// 手机号2
+            var c_phone2 = ""
+            /// 户籍
+            var c_home = ""
+            /// 是否常住北京
+            var c_isczbj = ""
+            /// 北京居住年限
+            var c_bjyear = ""
+            /// 教育程度 1：硕士及以上 2：本科 3：专科 4：高中及以下
+            var c_educational_level = ""
+            /// 毕业院校
+            var c_over_school = ""
+            /// 婚姻状况 1：已婚 2：未婚 3：离异 4：再婚
+            var c_marital_status = ""
+            /// 子女状况
+            var c_children = ""
+            /// 工作性质 1：工薪阶层 2：商人 3：农民
+            var c_nature_of_work = ""
+            /// 从属行业
+            var c_industry = ""
+            /// 工作单位
+            var c_work_company = ""
+            /// 工作地址
+            var c_work_address = ""
+            /// 职位名称
+            var c_work_name = ""
+            /// 现居住地址
+            var c_address = ""
+            /// 房屋来源
+            var c_house_source = ""
+            /// 基本月收入
+            var c_month_income = ""
+            /// 基本年收入
+            var c_year_income = ""
+            /// 信用卡总额度
+            var c_credit_card_sum = ""
+            /// 负债
+            var c_liabilities = ""
+            /// 银行卡户名
+            var c_card_name = ""
+            /// 银行卡号
+            var c_card_code = ""
+            /// 开户行
+            var c_card_bank = ""
+            /// 支行信息
+            var c_bank_branch = ""
+            /// 紧急联系人集合
+            var lccSet = [GLLccSetModel]()
+            
+            /// 紧急联系人集合Model
+            struct GLLccSetModel: HandyJSON {
+                /// 姓名
+                var con_name = ""
+                /// 联系电话
+                var con_phone = ""
+                /// 与借款人关系 1：配偶 2：亲属 3：朋友
+                var con_nexus = ""
+                /// 工作单位
+                var con_work_company = ""
+                /// 联系地址
+                var con_address = ""
+            }
+            
+        }
+    }
+    
+}
+
+
+/// 还款计划集合Model
+struct GLRepaymentPlanModel: HandyJSON {
+    
+    /// 期数
+    var overdue_periods = ""
+    /// 还款日期
+    var repayment_date = ""
+    /// 还款本金
+    var repaymentCorpus = ""
+    /// 还款利息
+    var repaymentInterests = ""
+    
+}
+
+/// 车辆信息Model
+struct GLGPSCarInfoModel: HandyJSON {
+    /// 车主姓名
+    var ower = ""
+    /// 车辆号牌
+    var goodsCode = ""
+    /// 品牌
+    var brandName = ""
+    /// 系列
+    var goodsSeries = ""
+    /// 型号
+    var goodsStyle = ""
+    /// 颜色
+    var carColor = ""
+    /// 生产日期
+    var productionDate = ""
+    /// 注册日期
+    var registerDate = ""
+    /// 行驶里程
+    var runNumber = ""
+    /// 排气量
+    var displacement = ""
+    /// 当前违章（0：无；1：有）
+    var peccancy = ""
+    /// 违章罚分
+    var peccancyFraction = ""
+    /// 违章罚钱
+    var peccancyMoney = ""
+    /// 发动机号
+    var engineCode = ""
+    /// 车架号
+    var frameCode = ""
+    /// 开票价格
+    var invoice = ""
+    /// 过户次数
+    var transferNumber = ""
+    /// 年检到期日
+    var yearCheck = ""
+    /// 交强险
+    var jqInsurance = ""
+    /// 商业险
+    var syInsurance = ""
+    /// 评估师
+    var assessmentName = ""
+    /// 评估价格（万元）
+    var confirmedMoney = ""
+    /// 评估备注
+    var remarks = ""
+    /// 定价师
+    var fixPriceName = ""
+    /// 定价价格（万元）
+    var fixPriceMoney = ""
+    /// 定价备注
+    var fixPriceRemark = ""
+    /// 变速器
+    var gearbox = ""
+    /// 驱动方式
+    var drivingType = ""
+    /// 无钥匙启动
+    var keylessStartup = ""
+    /// 定速巡航
+    var cruiseControl = ""
+    /// 导航
+    var navigation = ""
+    /// 后排娱乐
+    var hpyl = ""
+    /// 座椅形式
+    var chairType = ""
+    /// 燃油方式
+    var fuelType = ""
+    /// 天窗
+    var skylight = ""
+    /// 空调配置
+    var airConditioner = ""
+    /// 其他
+    var Other = ""
+    /// 安全气囊（个）
+    var airbag = ""
+    /// 事故
+    var accident = ""
+    /// 事故等级
+    var accident_level = ""
+}
+
+
+/// 合同Model
+struct GLSignatureListModel: HandyJSON {
+    /// 合同名称
+    var dname = ""
+    /// 是否交付
+    var isGive = ""
+    /// 合同数
+    var contract_count = ""
+    /// 合同编号
+    var contract_number = ""
+    
+}
+
+
+/// 详情返回总模型
+struct GLGPSTaskDetailBigModel: HandyJSON {
+    /// 下户附件
+    var loanAttXh: [GLGPSAccessoryModel] = []
+    /// 抵质押附件集合
+    var loanAttDzy: [GLGPSAccessoryModel] = []
+    /// 收押材料附件集合
+    var loanAttSycl: [GLGPSAccessoryModel] = []
+    /// 风险控制附件集合
+    var loanAttFxkz: [GLGPSAccessoryModel] = []
+    /// 车辆内饰附件集合
+    var carAttNs: [GLGPSAccessoryModel] = []
+    /// 违章查询附件集合
+    var carAttWz: [GLGPSAccessoryModel] = []
+    /// 车架查询附件集合
+    var carAttCj: [GLGPSAccessoryModel] = []
+    /// 车辆信息附件集合
+    var carAttXx: [GLGPSAccessoryModel] = []
+    /// 车辆外观附件集合
+    var carAttWg: [GLGPSAccessoryModel] = []
+    
+    /// 放款时间金额
+    var jqsk_time: [GLJqskTimeModel] = []
+    
+    /// 下户尽调
+    var pauperInfo = GLPauperInfoModel()
+    
+    /// 放款基本信息&经纪人信息
+    var appInfo = GLAppInfoModel()
+    
+    /// GSP安装明细
+    var gpsInfo = GLGPSInfoModel()
+    
+    /// 经纪人返费列表
+    var agentBack = [GLAgentBackModel]()
+    
+    /// 车况信息
+    var Carinfodata = [GLCarinfodataModel]()
+    
+    /// 面审信息（风险控制）
+    var loanRisker = GLLoanRiskerModel()
+    
+///    当前用户所拥有的字段权限
+///    Key：父级_本级（首拼音）
+///    Value：true（有权限）false（无权限）
+///    比如：所属门店
+///    ddxx_ssmd:true  就是有权限
+///    当没有父级时，父级用null字符串表示
+///    null_jbxx:false 就是‘基本信息’模块不显示
+    var dataAuth = GLDataAuth()
+    
+    
+    /// 缴费明细列表
+    var payList = [GLPayListModel]()
+    
+    /// 缴费选项（与明细对应）
+    var Options = [GLOptionsModel]()
+    
+    /// 借款人订单信息
+    var loanApply = GLLoanApply()
+    
+    /// 还款计划集合
+    var repaymentPlan = [GLRepaymentPlanModel]()
+    
+    /// 车辆信息
+    var carInfo = GLGPSCarInfoModel()
+    
+    /// 合同
+    var signatureList = [GLSignatureListModel]()
+}
+
+
+
+
+
+
+
+// MARK : - ------------------------------------
+
+
 /// 条目展示的模型
 struct GLItemModel: HandyJSON {
     var title = ""
@@ -609,9 +1151,6 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
         default:
             return
         }
-        
-        
-        
     }
     
     
@@ -620,9 +1159,14 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
         
         GLProvider.request(GLService.GPSDetail(partyId: GLUser.partyId!, l_number: (model?.executionId)!)) { (result) in
             if case let .success(respon) = result {
-                print(JSON(respon.data))
-                
-                
+                let json = JSON(respon.data)
+                if json["type"] == "S" {
+                    print(json)
+                    
+                    
+                    
+                    
+                }
             }
         }
         
