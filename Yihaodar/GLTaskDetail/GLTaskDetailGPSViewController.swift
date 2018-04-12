@@ -222,7 +222,165 @@ struct GLLoanRiskerModel: HandyJSON {
 
 
 struct GLDataAuth: HandyJSON {
-    
+    var ddxx_djr: Bool?
+    var fyjfk_dqfy: Bool?
+    var xhjd_xhrq: Bool?
+    var clxx_jqx: Bool?
+    var jkrxx_jycd: Bool?
+    var gjrxx_bjjznx: Bool?
+    var gjrxx_nl: Bool?
+    var gjrxx_jbysr: Bool?
+    var zqxx_jksqdyl: Bool?
+    var null_pgfzr: Bool?
+    var gjrxx_zwmc: Bool?
+    var clxx_clxl: Bool?
+    var zlfj_sycl: Bool?
+    var jksqxx_jksqje: Bool?
+    var clxx_clxh: Bool?
+    var gjrxx_gzxz: Bool?
+    var null_ssjg: Bool?
+    var ddxx_ssmd: Bool?
+    var gjrxx_znzk: Bool?
+    var jkryhkxx_yhkxx: Bool?
+    var jksqxx_jksqqx: Bool?
+    var jkryhkxx_zhxx: Bool?
+    var gjrxx_xb: Bool?
+    var jbxx_zqxx: Bool?
+    var jkrxx_xjzdz: Bool?
+    var jkrxx_xykzed: Bool?
+    var pgxx_ckms: Bool?
+    var jkrxx_sfcqjzbj: Bool?
+    var null_pgxx: Bool?
+    var jkrxx_fwly: Bool?
+    var fyjfk_fyjnmx: Bool?
+    var zlfj_clxx: Bool?
+    var fxkz_jkyt: Bool?
+    var clxx_clpp: Bool?
+    var zlfj_wzcx: Bool?
+    var fxkz_jkdyl: Bool?
+    var jbxx_jksqxx: Bool?
+    var gjrxx_sfcqjzbj: Bool?
+    var gjrxx_hyzk: Bool?
+    var clxx_dqwzs: Bool?
+    var jbxx_gjrxx: Bool?
+    var gjrxx_gzdw: Bool?
+    var pgxx_clpz: Bool?
+    var fyjfk_spxx: Bool?
+    var clxx_czxm: Bool?
+    var zlfj_clwg: Bool?
+    var jbxx_jkrjjlxrxxgjr: Bool?
+    var jkrxx_znzk: Bool?
+    var jkrxx_zwmc: Bool?
+    var fyjfk_fkjbxx: Bool?
+    var gjrxx_gzdz: Bool?
+    var zqxx_zqqx: Bool?
+    var ddxx_ywzj: Bool?
+    var gjrxx_fwly: Bool?
+    var null_bz: Bool?
+    var jkrxx_cshy: Bool?
+    var fxkz_fxkz: Bool?
+    var jbxx_ddxx: Bool?
+    var jkrxx_sfzhm: Bool?
+    var zqxx_zqje: Bool?
+    var gjrxx_zhnsr: Bool?
+    var jkryhkxx_hm: Bool?
+    var fxkz_cjr: Bool?
+    var gjrxx_xjzdz: Bool?
+    var jkrxx_gzxz: Bool?
+    var jkrxx_jkrxm: Bool?
+    var zlfj_clns: Bool?
+    var ddxx_ybdjbh: Bool?
+    var gjrxx_sfzhm: Bool?
+    var jbxx_jkryhkxxgjr: Bool?
+    var jzdc_gpsazmx: Bool?
+    var jkryhkxxgjr_hm: Bool?
+    var null_jbxx: Bool?
+    var jksqxx_jksqdyl: Bool?
+    var zlfj_fxkz: Bool?
+    var jkrxx_gzdz: Bool?
+    var jkrxx_gzdw: Bool?
+    var jkrxx_bjjznx: Bool?
+    var jkrxx_sjh2: Bool?
+    var jbxx_jkryhkxx: Bool?
+    var jkrxx_sjh1: Bool?
+    var jbxx_jkrxx: Bool?
+    var fyjfk_zqfy: Bool?
+    var clxx_ccrq: Bool?
+    var null_cpgjg: Bool?
+    var xhjd_fwnywwjp: Bool?
+    var zqxx_jksqlx: Bool?
+    var gjrxx_jycd: Bool?
+    var jkryhkxx_khh: Bool?
+    var pgxx_djjg: Bool?
+    var jkll_gsyx: Bool?
+    var jzdc_dzydj: Bool?
+    var jkll_khyx: Bool?
+    var ddxx_djsj: Bool?
+    var clxx_fdjhm: Bool?
+    var zlfj_xhzp: Bool?
+    var jkryhkxxgjr_zhxx: Bool?
+    var gpsazmx_azms: Bool?
+    var jkll_khfwf: Bool?
+    var null_htqy: Bool?
+    var fyjfk_hkjh: Bool?
+    var zlfj_cjcx: Bool?
+    var jkrxx_jbysr: Bool?
+    var jbxx_clxx: Bool?
+    var xhjd_xhysqdzsfyz: Bool?
+    var null_zlfj: Bool?
+    var jksqxx_jksqlx: Bool?
+    var jkryhkxxgjr_yhkxx: Bool?
+    var gjrxx_jkrxm: Bool?
+    var xhjd_fwyt: Bool?
+    var fxkz_pdqx: Bool?
+    var fxkz_pdje: Bool?
+    var clxx_ghcs: Bool?
+    var xhjd_fwjzly: Bool?
+    var jzdc_xhjd: Bool?
+    var null_fyjfk: Bool?
+    var jkrxx_nl: Bool?
+    var jkrxx_zhnsr: Bool?
+    var fxkz_jklx: Bool?
+    var dzydj_dzydjrq: Bool?
+    var zlfj_dzydjyblpz: Bool?
+    var jbxx_jkrjjlxrxx: Bool?
+    var jkll_gsfwf: Bool?
+    var clxx_xslc: Bool?
+    var ddxx_khjl: Bool?
+    var gpsazmx_azry: Bool?
+    var fxkz_jkll: Bool?
+    var htqy_htjf: Bool?
+    var xhjd_fwzwhj: Bool?
+    var jkrxx_hj: Bool?
+    var gpsazmx_azrq: Bool?
+    var clxx_clhp: Bool?
+    var clxx_cjh: Bool?
+    var clxx_djrq: Bool?
+    var gjrxx_byyx: Bool?
+    var fxkz_hkfs: Bool?
+    var gjrxx_hj: Bool?
+    var clxx_syx: Bool?
+    var fyjfk_jjrxx: Bool?
+    var jkryhkxxgjr_khh: Bool?
+    var xhjd_xhyj: Bool?
+    var fxkz_mqyj: Bool?
+    var jkrxx_xb: Bool?
+    var jkrxx_fz: Bool?
+    var clxx_njdqr: Bool?
+    var pgxx_pgjg: Bool?
+    var gjrxx_fz: Bool?
+    var gjrxx_cshy: Bool?
+    var jkrxx_hyzk: Bool?
+    var null_fxkz: Bool?
+    var clxx_kpjg: Bool?
+    var null_jzdc: Bool?
+    var clxx_pql: Bool?
+    var ddxx_tdzg: Bool?
+    var gjrxx_sjh2: Bool?
+    var gjrxx_sjh1: Bool?
+    var clxx_clys: Bool?
+    var jkrxx_byyx: Bool?
+    var gjrxx_xykzed: Bool?
 }
 
 
@@ -302,15 +460,65 @@ struct GLLoanApply: HandyJSON {
             /// 北京居住年限
             var c_bjyear = ""
             /// 教育程度 1：硕士及以上 2：本科 3：专科 4：高中及以下
-            var c_educational_level = ""
+            var c_educational_level = "" {
+                willSet{
+                    switch newValue {
+                    case "1":
+                        c_educational_level_str = "硕士及以上"
+                    case "2":
+                        c_educational_level_str = "本科"
+                    case "3":
+                        c_educational_level_str = "专科"
+                    case "4":
+                        c_educational_level_str = "高中及以下"
+                    default:
+                        c_educational_level_str = "未知"
+                        break
+                    }
+                }
+            }
+            /// 教育程度Str
+            var c_educational_level_str = ""
+            
             /// 毕业院校
             var c_over_school = ""
             /// 婚姻状况 1：已婚 2：未婚 3：离异 4：再婚
-            var c_marital_status = ""
+            var c_marital_status = "" {
+                willSet {
+                    switch newValue {
+                    case "1":
+                        c_marital_status_str = "已婚"
+                    case "2":
+                        c_marital_status_str = "未婚"
+                    case "3":
+                        c_marital_status_str = "离异"
+                    case "4":
+                        c_marital_status_str = "再婚"
+                    default:
+                        break
+                    }
+                }
+            }
+            /// 婚姻状况Str
+            var c_marital_status_str = ""
             /// 子女状况
             var c_children = ""
             /// 工作性质 1：工薪阶层 2：商人 3：农民
-            var c_nature_of_work = ""
+            var c_nature_of_work = "" {
+                willSet {
+                    switch newValue {
+                    case "1":
+                        c_nature_of_work_str = "工薪阶层"
+                    case "2":
+                        c_nature_of_work_str = "商人"
+                    case "3":
+                        c_nature_of_work_str = "农民"
+                    default:
+                        break
+                    }
+                }
+            }
+            var c_nature_of_work_str = ""
             /// 从属行业
             var c_industry = ""
             /// 工作单位
@@ -349,7 +557,23 @@ struct GLLoanApply: HandyJSON {
                 /// 联系电话
                 var con_phone = ""
                 /// 与借款人关系 1：配偶 2：亲属 3：朋友
-                var con_nexus = ""
+                var con_nexus = "" {
+                    willSet {
+                        switch newValue {
+                        case "1":
+                            con_nexus_str = "配偶"
+                        case "2":
+                            con_nexus_str = "亲属"
+                        case "3":
+                            con_nexus_str = "朋友"
+                        default:
+                            con_nexus_str = "未知"
+                            break
+                        }
+                    }
+                }
+                /// 与共接人关系Str
+                var con_nexus_str = ""
                 /// 工作单位
                 var con_work_company = ""
                 /// 联系地址
@@ -401,9 +625,9 @@ struct GLGPSCarInfoModel: HandyJSON {
     /// 当前违章（0：无；1：有）
     var peccancy = ""
     /// 违章罚分
-    var peccancyFraction = ""
+    var peccancyFraction = "0"
     /// 违章罚钱
-    var peccancyMoney = ""
+    var peccancyMoney = "0"
     /// 发动机号
     var engineCode = ""
     /// 车架号
@@ -1000,7 +1224,7 @@ class GL基本信息ViewController: GLTaskDetailBaseViewController, IndicatorInf
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let dataArr = (parent as? GLTaskDetailGPSViewController)?.dataArray {
+        if let dataArr = (parent as? GLTaskDetailGPSViewController)?.basicDataArray {
             updateUI(dataArr: dataArr)
         }
     }
@@ -1020,7 +1244,14 @@ class GL评估信息ViewController: GLTaskDetailBaseViewController, IndicatorInf
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if let dataArr = (parent as? GLTaskDetailGPSViewController)?.basicDataArray {
+            updateUI(dataArr: dataArr)
+        }
+    }
+    
+    func updateUI(dataArr: [GLSectionModel]) {
+        dataArray = dataArr
+        tableView.reloadData()
     }
     
     
@@ -1110,7 +1341,7 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
         }
     }
     
-    var dataArray: [GLSectionModel] = []
+    var detailGPSBigModel: GLGPSTaskDetailBigModel!
     
     
     override func viewDidLoad() {
@@ -1153,23 +1384,36 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
         }
     }
     
+    /// 基本信息数据
+    var basicDataArray = [GLSectionModel]()
+    
+    
     
     /// 加载数据 数据驱动
     func loadData() {
         
-        GLProvider.request(GLService.GPSDetail(partyId: GLUser.partyId!, l_number: (model?.executionId)!)) { (result) in
+        GLProvider.request(GLService.GPSDetail(partyId: GLUser.partyId!, l_number: (model?.executionId)!)) { [weak self] (result) in
             if case let .success(respon) = result {
                 let json = JSON(respon.data)
                 if json["type"] == "S" {
                     print(json)
+                    self?.detailGPSBigModel = GLGPSTaskDetailBigModel.deserialize(from: json.rawString(), designatedPath: "results")
                     
-                    
-                    
+                    if let detailGPSBigModel = self?.detailGPSBigModel {
+                        print(detailGPSBigModel)
+                        
+                        self?.basicDataArray = GLModelConvert.basicData(model: detailGPSBigModel)
+                        self?.updateBasicVcUI()
+                        
+                        
+                        
+                    }
                     
                 }
             }
         }
         
+        /*
         
         let section1 = GLSectionModel(title: "订单信息", items: [GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部")])
         
@@ -1184,13 +1428,22 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
         dataArray.append(section1)
         dataArray.append(section2)
         dataArray.append(section3)
+ 
+        */
         
-        updateSubVcUI(dataArr: dataArray)
+//        updateBasicVcUI(dataArr: dataArray)
     }
     
-    func updateSubVcUI(dataArr: [GLSectionModel]) {
-        vc1.updateUI(dataArr: dataArr)
+    /// 更新基本信息UI
+    func updateBasicVcUI() {
+        vc1.updateUI(dataArr: basicDataArray)
     }
+    
+    /// 更新评估信息UI
+    func updateEstimateVcUI() {
+        vc2.updateUI(dataArr: basicDataArray)
+    }
+    
     
     
     

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		46F437935764F76F385B8C48 /* Pods_CommonPods_YihaodarDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C11DAB82FCC913D2FA1FE06 /* Pods_CommonPods_YihaodarDev.framework */; };
 		64BD20FEA7293BE6C36BA044 /* Pods_CommonPods_Yihaodar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF1F8DA5F5C42818A503C6C /* Pods_CommonPods_Yihaodar.framework */; };
+		8A15BA93207F097B0066A5FF /* GLModelConvert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A15BA92207F097B0066A5FF /* GLModelConvert.swift */; };
+		8A15BA94207F097B0066A5FF /* GLModelConvert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A15BA92207F097B0066A5FF /* GLModelConvert.swift */; };
 		8A1DAB89202AB282001CBD0F /* UIColor+GLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DAB88202AB282001CBD0F /* UIColor+GLExtension.swift */; };
 		8A1DAB90202AB43B001CBD0F /* GLLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DAB8F202AB43B001CBD0F /* GLLogin.storyboard */; };
 		8A1DAB92202AC3A8001CBD0F /* UIView+GLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1DAB91202AC3A8001CBD0F /* UIView+GLExtension.swift */; };
@@ -192,6 +194,7 @@
 		345B0B2259BEFB9AEECD9CD0 /* Pods_Yihaodar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yihaodar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C11DAB82FCC913D2FA1FE06 /* Pods_CommonPods_YihaodarDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonPods_YihaodarDev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CAC3B8953C87BFDB1EC0DF1 /* Pods-CommonPods-Yihaodar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-Yihaodar.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-Yihaodar/Pods-CommonPods-Yihaodar.release.xcconfig"; sourceTree = "<group>"; };
+		8A15BA92207F097B0066A5FF /* GLModelConvert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLModelConvert.swift; sourceTree = "<group>"; };
 		8A1DAB88202AB282001CBD0F /* UIColor+GLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+GLExtension.swift"; sourceTree = "<group>"; };
 		8A1DAB8F202AB43B001CBD0F /* GLLogin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLLogin.storyboard; sourceTree = "<group>"; };
 		8A1DAB91202AC3A8001CBD0F /* UIView+GLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+GLExtension.swift"; sourceTree = "<group>"; };
@@ -528,6 +531,7 @@
 				8AD5E0DF20444BCB00CB7CFF /* fugaijian.plist */,
 				8AD5E0E120444CE000CB7CFF /* jiegoujian.plist */,
 				8AD5E0E320444D8400CB7CFF /* miaoshu.plist */,
+				8A15BA92207F097B0066A5FF /* GLModelConvert.swift */,
 			);
 			path = GLData;
 			sourceTree = "<group>";
@@ -945,6 +949,7 @@
 				8A5456192043C8800039D127 /* GLCarConfigViewController.swift in Sources */,
 				8A54561B2043D1E70039D127 /* GLCarStateViewController.swift in Sources */,
 				8A5456112042920E0039D127 /* GLMeViewController.swift in Sources */,
+				8A15BA93207F097B0066A5FF /* GLModelConvert.swift in Sources */,
 				8A4982D82027F63A00EB4BEF /* GLConst.swift in Sources */,
 				8AD5E0C32043FC0800CB7CFF /* GLUploadPictureViewController.swift in Sources */,
 				8A4FCB23206B465C00869687 /* TransitionSubmitButton.swift in Sources */,
@@ -997,6 +1002,7 @@
 				8AF90BD120746850009DD32E /* GLCarConfigViewController.swift in Sources */,
 				8AF90BD220746850009DD32E /* GLCarStateViewController.swift in Sources */,
 				8AF90BD320746850009DD32E /* GLMeViewController.swift in Sources */,
+				8A15BA94207F097B0066A5FF /* GLModelConvert.swift in Sources */,
 				8AF90BD420746850009DD32E /* GLConst.swift in Sources */,
 				8AF90BD520746850009DD32E /* GLUploadPictureViewController.swift in Sources */,
 				8AF90BD620746850009DD32E /* TransitionSubmitButton.swift in Sources */,
