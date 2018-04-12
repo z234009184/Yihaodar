@@ -25,18 +25,27 @@ extension String {
     }
     
     func decimalString() -> String {
-        
+        return styleString(style: .decimal)
+    }
+    
+    func percentString() -> String {
+        return styleString(style: .percent)
+    }
+    
+    private func styleString(style: NumberFormatter.Style = .decimal) -> String {
         let price = Double(self)
         
         guard let priceNum = price else { return self}
         
         let format = NumberFormatter()
         //设置numberStyle（有多种格式）
-        format.numberStyle = .decimal
+        format.numberStyle = style
         //转换后的string
         let string = format.string(from: NSNumber(value: priceNum))
         
         return string ?? self
     }
+    
+    
 }
 

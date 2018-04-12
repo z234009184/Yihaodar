@@ -126,7 +126,7 @@ struct GLGPSInfoModel: HandyJSON {
     var g_personnel = ""
     /// 安装日期
     var install_Date = ""
-    /// 安装人员
+    /// 安装明细
     var gpsSet = [GLGPSSetModel]()
     
     
@@ -182,11 +182,41 @@ struct GLLoanRiskerModel: HandyJSON {
     /// 批贷期限
     var lrTerm = ""
     /// 还款方式 0：先息后本 1：等额本息   2：等本等息
-    var lrRepaytype = ""
+    var lrRepaytype = "" {
+        willSet {
+            switch newValue {
+            case "0":
+                lrRepaytypeStr = "先息后本"
+            case "1":
+                lrRepaytypeStr = "等额本息"
+            case "2":
+                lrRepaytypeStr = "等本等息"
+            default:
+                break
+            }
+        }
+    }
+    /// 还款方式Str
+    var lrRepaytypeStr = ""
     /// 借款抵押率（0.02就是2%）
     var lrLoanmortgageRate = ""
     /// 借款类型 1：押手续 2：押车 3：双押
-    var lrMortagetype = ""
+    var lrMortagetype = "" {
+        willSet {
+            switch newValue {
+            case "1":
+                lrMortagetypeStr = "押手续"
+            case "2":
+                lrMortagetypeStr = "押车"
+            case "3":
+                lrMortagetypeStr = "双押"
+            default:
+                break
+            }
+        }
+    }
+    /// 借款类型Str
+    var lrMortagetypeStr = ""
     /// 出借人
     var lrLenderName = ""
     /// 公司月息
@@ -736,7 +766,7 @@ struct GLGPSTaskDetailBigModel: HandyJSON {
     var agentBack = [GLAgentBackModel]()
     
     /// 车况信息
-    var Carinfodata = [GLCarinfodataModel]()
+    var carinfodata = [GLCarinfodataModel]()
     
     /// 面审信息（风险控制）
     var loanRisker = GLLoanRiskerModel()
@@ -1090,7 +1120,7 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
         
         tableView.register(UINib(nibName: "GLTaskDetailTableViewPictureCell", bundle: nil), forCellReuseIdentifier: GLTaskDetailTableViewPictureCellId)
         
-        tableView.contentInset = UIEdgeInsetsMake(8, 0, -20, 0)
+        tableView.contentInset = UIEdgeInsetsMake(8, 0, 0, 0)
         
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.separatorColor = .clear
@@ -1203,7 +1233,7 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
+        scrollView.frame.height = view.frame.height
         guard let parentVc = parent as? GLTaskDetailGPSViewController else {
             return
         }
@@ -1244,7 +1274,7 @@ class GL评估信息ViewController: GLTaskDetailBaseViewController, IndicatorInf
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let dataArr = (parent as? GLTaskDetailGPSViewController)?.basicDataArray {
+        if let dataArr = (parent as? GLTaskDetailGPSViewController)?.estimateDataArray {
             updateUI(dataArr: dataArr)
         }
     }
@@ -1264,6 +1294,14 @@ class GL风险控制ViewController: GLTaskDetailBaseViewController, IndicatorInf
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let dataArr = (parent as? GLTaskDetailGPSViewController)?.riskControlDataArray {
+            updateUI(dataArr: dataArr)
+        }
+    }
+    
+    func updateUI(dataArr: [GLSectionModel]) {
+        dataArray = dataArr
+        tableView.reloadData()
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -1275,6 +1313,14 @@ class GL尽职调查ViewController: GLTaskDetailBaseViewController, IndicatorInf
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let dataArr = (parent as? GLTaskDetailGPSViewController)?.investigateDataArray {
+            updateUI(dataArr: dataArr)
+        }
+    }
+    
+    func updateUI(dataArr: [GLSectionModel]) {
+        dataArray = dataArr
+        tableView.reloadData()
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -1387,6 +1433,14 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     /// 基本信息数据
     var basicDataArray = [GLSectionModel]()
     
+    /// 评估信息数据
+    var estimateDataArray = [GLSectionModel]()
+    
+    /// 风险控制数据
+    var riskControlDataArray = [GLSectionModel]()
+    
+    /// 尽职调查数据
+    var investigateDataArray = [GLSectionModel]()
     
     
     /// 加载数据 数据驱动
@@ -1405,8 +1459,14 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
                         self?.basicDataArray = GLModelConvert.basicData(model: detailGPSBigModel)
                         self?.updateBasicVcUI()
                         
+                        self?.estimateDataArray = GLModelConvert.estimateData(model: detailGPSBigModel)
+                        self?.updateEstimateVcUI()
                         
+                        self?.riskControlDataArray = GLModelConvert.riskControlData(model: detailGPSBigModel)
+                        self?.updateRiskControlVcUI()
                         
+                        self?.investigateDataArray = GLModelConvert.investigateData(model: detailGPSBigModel)
+                        self?.updateInvestigateVcUI()
                     }
                     
                 }
@@ -1441,10 +1501,19 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     
     /// 更新评估信息UI
     func updateEstimateVcUI() {
-        vc2.updateUI(dataArr: basicDataArray)
+        vc2.updateUI(dataArr: estimateDataArray)
     }
     
     
+    /// 更新风险控制UI
+    func updateRiskControlVcUI() {
+        vc3.updateUI(dataArr: riskControlDataArray)
+    }
+    
+    /// 更新尽职调查UI
+    func updateInvestigateVcUI() {
+        vc4.updateUI(dataArr: investigateDataArray)
+    }
     
     
     @IBAction func submitBtnClick(_ sender: DesignableButton) {

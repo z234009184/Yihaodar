@@ -10,6 +10,12 @@ import HandyJSON
 import SwiftyJSON
 
 class GLModelConvert: NSObject {
+    
+    
+    /// 转换基本信息数据
+    ///
+    /// - Parameter model: 总详情信息
+    /// - Returns: 基本信息数据数组
     static func basicData(model: GLGPSTaskDetailBigModel) -> [GLSectionModel] {
         var dataArray = [GLSectionModel]()
         
@@ -526,20 +532,216 @@ class GLModelConvert: NSObject {
                             dataArray.append(sectionModel)
                         }
                     }
-                    
-                    
-                    
-                    
                     //--------------
                 }
             }
+        }
+        return dataArray
+    }
+    
+    
+    /// 转换评估信息数据
+    ///
+    /// - Parameter model: 总详情信息
+    /// - Returns: 评估数据数组
+    static func estimateData(model: GLGPSTaskDetailBigModel) -> [GLSectionModel] {
+        var dataArray = [GLSectionModel]()
+        
+        // 车辆配置
+        if model.dataAuth.pgxx_clpz == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "车辆配置"
             
+            let carInfo = model.carInfo
+            sectionModel.items.append(GLItemModel(title: "变速器", subTitle: carInfo.gearbox))
+            sectionModel.items.append(GLItemModel(title: "驱动方式", subTitle: carInfo.drivingType))
+            sectionModel.items.append(GLItemModel(title: "有无钥匙启动", subTitle: carInfo.keylessStartup))
+            sectionModel.items.append(GLItemModel(title: "定速巡航", subTitle: carInfo.cruiseControl))
+            sectionModel.items.append(GLItemModel(title: "导航", subTitle: carInfo.navigation))
+            sectionModel.items.append(GLItemModel(title: "后排娱乐", subTitle: carInfo.hpyl))
+            sectionModel.items.append(GLItemModel(title: "座椅形式", subTitle: carInfo.chairType))
+            sectionModel.items.append(GLItemModel(title: "燃油方式", subTitle: carInfo.fuelType))
+            sectionModel.items.append(GLItemModel(title: "天窗", subTitle: carInfo.skylight))
+            sectionModel.items.append(GLItemModel(title: "空调配置", subTitle: carInfo.airConditioner))
+            sectionModel.items.append(GLItemModel(title: "其他", subTitle: carInfo.Other))
+            sectionModel.items.append(GLItemModel(title: "事故", subTitle: carInfo.accident))
+            
+            dataArray.append(sectionModel)
         }
         
+        
+        // 车况描述
+        if model.dataAuth.pgxx_ckms == true {
+            
+            for carConfigModel in model.carinfodata {
+                var sectionModel = GLSectionModel()
+                sectionModel.title = "车况描述"
+                
+                sectionModel.items.append(GLItemModel(title: "车构件", subTitle: carConfigModel.partsOneId))
+                sectionModel.items.append(GLItemModel(title: "部件", subTitle: carConfigModel.partsTwoId))
+                sectionModel.items.append(GLItemModel(title: "描述", subTitle: carConfigModel.accidentType))
+                sectionModel.items.append(GLItemModel(title: "备注", subTitle: carConfigModel.remarks))
+                
+                dataArray.append(sectionModel)
+            }
+        }
+        
+        
+        // 评估师
+        if model.dataAuth.pgxx_pgjg == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "评估结果"
+            
+            let carInfo = model.carInfo
+            sectionModel.items.append(GLItemModel(title: "评估师", subTitle: carInfo.assessmentName))
+            sectionModel.items.append(GLItemModel(title: "评估价格", subTitle: carInfo.confirmedMoney.decimalString() + "万元"))
+            sectionModel.items.append(GLItemModel(title: "备注", subTitle: carInfo.remarks))
+            
+            dataArray.append(sectionModel)
+        }
+        
+        // 定价师
+        if model.dataAuth.pgxx_djjg == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "定价结果"
+            
+            let carInfo = model.carInfo
+            sectionModel.items.append(GLItemModel(title: "定价师", subTitle: carInfo.fixPriceName))
+            sectionModel.items.append(GLItemModel(title: "定价价格", subTitle: carInfo.fixPriceMoney.decimalString() + "万元"))
+            sectionModel.items.append(GLItemModel(title: "备注", subTitle: carInfo.fixPriceRemark))
+            
+            dataArray.append(sectionModel)
+        }
+        
+        return dataArray
+    }
+    
+    
+    /// 转换风险控制信息数据
+    ///
+    /// - Parameter model: 总详情信息
+    /// - Returns: 风险控制数据数组
+    static func riskControlData(model: GLGPSTaskDetailBigModel) -> [GLSectionModel] {
+        var dataArray = [GLSectionModel]()
+        
+        if model.dataAuth.fxkz_fxkz == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "风险控制"
+            
+            if model.dataAuth.fxkz_jkyt == true {
+                sectionModel.items.append(GLItemModel(title: "借款用途", subTitle: model.loanRisker.lrPurpose))
+            }
+            
+            if model.dataAuth.fxkz_mqyj == true {
+                sectionModel.items.append(GLItemModel(title: "面签意见", subTitle: model.loanRisker.lrSuggestion))
+            }
+            
+            if model.dataAuth.fxkz_pdje == true {
+                sectionModel.items.append(GLItemModel(title: "批贷金额", subTitle: model.loanRisker.lrAmount.decimalString() + "万元"))
+            }
+            
+            if model.dataAuth.fxkz_pdqx == true {
+                sectionModel.items.append(GLItemModel(title: "批贷期限", subTitle: model.loanRisker.lrTerm + "月"))
+            }
+            
+            if model.dataAuth.fxkz_hkfs == true {
+                sectionModel.items.append(GLItemModel(title: "还款方式", subTitle: model.loanRisker.lrRepaytypeStr))
+            }
+            
+            if model.dataAuth.fxkz_jkdyl == true {
+                sectionModel.items.append(GLItemModel(title: "借款抵押率", subTitle: model.loanRisker.lrLoanmortgageRate.percentString()))
+            }
+            
+            if model.dataAuth.fxkz_jklx == true {
+                sectionModel.items.append(GLItemModel(title: "借款类型", subTitle: model.loanRisker.lrMortagetypeStr))
+            }
+            
+            if model.dataAuth.fxkz_cjr == true {
+                sectionModel.items.append(GLItemModel(title: "出借人", subTitle: model.loanRisker.lrLenderName))
+            }
+            
+            dataArray.append(sectionModel)
+        }
+        
+        if model.dataAuth.fxkz_jkll == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "借款利率"
+            
+            if model.dataAuth.jkll_gsyx == true {
+                sectionModel.items.append(GLItemModel(title: "公司月息", subTitle: model.loanRisker.lrRateGsmonthrate))
+            }
+            
+            if model.dataAuth.jkll_gsfwf == true {
+                var lrRateGsservicefee = model.loanRisker.lrRateGsservicefee
+                if lrRateGsservicefee.isEmpty == false {
+                    lrRateGsservicefee = lrRateGsservicefee + "元"
+                }
+                sectionModel.items.append(GLItemModel(title: "公司服务费", subTitle: lrRateGsservicefee))
+            }
+            
+            if model.dataAuth.jkll_khyx == true {
+                sectionModel.items.append(GLItemModel(title: "客户月息", subTitle: model.loanRisker.lrRateKhmonthrate))
+            }
+            
+            if model.dataAuth.jkll_khfwf == true {
+                var lrRateKhservicefee = model.loanRisker.lrRateKhservicefee
+                if lrRateKhservicefee.isEmpty == false {
+                    lrRateKhservicefee = lrRateKhservicefee + "元"
+                }
+                sectionModel.items.append(GLItemModel(title: "客户服务费", subTitle: lrRateKhservicefee))
+            }
+            
+            dataArray.append(sectionModel)
+        }
         
         
         
         return dataArray
     }
     
+    
+    
+    /// 转换尽职调查信息数据
+    ///
+    /// - Parameter model: 总详情信息
+    /// - Returns: 尽职调查数据数组
+    static func investigateData(model: GLGPSTaskDetailBigModel) -> [GLSectionModel] {
+        var dataArray = [GLSectionModel]()
+        
+        if model.dataAuth.jzdc_gpsazmx == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "GPS安装明细"
+            
+            if model.dataAuth.gpsazmx_azry == true {
+                sectionModel.items.append(GLItemModel(title: "安装人员", subTitle: model.gpsInfo.g_personnel))
+            }
+            
+            if model.dataAuth.gpsazmx_azrq == true {
+                sectionModel.items.append(GLItemModel(title: "安装日期", subTitle: model.gpsInfo.install_Date))
+            }
+            
+            if model.dataAuth.gpsazmx_azms == true {
+                
+                for gpsMxModel in model.gpsInfo.gpsSet {
+                    var formModel = GLFormModel()
+                    
+                    for key in gpsMxModel {
+                        
+                    }
+                    
+                    
+                    dataArray.append(formModel)
+                }
+                
+            }
+            
+            
+            dataArray.append(sectionModel)
+        }
+        
+        
+        
+        return dataArray
+        
+    }
 }
