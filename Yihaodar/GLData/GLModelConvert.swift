@@ -1028,14 +1028,16 @@ class GLModelConvert: NSObject {
             sectionModel.items.append(GLItemModel(title: "支行信息", subTitle: model.appInfo.a_bank_branch))
             
             
-            var formModel = GLFormModel()
-            formModel.titles = ["预计返费时间", "返费金额", "备注"]
+            
+            var formM = GLFormModel()
+            formM.titles = ["预计返费时间", "返费金额", "备注"]
+            formM.dataArray = [["1","2","3"]]
             for agentModel in model.agentBack {
                 let formArray = [agentModel.backtime, agentModel.backamount, agentModel.backremark]
                 
-                formModel.dataArray.append(formArray)
+                formM.dataArray.append(formArray)
             }
-            sectionModel.items.append(formModel)
+            sectionModel.items.append(formM)
             
             
             dataArray.append(sectionModel)

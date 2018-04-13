@@ -954,7 +954,7 @@ class GLTaskDetailFormCell: UITableViewCell, SheetViewDelegate, SheetViewDataSou
                 return strArr
             })
             
-            
+            sheetView.reloadData()
         }
     }
     
@@ -1188,6 +1188,12 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
         
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        tableView.frame.height = view.frame.height
+//    }
+    
+    
     func updateUI(dataArr: [GLSectionModel]) {
         dataArray = dataArr
         tableView.reloadData()
@@ -1306,6 +1312,8 @@ class GL基本信息ViewController: GLTaskDetailBaseViewController, IndicatorInf
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "基本信息")
     }
+    
+    
 }
 
 

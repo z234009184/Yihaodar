@@ -83,7 +83,7 @@ class SheetView: UIView, UITableViewDelegate, UITableViewDataSource, UICollectio
         self.topView?.dataSource = self
         self.topView?.delegate = self
         self.topView?.showsHorizontalScrollIndicator = false
-        self.topView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: topViewCellId)
+        self.topView?.register(GLSheetTopCollectionViewCell.self, forCellWithReuseIdentifier: topViewCellId)
         self.topView?.backgroundColor = self.leftView.backgroundColor
         self.topView?.bounces = false
         //contentview
@@ -238,6 +238,9 @@ class SheetView: UIView, UITableViewDelegate, UITableViewDataSource, UICollectio
         }
     }
     
+    
+    
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -253,21 +256,35 @@ class SheetView: UIView, UITableViewDelegate, UITableViewDataSource, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let topCell = collectionView.dequeueReusableCell(withReuseIdentifier: topViewCellId, for: indexPath)
-        topCell.backgroundColor = .white
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: topViewCellId, for: indexPath) as? GLSheetTopCollectionViewCell else { return GLSheetTopCollectionViewCell() }
+        
         let width = self.delegate?.sheetView(sheetView: self, widthForColAtIndexPath: indexPath as NSIndexPath)
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: width!, height: self.titleRowHeight))
-        label.text = self.dataSource?.sheetView(sheetView: self, cellForTopRowAtIndexPath: indexPath as NSIndexPath)
+        cell.label.frame.width = width!
+        cell.label.frame.height = self.titleRowHeight
+        cell.label.text = self.dataSource?.sheetView(sheetView: self, cellForTopRowAtIndexPath: indexPath as NSIndexPath)
+        
+        return cell
+    }
+    
+}
+
+class GLSheetTopCollectionViewCell: UICollectionViewCell {
+    
+    var label = UILabel()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .white
         label.textAlignment = NSTextAlignment.center
         label.textColor = UIColor(red: 0x99 / 255.0, green: 0xa0 / 255.0, blue: 0xaa / 255.0, alpha: 1.0)
         label.font = UIFont.systemFont(ofSize: 12)
         label.numberOfLines = 0
-        topCell.contentView.addSubview(label)
+        contentView.addSubview(label)
         
-        topCell.layer.borderColor = UIColor(red: 0xed / 255.0, green: 0xee / 255.0, blue: 0xf1 / 255.0, alpha: 1.0).cgColor
-        topCell.layer.borderWidth = 0.5
-        
-        return topCell
+        layer.borderColor = UIColor(red: 0xed / 255.0, green: 0xee / 255.0, blue: 0xf1 / 255.0, alpha: 1.0).cgColor
+        layer.borderWidth = 0.5
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
