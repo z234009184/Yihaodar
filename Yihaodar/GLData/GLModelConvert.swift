@@ -708,6 +708,8 @@ class GLModelConvert: NSObject {
     static func investigateData(model: GLGPSTaskDetailBigModel) -> [GLSectionModel] {
         var dataArray = [GLSectionModel]()
         
+        
+        // GPS 安装明细
         if model.dataAuth.jzdc_gpsazmx == true {
             var sectionModel = GLSectionModel()
             sectionModel.title = "GPS安装明细"
@@ -721,27 +723,219 @@ class GLModelConvert: NSObject {
             }
             
             if model.dataAuth.gpsazmx_azms == true {
-                
+                var formModel = GLFormModel()
+                formModel.titles = ["设备类型", "设备型号", "设备编号", "设备SIM卡号", "安装位置", "备注"]
                 for gpsMxModel in model.gpsInfo.gpsSet {
-                    var formModel = GLFormModel()
+                    let formArray = [gpsMxModel.gps_type, gpsMxModel.gps_version, gpsMxModel.gps_number, gpsMxModel.gps_sim_card, gpsMxModel.gps_position, gpsMxModel.gps_remark]
                     
-                    for key in gpsMxModel {
-                        
-                    }
-                    
-                    
-                    dataArray.append(formModel)
+                    formModel.dataArray.append(formArray)
                 }
+                sectionModel.items.append(formModel)
                 
             }
+            dataArray.append(sectionModel)
+        }
+        
+        
+        // 下户尽调
+        if model.dataAuth.jzdc_xhjd == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "下户尽调"
             
+            if model.dataAuth.xhjd_xhrq == true {
+                sectionModel.items.append(GLItemModel(title: "下户日期", subTitle: model.pauperInfo.crea_date))
+            }
+            
+            if model.dataAuth.xhjd_xhrq == true {
+                sectionModel.items.append(GLItemModel(title: "下户与申请地址是否一致", subTitle: model.pauperInfo.pauper_agreement))
+            }
+            
+            if model.dataAuth.xhjd_xhrq == true {
+                sectionModel.items.append(GLItemModel(title: "房屋居住来源", subTitle: model.pauperInfo.pauper_source))
+            }
+            
+            if model.dataAuth.xhjd_xhrq == true {
+                sectionModel.items.append(GLItemModel(title: "房屋用途", subTitle: model.pauperInfo.pauper_purpose))
+            }
+            
+            if model.dataAuth.xhjd_xhrq == true {
+                sectionModel.items.append(GLItemModel(title: "房屋周围环境", subTitle: model.pauperInfo.pauper_environment))
+            }
+            
+            if model.dataAuth.xhjd_fwnywwjp == true {
+                sectionModel.items.append(GLItemModel(title: "房屋内有无违禁品", subTitle: model.pauperInfo.pauper_contraband))
+            }
+            
+            if model.dataAuth.xhjd_xhyj == true {
+                sectionModel.items.append(GLItemModel(title: "下户意见", subTitle: model.pauperInfo.pauper_opinion))
+            }
+            
+            dataArray.append(sectionModel)
+        }
+        
+        // 下户尽调
+        if model.dataAuth.jzdc_dzydj == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "抵质押登记"
+            
+            if model.dataAuth.dzydj_dzydjrq == true {
+                sectionModel.items.append(GLItemModel(title: "抵质押登记日期", subTitle: model.pledgeTime))
+            }
             
             dataArray.append(sectionModel)
         }
         
         
-        
         return dataArray
         
+    }
+    
+    /// 转换合同信息数据
+    ///
+    /// - Parameter model: 总详情信息
+    /// - Returns: 合同数据数组
+    static func pactData(model: GLGPSTaskDetailBigModel) -> [GLSectionModel] {
+        var dataArray = [GLSectionModel]()
+        if model.dataAuth.htqy_htjf == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "合同交付"
+            sectionModel.items.append(GLItemModel(title: "合同编号", subTitle: model.loanApply.contract_number))
+            
+            var formModel = GLFormModel()
+            formModel.titles = ["合同名称", "是否交付", "数量(份)"]
+            formModel.titleColWidth = 120
+            for htModel in model.signatureList {
+                let formArray = [htModel.dname, htModel.isGive, htModel.contract_count]
+                
+                formModel.dataArray.append(formArray)
+            }
+            sectionModel.items.append(formModel)
+            
+            dataArray.append(sectionModel)
+        }
+        return dataArray
+    }
+    
+    
+    /// 转换资料附件信息数据
+    ///
+    /// - Parameter model: 总详情信息
+    /// - Returns: 资料附件数据数组
+    static func accessoryData(model: GLGPSTaskDetailBigModel) -> [GLSectionModel] {
+        var dataArray = [GLSectionModel]()
+        
+        if model.dataAuth.zlfj_clwg == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "车辆外观"
+            
+            let acceaaroyFileUrls = model.carAttWg.flatMap { (accessoryModel) -> String? in
+                return accessoryModel.file_url
+            }
+            sectionModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
+            dataArray.append(sectionModel)
+        }
+        
+        if model.dataAuth.zlfj_clns == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "车辆内饰"
+            
+            let acceaaroyFileUrls = model.carAttNs.flatMap { (accessoryModel) -> String? in
+                return accessoryModel.file_url
+            }
+            sectionModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
+            dataArray.append(sectionModel)
+        }
+        
+        if model.dataAuth.zlfj_clxx == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "车辆信息"
+            
+            let acceaaroyFileUrls = model.carAttXx.flatMap { (accessoryModel) -> String? in
+                return accessoryModel.file_url
+            }
+            sectionModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
+            dataArray.append(sectionModel)
+        }
+        
+        
+        if model.dataAuth.zlfj_cjcx == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "车价查询"
+            
+            let acceaaroyFileUrls = model.carAttCj.flatMap { (accessoryModel) -> String? in
+                return accessoryModel.file_url
+            }
+            sectionModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
+            dataArray.append(sectionModel)
+        }
+        
+        if model.dataAuth.zlfj_wzcx == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "违章查询"
+            
+            let acceaaroyFileUrls = model.carAttWz.flatMap { (accessoryModel) -> String? in
+                return accessoryModel.file_url
+            }
+            sectionModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
+            dataArray.append(sectionModel)
+        }
+        
+        if model.dataAuth.zlfj_fxkz == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "风险控制"
+            
+            let acceaaroyFileUrls = model.loanAttFxkz.flatMap { (accessoryModel) -> String? in
+                return accessoryModel.file_url
+            }
+            sectionModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
+            dataArray.append(sectionModel)
+        }
+        
+        
+        if model.dataAuth.zlfj_sycl == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "收押材料"
+            
+            let acceaaroyFileUrls = model.loanAttSycl.flatMap { (accessoryModel) -> String? in
+                return accessoryModel.file_url
+            }
+            sectionModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
+            dataArray.append(sectionModel)
+        }
+        
+        if model.dataAuth.zlfj_xhzp == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "下户照片"
+            
+            let acceaaroyFileUrls = model.loanAttXh.flatMap { (accessoryModel) -> String? in
+                return accessoryModel.file_url
+            }
+            sectionModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
+            dataArray.append(sectionModel)
+        }
+        
+        if model.dataAuth.zlfj_dzydjyblpz == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "抵质押登记已办理凭证"
+            
+            let acceaaroyFileUrls = model.loanAttDzy.flatMap { (accessoryModel) -> String? in
+                return accessoryModel.file_url
+            }
+            sectionModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
+            dataArray.append(sectionModel)
+        }
+        
+        
+        return dataArray
+    }
+    
+    /// 转换费用信息数据
+    ///
+    /// - Parameter model: 总详情信息
+    /// - Returns: 费用数据数组
+    static func costData(model: GLGPSTaskDetailBigModel) -> [GLSectionModel] {
+        var dataArray = [GLSectionModel]()
+        
+        return dataArray
     }
 }

@@ -132,6 +132,7 @@ struct GLGPSInfoModel: HandyJSON {
     
     /// 安装明细集合模型
     struct GLGPSSetModel: HandyJSON {
+        
         /// 设备类型
         var gps_type = ""
         /// 设备型号
@@ -144,8 +145,12 @@ struct GLGPSInfoModel: HandyJSON {
         var gps_sim_card = ""
         /// 备注
         var gps_remark = ""
+        
     }
 }
+
+
+
 
 /// 经纪人返费模型
 struct GLAgentBackModel: HandyJSON {
@@ -798,6 +803,9 @@ struct GLGPSTaskDetailBigModel: HandyJSON {
     
     /// 合同
     var signatureList = [GLSignatureListModel]()
+    
+    /// 抵质押登记日期
+    var pledgeTime = ""
 }
 
 
@@ -821,6 +829,7 @@ struct GLItemModel: HandyJSON {
 struct GLFormModel: HandyJSON {
     var titles: [String] = []
     var dataArray: [[String]] = []
+    var titleColWidth: CGFloat = 80
 }
 
 
@@ -911,7 +920,7 @@ class GLTaskDetailFormCell: UITableViewCell, SheetViewDelegate, SheetViewDataSou
     var formModel: GLFormModel? {
         didSet {
             sheetView.sheetHead = formModel?.titles.first
-            
+            sheetView.titleColWidth = (formModel?.titleColWidth)!
             formModel?.titles.removeFirst()
             topArr = (formModel?.titles)!
             leftArr = (formModel?.dataArray)!.flatMap { (formItemModel) -> String? in
@@ -1052,8 +1061,16 @@ class GLTaskDetailTableViewPictureCell: UITableViewCell, UICollectionViewDataSou
             
             
             let count = (pictureModel?.pictures.count)!
-            let constant = CGFloat((Int(count-1)/3)+1) * 100.0 - 10
-            collectionViewHeight.constant = constant
+            
+            if count == 0 {
+                collectionViewHeight.constant = 24
+                collectionView.isHidden = true
+            } else {
+                let constant = CGFloat((Int(count-1)/3)+1) * 100.0 - 10
+                collectionViewHeight.constant = constant
+                collectionView.isHidden = false
+            }
+            
             
             collectionView.reloadData()
         }
@@ -1150,6 +1167,12 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
         tableView.frame = CGRect(x: 8, y: 0, width: view.frame.size.width-16, height: view.frame.size.height)
         
     }
+    
+    func updateUI(dataArr: [GLSectionModel]) {
+        dataArray = dataArr
+        tableView.reloadData()
+    }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return dataArray.count
@@ -1259,10 +1282,6 @@ class GL基本信息ViewController: GLTaskDetailBaseViewController, IndicatorInf
         }
     }
     
-    func updateUI(dataArr: [GLSectionModel]) {
-        dataArray = dataArr
-        tableView.reloadData()
-    }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "基本信息")
@@ -1277,11 +1296,6 @@ class GL评估信息ViewController: GLTaskDetailBaseViewController, IndicatorInf
         if let dataArr = (parent as? GLTaskDetailGPSViewController)?.estimateDataArray {
             updateUI(dataArr: dataArr)
         }
-    }
-    
-    func updateUI(dataArr: [GLSectionModel]) {
-        dataArray = dataArr
-        tableView.reloadData()
     }
     
     
@@ -1299,10 +1313,6 @@ class GL风险控制ViewController: GLTaskDetailBaseViewController, IndicatorInf
         }
     }
     
-    func updateUI(dataArr: [GLSectionModel]) {
-        dataArray = dataArr
-        tableView.reloadData()
-    }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "风险控制")
@@ -1318,10 +1328,6 @@ class GL尽职调查ViewController: GLTaskDetailBaseViewController, IndicatorInf
         }
     }
     
-    func updateUI(dataArr: [GLSectionModel]) {
-        dataArray = dataArr
-        tableView.reloadData()
-    }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "尽职调查")
@@ -1332,6 +1338,9 @@ class GL合同签约ViewController: GLTaskDetailBaseViewController, IndicatorInf
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let dataArr = (parent as? GLTaskDetailGPSViewController)?.pactDataArray  {
+            updateUI(dataArr: dataArr)
+        }
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -1343,6 +1352,9 @@ class GL资料附件ViewController: GLTaskDetailBaseViewController, IndicatorInf
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let dataArr = (parent as? GLTaskDetailGPSViewController)?.accessoryDataArray  {
+            updateUI(dataArr: dataArr)
+        }
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -1354,6 +1366,9 @@ class GL费用及放款ViewController: GLTaskDetailBaseViewController, Indicator
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let dataArr = (parent as? GLTaskDetailGPSViewController)?.costDataArray  {
+            updateUI(dataArr: dataArr)
+        }
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -1442,6 +1457,14 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     /// 尽职调查数据
     var investigateDataArray = [GLSectionModel]()
     
+    /// 合同数据
+    var pactDataArray = [GLSectionModel]()
+    
+    /// 附件数据
+    var accessoryDataArray = [GLSectionModel]()
+    
+    /// 费用及放款
+    var costDataArray = [GLSectionModel]()
     
     /// 加载数据 数据驱动
     func loadData() {
@@ -1467,6 +1490,15 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
                         
                         self?.investigateDataArray = GLModelConvert.investigateData(model: detailGPSBigModel)
                         self?.updateInvestigateVcUI()
+                        
+                        self?.pactDataArray = GLModelConvert.pactData(model: detailGPSBigModel)
+                        self?.updatePactVcUI()
+                        
+                        self?.accessoryDataArray = GLModelConvert.accessoryData(model: detailGPSBigModel)
+                        self?.updateAccessoryVcUI()
+                        
+                        self?.costDataArray = GLModelConvert.costData(model: detailGPSBigModel)
+                        self?.updateCostVcUI()
                     }
                     
                 }
@@ -1474,24 +1506,12 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
         }
         
         /*
-        
-        let section1 = GLSectionModel(title: "订单信息", items: [GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLItemModel(title: "所属门店", subTitle: "朝阳事业部")])
-        
-        
-        let section2 = GLSectionModel(title: "车辆信息", items: [GLItemModel(title: "所属门店", subTitle: "朝阳事业部"), GLFormModel(titles: ["1", "2", "3", "3"], dataArray: [["好","世界","ss","ss"], ["你","世界","ff","大家看风景看电视了就分开了多少积分卡圣诞节快乐附件圣诞快乐附件肯定是老骥伏枥看电视剧开发大家看风景看电视了就分开了多少积分卡圣诞节快乐附件圣诞快乐附件肯定是老骥伏枥看电视剧开发大家看风景看电视了就分开了多少积分卡圣诞节快乐附件圣诞快乐附件肯定是老骥伏枥看电视剧开发大家看风景看电视了就分开了多少积分卡圣诞节快乐附件圣诞快乐附件肯定是老骥伏枥看电视剧开发"], ["你好","世界","呵呵","ss"]])])
-        
-        
-        
         let section3 = GLSectionModel(title: "图片图片", items: [GLPictureModel(pictures: ["http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg", "http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg", "http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg", "http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg", "http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg", "http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg", "http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg"])])
         
-        
-        dataArray.append(section1)
-        dataArray.append(section2)
-        dataArray.append(section3)
  
         */
         
-//        updateBasicVcUI(dataArr: dataArray)
+
     }
     
     /// 更新基本信息UI
@@ -1515,6 +1535,17 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
         vc4.updateUI(dataArr: investigateDataArray)
     }
     
+    func updatePactVcUI() {
+        vc5.updateUI(dataArr: pactDataArray)
+    }
+    
+    func updateAccessoryVcUI() {
+        vc6.updateUI(dataArr: accessoryDataArray)
+    }
+    
+    func updateCostVcUI() {
+        vc7.updateUI(dataArr: costDataArray)
+    }
     
     @IBAction func submitBtnClick(_ sender: DesignableButton) {
         

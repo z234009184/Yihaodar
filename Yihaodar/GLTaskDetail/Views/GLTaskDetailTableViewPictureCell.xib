@@ -19,9 +19,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未上传附件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2E-sQ-CPK">
-                        <rect key="frame" x="20" y="10" width="76.5" height="44"/>
+                        <rect key="frame" x="15" y="10" width="76.5" height="24"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="44" id="dwI-3V-neD"/>
+                            <constraint firstAttribute="height" constant="24" id="3sR-k5-GdI"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.59999999999999998" green="0.62745098040000002" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -48,10 +48,9 @@
                     </collectionView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="O2E-sQ-CPK" firstAttribute="leading" secondItem="cix-4M-7Tm" secondAttribute="leading" constant="20" id="FnF-Kn-upb"/>
+                    <constraint firstItem="O2E-sQ-CPK" firstAttribute="leading" secondItem="cix-4M-7Tm" secondAttribute="leading" constant="15" id="FnF-Kn-upb"/>
                     <constraint firstItem="O2E-sQ-CPK" firstAttribute="top" secondItem="cix-4M-7Tm" secondAttribute="top" constant="10" id="Krt-un-VsE"/>
                     <constraint firstItem="2uI-Nj-WiO" firstAttribute="leading" secondItem="cix-4M-7Tm" secondAttribute="leading" constant="10" id="SiV-5i-UHI"/>
-                    <constraint firstAttribute="bottom" secondItem="O2E-sQ-CPK" secondAttribute="bottom" priority="250" constant="10" id="ha7-ev-nx0"/>
                     <constraint firstItem="2uI-Nj-WiO" firstAttribute="top" secondItem="cix-4M-7Tm" secondAttribute="top" constant="10" id="jQD-mp-sqj"/>
                     <constraint firstAttribute="bottom" secondItem="2uI-Nj-WiO" secondAttribute="bottom" priority="750" constant="10" id="wdi-88-TVU"/>
                 </constraints>
