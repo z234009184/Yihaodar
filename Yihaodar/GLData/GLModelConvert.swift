@@ -936,6 +936,149 @@ class GLModelConvert: NSObject {
     static func costData(model: GLGPSTaskDetailBigModel) -> [GLSectionModel] {
         var dataArray = [GLSectionModel]()
         
+        if model.dataAuth.fyjfk_dqfy == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "贷前费用"
+            
+            sectionModel.items.append(GLItemModel(title: "是否转单", subTitle: model.loanRisker.lrPreIszhuandan == "1" ? "是" : "否"))
+            
+//            sectionModel.items.append(GLItemModel(title: "垫资费", subTitle: model.loanRisker.lrPreAdvance.decimalString().isEmpty ? "" : model.loanRisker.lrPreAdvance.decimalString() + "元"))
+            
+            sectionModel.items.append(GLItemModel(title: "GPS安装", subTitle: model.loanRisker.lrPreIsgps == "1" ? "需要" : "不需要"))
+            
+//            sectionModel.items.append(GLItemModel(title: "GPS安装费", subTitle: model.loanRisker.lrPreGpsfee.decimalString().isEmpty ? "" : model.loanRisker.lrPreGpsfee.decimalString() + "元"))
+            
+            sectionModel.items.append(GLItemModel(title: "下户", subTitle: model.loanRisker.lrPreIspauper == "1" ? "需要" : "不需要"))
+            
+//            sectionModel.items.append(GLItemModel(title: "下户费", subTitle: model.loanRisker.lrPrePauperfee.decimalString().isEmpty ? "" : model.loanRisker.lrPrePauperfee.decimalString() + "元"))
+            
+            sectionModel.items.append(GLItemModel(title: "风险保证金", subTitle: model.loanRisker.lrPreIsriskMargin == "1" ? "有" : "无"))
+            
+            sectionModel.items.append(GLItemModel(title: "证件不押金", subTitle: model.loanRisker.lrPreIsmortageCertificates == "1" ? "有" : "无"))
+            
+            dataArray.append(sectionModel)
+        }
+        
+        
+        if model.dataAuth.fyjfk_fyjnmx == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "贷前费用"
+            
+            
+            var formModel = GLFormModel()
+            formModel.titles = ["缴费科目", "已缴纳金额", "待缴纳金额", "备注"]
+            formModel.titleColWidth = 100
+            
+            for payModel in model.payList {
+                
+                var o = GLOptionsModel()
+                for optionModel in model.options {
+                    if payModel.pay_id == optionModel.id {
+                        o = optionModel
+                        break
+                    }
+                }
+                let formArray = [o.dname, payModel.unpaid.decimalString()+"元", payModel.alreadyPaid.decimalString()+"元", payModel.content]
+                
+                formModel.dataArray.append(formArray)
+            }
+            sectionModel.items.append(formModel)
+            
+            dataArray.append(sectionModel)
+        }
+        
+        if model.dataAuth.fyjfk_fkjbxx == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "放款基本信息"
+            
+            sectionModel.items.append(GLItemModel(title: "合同起止日期", subTitle: model.appInfo.ht_start == "" ? "-" : model.appInfo.ht_start + "至" + model.appInfo.ht_end == "" ? "-" : model.appInfo.ht_end))
+            
+            var gdhkr = ""
+            if model.appInfo.gdhxr.isEmpty == false {
+                gdhkr =  "每月" + model.appInfo.gdhxr + "日"
+            }
+            sectionModel.items.append(GLItemModel(title: "固定还息日", subTitle: gdhkr))
+            
+            for jqskModel in model.jqsk_time {
+                
+                sectionModel.items.append(GLItemModel(title: "申请放款时间", subTitle: jqskModel.fksq_sqfksj))
+                sectionModel.items.append(GLItemModel(title: "申请放款金额", subTitle: jqskModel.fksq_sqfke.isEmpty ? "" : jqskModel.fksq_sqfke.decimalString() + "万元" ))
+                sectionModel.items.append(GLItemModel(title: "放款时间", subTitle: jqskModel.fk_sjfksj))
+                sectionModel.items.append(GLItemModel(title: "实际放款", subTitle: jqskModel.fk_sjfke.isEmpty ? "" : jqskModel.fk_sjfke.decimalString() + "万元" ))
+                
+            }
+
+            dataArray.append(sectionModel)
+        }
+        
+        if model.dataAuth.fyjfk_jjrxx == true {
+            
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "经纪人信息&返费信息"
+            
+            sectionModel.items.append(GLItemModel(title: "经纪人姓名", subTitle: model.appInfo.a_name))
+            
+            sectionModel.items.append(GLItemModel(title: "联系方式", subTitle: model.appInfo.a_contact_way))
+            
+            
+            sectionModel.items.append(GLItemModel(title: "微信号", subTitle: model.appInfo.a_wechat))
+            sectionModel.items.append(GLItemModel(title: "户名", subTitle: model.appInfo.a_card_name))
+            sectionModel.items.append(GLItemModel(title: "银行卡号", subTitle: model.appInfo.a_card_code))
+            sectionModel.items.append(GLItemModel(title: "开户行", subTitle: model.appInfo.a_card_bank))
+            sectionModel.items.append(GLItemModel(title: "支行信息", subTitle: model.appInfo.a_bank_branch))
+            
+            
+            var formModel = GLFormModel()
+            formModel.titles = ["预计返费时间", "返费金额", "备注"]
+            for agentModel in model.agentBack {
+                let formArray = [agentModel.backtime, agentModel.backamount, agentModel.backremark]
+                
+                formModel.dataArray.append(formArray)
+            }
+            sectionModel.items.append(formModel)
+            
+            
+            dataArray.append(sectionModel)
+        }
+        
+        
+        // 审批信息
+        if model.dataAuth.fyjfk_spxx == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "审批信息"
+            
+            for examModel in model.examiner {
+                sectionModel.items.append(GLItemModel(title: "审批人姓名", subTitle: examModel.exam_name))
+                sectionModel.items.append(GLItemModel(title: "审批意见", subTitle: examModel.exam_status == "1" ? "同意放款" : "拒绝放款"))
+                sectionModel.items.append(GLItemModel(title: "备注", subTitle: examModel.exam_remark))
+            }
+            
+            dataArray.append(sectionModel)
+        }
+        
+        
+        // 还款计划
+        if model.dataAuth.fyjfk_hkjh == true {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "还款计划"
+            
+            
+            var formModel = GLFormModel()
+            formModel.titles = ["期数", "还款日期", "还款本金", "还款利息", "本期还款总额"]
+            for planModel in model.repaymentPlan {
+                let formArray = [planModel.overdue_periods, planModel.repayment_date, planModel.repaymentCorpus.decimalString(), planModel.repaymentInterests.decimalString(), planModel.repaymentTotal.decimalString()]
+                
+                formModel.dataArray.append(formArray)
+            }
+            sectionModel.items.append(formModel)
+            
+            
+            
+            
+            dataArray.append(sectionModel)
+        }
+        
+        
         return dataArray
     }
 }

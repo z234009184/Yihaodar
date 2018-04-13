@@ -629,9 +629,15 @@ struct GLRepaymentPlanModel: HandyJSON {
     /// 还款日期
     var repayment_date = ""
     /// 还款本金
-    var repaymentCorpus = ""
+    var repaymentCorpus = "0"
     /// 还款利息
-    var repaymentInterests = ""
+    var repaymentInterests = "0"
+    /// 本溪还款总额
+    var repaymentTotal: String {
+        get {
+            return String((Double(repaymentCorpus)! + Double(repaymentInterests)!))
+        }
+    }
     
 }
 
@@ -790,7 +796,7 @@ struct GLGPSTaskDetailBigModel: HandyJSON {
     var payList = [GLPayListModel]()
     
     /// 缴费选项（与明细对应）
-    var Options = [GLOptionsModel]()
+    var options = [GLOptionsModel]()
     
     /// 借款人订单信息
     var loanApply = GLLoanApply()
@@ -806,7 +812,21 @@ struct GLGPSTaskDetailBigModel: HandyJSON {
     
     /// 抵质押登记日期
     var pledgeTime = ""
+    
+    /// 审批信息
+    var examiner = [GLExaminerModel]()
+    
+    struct GLExaminerModel: HandyJSON {
+        /// 审批人姓名
+        var exam_name = ""
+        /// 审批意见 1 同意 0 拒绝
+        var exam_status = ""
+        /// 备注
+        var exam_remark = ""
+    }
 }
+
+
 
 
 

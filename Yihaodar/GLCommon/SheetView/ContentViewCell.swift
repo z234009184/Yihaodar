@@ -8,6 +8,31 @@
 
 import UIKit
 
+class GLCollectionFormItemCell: UICollectionViewCell {
+    
+    var label = UILabel()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        contentView.addSubview(label)
+        
+        backgroundColor = .white
+        label.textColor = UIColor.black
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textAlignment = NSTextAlignment.center
+        label.numberOfLines = 0
+        label.adjustsFontSizeToFitWidth = true
+        
+        layer.borderColor = UIColor(red: 0xed / 255.0, green: 0xee / 255.0, blue: 0xf1 / 255.0, alpha: 1.0).cgColor
+        layer.borderWidth = 0.5
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+
 class ContentViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
 
@@ -31,7 +56,7 @@ class ContentViewCell: UITableViewCell, UICollectionViewDataSource, UICollection
         self.cellCollectionView = UICollectionView(frame: rect, collectionViewLayout: layout)
         self.cellCollectionView?.showsHorizontalScrollIndicator = false
         self.cellCollectionView?.backgroundColor = .white
-        self.cellCollectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "inner.cell")
+        self.cellCollectionView?.register(GLCollectionFormItemCell.self, forCellWithReuseIdentifier: "inner.cell")
         self.cellCollectionView?.dataSource = self
         self.cellCollectionView?.delegate = self
         self.cellCollectionView?.bounces = false
@@ -59,26 +84,17 @@ class ContentViewCell: UITableViewCell, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let innerCell = collectionView.dequeueReusableCell(withReuseIdentifier: "inner.cell", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "inner.cell", for: indexPath) as? GLCollectionFormItemCell else { return GLCollectionFormItemCell() }
 //        var hasColor = false
 //        if self.cellWithColorAtIndexPathClosure != nil {
 //            hasColor = self.cellWithColorAtIndexPathClosure!(indexPath as NSIndexPath)
 //        }
-        innerCell.backgroundColor = .white
-        let width = self.sizeForItemAtIndexPathClosure!(nil, indexPath as NSIndexPath).width
-        let height = self.sizeForItemAtIndexPathClosure!(nil, indexPath as NSIndexPath).height
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
-        label.text = self.cellForItemAtIndexPathClosure!(indexPath as NSIndexPath)
-        label.textColor = UIColor.black
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textAlignment = NSTextAlignment.center
-        label.numberOfLines = 0
-        label.adjustsFontSizeToFitWidth = true
-        innerCell.contentView.addSubview(label)
-        innerCell.layer.borderColor = UIColor(red: 0xed / 255.0, green: 0xee / 255.0, blue: 0xf1 / 255.0, alpha: 1.0).cgColor
-        innerCell.layer.borderWidth = 0.5
         
-        return innerCell
+        cell.label.frame.width = self.sizeForItemAtIndexPathClosure!(nil, indexPath as NSIndexPath).width
+        cell.label.frame.height = self.sizeForItemAtIndexPathClosure!(nil, indexPath as NSIndexPath).height
+        cell.label.text = self.cellForItemAtIndexPathClosure!(indexPath as NSIndexPath)
+        
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
