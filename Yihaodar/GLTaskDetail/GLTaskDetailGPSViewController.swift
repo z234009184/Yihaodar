@@ -1177,21 +1177,25 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.addSubview(tableView)
         
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.frame = CGRect(x: 8, y: 0, width: view.frame.size.width-16, height: view.frame.size.height)
+        tableView.snp.remakeConstraints { (make) in
+            make.left.equalTo(view).offset(10)
+            make.right.equalTo(view).offset(-10)
+            make.top.equalTo(view).offset(1)
+            make.bottom.equalTo(view)
+        }
         
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        tableView.frame.height = view.frame.height
-//    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        scrollViewDidScroll(tableView)
+        
+    }
+    
     
     
     func updateUI(dataArr: [GLSectionModel]) {
@@ -1282,7 +1286,6 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollView.frame.height = view.frame.height
         guard let parentVc = parent as? GLTaskDetailGPSViewController else {
             return
         }
