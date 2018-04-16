@@ -56,6 +56,9 @@ class GLGPSCompleteViewController: GLTaskDetailBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "任务详情"
+        
+        
         tableView.snp.remakeConstraints { (make) in
             make.left.equalTo(view).offset(10)
             make.right.equalTo(view).offset(-10)

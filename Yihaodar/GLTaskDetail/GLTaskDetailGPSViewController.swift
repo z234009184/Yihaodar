@@ -1493,7 +1493,25 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
             bottomViewBottomConstraint.constant = -64
             
             if model?.statusType == GLWorkTableModel.TaskType.approve { // 已经审批的
-                typeButton.setTitle("同意放款/拒绝放款", for: .normal)
+                typeButton.setTitle("已审批", for: .normal)
+                if detailGPSBigModel == nil { return }
+                var examinerModel: GLGPSTaskDetailBigModel.GLExaminerModel?
+                for examinerM in detailGPSBigModel.examiner {
+                    if examinerM.exam_name == GLUser.partyName {
+                        examinerModel = examinerM
+                        break
+                    }
+                }
+                
+                if let examinerModel = examinerModel {
+                    if examinerModel.exam_status == "1" {
+                        typeButton.setTitle("同意放款", for: .normal)
+                    } else {
+                        typeButton.setTitle("拒绝放款", for: .normal)
+                    }
+                }
+                
+                
             }
             break
         default:
@@ -1533,6 +1551,8 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
                 if json["type"] == "S" {
                     print(json)
                     self?.detailGPSBigModel = GLGPSTaskDetailBigModel.deserialize(from: json.rawString(), designatedPath: "results")
+                    
+                    self?.taskDetailTypeAndStatus()
                     
                     if let detailGPSBigModel = self?.detailGPSBigModel {
                         print(detailGPSBigModel)

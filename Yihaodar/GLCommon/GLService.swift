@@ -133,6 +133,7 @@ enum GLService {
     
     /// 安装GPS、下户、审批、抵押贷款详情页面
     case GPSDetail(partyId: String, l_number: String)
+    
     /// 查询已安装GPS信息
     case getInstalledGPSInfo(processTaskId: String)
     
@@ -141,6 +142,22 @@ enum GLService {
     
     /// 查询已抵质押信息
     case getPledgeEndInfo(partyId: String, processTaskId: String, l_number: String)
+    
+    /// 获取GPS安装负责人接口
+    case getGPSManagersInfo(partyId: String)
+    
+    /// 提交GPS信息接口
+    case submitGPSInfo(partyId: String, processId: String, processTaskId: String, backFlag: String, l_id: String, g_personnel: String, install_Date: String, gpsList: [Any], gps_type: String, gps_version: String, gps_number: String, gps_position: String, gps_sim_card: String, gps_remark: String)
+    
+    /// 提交下户信息
+    case submitPauperInfo(partyId: String, processId: String, processTaskId: String, fallbackf: String, crea_date: String, pauper_agreement: String, pauper_source: String, pauper_contraband: String, pauper_environment: String, pauper_purpose: String, pauper_opinion: String, l_number: String, p_id: String, fileInfo: String, attachment_filename: String, attachment_size: String, attachment_href: String, attachment_name: String)
+    
+    /// 提交抵质押信息
+    case submitPledgeInfo(partyId: String, processId: String, processTaskId: String, backFlag: String, crea_date: String, l_id: String, attachmentList: [Any], attachment_filename: String, attachment_size: String, attachment_href: String, attachment_name: String)
+    
+    
+    /// 审批
+    case submitApprove(partyId: String, processId: String, processTaskId: String, l_number: String, lend_apply_id: String, exam_status: String, remarks: String)
     
 }
 
@@ -216,6 +233,23 @@ extension GLService: TargetType {
            
         case .getPledgeEndInfo(_, _, _):
             return "/api/appGetPledge/pledgeEndAPP.shtml"
+            
+        case .getGPSManagersInfo(_):
+            return "/api/appGetGps/getGpsManApp.shtml"
+            
+        case .submitGPSInfo(_, _, _, _, _, _, _, _, _, _, _, _, _, _):
+            return "/api/appGetGps/saveGpsAPP.shtml"
+            
+        case .submitPauperInfo(_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _):
+            return "/api/appPauper/addPauperInfo.shtml"
+            
+        case .submitPledgeInfo(_, _, _, _, _, _, _, _, _, _, _):
+            return "/api/appGetPledge/savePledgeAPP.shtml"
+            
+        case .submitApprove(_, _, _, _, _, _, _):
+            return "/api/appLoanShengPi/submitLoanShengPi.shtml"
+            
+            
         }
         
     }
@@ -306,6 +340,28 @@ extension GLService: TargetType {
         case let GLService.getPledgeEndInfo(partyId, processTaskId, l_number):
             param["body"] = ["partyId": partyId, "processTaskId": processTaskId, "l_number": l_number]
             break
+            
+        case let GLService.getGPSManagersInfo(partyId):
+            param["body"] = ["partyId": partyId]
+            break
+            
+        case let GLService.submitGPSInfo(partyId, processId, processTaskId, backFlag, l_id, g_personnel, install_Date, gpsList, gps_type, gps_version, gps_number, gps_position, gps_sim_card, gps_remark):
+            param["body"] = ["partyId": partyId, "processId": processId, "processTaskId": processTaskId, "backFlag": backFlag, "l_id": l_id, "g_personnel": g_personnel, "install_Date": install_Date, "gpsList": gpsList, "gps_type": gps_type, "gps_version": gps_version, "gps_number": gps_number, "gps_position": gps_position, "gps_sim_card": gps_sim_card, "gps_remark": gps_remark]
+            break
+            
+        case let GLService.submitPauperInfo(partyId, processId, processTaskId, fallbackf, crea_date, pauper_agreement, pauper_source, pauper_contraband, pauper_environment, pauper_purpose, pauper_opinion, l_number, p_id, fileInfo, attachment_filename, attachment_size, attachment_href, attachment_name):
+            param["body"] = ["partyId": partyId, "processId": processId, "processTaskId": processTaskId, "fallbackf": fallbackf, "crea_date": crea_date, "pauper_agreement": pauper_agreement, "pauper_source": pauper_source, "pauper_contraband": pauper_contraband, "pauper_environment": pauper_environment, "pauper_purpose": pauper_purpose, "pauper_opinion": pauper_opinion, "l_number": l_number, "p_id": p_id, "fileInfo": fileInfo, "attachment_filename": attachment_filename, "attachment_size": attachment_size, "attachment_href": attachment_href, "attachment_name": attachment_name]
+            break
+            
+        case let GLService.submitPledgeInfo(partyId, processId, processTaskId, backFlag, crea_date, l_id, attachmentList, attachment_filename, attachment_size, attachment_href, attachment_name):
+            param["body"] = ["partyId": partyId, "processId": processId, "processTaskId": processTaskId, "backFlag": backFlag, "crea_date": crea_date, "l_id": l_id, "attachmentList": attachmentList, "attachment_filename": attachment_filename, "attachment_size": attachment_size, "attachment_href": attachment_href, "attachment_name": attachment_name]
+            break
+            
+            
+        case let GLService.submitApprove(partyId, processId, processTaskId, l_number, lend_apply_id, exam_status, remarks):
+            param["body"] = ["partyId": partyId, "processId": processId, "processTaskId": processTaskId, "l_number": l_number, "lend_apply_id": lend_apply_id, "exam_status": exam_status, "remarks": remarks]
+            break
+            
             
             
         }

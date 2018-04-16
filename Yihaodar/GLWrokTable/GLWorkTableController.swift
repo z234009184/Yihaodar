@@ -607,7 +607,7 @@ class GLButtonBarPagerTabStripViewController: ButtonBarPagerTabStripViewControll
         SKPhotoBrowserOptions.displayVerticalScrollIndicator = false
         SKPhotoBrowserOptions.enableSingleTapDismiss = true
         SKPhotoBrowserOptions.bounceAnimation = true
-        SKPhotoBrowserOptions.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        SKPhotoBrowserOptions.backgroundColor = UIColor(white: 0, alpha: 0.95)
         SKCaptionOptions.textColor = .black
         
         super.viewDidLoad()
