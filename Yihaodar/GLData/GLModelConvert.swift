@@ -995,7 +995,7 @@ class GLModelConvert: NSObject {
             
             var gdhkr = ""
             if model.appInfo.gdhxr.isEmpty == false {
-                gdhkr =  "每月" + model.appInfo.gdhxr + "日"
+                gdhkr =  "每月" + (model.appInfo.gdhxr.isEmpty==false ? model.appInfo.gdhxr : "-") + "日"
             }
             sectionModel.items.append(GLItemModel(title: "固定还息日", subTitle: gdhkr))
             
@@ -1032,9 +1032,8 @@ class GLModelConvert: NSObject {
             var formM = GLFormModel()
             formM.titles = ["预计返费时间", "返费金额", "备注"]
             formM.titleColWidth = 130
-            formM.dataArray = [["1","2","3"]]
             for agentModel in model.agentBack {
-                let formArray = [agentModel.backtime, agentModel.backamount, agentModel.backremark]
+                let formArray = [agentModel.backtime, agentModel.backamount.decimalString() + "元", agentModel.backremark]
                 
                 formM.dataArray.append(formArray)
             }

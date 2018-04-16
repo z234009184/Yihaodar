@@ -175,7 +175,7 @@ struct GLAgentBackModel: HandyJSON {
     /// 预计返费时间
     var backtime = ""
     /// 返费金额
-    var backamount = ""
+    var backamount = "0"
     /// 备注
     var backremark = ""
 }
@@ -443,9 +443,9 @@ struct GLPayListModel: HandyJSON {
     /// 缴费项目ID
     var pay_id = ""
     /// 应收费用
-    var alreadyPaid = ""
+    var alreadyPaid = "0"
     /// 实收费用
-    var unpaid = ""
+    var unpaid = "0"
     /// 备注
     var content = ""
     
