@@ -133,6 +133,14 @@ enum GLService {
     
     /// 安装GPS、下户、审批、抵押贷款详情页面
     case GPSDetail(partyId: String, l_number: String)
+    /// 查询已安装GPS信息
+    case getInstalledGPSInfo(processTaskId: String)
+    
+    /// 查询已下户信息
+    case getPauperEndInfo(processTaskId: String, l_number: String)
+    
+    /// 查询已抵质押信息
+    case getPledgeEndInfo(partyId: String, processTaskId: String, l_number: String)
     
 }
 
@@ -200,6 +208,14 @@ extension GLService: TargetType {
         case .GPSDetail(_, _):
             return "/api/loan/toLoanDetail.shtml"
             
+        case .getInstalledGPSInfo(_):
+            return "/api/appGetGps/gpsEndAPP.shtml"
+        
+        case .getPauperEndInfo(_, _):
+            return "/api/appPauper/pauperEnd.shtml"
+           
+        case .getPledgeEndInfo(_, _, _):
+            return "/api/appGetPledge/pledgeEndAPP.shtml"
         }
         
     }
@@ -279,6 +295,18 @@ extension GLService: TargetType {
         case let GLService.GPSDetail(partyId, l_number):
             param["body"] = ["partyId": partyId, "l_number": l_number]
             break
+        case let GLService.getInstalledGPSInfo(processTaskId):
+            param["body"] = ["processTaskId": processTaskId]
+            break
+            
+        case let GLService.getPauperEndInfo(processTaskId, l_number):
+            param["body"] = ["processTaskId": processTaskId, "l_number": l_number]
+            break
+            
+        case let GLService.getPledgeEndInfo(partyId, processTaskId, l_number):
+            param["body"] = ["partyId": partyId, "processTaskId": processTaskId, "l_number": l_number]
+            break
+            
             
         }
         

@@ -60,8 +60,20 @@ struct GLPauperInfoModel: HandyJSON {
     var l_id = ""
     var iscache = ""
     var party_id = ""
-    var attachmentList = ""
-    var attachmentSet = ""
+    /// 附件模型
+    var attachmentList = [GLAttachmentModel]()
+    var attachmentSet = [GLAttachmentModel]()
+    
+    struct GLAttachmentModel: HandyJSON {
+        var a_id = ""
+        var l_id = ""
+        var attachment_name = ""
+        var attachment_href = ""
+        var attachment_size = ""
+        var attachment_filename = ""
+        var file_type = ""
+    }
+    
 }
 
 /// 放款基本信息&经纪人信息
@@ -128,6 +140,12 @@ struct GLGPSInfoModel: HandyJSON {
     var install_Date = ""
     /// 安装明细
     var gpsSet = [GLGPSSetModel]()
+    /// GPSid
+    var l_id = ""
+    /// 是否缓存
+    var iscache = ""
+    /// 安装列表
+    var gpsList = [GLGPSSetModel]()
     
     
     /// 安装明细集合模型
@@ -1048,9 +1066,12 @@ class GLTaskDetailTableViewPictureCell: UITableViewCell, UICollectionViewDataSou
         collectionView.register(UINib(nibName: "GLTaskDetailPictureCell", bundle: nil), forCellWithReuseIdentifier: identifier)
         
         observer = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: SKPHOTO_LOADING_DID_END_NOTIFICATION), object: nil, queue: OperationQueue.main, using: {[weak self] (noti) in
-            guard let photo = noti.object as? SKPhoto else {return}
-            let indexPath = IndexPath(item: photo.index, section: 0)
-            self?.collectionView.reloadItems(at: [indexPath])
+            
+//            guard let photo = noti.object as? SKPhoto else {return}
+//            let indexPath = IndexPath(item: photo.index, section: 0)
+//
+//            self?.collectionView.reloadItems(at: [indexPath])
+            self?.collectionView.reloadData()
         })
         
     }
@@ -1162,6 +1183,8 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.separatorColor = .clear
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
+        
+        tableView.bounces = false
         
         return tableView
     }()
@@ -1446,6 +1469,8 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     
     func taskDetailTypeAndStatus() -> Void {
         titleLabel.text = model?.executionId
+        subTitleLabel.text = model?.store_name
+        
         switch model?.status {
         case GLWorkTableModel.StatusEnum.notDeal.rawValue: // 未完成
             if model?.statusType == GLWorkTableModel.TaskType.GPS {
@@ -1500,7 +1525,9 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     /// 加载数据 数据驱动
     func loadData() {
         
+        view.showLoading()
         GLProvider.request(GLService.GPSDetail(partyId: GLUser.partyId!, l_number: (model?.executionId)!)) { [weak self] (result) in
+            self?.view.hideLoading()
             if case let .success(respon) = result {
                 let json = JSON(respon.data)
                 if json["type"] == "S" {
@@ -1536,13 +1563,7 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
             }
         }
         
-        /*
-        let section3 = GLSectionModel(title: "图片图片", items: [GLPictureModel(pictures: ["http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg", "http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg", "http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg", "http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg", "http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg", "http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg", "http://www.duanhan.ren/staticgfs/504810054c8949a49bf7b36896b18b4c.jpg"])])
         
- 
-        */
-        
-
     }
     
     /// 更新基本信息UI

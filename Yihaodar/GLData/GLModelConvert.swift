@@ -1031,6 +1031,7 @@ class GLModelConvert: NSObject {
             
             var formM = GLFormModel()
             formM.titles = ["预计返费时间", "返费金额", "备注"]
+            formM.titleColWidth = 130
             formM.dataArray = [["1","2","3"]]
             for agentModel in model.agentBack {
                 let formArray = [agentModel.backtime, agentModel.backamount, agentModel.backremark]
@@ -1080,7 +1081,111 @@ class GLModelConvert: NSObject {
             dataArray.append(sectionModel)
         }
         
+        return dataArray
+    }
+    
+    
+    
+    /// 转换已获取安装GPS信息数据
+    ///
+    /// - Parameter model: 数据模型
+    /// - Returns: 已安装GPS信息数据
+    static func installedGPSInfoData(model: GLGPSInfoModel) -> [GLSectionModel] {
+        var dataArray = [GLSectionModel]()
+        
+        var sectionModel = GLSectionModel()
+        sectionModel.title = "GPS安装明细"
+        
+        sectionModel.items.append(GLItemModel(title: "安装人员", subTitle: model.g_personnel))
+        sectionModel.items.append(GLItemModel(title: "安装日期", subTitle: model.install_Date))
+        
+        dataArray.append(sectionModel)
+        
+        for gpsSetModel in model.gpsList {
+            var sectionModel = GLSectionModel()
+            sectionModel.title = "GPS安装描述"
+            
+            sectionModel.items.append(GLItemModel(title: "设备类型", subTitle: gpsSetModel.gps_type))
+            sectionModel.items.append(GLItemModel(title: "设备型号", subTitle: gpsSetModel.gps_version))
+            sectionModel.items.append(GLItemModel(title: "设备编号", subTitle: gpsSetModel.gps_number))
+            sectionModel.items.append(GLItemModel(title: "设备SIM卡号", subTitle: gpsSetModel.gps_sim_card))
+            sectionModel.items.append(GLItemModel(title: "安装位置", subTitle: gpsSetModel.gps_position))
+            sectionModel.items.append(GLItemModel(title: "备注", subTitle: gpsSetModel.gps_remark))
+            
+            dataArray.append(sectionModel)
+        }
+        
+        
         
         return dataArray
     }
+    
+    /// 转换已下户信息数据
+    ///
+    /// - Parameter model: 数据模型
+    /// - Returns: 已下户信息数据
+    static func pauperInfoData(model: GLPauperInfoModel) -> [GLSectionModel] {
+        var dataArray = [GLSectionModel]()
+        
+        var sectionModel = GLSectionModel()
+        sectionModel.title = "下户尽调"
+        
+        sectionModel.items.append(GLItemModel(title: "下户日期", subTitle: model.crea_date))
+        sectionModel.items.append(GLItemModel(title: "下户与申请地址是否一致", subTitle: model.pauper_agreement))
+        sectionModel.items.append(GLItemModel(title: "房屋居住来源", subTitle: model.pauper_source))
+        sectionModel.items.append(GLItemModel(title: "房屋用途", subTitle: model.pauper_purpose))
+        sectionModel.items.append(GLItemModel(title: "房屋周围环境", subTitle: model.pauper_environment))
+        sectionModel.items.append(GLItemModel(title: "房屋内有无违禁品", subTitle: model.pauper_contraband))
+        sectionModel.items.append(GLItemModel(title: "下户意见", subTitle: model.pauper_opinion))
+        
+        dataArray.append(sectionModel)
+        
+        
+        
+        var sectionPicModel = GLSectionModel()
+        sectionPicModel.title = "下户照片"
+        
+        let acceaaroyFileUrls = model.attachmentList.flatMap { (accessoryModel) -> String? in
+            return accessoryModel.attachment_href
+        }
+        sectionPicModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
+        
+        dataArray.append(sectionPicModel)
+        
+        
+        return dataArray
+    }
+    
+    
+    
+    /// 转换已抵质押信息数据
+    ///
+    /// - Parameter model: 数据模型
+    /// - Returns: 已抵质押信息数据
+    static func pledgeInfoData(model: GLCompleteModel.GLPledgeModel.GLPledgeInfoModel) -> [GLSectionModel] {
+        var dataArray = [GLSectionModel]()
+        
+        var sectionModel = GLSectionModel()
+        sectionModel.title = "抵质押登记"
+        
+        sectionModel.items.append(GLItemModel(title: "抵质押登记日期", subTitle: model.crea_date))
+        
+        dataArray.append(sectionModel)
+        
+        
+        
+        var sectionPicModel = GLSectionModel()
+        sectionPicModel.title = "抵质押登记已办理凭证"
+        
+        let acceaaroyFileUrls = model.attachmentList.flatMap { (accessoryModel) -> String? in
+            return accessoryModel.attachment_href
+        }
+        sectionPicModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
+        
+        dataArray.append(sectionPicModel)
+        
+        
+        return dataArray
+    }
+    
 }
