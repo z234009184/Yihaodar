@@ -51,9 +51,14 @@ class GLInstallGPSViewController: UIViewController {
     /// 添加安装描述按钮
     @IBOutlet weak var addInstallMsgBtn: UIButton!
     
+    
     private lazy var arr = [GLInstallDetailView]()
     
     private var gpsManList: [GLGPSManListModel]?
+    
+    
+    var model: GLWorkTableModel?
+    var detailModel: GLGPSTaskDetailBigModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +71,81 @@ class GLInstallGPSViewController: UIViewController {
     
     /// 提交
     @IBAction func submitAction(_ sender: UIBarButtonItem) {
+        
+        // 过滤判断
+        if self.selectedInstallerModel == nil {
+            view.makeToast("请选择安装人员")
+            return
+        }
+        
+        if self.installDateLabel.text == "请选择" {
+            view.makeToast("请选择安装日期")
+            return
+        }
+        
+        
+        var gpsList = [GLGPSInfoModel.GLGPSSetModel]()
+        // 过滤并赋值
+        for item in arr {
+            if item.deviceTypeLabel.text == "请选择" {
+                view.makeToast("请选择设备类型")
+                return
+            }
+            
+            if item.deviceVersionTextView.text.isEmpty == true {
+                view.makeToast("请输入设备型号")
+                return
+            }
+            
+            if item.deviceNumberTextView.text.isEmpty == true {
+                view.makeToast("请输入设备编号")
+                return
+            }
+            
+            if item.deviceSIMNumberTextView.text.isEmpty == true {
+                view.makeToast("请输入设备SIM卡号")
+                return
+            }
+            
+            if item.installLocationTextView.text.isEmpty == true {
+                view.makeToast("请输入安装位置")
+                return
+            }
+            
+            let gpsSetModel = GLGPSInfoModel.GLGPSSetModel(gps_type: (item.selectedDeviceTypeModel?.title)!, gps_version: item.deviceVersionTextView.text, gps_number: item.deviceNumberTextView.text, gps_position: item.installLocationTextView.text, gps_sim_card: item.deviceSIMNumberTextView.text, gps_remark: item.remarksTextView.text)
+            gpsList.append(gpsSetModel)
+        }
+        
+        
+        
+        let listDic = gpsList.toJSON() as! [[String: Any]]
+        
+        let tabBarVc = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController as? GLTabBarController
+        GLProvider.request(GLService.submitGPSInfo(partyId: GLUser.partyId!, processId: (model?.processId)!, processTaskId: (model?.processTaskId)!, backFlag: "0", l_id: (detailModel?.gpsInfo.l_id)!, l_number: (model?.executionId)!, g_personnel: (selectedInstallerModel?.title)!, install_Date: (installDateLabel.text)!, gpsList: listDic)) { [weak self] (result) in
+            if case let .success(respon) = result {
+                let json = JSON(respon.data)
+                if json["type"] == "S" {
+                    tabBarVc?.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_success"), title: "提交成功")
+                    NotificationCenter.default.post(name: YiRefreshNotificationName, object: nil)
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                        tabBarVc?.dismissCover(btn: nil)
+                        self?.navigationController?.dismiss(animated: false, completion: {
+                            (self?.presentingViewController as? GLNavigationController)?.popViewController(animated: false)
+                        })
+                    })
+                } else {
+                    tabBarVc?.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_failure"), title: "提交失败")
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                        tabBarVc?.dismissCover(btn: nil)
+                    })
+                }
+            }
+        }
+        
+        
+        
+        
+        
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
@@ -151,6 +231,31 @@ class GLInstallGPSViewController: UIViewController {
         
         weak var weakInstallDetailView = installDetailView
         
+        installDetailView.deviceTypeClosure = { [weak self] in
+            
+            // 加载数据
+            let path = Bundle.main.path(forResource: "GPStype", ofType: "plist")
+            guard let filePath = path else { return }
+            let arr = NSArray(contentsOfFile: filePath) as? [Any]
+            // 字典数组 转模型数组
+            guard var dataArray = [GLRadioModel].deserialize(from: arr) as? [GLRadioModel] else { return }
+            if let selectedDeviceTypeModel = weakInstallDetailView?.selectedDeviceTypeModel {
+                dataArray = dataArray.map({ (radioModel) -> GLRadioModel in
+                    var radioModel = radioModel
+                    if selectedDeviceTypeModel.id == radioModel.id {
+                        radioModel = selectedDeviceTypeModel
+                    }
+                    return radioModel
+                })
+            }
+            
+            let radioVc = GLRadioViewController.jumpRadioVc(title: "选择设备类型", dataArray: dataArray, navigationVc: self?.navigationController)
+            radioVc.closeClosure = { (radioModel) in
+                weakInstallDetailView?.selectedDeviceTypeModel = radioModel
+                weakInstallDetailView?.deviceTypeLabel.text = radioModel.title
+            }
+            
+        }
         
         
         

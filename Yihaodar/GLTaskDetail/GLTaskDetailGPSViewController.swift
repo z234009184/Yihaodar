@@ -1623,7 +1623,11 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
         
         if model?.statusType == GLWorkTableModel.TaskType.GPS {
             // 安装GPS
-            guard let installGPSNaVc = UIStoryboard(name: "GLInstallGPS", bundle: nil).instantiateInitialViewController() else { return }
+            guard let installGPSNaVc = UIStoryboard(name: "GLInstallGPS", bundle: nil).instantiateInitialViewController() as? GLNavigationController else { return }
+            guard let vc = installGPSNaVc.topViewController as? GLInstallGPSViewController else { return }
+            vc.model = model
+            vc.detailModel = detailGPSBigModel
+            
             present(installGPSNaVc, animated: true, completion: nil)
             
         } else if model?.statusType == GLWorkTableModel.TaskType.underHouse {

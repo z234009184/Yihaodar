@@ -147,7 +147,7 @@ enum GLService {
     case getGPSManagersInfo(partyId: String)
     
     /// 提交GPS信息接口
-    case submitGPSInfo(partyId: String, processId: String, processTaskId: String, backFlag: String, l_id: String, g_personnel: String, install_Date: String, gpsList: [Any], gps_type: String, gps_version: String, gps_number: String, gps_position: String, gps_sim_card: String, gps_remark: String)
+    case submitGPSInfo(partyId: String, processId: String, processTaskId: String, backFlag: String, l_id: String,l_number: String, g_personnel: String, install_Date: String, gpsList: [Any])
     
     /// 提交下户信息
     case submitPauperInfo(partyId: String, processId: String, processTaskId: String, fallbackf: String, crea_date: String, pauper_agreement: String, pauper_source: String, pauper_contraband: String, pauper_environment: String, pauper_purpose: String, pauper_opinion: String, l_number: String, p_id: String, fileInfo: String, attachment_filename: String, attachment_size: String, attachment_href: String, attachment_name: String)
@@ -237,7 +237,7 @@ extension GLService: TargetType {
         case .getGPSManagersInfo(_):
             return "/api/appGetGps/getGpsManApp.shtml"
             
-        case .submitGPSInfo(_, _, _, _, _, _, _, _, _, _, _, _, _, _):
+        case .submitGPSInfo(_, _, _, _, _, _, _, _, _):
             return "/api/appGetGps/saveGpsAPP.shtml"
             
         case .submitPauperInfo(_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _):
@@ -345,8 +345,8 @@ extension GLService: TargetType {
             param["body"] = ["partyId": partyId]
             break
             
-        case let GLService.submitGPSInfo(partyId, processId, processTaskId, backFlag, l_id, g_personnel, install_Date, gpsList, gps_type, gps_version, gps_number, gps_position, gps_sim_card, gps_remark):
-            param["body"] = ["partyId": partyId, "processId": processId, "processTaskId": processTaskId, "backFlag": backFlag, "l_id": l_id, "g_personnel": g_personnel, "install_Date": install_Date, "gpsList": gpsList, "gps_type": gps_type, "gps_version": gps_version, "gps_number": gps_number, "gps_position": gps_position, "gps_sim_card": gps_sim_card, "gps_remark": gps_remark]
+        case let GLService.submitGPSInfo(partyId, processId, processTaskId, backFlag, l_id, l_number, g_personnel, install_Date, gpsList):
+            param["body"] = ["partyId": partyId, "processId": processId, "processTaskId": processTaskId, "backFlag": backFlag, "l_id": l_id, "l_number": l_number, "g_personnel": g_personnel, "install_Date": install_Date, "gpsList": gpsList]
             break
             
         case let GLService.submitPauperInfo(partyId, processId, processTaskId, fallbackf, crea_date, pauper_agreement, pauper_source, pauper_contraband, pauper_environment, pauper_purpose, pauper_opinion, l_number, p_id, fileInfo, attachment_filename, attachment_size, attachment_href, attachment_name):

@@ -36,8 +36,10 @@ class GLInstallDetailView: UIView, UITextViewDelegate {
     
     @IBOutlet weak var remarksHeight: NSLayoutConstraint!
     
-    
+        
     var deleteClosure: (()->())?
+    
+    var deviceTypeClosure: (()->())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,7 +51,14 @@ class GLInstallDetailView: UIView, UITextViewDelegate {
         deleteBtn.setAttributedTitle(str1, for: .normal)
     }
     
+    
+    
+    var selectedDeviceTypeModel: GLRadioModel?
+    /// 设备类型
     @IBAction func deviceTypeAction(_ sender: UIButton) {
+        if let deviceTypeClosure = deviceTypeClosure {
+            deviceTypeClosure()
+        }
     }
     
     
@@ -78,6 +87,19 @@ class GLInstallDetailView: UIView, UITextViewDelegate {
         default:
             break
         }
+        
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        
+        let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        print(newString)
+        let expression = "^{0,20}$"
+        let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
+        let numberOfMatches = regex.numberOfMatches(in: newString, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (newString as NSString).length))
+        
+        return numberOfMatches != 0
         
     }
     
