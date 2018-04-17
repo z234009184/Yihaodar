@@ -14,17 +14,27 @@ class GLInstallDetailView: UIView, UITextViewDelegate {
     
     @IBOutlet weak var deviceTypeLabel: UILabel!
     
-    @IBOutlet weak var deviceVersionLabel: UILabel!
+    @IBOutlet weak var deviceVersionTextView: IQTextView!
     
-    @IBOutlet weak var deviceNumberLabel: UILabel!
+    @IBOutlet weak var deviceNumberTextView: IQTextView!
     
-    @IBOutlet weak var deviceSIMNumberLabel: UILabel!
+    @IBOutlet weak var deviceSIMNumberTextView: IQTextView!
     
-    @IBOutlet weak var installLocationLabel: UILabel!
+    @IBOutlet weak var installLocationTextView: IQTextView!
     
     @IBOutlet weak var remarksTextView: IQTextView!
     
-    @IBOutlet weak var textViewHeight: NSLayoutConstraint!
+    
+    
+    @IBOutlet weak var versionHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var numberHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var simCardHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var installLocationHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var remarksHeight: NSLayoutConstraint!
     
     
     var deleteClosure: (()->())?
@@ -42,17 +52,7 @@ class GLInstallDetailView: UIView, UITextViewDelegate {
     @IBAction func deviceTypeAction(_ sender: UIButton) {
     }
     
-    @IBAction func deviceVersionAction(_ sender: UIButton) {
-    }
     
-    @IBAction func deviceNumberAction(_ sender: UIButton) {
-    }
-    
-    @IBAction func deviceSIMNumberAction(_ sender: UIButton) {
-    }
-    
-    @IBAction func installLocationAction(_ sender: UIButton) {
-    }
     
     @IBAction func deleteAction(_ sender: UIButton) {
         guard let deleteClosure = deleteClosure else {
@@ -64,7 +64,21 @@ class GLInstallDetailView: UIView, UITextViewDelegate {
     
     
     func textViewDidChange(_ textView: UITextView) {
-        textViewHeight.constant = textView.contentSize.height
+        switch textView {
+        case deviceVersionTextView:
+            versionHeight.constant = textView.contentSize.height
+        case deviceNumberTextView:
+            numberHeight.constant = textView.contentSize.height
+        case deviceSIMNumberTextView:
+            simCardHeight.constant = textView.contentSize.height
+        case installLocationTextView:
+            installLocationHeight.constant = textView.contentSize.height
+        case remarksTextView:
+            remarksHeight.constant = textView.contentSize.height
+        default:
+            break
+        }
+        
     }
     
 }
