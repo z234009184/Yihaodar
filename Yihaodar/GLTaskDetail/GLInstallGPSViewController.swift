@@ -8,7 +8,29 @@
 
 import Spring
 import SnapKit
+import SwiftyJSON
+import HandyJSON
 
+
+struct GLGPSManListModel: HandyJSON {
+    /*
+     {
+     "partyId": "00201801121627055342",
+     "partyName": "GPS安装负责人",
+     "organName": "海淀门店-德胜门店",
+     "jobName": "装GPS",
+     "allOrganName": "总裁办,海淀门店-德胜门店"
+     },
+     */
+    
+    var partyId = ""
+    var partyName = ""
+    var organName = ""
+    var jobName = ""
+    var allOrganName = ""
+    
+    
+}
 
 
 
@@ -31,6 +53,8 @@ class GLInstallGPSViewController: UIViewController {
     
     private lazy var arr = [GLInstallDetailView]()
     
+    private var gpsManList: [GLGPSManListModel]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -46,16 +70,59 @@ class GLInstallGPSViewController: UIViewController {
     }
     
     
+    var selectedInstallerModel: GLRadioModel?
     /// 选择安装人员
     @IBAction func selectedInstallerAction(_ sender: UIButton) {
+        loadGPSManListData { [weak self] (dataArray) in
+            
+            /// 处理数据
+            let dataArr = dataArray.map({ [weak self] (installerModel) -> GLRadioModel in
+                let radioModel = GLRadioModel(id: installerModel.partyId, title: installerModel.partyName, subTitle: installerModel.allOrganName, isSelected: self?.selectedInstallerModel?.id == installerModel.partyId ? true : false, isTextFied: false, input: nil, inputPlaceHolder: nil)
+                return radioModel
+            })
+            
+            
+            let radioVc = GLRadioViewController.jumpRadioVc(title: "选择车辆型号", dataArray: dataArr, navigationVc: self?.navigationController)
+            
+            radioVc.closeClosure = { [weak self] (model: GLRadioModel) in
+                self?.selectedInstallerModel = model
+                self?.installerLabel.text = model.title
+            }
+        }
+    }
+    
+    /// 加载安装人员数据
+    func loadGPSManListData(success:((_ dataArray: [GLGPSManListModel])->())?) -> Void {
+        view.showLoading()
+        GLProvider.request(GLService.getGPSManagersInfo(partyId: GLUser.partyId!)) { [weak self] (result) in
+            self?.view.hideLoading()
+            if case let .success(respon) = result {
+                let json = JSON(respon.data)
+                if json["type"] == "S" {
+                    
+                    self?.gpsManList = [GLGPSManListModel].deserialize(from: json.rawString(), designatedPath: "results.gpsManList") as? [GLGPSManListModel]
+                    
+                    if let gpsManlist = self?.gpsManList {
+                        if let success = success {
+                            success(gpsManlist)
+                        }
+                    }
+                }
+            }
+            
+        }
         
         
     }
     
+    
+    
     /// 选择安装日期
     @IBAction func selectedInstallDateAction(_ sender: UIButton) {
-        
-        
+        GLDatePicker.showDatePicker(currentDate: Date()) { [weak self] (date) in
+            self?.installDateLabel.text = date
+        }
+        view.endEditing(true)
     }
     
     

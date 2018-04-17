@@ -268,7 +268,6 @@ class GLCarMessageViewController: UIViewController {
                 self?.carVersionLabel.text = "请选择"
             }
             
-            
         }
         
     }
@@ -348,7 +347,6 @@ class GLCarMessageViewController: UIViewController {
             if case let .success(respon) = result {
                 let jsonStr = JSON(respon.data).rawString()
                 
-                print(jsonStr)
                 GLCreateCarEstimateViewController.model?.brandSeriesList = [GLCarSeriesModel].deserialize(from: jsonStr, designatedPath: "results.brandSeriesList") as! [GLCarSeriesModel]
                 
             }

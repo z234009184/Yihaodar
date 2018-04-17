@@ -22,6 +22,8 @@
 		8A24F7A6202F0E1200FDC669 /* GLSubmitMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A24F7A5202F0E1200FDC669 /* GLSubmitMessageView.xib */; };
 		8A24F7A8202F314000FDC669 /* GLSubmitMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A24F7A7202F314000FDC669 /* GLSubmitMessageView.swift */; };
 		8A24F7AA20329A6400FDC669 /* GLSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A24F7A920329A6400FDC669 /* GLSearch.storyboard */; };
+		8A357A7220858FB9004CF0CB /* GPStype.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A357A7120858FB9004CF0CB /* GPStype.plist */; };
+		8A357A7320858FB9004CF0CB /* GPStype.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A357A7120858FB9004CF0CB /* GPStype.plist */; };
 		8A362E5A2074D8F100B1E2C6 /* GLWorkTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DAB94202ACBA3001CBD0F /* GLWorkTable.storyboard */; };
 		8A362E5B2074D8F800B1E2C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A235115201E0AC4002715E0 /* Main.storyboard */; };
 		8A362E5C2074D8F800B1E2C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A23511A201E0AC4002715E0 /* LaunchScreen.storyboard */; };
@@ -212,6 +214,7 @@
 		8A24F7A5202F0E1200FDC669 /* GLSubmitMessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLSubmitMessageView.xib; sourceTree = "<group>"; };
 		8A24F7A7202F314000FDC669 /* GLSubmitMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLSubmitMessageView.swift; sourceTree = "<group>"; };
 		8A24F7A920329A6400FDC669 /* GLSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLSearch.storyboard; sourceTree = "<group>"; };
+		8A357A7120858FB9004CF0CB /* GPStype.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GPStype.plist; sourceTree = "<group>"; };
 		8A3775E02033449700F921F8 /* GLRefreshFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLRefreshFooter.swift; sourceTree = "<group>"; };
 		8A37F34C202BE9F2004FD467 /* GLSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLSearchViewController.swift; sourceTree = "<group>"; };
 		8A37F34E202C2EAD004FD467 /* GLRefreshHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLRefreshHeader.swift; sourceTree = "<group>"; };
@@ -518,6 +521,7 @@
 		8AEEF1FB2039BA5B00F8F5E1 /* GLData */ = {
 			isa = PBXGroup;
 			children = (
+				8A357A7120858FB9004CF0CB /* GPStype.plist */,
 				8AD5E0CB2044461A00CB7CFF /* biansuqi.plist */,
 				8AD5E0CD2044468400CB7CFF /* qudongfangshi.plist */,
 				8AD5E0CF204446DF00CB7CFF /* youwu.plist */,
@@ -684,6 +688,7 @@
 				8A1DAB9E202B003F001CBD0F /* GLTaskDetail.storyboard in Resources */,
 				8A4832CF206B9B0A00BCD623 /* GLInstallGPS.storyboard in Resources */,
 				8AD5E0E020444BCB00CB7CFF /* fugaijian.plist in Resources */,
+				8A357A7220858FB9004CF0CB /* GPStype.plist in Resources */,
 				8A7D848C2041325800B5046C /* GLTaskDetailPrice.storyboard in Resources */,
 				8AD5E0BF2043D42C00CB7CFF /* GLCarStateView.xib in Resources */,
 				8AE3E24A206DCF7700C95E1B /* GLUnderhouse.storyboard in Resources */,
@@ -728,6 +733,7 @@
 				8AF90C0320746850009DD32E /* qudongfangshi.plist in Resources */,
 				8AF90C0420746850009DD32E /* kongtiaopeizhi.plist in Resources */,
 				8AF90C0620746850009DD32E /* GLInstallDetailView.xib in Resources */,
+				8A357A7320858FB9004CF0CB /* GPStype.plist in Resources */,
 				8AF90C0720746850009DD32E /* zuoyixingshi.plist in Resources */,
 				8AF90C0820746850009DD32E /* GLTaskDetailGPS.storyboard in Resources */,
 				8AF90C0920746850009DD32E /* biansuqi.plist in Resources */,
