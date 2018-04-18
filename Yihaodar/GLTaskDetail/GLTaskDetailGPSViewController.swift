@@ -1647,8 +1647,13 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
         } else if model?.statusType == GLWorkTableModel.TaskType.pledge {
             
             // 抵质押办理
-            guard let pledgeVc = UIStoryboard(name: "GLPledge", bundle: nil).instantiateInitialViewController() else { return }
-            present(pledgeVc, animated: true, completion: nil)
+            guard let pledgeNaVc = UIStoryboard(name: "GLPledge", bundle: nil).instantiateInitialViewController() as? GLNavigationController else { return }
+            guard let vc = pledgeNaVc.topViewController as? GLPledgeViewController else { return }
+            vc.model = model
+            vc.submitSuccess = { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            }
+            present(pledgeNaVc, animated: true, completion: nil)
         } else if model?.statusType == GLWorkTableModel.TaskType.approve {
             /// 显示信息视图
             let showMsgView = showSubmitMessageView()
