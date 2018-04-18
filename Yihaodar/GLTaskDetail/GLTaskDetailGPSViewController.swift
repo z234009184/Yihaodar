@@ -1658,6 +1658,9 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
             /// 显示信息视图
             let showMsgView = showSubmitMessageView()
             
+            
+            
+            
         }
         
         
