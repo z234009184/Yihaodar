@@ -24,6 +24,14 @@
 		8A24F7AA20329A6400FDC669 /* GLSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A24F7A920329A6400FDC669 /* GLSearch.storyboard */; };
 		8A357A7220858FB9004CF0CB /* GPStype.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A357A7120858FB9004CF0CB /* GPStype.plist */; };
 		8A357A7320858FB9004CF0CB /* GPStype.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A357A7120858FB9004CF0CB /* GPStype.plist */; };
+		8A357A782086E67C004CF0CB /* fangwuhuanjing.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A357A742086E67C004CF0CB /* fangwuhuanjing.plist */; };
+		8A357A792086E67C004CF0CB /* fangwuhuanjing.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A357A742086E67C004CF0CB /* fangwuhuanjing.plist */; };
+		8A357A7A2086E67C004CF0CB /* shifouyizhi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A357A752086E67C004CF0CB /* shifouyizhi.plist */; };
+		8A357A7B2086E67C004CF0CB /* shifouyizhi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A357A752086E67C004CF0CB /* shifouyizhi.plist */; };
+		8A357A7C2086E67C004CF0CB /* fangwuyongtu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A357A762086E67C004CF0CB /* fangwuyongtu.plist */; };
+		8A357A7D2086E67C004CF0CB /* fangwuyongtu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A357A762086E67C004CF0CB /* fangwuyongtu.plist */; };
+		8A357A7E2086E67C004CF0CB /* fangwulaiyuan.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A357A772086E67C004CF0CB /* fangwulaiyuan.plist */; };
+		8A357A7F2086E67C004CF0CB /* fangwulaiyuan.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A357A772086E67C004CF0CB /* fangwulaiyuan.plist */; };
 		8A362E5A2074D8F100B1E2C6 /* GLWorkTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A1DAB94202ACBA3001CBD0F /* GLWorkTable.storyboard */; };
 		8A362E5B2074D8F800B1E2C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A235115201E0AC4002715E0 /* Main.storyboard */; };
 		8A362E5C2074D8F800B1E2C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A23511A201E0AC4002715E0 /* LaunchScreen.storyboard */; };
@@ -215,6 +223,10 @@
 		8A24F7A7202F314000FDC669 /* GLSubmitMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLSubmitMessageView.swift; sourceTree = "<group>"; };
 		8A24F7A920329A6400FDC669 /* GLSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLSearch.storyboard; sourceTree = "<group>"; };
 		8A357A7120858FB9004CF0CB /* GPStype.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GPStype.plist; sourceTree = "<group>"; };
+		8A357A742086E67C004CF0CB /* fangwuhuanjing.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fangwuhuanjing.plist; sourceTree = "<group>"; };
+		8A357A752086E67C004CF0CB /* shifouyizhi.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = shifouyizhi.plist; sourceTree = "<group>"; };
+		8A357A762086E67C004CF0CB /* fangwuyongtu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fangwuyongtu.plist; sourceTree = "<group>"; };
+		8A357A772086E67C004CF0CB /* fangwulaiyuan.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fangwulaiyuan.plist; sourceTree = "<group>"; };
 		8A3775E02033449700F921F8 /* GLRefreshFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLRefreshFooter.swift; sourceTree = "<group>"; };
 		8A37F34C202BE9F2004FD467 /* GLSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLSearchViewController.swift; sourceTree = "<group>"; };
 		8A37F34E202C2EAD004FD467 /* GLRefreshHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLRefreshHeader.swift; sourceTree = "<group>"; };
@@ -521,6 +533,10 @@
 		8AEEF1FB2039BA5B00F8F5E1 /* GLData */ = {
 			isa = PBXGroup;
 			children = (
+				8A357A742086E67C004CF0CB /* fangwuhuanjing.plist */,
+				8A357A772086E67C004CF0CB /* fangwulaiyuan.plist */,
+				8A357A762086E67C004CF0CB /* fangwuyongtu.plist */,
+				8A357A752086E67C004CF0CB /* shifouyizhi.plist */,
 				8A357A7120858FB9004CF0CB /* GPStype.plist */,
 				8AD5E0CB2044461A00CB7CFF /* biansuqi.plist */,
 				8AD5E0CD2044468400CB7CFF /* qudongfangshi.plist */,
@@ -662,17 +678,20 @@
 				8AF1C4BD20720C95009D6F7D /* GLTaskDetailPictureCell.xib in Resources */,
 				8AD5E0DC20444A8A00CB7CFF /* shigu.plist in Resources */,
 				8AF1C4B72071C8F9009D6F7D /* GLApproveView.xib in Resources */,
+				8A357A782086E67C004CF0CB /* fangwuhuanjing.plist in Resources */,
 				8A1DAB90202AB43B001CBD0F /* GLLogin.storyboard in Resources */,
 				8AD5E0CA204420B100CB7CFF /* GLCheckBox.storyboard in Resources */,
 				8AF1C4BB2071DB74009D6F7D /* GLTaskDetailTableViewPictureCell.xib in Resources */,
 				8AD5E0DA204449B800CB7CFF /* qita.plist in Resources */,
 				8AD5E0D0204446DF00CB7CFF /* youwu.plist in Resources */,
 				8AEEF1F82037C20200F8F5E1 /* GLRadio.storyboard in Resources */,
+				8A357A7E2086E67C004CF0CB /* fangwulaiyuan.plist in Resources */,
 				8AEEF1EE203482AE00F8F5E1 /* GLAddView.xib in Resources */,
 				8A54560D204255290039D127 /* GLEstimateCarStateView.xib in Resources */,
 				8AD5E0D4204447DD00CB7CFF /* ranyoufangshi.plist in Resources */,
 				8AB74B17206E109D00F58BE5 /* GLPledge.storyboard in Resources */,
 				8A24F7A6202F0E1200FDC669 /* GLSubmitMessageView.xib in Resources */,
+				8A357A7C2086E67C004CF0CB /* fangwuyongtu.plist in Resources */,
 				8A24F7AA20329A6400FDC669 /* GLSearch.storyboard in Resources */,
 				8A235119201E0AC4002715E0 /* Assets.xcassets in Resources */,
 				8AB9945D2067928200EF21B5 /* GLTaskDetailItemCell.xib in Resources */,
@@ -680,6 +699,7 @@
 				8AD5E0E220444CE000CB7CFF /* jiegoujian.plist in Resources */,
 				8AD5E0DE20444B7300CB7CFF /* chegoujian.plist in Resources */,
 				8AD5E0CE2044468400CB7CFF /* qudongfangshi.plist in Resources */,
+				8A357A7A2086E67C004CF0CB /* shifouyizhi.plist in Resources */,
 				8AD5E0D8204448CC00CB7CFF /* kongtiaopeizhi.plist in Resources */,
 				8AC76E68206BA3430000214F /* GLInstallDetailView.xib in Resources */,
 				8AD5E0D22044471800CB7CFF /* zuoyixingshi.plist in Resources */,
@@ -717,8 +737,10 @@
 				8AF90BF420746850009DD32E /* GLTaskDetailTableViewPictureCell.xib in Resources */,
 				8AF90BF520746850009DD32E /* qita.plist in Resources */,
 				8AF90BF620746850009DD32E /* youwu.plist in Resources */,
+				8A357A792086E67C004CF0CB /* fangwuhuanjing.plist in Resources */,
 				8AF90BF720746850009DD32E /* GLRadio.storyboard in Resources */,
 				8AF90BF820746850009DD32E /* GLAddView.xib in Resources */,
+				8A357A7B2086E67C004CF0CB /* shifouyizhi.plist in Resources */,
 				8AF90BF920746850009DD32E /* GLEstimateCarStateView.xib in Resources */,
 				8AF90BFA20746850009DD32E /* ranyoufangshi.plist in Resources */,
 				8AF90BFB20746850009DD32E /* GLPledge.storyboard in Resources */,
@@ -730,6 +752,7 @@
 				8AF90C20207469D2009DD32E /* YihaodarDev-Info.plist in Resources */,
 				8AF90C0120746850009DD32E /* jiegoujian.plist in Resources */,
 				8AF90C0220746850009DD32E /* chegoujian.plist in Resources */,
+				8A357A7D2086E67C004CF0CB /* fangwuyongtu.plist in Resources */,
 				8AF90C0320746850009DD32E /* qudongfangshi.plist in Resources */,
 				8AF90C0420746850009DD32E /* kongtiaopeizhi.plist in Resources */,
 				8AF90C0620746850009DD32E /* GLInstallDetailView.xib in Resources */,
@@ -743,6 +766,7 @@
 				8AF90C0D20746850009DD32E /* GLTaskDetailPrice.storyboard in Resources */,
 				8AF90C0E20746850009DD32E /* GLCarStateView.xib in Resources */,
 				8AF90C0F20746850009DD32E /* GLUnderhouse.storyboard in Resources */,
+				8A357A7F2086E67C004CF0CB /* fangwulaiyuan.plist in Resources */,
 				8AF90C1020746850009DD32E /* tianchuang.plist in Resources */,
 				8AF90C1220746850009DD32E /* GLSubmitMessagePriceView.xib in Resources */,
 				8AF90C1320746850009DD32E /* GLTaskDetailItemHeader.xib in Resources */,

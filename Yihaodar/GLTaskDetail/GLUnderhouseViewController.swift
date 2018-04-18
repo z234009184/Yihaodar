@@ -42,15 +42,16 @@ class GLUnderhouseViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
-    private lazy var pictureArray: [GLCcroModel] = {
-        var arr: [GLCcroModel] = []
-        let ccroModel = GLCcroModel()
+    private lazy var pictureArray: [GLPauperInfoModel.GLAttachmentModel] = {
+        var arr: [GLPauperInfoModel.GLAttachmentModel] = []
+        let ccroModel = GLPauperInfoModel.GLAttachmentModel()
         arr.append(ccroModel)
         return arr
     }()
     
     
-    
+    var model: GLWorkTableModel?
+    var submitSuccess: (()->())?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,24 +62,215 @@ class GLUnderhouseViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func submitAction(_ sender: UIBarButtonItem) {
-        navigationController?.dismiss(animated: true, completion: nil)
+        // 过滤判断
+        if underDateLabel.text == "请选择" {
+            view.makeToast("请选择下户日期")
+            return
+        }
+        
+        if selectedAdressSameModel == nil {
+            view.makeToast("请选择下户申请地址是否一致")
+            return
+        }
+        
+        if selectedHouseSourceModel == nil {
+            view.makeToast("请选择房屋居住来源")
+            return
+        }
+        
+        
+        if selectedHouseUseModel == nil {
+            view.makeToast("请选择房屋用途")
+            return
+        }
+        
+        if selectedHouseEnvironmentModel == nil {
+            view.makeToast("请选择房屋周围环境")
+            return
+        }
+        
+        if selectedHouseContrabandModel == nil {
+            view.makeToast("请选择房屋内有无违禁品")
+            return
+        }
+        
+        if underIdeaTextView.text.isEmpty == true {
+            view.makeToast("请输入下户意见")
+            return
+        }
+        
+        // 提交下户
+        
+        let picArr = pictureArray.flatMap { (attModel) -> GLPauperInfoModel.GLAttachmentModel? in
+            if attModel.attachment_href.isEmpty == true {
+                return nil
+            }
+            return attModel
+        }
+        
+        let listDic = picArr.toJSON() as! [[String: Any]]
+        
+        
+        let tabBarVc = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController as? GLTabBarController
+        GLProvider.request(GLService.submitPauperInfo(partyId: GLUser.partyId!, processId: (model?.processId)!, processTaskId: (model?.processTaskId)!, fallbackf: "0", crea_date: (underDateLabel.text)!, pauper_agreement: (selectedAdressSameModel?.title)!, pauper_source: (selectedHouseSourceModel?.title)!, pauper_contraband: (selectedHouseContrabandModel?.title)!, pauper_environment: (selectedHouseEnvironmentModel?.title)!, pauper_purpose: (selectedHouseUseModel?.title)!, pauper_opinion: underIdeaTextView.text, l_number: (model?.executionId)!, p_id: "", fileInfo: listDic)) { [weak self] (result) in
+            
+            if case let .success(respon) = result {
+                let json = JSON(respon.data)
+                print(json)
+                if json["type"] == "S" {
+                    tabBarVc?.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_success"), title: "提交成功")
+                    NotificationCenter.default.post(name: YiRefreshNotificationName, object: nil)
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                        tabBarVc?.dismissCover(btn: nil)
+                        self?.navigationController?.dismiss(animated: false, completion: {
+                            if let submitSuccess = self?.submitSuccess {
+                                submitSuccess()
+                            }
+                        })
+                    })
+                } else {
+                    tabBarVc?.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_failure"), title: "提交失败")
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                        tabBarVc?.dismissCover(btn: nil)
+                    })
+                }
+            }
+            
+        }
     }
     
     
     
     @IBAction func underDateAction(_ sender: UIButton) {
+        GLDatePicker.showDatePicker(currentDate: Date()) { [weak self] (date) in
+            self?.underDateLabel.text = date
+        }
+        view.endEditing(true)
     }
+    
+    var selectedAdressSameModel: GLRadioModel?
     @IBAction func underAdressSameAction(_ sender: UIButton) {
+        // 加载数据
+        let path = Bundle.main.path(forResource: "shifouyizhi", ofType: "plist")
+        guard let filePath = path else { return }
+        let arr = NSArray(contentsOfFile: filePath) as? [Any]
+        // 字典数组 转模型数组
+        guard var dataArray = [GLRadioModel].deserialize(from: arr) as? [GLRadioModel] else { return }
+        if let selectedAdressSameModel = selectedAdressSameModel {
+            dataArray = dataArray.map({ (radioModel) -> GLRadioModel in
+                var radioModel = radioModel
+                if selectedAdressSameModel.id == radioModel.id {
+                    radioModel = selectedAdressSameModel
+                }
+                return radioModel
+            })
+        }
+        
+        let radioVc = GLRadioViewController.jumpRadioVc(title: "选择下户与申请地址是否一致", dataArray: dataArray, navigationVc: navigationController)
+        radioVc.closeClosure = { [weak self] (radioModel) in
+            self?.selectedAdressSameModel = radioModel
+            self?.underAdressSameLabel.text = radioModel.title
+        }
     }
+    
+    var selectedHouseSourceModel: GLRadioModel?
     @IBAction func underHouseSourceAction(_ sender: UIButton) {
+        // 加载数据
+        let path = Bundle.main.path(forResource: "fangwulaiyuan", ofType: "plist")
+        guard let filePath = path else { return }
+        let arr = NSArray(contentsOfFile: filePath) as? [Any]
+        // 字典数组 转模型数组
+        guard var dataArray = [GLRadioModel].deserialize(from: arr) as? [GLRadioModel] else { return }
+        if let selectedHouseSourceModel = selectedHouseSourceModel {
+            dataArray = dataArray.map({ (radioModel) -> GLRadioModel in
+                var radioModel = radioModel
+                if selectedHouseSourceModel.id == radioModel.id {
+                    radioModel = selectedHouseSourceModel
+                }
+                return radioModel
+            })
+        }
+        
+        let radioVc = GLRadioViewController.jumpRadioVc(title: "选择房屋居住来源", dataArray: dataArray, navigationVc: navigationController)
+        radioVc.closeClosure = { [weak self] (radioModel) in
+            self?.selectedHouseSourceModel = radioModel
+            self?.underHouseSourceLabel.text = radioModel.title
+        }
     }
+    
+    var selectedHouseUseModel: GLRadioModel?
     @IBAction func underHouseUseAction(_ sender: UIButton) {
+        // 加载数据
+        let path = Bundle.main.path(forResource: "fangwuyongtu", ofType: "plist")
+        guard let filePath = path else { return }
+        let arr = NSArray(contentsOfFile: filePath) as? [Any]
+        // 字典数组 转模型数组
+        guard var dataArray = [GLRadioModel].deserialize(from: arr) as? [GLRadioModel] else { return }
+        if let selectedHouseUseModel = selectedHouseUseModel {
+            dataArray = dataArray.map({ (radioModel) -> GLRadioModel in
+                var radioModel = radioModel
+                if selectedHouseUseModel.id == radioModel.id {
+                    radioModel = selectedHouseUseModel
+                }
+                return radioModel
+            })
+        }
+        
+        let radioVc = GLRadioViewController.jumpRadioVc(title: "选择房屋用途", dataArray: dataArray, navigationVc: navigationController)
+        radioVc.closeClosure = { [weak self] (radioModel) in
+            self?.selectedHouseUseModel = radioModel
+            self?.underHouseUseLabel.text = radioModel.title
+        }
     }
+    
+    var selectedHouseEnvironmentModel: GLRadioModel?
     @IBAction func underHouseEnvironmentAction(_ sender: UIButton) {
+        // 加载数据
+        let path = Bundle.main.path(forResource: "fangwuhuanjing", ofType: "plist")
+        guard let filePath = path else { return }
+        let arr = NSArray(contentsOfFile: filePath) as? [Any]
+        // 字典数组 转模型数组
+        guard var dataArray = [GLRadioModel].deserialize(from: arr) as? [GLRadioModel] else { return }
+        if let selectedHouseEnvironmentModel = selectedHouseEnvironmentModel {
+            dataArray = dataArray.map({ (radioModel) -> GLRadioModel in
+                var radioModel = radioModel
+                if selectedHouseEnvironmentModel.id == radioModel.id {
+                    radioModel = selectedHouseEnvironmentModel
+                }
+                return radioModel
+            })
+        }
+        
+        let radioVc = GLRadioViewController.jumpRadioVc(title: "选择房屋周围环境", dataArray: dataArray, navigationVc: navigationController)
+        radioVc.closeClosure = { [weak self] (radioModel) in
+            self?.selectedHouseEnvironmentModel = radioModel
+            self?.underHouseEnvironmentLabel.text = radioModel.title
+        }
     }
+    
+    var selectedHouseContrabandModel: GLRadioModel?
     @IBAction func underInHouseContrabandAction(_ sender: UIButton) {
-    }
-    @IBAction func underIdeaAction(_ sender: UIButton) {
+        // 加载数据
+        let path = Bundle.main.path(forResource: "youwu", ofType: "plist")
+        guard let filePath = path else { return }
+        let arr = NSArray(contentsOfFile: filePath) as? [Any]
+        // 字典数组 转模型数组
+        guard var dataArray = [GLRadioModel].deserialize(from: arr) as? [GLRadioModel] else { return }
+        if let selectedHouseContrabandModel = selectedHouseContrabandModel {
+            dataArray = dataArray.map({ (radioModel) -> GLRadioModel in
+                var radioModel = radioModel
+                if selectedHouseContrabandModel.id == radioModel.id {
+                    radioModel = selectedHouseContrabandModel
+                }
+                return radioModel
+            })
+        }
+        
+        let radioVc = GLRadioViewController.jumpRadioVc(title: "选择房屋内有无违禁品", dataArray: dataArray, navigationVc: navigationController)
+        radioVc.closeClosure = { [weak self] (radioModel) in
+            self?.selectedHouseContrabandModel = radioModel
+            self?.underInHouseContrabandLabel.text = radioModel.title
+        }
     }
     
     func textViewDidChange(_ textView: UITextView) {
@@ -120,6 +312,8 @@ extension GLUnderhouseViewController: UICollectionViewDataSource, UICollectionVi
         }
     }
     
+    
+    /// 添加图片
     func addPicture() {
         weak var weakSelf = self
         let alertController = UIAlertController(title: "选择图片方式", message: nil, preferredStyle: .actionSheet)
@@ -169,8 +363,9 @@ extension GLUnderhouseViewController: UICollectionViewDataSource, UICollectionVi
                 print(JSON(respon.data))
                 let jsonStr = JSON(respon.data)
                 if jsonStr["type"] == "S" {
-                    let ccroModel = GLCcroModel(fileTypeName: "0", fileName: jsonStr["fileName"].stringValue, fileUrl: jsonStr["url"].stringValue, fileSize: jsonStr["fileLength"].stringValue, image: pickedImage)
-                    self?.pictureArray.insert(ccroModel, at: (self?.pictureArray.count)! - 1)
+                    let picModel = GLPauperInfoModel.GLAttachmentModel(a_id: "", l_id: "", attachment_name: jsonStr["fileRealName"].stringValue, attachment_href: jsonStr["url"].stringValue, attachment_size: jsonStr["fileLength"].stringValue, attachment_filename: jsonStr["fileName"].stringValue, file_type: jsonStr["fileType"].stringValue, image: pickedImage)
+                    
+                    self?.pictureArray.insert(picModel, at: (self?.pictureArray.count)! - 1)
                     self?.collectionView.reloadData()
                 }
             }

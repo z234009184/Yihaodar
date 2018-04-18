@@ -72,6 +72,7 @@ struct GLPauperInfoModel: HandyJSON {
         var attachment_size = ""
         var attachment_filename = ""
         var file_type = ""
+        var image = UIImage()
     }
     
 }
@@ -1626,15 +1627,22 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
             guard let installGPSNaVc = UIStoryboard(name: "GLInstallGPS", bundle: nil).instantiateInitialViewController() as? GLNavigationController else { return }
             guard let vc = installGPSNaVc.topViewController as? GLInstallGPSViewController else { return }
             vc.model = model
-            vc.detailModel = detailGPSBigModel
-            
+            vc.submitSuccess = { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            }
             present(installGPSNaVc, animated: true, completion: nil)
             
         } else if model?.statusType == GLWorkTableModel.TaskType.underHouse {
             
             // 下户
-            guard let underHouseVc = UIStoryboard(name: "GLUnderhouse", bundle: nil).instantiateInitialViewController() else { return }
-            present(underHouseVc, animated: true, completion: nil)
+            guard let underHouseNaVc = UIStoryboard(name: "GLUnderhouse", bundle: nil).instantiateInitialViewController() as? GLNavigationController else { return }
+            
+            guard let vc = underHouseNaVc.topViewController as? GLUnderhouseViewController else { return }
+            vc.model = model
+            vc.submitSuccess = { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            }
+            present(underHouseNaVc, animated: true, completion: nil)
             
         } else if model?.statusType == GLWorkTableModel.TaskType.pledge {
             

@@ -147,10 +147,10 @@ enum GLService {
     case getGPSManagersInfo(partyId: String)
     
     /// 提交GPS信息接口
-    case submitGPSInfo(partyId: String, processId: String, processTaskId: String, backFlag: String, l_id: String,l_number: String, g_personnel: String, install_Date: String, gpsList: [Any])
+    case submitGPSInfo(partyId: String, processExampleId: String, processTaskId: String, backFlag: String, l_id: String,l_number: String, g_personnel: String, install_Date: String, gpsList: [Any])
     
     /// 提交下户信息
-    case submitPauperInfo(partyId: String, processId: String, processTaskId: String, fallbackf: String, crea_date: String, pauper_agreement: String, pauper_source: String, pauper_contraband: String, pauper_environment: String, pauper_purpose: String, pauper_opinion: String, l_number: String, p_id: String, fileInfo: String, attachment_filename: String, attachment_size: String, attachment_href: String, attachment_name: String)
+    case submitPauperInfo(partyId: String, processId: String, processTaskId: String, fallbackf: String, crea_date: String, pauper_agreement: String, pauper_source: String, pauper_contraband: String, pauper_environment: String, pauper_purpose: String, pauper_opinion: String, l_number: String, p_id: String, fileInfo: [Any])
     
     /// 提交抵质押信息
     case submitPledgeInfo(partyId: String, processId: String, processTaskId: String, backFlag: String, crea_date: String, l_id: String, attachmentList: [Any], attachment_filename: String, attachment_size: String, attachment_href: String, attachment_name: String)
@@ -240,7 +240,7 @@ extension GLService: TargetType {
         case .submitGPSInfo(_, _, _, _, _, _, _, _, _):
             return "/api/appGetGps/saveGpsAPP.shtml"
             
-        case .submitPauperInfo(_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _):
+        case .submitPauperInfo(_, _, _, _, _, _, _, _, _, _, _, _, _, _):
             return "/api/appPauper/addPauperInfo.shtml"
             
         case .submitPledgeInfo(_, _, _, _, _, _, _, _, _, _, _):
@@ -345,12 +345,12 @@ extension GLService: TargetType {
             param["body"] = ["partyId": partyId]
             break
             
-        case let GLService.submitGPSInfo(partyId, processId, processTaskId, backFlag, l_id, l_number, g_personnel, install_Date, gpsList):
-            param["body"] = ["partyId": partyId, "processId": processId, "processTaskId": processTaskId, "backFlag": backFlag, "l_id": l_id, "l_number": l_number, "g_personnel": g_personnel, "install_Date": install_Date, "gpsList": gpsList]
+        case let GLService.submitGPSInfo(partyId, processExampleId, processTaskId, backFlag, l_id, l_number, g_personnel, install_Date, gpsList):
+            param["body"] = ["partyId": partyId, "processExampleId": processExampleId, "processTaskId": processTaskId, "backFlag": backFlag, "l_id": l_id, "l_number": l_number, "g_personnel": g_personnel, "install_Date": install_Date, "gpsList": gpsList]
             break
             
-        case let GLService.submitPauperInfo(partyId, processId, processTaskId, fallbackf, crea_date, pauper_agreement, pauper_source, pauper_contraband, pauper_environment, pauper_purpose, pauper_opinion, l_number, p_id, fileInfo, attachment_filename, attachment_size, attachment_href, attachment_name):
-            param["body"] = ["partyId": partyId, "processId": processId, "processTaskId": processTaskId, "fallbackf": fallbackf, "crea_date": crea_date, "pauper_agreement": pauper_agreement, "pauper_source": pauper_source, "pauper_contraband": pauper_contraband, "pauper_environment": pauper_environment, "pauper_purpose": pauper_purpose, "pauper_opinion": pauper_opinion, "l_number": l_number, "p_id": p_id, "fileInfo": fileInfo, "attachment_filename": attachment_filename, "attachment_size": attachment_size, "attachment_href": attachment_href, "attachment_name": attachment_name]
+        case let GLService.submitPauperInfo(partyId, processId, processTaskId, fallbackf, crea_date, pauper_agreement, pauper_source, pauper_contraband, pauper_environment, pauper_purpose, pauper_opinion, l_number, p_id, fileInfo):
+            param["body"] = ["partyId": partyId, "processId": processId, "processTaskId": processTaskId, "fallbackf": fallbackf, "crea_date": crea_date, "pauper_agreement": pauper_agreement, "pauper_source": pauper_source, "pauper_contraband": pauper_contraband, "pauper_environment": pauper_environment, "pauper_purpose": pauper_purpose, "pauper_opinion": pauper_opinion, "l_number": l_number, "p_id": p_id, "fileInfo": fileInfo]
             break
             
         case let GLService.submitPledgeInfo(partyId, processId, processTaskId, backFlag, crea_date, l_id, attachmentList, attachment_filename, attachment_size, attachment_href, attachment_name):

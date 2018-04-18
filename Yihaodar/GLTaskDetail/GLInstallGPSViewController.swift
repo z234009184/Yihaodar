@@ -58,10 +58,10 @@ class GLInstallGPSViewController: UIViewController {
     
     
     var model: GLWorkTableModel?
-    var detailModel: GLGPSTaskDetailBigModel?
-    
+    var submitSuccess: (()->())?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     /// 取消
@@ -121,16 +121,19 @@ class GLInstallGPSViewController: UIViewController {
         let listDic = gpsList.toJSON() as! [[String: Any]]
         
         let tabBarVc = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController as? GLTabBarController
-        GLProvider.request(GLService.submitGPSInfo(partyId: GLUser.partyId!, processId: (model?.processId)!, processTaskId: (model?.processTaskId)!, backFlag: "0", l_id: (detailModel?.gpsInfo.l_id)!, l_number: (model?.executionId)!, g_personnel: (selectedInstallerModel?.title)!, install_Date: (installDateLabel.text)!, gpsList: listDic)) { [weak self] (result) in
+        GLProvider.request(GLService.submitGPSInfo(partyId: GLUser.partyId!, processExampleId: (model?.processId)!, processTaskId: (model?.processTaskId)!, backFlag: "0", l_id: (model?.executionId)!, l_number: (model?.executionId)!, g_personnel: (selectedInstallerModel?.title)!, install_Date: (installDateLabel.text)!, gpsList: listDic)) { [weak self] (result) in
             if case let .success(respon) = result {
                 let json = JSON(respon.data)
+                print(json)
                 if json["type"] == "S" {
                     tabBarVc?.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_success"), title: "提交成功")
                     NotificationCenter.default.post(name: YiRefreshNotificationName, object: nil)
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
                         tabBarVc?.dismissCover(btn: nil)
                         self?.navigationController?.dismiss(animated: false, completion: {
-                            (self?.presentingViewController as? GLNavigationController)?.popViewController(animated: false)
+                            if let submitSuccess = self?.submitSuccess {
+                                submitSuccess()
+                            }
                         })
                     })
                 } else {
@@ -141,12 +144,6 @@ class GLInstallGPSViewController: UIViewController {
                 }
             }
         }
-        
-        
-        
-        
-        
-        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     
