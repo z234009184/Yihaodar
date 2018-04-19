@@ -168,8 +168,14 @@ class GLUnderhouseViewController: UIViewController, UITextViewDelegate {
         let listDic = picArr.toJSON() as! [[String: Any]]
         
         
+        var fallbackf = "0"
+        if self.pauperModel != nil {
+            fallbackf = "1"
+        }
+        
+        
         let tabBarVc = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController as? GLTabBarController
-        GLProvider.request(GLService.submitPauperInfo(partyId: GLUser.partyId!, processId: (model?.processId)!, processTaskId: (model?.processTaskId)!, fallbackf: "0", crea_date: (underDateLabel.text)!, pauper_agreement: (selectedAdressSameModel?.title)!, pauper_source: (selectedHouseSourceModel?.title)!, pauper_contraband: (selectedHouseContrabandModel?.title)!, pauper_environment: (selectedHouseEnvironmentModel?.title)!, pauper_purpose: (selectedHouseUseModel?.title)!, pauper_opinion: underIdeaTextView.text, l_number: (model?.executionId)!, p_id: "", fileInfo: listDic)) { [weak self] (result) in
+        GLProvider.request(GLService.submitPauperInfo(partyId: GLUser.partyId!, processId: (model?.processId)!, processTaskId: (model?.processTaskId)!, fallbackf: fallbackf, crea_date: (underDateLabel.text)!, pauper_agreement: (selectedAdressSameModel?.title)!, pauper_source: (selectedHouseSourceModel?.title)!, pauper_contraband: (selectedHouseContrabandModel?.title)!, pauper_environment: (selectedHouseEnvironmentModel?.title)!, pauper_purpose: (selectedHouseUseModel?.title)!, pauper_opinion: underIdeaTextView.text, l_number: (model?.executionId)!, p_id: "", fileInfo: listDic)) { [weak self] (result) in
             
             if case let .success(respon) = result {
                 let json = JSON(respon.data)

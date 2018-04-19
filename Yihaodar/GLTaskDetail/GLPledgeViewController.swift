@@ -91,9 +91,13 @@ class GLPledgeViewController: UIViewController {
         
         let listDic = picArr.toJSON() as! [[String: Any]]
         
+        var backFlag = "0"
+        if self.pledgeModel != nil {
+            backFlag = "1"
+        }
         
         let tabBarVc = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController as? GLTabBarController
-        GLProvider.request(GLService.submitPledgeInfo(partyId: GLUser.partyId!, processExampleId: (model?.processId)!, processTaskId: (model?.processTaskId)!, backFlag: "0", crea_date: (pledgeDate.text)!, l_id: (model?.executionId)!, attachmentList: listDic)) { [weak self] (result) in
+        GLProvider.request(GLService.submitPledgeInfo(partyId: GLUser.partyId!, processExampleId: (model?.processId)!, processTaskId: (model?.processTaskId)!, backFlag: backFlag, crea_date: (pledgeDate.text)!, l_id: (model?.executionId)!, attachmentList: listDic)) { [weak self] (result) in
             
             if case let .success(respon) = result {
                 let json = JSON(respon.data)
