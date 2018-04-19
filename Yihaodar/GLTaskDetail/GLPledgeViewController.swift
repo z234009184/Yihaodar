@@ -42,6 +42,11 @@ class GLPledgeViewController: UIViewController {
     
     @IBAction func submitAction(_ sender: UIBarButtonItem) {
         
+        if pledgeDate.text == "请选择" {
+            view.makeToast("请选择抵质押登记日期")
+            return
+        }
+        
         let picArr = pictureArray.flatMap { (attModel) -> GLPauperInfoModel.GLAttachmentModel? in
             if attModel.attachment_href.isEmpty == true {
                 return nil

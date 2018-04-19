@@ -159,6 +159,17 @@ enum GLService {
     /// 审批
     case submitApprove(partyId: String, processId: String, processTaskId: String, l_number: String, lend_apply_id: String, exam_status: String, remarks: String)
     
+    
+    // -- 回退流程
+    /// 查看GPS回退
+    case backGPSProcess(l_number: String)
+    
+    /// 查询下户回退
+    case backPauperProcess(l_number: String)
+    
+    /// 查询抵质押回退
+    case backPledgeProcess(l_number: String)
+    
 }
 
 
@@ -249,6 +260,15 @@ extension GLService: TargetType {
         case .submitApprove(_, _, _, _, _, _, _):
             return "/api/appLoanShengPi/submitLoanShengPi.shtml"
             
+        case .backGPSProcess(_):
+            return "/api/appGetGps/backGpsProcessApp.shtml"
+            
+            
+        case .backPauperProcess(_):
+            return "/api/appPauper/pauperBack.shtml"
+            
+        case .backPledgeProcess(_):
+            return "/api/appPauper/backProcessApp.shtml"
             
         }
         
@@ -362,6 +382,18 @@ extension GLService: TargetType {
             param["body"] = ["partyId": partyId, "processId": processId, "processTaskId": processTaskId, "l_number": l_number, "lend_apply_id": lend_apply_id, "exam_status": exam_status, "remarks": remarks]
             break
             
+        case let GLService.backGPSProcess(l_number):
+            param["body"] = ["l_number": l_number]
+            break
+            
+        case let GLService.backPauperProcess(l_number):
+            param["body"] = ["l_number": l_number]
+            break
+            
+            
+        case let GLService.backPledgeProcess(l_number):
+            param["body"] = ["l_number": l_number]
+            break
             
             
         }
