@@ -723,15 +723,16 @@ class GLModelConvert: NSObject {
             }
             
             if model.dataAuth.gpsazmx_azms == true {
-                var formModel = GLFormModel()
-                formModel.titles = ["设备类型", "设备型号", "设备编号", "设备SIM卡号", "安装位置", "备注"]
-                for gpsMxModel in model.gpsInfo.gpsSet {
-                    let formArray = [gpsMxModel.gps_type, gpsMxModel.gps_version, gpsMxModel.gps_number, gpsMxModel.gps_sim_card, gpsMxModel.gps_position, gpsMxModel.gps_remark]
-                    
-                    formModel.dataArray.append(formArray)
+                if model.gpsInfo.gpsSet.count > 0 {
+                    var formModel = GLFormModel()
+                    formModel.titles = ["设备类型", "设备型号", "设备编号", "设备SIM卡号", "安装位置", "备注"]
+                    for gpsMxModel in model.gpsInfo.gpsSet {
+                        let formArray = [gpsMxModel.gps_type, gpsMxModel.gps_version, gpsMxModel.gps_number, gpsMxModel.gps_sim_card, gpsMxModel.gps_position, gpsMxModel.gps_remark]
+                        
+                        formModel.dataArray.append(formArray)
+                    }
+                    sectionModel.items.append(formModel)
                 }
-                sectionModel.items.append(formModel)
-                
             }
             dataArray.append(sectionModel)
         }
@@ -801,15 +802,17 @@ class GLModelConvert: NSObject {
             sectionModel.title = "合同交付"
             sectionModel.items.append(GLItemModel(title: "合同编号", subTitle: model.loanApply.contract_number))
             
-            var formModel = GLFormModel()
-            formModel.titles = ["合同名称", "是否交付", "数量(份)"]
-            formModel.titleColWidth = 120
-            for htModel in model.signatureList {
-                let formArray = [htModel.dname, htModel.isGive, htModel.contract_count]
-                
-                formModel.dataArray.append(formArray)
+            if model.signatureList.count > 0{
+                var formModel = GLFormModel()
+                formModel.titles = ["合同名称", "是否交付", "数量(份)"]
+                formModel.titleColWidth = 120
+                for htModel in model.signatureList {
+                    let formArray = [htModel.dname, htModel.isGive, htModel.contract_count]
+                    
+                    formModel.dataArray.append(formArray)
+                }
+                sectionModel.items.append(formModel)
             }
-            sectionModel.items.append(formModel)
             
             dataArray.append(sectionModel)
         }
@@ -964,26 +967,27 @@ class GLModelConvert: NSObject {
             var sectionModel = GLSectionModel()
             sectionModel.title = "贷前费用"
             
-            
-            var formModel = GLFormModel()
-            formModel.titles = ["缴费科目", "已缴纳金额", "待缴纳金额", "备注"]
-            formModel.titleColWidth = 100
-            
-            for payModel in model.payList {
+            if model.payList.count > 0 {
+                var formModel = GLFormModel()
+                formModel.titles = ["缴费科目", "已缴纳金额", "待缴纳金额", "备注"]
+                formModel.titleColWidth = 100
                 
-                var o = GLOptionsModel()
-                for optionModel in model.options {
-                    if payModel.pay_id == optionModel.id {
-                        o = optionModel
-                        break
+                for payModel in model.payList {
+                    
+                    var o = GLOptionsModel()
+                    for optionModel in model.options {
+                        if payModel.pay_id == optionModel.id {
+                            o = optionModel
+                            break
+                        }
                     }
+                    let formArray = [o.dname, payModel.unpaid.decimalString()+"元", payModel.alreadyPaid.decimalString()+"元", payModel.content]
+                    
+                    formModel.dataArray.append(formArray)
                 }
-                let formArray = [o.dname, payModel.unpaid.decimalString()+"元", payModel.alreadyPaid.decimalString()+"元", payModel.content]
-                
-                formModel.dataArray.append(formArray)
+                sectionModel.items.append(formModel)
             }
-            sectionModel.items.append(formModel)
-            
+                
             dataArray.append(sectionModel)
         }
         
@@ -1028,17 +1032,17 @@ class GLModelConvert: NSObject {
             sectionModel.items.append(GLItemModel(title: "支行信息", subTitle: model.appInfo.a_bank_branch))
             
             
-            
-            var formM = GLFormModel()
-            formM.titles = ["预计返费时间", "返费金额", "备注"]
-            formM.titleColWidth = 130
-            for agentModel in model.agentBack {
-                let formArray = [agentModel.backtime, agentModel.backamount.decimalString() + "元", agentModel.backremark]
-                
-                formM.dataArray.append(formArray)
+            if model.agentBack.count > 0 {
+                var formM = GLFormModel()
+                formM.titles = ["预计返费时间", "返费金额", "备注"]
+                formM.titleColWidth = 130
+                for agentModel in model.agentBack {
+                    let formArray = [agentModel.backtime, agentModel.backamount.decimalString() + "元", agentModel.backremark]
+                    
+                    formM.dataArray.append(formArray)
+                }
+                sectionModel.items.append(formM)
             }
-            sectionModel.items.append(formM)
-            
             
             dataArray.append(sectionModel)
         }
@@ -1064,16 +1068,16 @@ class GLModelConvert: NSObject {
             var sectionModel = GLSectionModel()
             sectionModel.title = "还款计划"
             
-            
-            var formModel = GLFormModel()
-            formModel.titles = ["期数", "还款日期", "还款本金", "还款利息", "本期还款总额"]
-            for planModel in model.repaymentPlan {
-                let formArray = [planModel.overdue_periods, planModel.repayment_date, planModel.repaymentCorpus.decimalString(), planModel.repaymentInterests.decimalString(), planModel.repaymentTotal.decimalString()]
-                
-                formModel.dataArray.append(formArray)
+            if model.repaymentPlan.count > 0 {
+                var formModel = GLFormModel()
+                formModel.titles = ["期数", "还款日期", "还款本金", "还款利息", "本期还款总额"]
+                for planModel in model.repaymentPlan {
+                    let formArray = [planModel.overdue_periods, planModel.repayment_date, planModel.repaymentCorpus.decimalString(), planModel.repaymentInterests.decimalString(), planModel.repaymentTotal.decimalString()]
+                    
+                    formModel.dataArray.append(formArray)
+                }
+                sectionModel.items.append(formModel)
             }
-            sectionModel.items.append(formModel)
-            
             
             
             
