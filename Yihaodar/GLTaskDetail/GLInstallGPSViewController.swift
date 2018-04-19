@@ -172,8 +172,13 @@ class GLInstallGPSViewController: UIViewController {
         
         let listDic = gpsList.toJSON() as! [[String: Any]]
         
+        var backFlag = "0"
+        if gpsInfoModel != nil { // 有回退流程
+            backFlag = "1"
+        }
+        
         let tabBarVc = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController as? GLTabBarController
-        GLProvider.request(GLService.submitGPSInfo(partyId: GLUser.partyId!, processExampleId: (model?.processId)!, processTaskId: (model?.processTaskId)!, backFlag: "0", l_id: (model?.executionId)!, l_number: (model?.executionId)!, g_personnel: (selectedInstallerModel?.title)!, install_Date: (installDateLabel.text)!, gpsList: listDic)) { [weak self] (result) in
+        GLProvider.request(GLService.submitGPSInfo(partyId: GLUser.partyId!, processExampleId: (model?.processId)!, processTaskId: (model?.processTaskId)!, backFlag: backFlag, l_id: (model?.executionId)!, l_number: (model?.executionId)!, g_personnel: (selectedInstallerModel?.title)!, install_Date: (installDateLabel.text)!, gpsList: listDic)) { [weak self] (result) in
             if case let .success(respon) = result {
                 let json = JSON(respon.data)
                 print(json)
