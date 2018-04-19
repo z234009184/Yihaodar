@@ -72,7 +72,7 @@ struct GLPauperInfoModel: HandyJSON {
         var attachment_size = ""
         var attachment_filename = ""
         var file_type = ""
-        var image = UIImage()
+        var image: UIImage?
     }
     
 }

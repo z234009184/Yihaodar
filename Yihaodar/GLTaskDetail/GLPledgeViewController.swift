@@ -31,10 +31,45 @@ class GLPledgeViewController: UIViewController {
     var model: GLWorkTableModel?
     var submitSuccess: (()->())?
     
+    var pledgeModel: GLCompleteModel.GLPledgeModel.GLPledgeInfoModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkBackGPSProcess()
+        
     }
+    
+    
+    /// 查询回退流程
+    func checkBackGPSProcess() {
+        view.showLoading()
+        GLProvider.request(GLService.backPledgeProcess(l_number: (model?.executionId)!), completion: { [weak self] (result) in
+            self?.view.hideLoading()
+            if case let .success(respon) = result {
+                let json = JSON(respon.data)
+                print(json)
+                if json["type"] == "S" {
+                    self?.pledgeModel = GLCompleteModel.GLPledgeModel.GLPledgeInfoModel.deserialize(from: json.rawString(), designatedPath: "results.pledge")
+                    
+                    if let pledgeModel = self?.pledgeModel {
+                        self?.updateUI(pledgeModel: pledgeModel)
+                    }
+                }
+            }
+        })
+    }
+    
+    /// 更新界面
+    func updateUI(pledgeModel: GLCompleteModel.GLPledgeModel.GLPledgeInfoModel) -> Void {
+        
+        pledgeDate.text = pledgeModel.crea_date
+        
+        pictureArray.insert(contentsOf: pledgeModel.attachmentList, at: 0)
+        collectionView.reloadData()
+    }
+    
+    
     
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
@@ -113,6 +148,9 @@ extension GLPledgeViewController: UICollectionViewDataSource, UICollectionViewDe
         } else {
             pictureCell.deleteBtn.isHidden = false
             pictureCell.imageView.image = pictureArray[indexPath.row].image
+            if pictureCell.imageView.image == nil {
+                pictureCell.imageView.setImage(urlString: pictureArray[indexPath.row].attachment_href, placeholderImage: nil)
+            }
         }
         
         weak var weakCollectionView = collectionView

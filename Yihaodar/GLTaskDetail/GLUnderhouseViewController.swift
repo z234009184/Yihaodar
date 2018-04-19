@@ -52,10 +52,67 @@ class GLUnderhouseViewController: UIViewController, UITextViewDelegate {
     
     var model: GLWorkTableModel?
     var submitSuccess: (()->())?
+    
+    var pauperModel: GLPauperInfoModel?
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        checkBackGPSProcess()
     }
+    
+    /// 查询回退流程
+    func checkBackGPSProcess() {
+        view.showLoading()
+        GLProvider.request(GLService.backPauperProcess(l_number: (model?.executionId)!), completion: { [weak self] (result) in
+            self?.view.hideLoading()
+            if case let .success(respon) = result {
+                let json = JSON(respon.data)
+                print(json)
+                if json["type"] == "S" {
+                    self?.pauperModel = GLPauperInfoModel.deserialize(from: json.rawString(), designatedPath: "results.pauper")
+                    
+                    if let pauperModel = self?.pauperModel {
+                        self?.updateUI(pauperModel: pauperModel)
+                    }
+                } 
+            }
+        })
+    }
+    
+    /// 更新界面
+    func updateUI(pauperModel: GLPauperInfoModel) -> Void {
+        
+        underDateLabel.text = pauperModel.crea_date
+        
+        var r1 = GLRadioModel()
+        r1.title = pauperModel.pauper_agreement
+        selectedAdressSameModel = r1
+        
+        var r2 = GLRadioModel()
+        r2.title = pauperModel.pauper_source
+        selectedHouseSourceModel = r2
+        
+        var r3 = GLRadioModel()
+        r3.title = pauperModel.pauper_purpose
+        selectedHouseUseModel = r3
+        
+        var r4 = GLRadioModel()
+        r4.title = pauperModel.pauper_environment
+        selectedHouseEnvironmentModel = r4
+        
+        var r5 = GLRadioModel()
+        r5.title = pauperModel.pauper_contraband
+        selectedHouseContrabandModel = r5
+        
+        underIdeaTextView.text = pauperModel.pauper_opinion
+        
+        pictureArray.insert(contentsOf: pauperModel.attachmentList, at: 0)
+        collectionView.reloadData()
+    }
+    
+    
+    
     
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
@@ -296,6 +353,9 @@ extension GLUnderhouseViewController: UICollectionViewDataSource, UICollectionVi
         } else {
             pictureCell.deleteBtn.isHidden = false
             pictureCell.imageView.image = pictureArray[indexPath.row].image
+            if pictureCell.imageView.image == nil {
+                pictureCell.imageView.setImage(urlString: pictureArray[indexPath.row].attachment_href, placeholderImage: nil)
+            }
         }
         
         weak var weakCollectionView = collectionView

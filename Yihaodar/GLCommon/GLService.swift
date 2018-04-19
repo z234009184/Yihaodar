@@ -49,14 +49,26 @@ struct CustomPlugin: PluginType {
             let json = JSON(response.data)
             if json["type"] == "E" {
                 let msg = json["message"].stringValue
-                window.makeToast(msg)
                 if json["code"] == "TOKEN IS ERROR" || json["code"] == "TOKEN IS OVER TIME" || json["code"] == "TOKEN IS EMPTY" {
                     let user = User.read()
                     user?.clear()
                     window.rootViewController?.presentedViewController?.dismiss(animated: true, completion: nil)
                 }
+                
+                if target.path == "/api/appGetGps/backGpsProcessApp.shtml" ||
+                    target.path == "/api/appPauper/pauperBack.shtml" ||
+                    target.path == "/api/appPauper/backProcessApp.shtml"
+                {
+                    if json["message"] == "找不到数据" {
+                        return
+                    }
+                }
+                
+                window.makeToast(msg)
             }
         }
+        
+        
         
         //只有请求错误时会继续往下执行
         guard case let Result.failure(error) = result else { return }
