@@ -20,6 +20,7 @@ struct GLWorkTableModel: HandyJSON {
     var takeStatus: String?
     var startDate: String?
     var taskType: String?
+    var description: String?
     var executionId: String?
     var processName: String?
     var processTaskId: String?

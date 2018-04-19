@@ -1657,13 +1657,48 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
         } else if model?.statusType == GLWorkTableModel.TaskType.approve {
             /// 显示信息视图
             let showMsgView = showSubmitMessageView()
-            
-            
-            
+            weak var weakShowMsgView = showMsgView
+            showMsgView.submitClosure = { [weak self] (remarks) in
+                
+                var exam_status = ""
+                
+                if weakShowMsgView?.lastBtn == nil {
+                    weakShowMsgView?.makeToast("请选择同意放款/拒绝放款")
+                    return
+                }
+                
+                if weakShowMsgView?.lastBtn == weakShowMsgView?.agreeBtn {
+                    exam_status = "1"
+                } else {
+                    exam_status = "2"
+                }
+                
+                
+                
+                let tabBarVc = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController as? GLTabBarController
+                GLProvider.request(GLService.submitApprove(partyId: GLUser.partyId!, processId: (self?.model?.processId)!, processTaskId: (self?.model?.processTaskId)!, l_number: (self?.model?.executionId)!, lend_apply_id: (self?.model?.description)!, exam_status: exam_status, remarks: remarks), completion: { (result) in
+                    
+                    if case let .success(respon) = result {
+                        let json = JSON(respon.data)
+                        if json["type"] == "S" {
+                            tabBarVc?.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_success"), title: "提交成功")
+                            NotificationCenter.default.post(name: YiRefreshNotificationName, object: nil)
+                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                                tabBarVc?.dismissCover(btn: nil)
+                                self?.navigationController?.popViewController(animated: true)
+                            })
+                        } else {
+                            tabBarVc?.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_failure"), title: "提交失败")
+                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                                tabBarVc?.dismissCover(btn: nil)
+                            })
+                        }
+                    }
+                })
+                
+            }
             
         }
-        
-        
     }
     
     

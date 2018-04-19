@@ -12,9 +12,11 @@ class GLApproveView: UIView {
     
     @IBOutlet weak var agreeBtn: UIButton!
     @IBOutlet weak var declineBtn: UIButton!
-    private var lastBtn: UIButton?
+    var lastBtn: UIButton?
     @IBOutlet weak var remarksTextField: DesignableTextField!
     
+    
+    var submitClosure: ((_ remarks: String)->())?
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -29,8 +31,11 @@ class GLApproveView: UIView {
         lastBtn = sender
     }
     
+    /// 提交信息
     @IBAction func submitBtnClick(_ sender: DesignableButton) {
-        
+        if let submitClosure = submitClosure {
+            submitClosure((remarksTextField.text)!)
+        }
         
     }
     
