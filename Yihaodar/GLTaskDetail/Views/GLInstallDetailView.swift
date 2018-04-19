@@ -53,7 +53,11 @@ class GLInstallDetailView: UIView, UITextViewDelegate {
     
     
     
-    var selectedDeviceTypeModel: GLRadioModel?
+    var selectedDeviceTypeModel: GLRadioModel? {
+        didSet {
+            deviceTypeLabel.text = selectedDeviceTypeModel?.title
+        }
+    }
     /// 设备类型
     @IBAction func deviceTypeAction(_ sender: UIButton) {
         if let deviceTypeClosure = deviceTypeClosure {

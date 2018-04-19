@@ -56,13 +56,65 @@ class GLInstallGPSViewController: UIViewController {
     
     private var gpsManList: [GLGPSManListModel]?
     
+    var gpsInfoModel: GLGPSInfoModel?
+    
     
     var model: GLWorkTableModel?
     var submitSuccess: (()->())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkBackGPSProcess()
     }
+    
+    /// 查询回退流程
+    func checkBackGPSProcess() {
+        view.showLoading()
+        GLProvider.request(GLService.backGPSProcess(l_number: (model?.executionId)!), completion: { [weak self] (result) in
+            self?.view.hideLoading()
+            if case let .success(respon) = result {
+                let json = JSON(respon.data)
+                print(json)
+                if json["type"] == "S" {
+                    self?.gpsInfoModel = GLGPSInfoModel.deserialize(from: json.rawString(), designatedPath: "results.GpsList")
+                    
+                    if let gpsInfoModel = self?.gpsInfoModel {
+                        self?.updateUI(gpsInfoModel: gpsInfoModel)
+                    }
+                }
+            }
+        })
+        
+    }
+    
+    func updateUI(gpsInfoModel: GLGPSInfoModel) -> Void {
+        var r1 = GLRadioModel()
+        r1.title = gpsInfoModel.g_personnel
+        selectedInstallerModel = r1
+        
+        installDateLabel.text = gpsInfoModel.install_Date
+        
+        gpsInfoModel.gpsSet.enumerated().forEach { [weak self] (index, gpsSetModel) in
+            let installDetailView = self?.createInstallDetailView()
+            
+            var r2 = GLRadioModel()
+            r2.title = gpsSetModel.gps_type
+            installDetailView?.selectedDeviceTypeModel = r2
+            
+            installDetailView?.deviceVersionTextView.text = gpsSetModel.gps_version
+            installDetailView?.deviceNumberTextView.text = gpsSetModel.gps_number
+            installDetailView?.deviceSIMNumberTextView.text = gpsSetModel.gps_sim_card
+            installDetailView?.installLocationTextView.text = gpsSetModel.gps_position
+            installDetailView?.remarksTextView.text = gpsSetModel.gps_remark
+            
+        }
+        
+        layoutAddInstallDetailViews(array: arr)
+        
+    }
+    
+    
     
     /// 取消
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
@@ -147,7 +199,11 @@ class GLInstallGPSViewController: UIViewController {
     }
     
     
-    var selectedInstallerModel: GLRadioModel?
+    var selectedInstallerModel: GLRadioModel? {
+        didSet {
+            installerLabel.text = selectedInstallerModel?.title
+        }
+    }
     /// 选择安装人员
     @IBAction func selectedInstallerAction(_ sender: UIButton) {
         loadGPSManListData { [weak self] (dataArray) in
@@ -163,13 +219,19 @@ class GLInstallGPSViewController: UIViewController {
             
             radioVc.closeClosure = { [weak self] (model: GLRadioModel) in
                 self?.selectedInstallerModel = model
-                self?.installerLabel.text = model.title
             }
         }
     }
     
     /// 加载安装人员数据
     func loadGPSManListData(success:((_ dataArray: [GLGPSManListModel])->())?) -> Void {
+        if let gpsManList = gpsManList {
+            if let success = success {
+                success(gpsManList)
+                return
+            }
+        }
+        
         view.showLoading()
         GLProvider.request(GLService.getGPSManagersInfo(partyId: GLUser.partyId!)) { [weak self] (result) in
             self?.view.hideLoading()
@@ -205,29 +267,20 @@ class GLInstallGPSViewController: UIViewController {
     
     /// 添加安装描述
     @IBAction func addInstallMsgBtnAction(_ sender: UIButton) {
+        // 添加安装描述
+        _ = createInstallDetailView()
+        
+        // 布局视图
+        layoutAddInstallDetailViews(array: arr)
+    }
+    
+    // 创建安装描述
+    func createInstallDetailView() -> GLInstallDetailView {
         let installDetailView = Bundle.main.loadNibNamed("GLInstallDetailView", owner: nil, options: nil)?.first as! GLInstallDetailView
         contentView.addSubview(installDetailView)
         
-        /// 布局
-        installDetailView.snp.remakeConstraints { (make) in
-            if let lastView = arr.last {
-                make.top.equalTo(lastView.snp.bottom).offset(10)
-            } else {
-                make.top.equalTo(topView.snp.bottom).offset(10)
-            }
-            make.left.equalTo(topView)
-            make.right.equalTo(topView)
-        }
-        
-        addInstallMsgBtn.snp.remakeConstraints { (make) in
-            make.top.equalTo(installDetailView.snp.bottom).offset(40)
-        }
-        UIView.animate(withDuration: 0.25, animations: {
-            self.view.layoutIfNeeded()
-        })
-        
         weak var weakInstallDetailView = installDetailView
-        
+        // 设备类型选择
         installDetailView.deviceTypeClosure = { [weak self] in
             
             // 加载数据
@@ -249,15 +302,12 @@ class GLInstallGPSViewController: UIViewController {
             let radioVc = GLRadioViewController.jumpRadioVc(title: "选择设备类型", dataArray: dataArray, navigationVc: self?.navigationController)
             radioVc.closeClosure = { (radioModel) in
                 weakInstallDetailView?.selectedDeviceTypeModel = radioModel
-                weakInstallDetailView?.deviceTypeLabel.text = radioModel.title
             }
             
         }
         
         
         
-        /// 添加到数组中
-        arr.append(installDetailView)
         
         
         /// 删除
@@ -286,7 +336,46 @@ class GLInstallGPSViewController: UIViewController {
             })
         }
         
+        /// 添加到数组中
+        arr.append(installDetailView)
+        
+        return installDetailView
     }
     
+    
+    
+    /// 布局视图
+    func layoutAddInstallDetailViews(array: [GLInstallDetailView]) {
+        
+        if array.count == 0 { return }
+        
+        for (index, installDetailView) in array.enumerated() {
+            if index == 0 {
+                installDetailView.snp.remakeConstraints { (make) in
+                    make.top.equalTo(topView.snp.bottom).offset(10)
+                    make.left.equalTo(topView)
+                    make.right.equalTo(topView)
+                }
+            } else {
+                let lastView = array[index - 1]
+                installDetailView.snp.remakeConstraints { (make) in
+                    make.top.equalTo(lastView.snp.bottom).offset(10)
+                    make.left.equalTo(topView)
+                    make.right.equalTo(topView)
+                }
+            }
+        }
+        
+        if let lastView = array.last {
+            addInstallMsgBtn.snp.remakeConstraints { (make) in
+                make.top.equalTo(lastView.snp.bottom).offset(40)
+            }
+        }
+        
+        UIView.animate(withDuration: 0.25, animations: {
+            self.view.layoutIfNeeded()
+        })
+        
+    }
     
 }
