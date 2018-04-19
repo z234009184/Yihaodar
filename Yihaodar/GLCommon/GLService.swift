@@ -280,7 +280,7 @@ extension GLService: TargetType {
             return "/api/appPauper/pauperBack.shtml"
             
         case .backPledgeProcess(_):
-            return "/api/appPauper/backProcessApp.shtml"
+            return "/api/appGetPledge/backProcessApp.shtml"
             
         }
         
@@ -410,11 +410,18 @@ extension GLService: TargetType {
             
         }
         
-        var resultStr = (JSON(param).rawString(options: []))!.replacingOccurrences(of: "\\", with: "")
-        resultStr = resultStr.replacingOccurrences(of: "＼", with: "")
+        guard let jsonStr = JSON(param).rawString() else {
+            print(param)
+            print(JSON(param))
+            print(JSON(param).string)
+            print("空空空空空")
+            return .requestParameters(parameters: ["data": (JSON(param).rawString())!], encoding: URLEncoding.queryString)
+        }
         
-        print(resultStr)
+        var resultStr = jsonStr.replacingOccurrences(of: "\\", with: "")
+        resultStr = resultStr.replacingOccurrences(of: "＼", with: "")
         return .requestParameters(parameters: ["data": resultStr], encoding: URLEncoding.queryString)
+        
     }
     var sampleData: Data {
         return Data()

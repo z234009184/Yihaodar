@@ -358,10 +358,10 @@ extension GLUnderhouseViewController: UICollectionViewDataSource, UICollectionVi
             pictureCell.imageView.image = #imageLiteral(resourceName: "add_add_picture")
         } else {
             pictureCell.deleteBtn.isHidden = false
-            pictureCell.imageView.image = pictureArray[indexPath.row].image
-            if pictureCell.imageView.image == nil {
-                pictureCell.imageView.setImage(urlString: pictureArray[indexPath.row].attachment_href, placeholderImage: nil)
-            }
+//            pictureCell.imageView.image = pictureArray[indexPath.row].image
+            
+            pictureCell.imageView.setImage(urlString: pictureArray[indexPath.row].attachment_href, placeholderImage: nil)
+            
         }
         
         weak var weakCollectionView = collectionView
@@ -429,7 +429,7 @@ extension GLUnderhouseViewController: UICollectionViewDataSource, UICollectionVi
                 print(JSON(respon.data))
                 let jsonStr = JSON(respon.data)
                 if jsonStr["type"] == "S" {
-                    let picModel = GLPauperInfoModel.GLAttachmentModel(a_id: "", l_id: "", attachment_name: jsonStr["fileRealName"].stringValue, attachment_href: jsonStr["url"].stringValue, attachment_size: jsonStr["fileLength"].stringValue, attachment_filename: jsonStr["fileName"].stringValue, file_type: jsonStr["fileType"].stringValue, image: pickedImage)
+                    let picModel = GLPauperInfoModel.GLAttachmentModel(a_id: "", l_id: "", attachment_name: jsonStr["fileRealName"].stringValue, attachment_href: jsonStr["url"].stringValue, attachment_size: jsonStr["fileLength"].stringValue, attachment_filename: jsonStr["fileName"].stringValue, file_type: jsonStr["fileType"].stringValue)
                     
                     self?.pictureArray.insert(picModel, at: (self?.pictureArray.count)! - 1)
                     self?.collectionView.reloadData()
