@@ -35,7 +35,7 @@ abstract_target 'CommonPods' do
     
     pod 'Moya'          # 网络封装层库
     pod 'SwiftyJSON'    # JSON 解析库
-    pod 'HandyJSON','4.0.0-beta.1'     # json/字典 映射 模型
+    pod 'HandyJSON'    # json/字典 映射 模型
     pod 'Toast-Swift'  #吐司提示
     
     

@@ -473,7 +473,7 @@ struct GLLoanApply: HandyJSON {
     /// 业务总监
     var director_party_id = ""
     /// 借款申请金额
-    var l_amount = ""
+    var l_amount = "0"
     /// 借款期限
     var l_term = ""
     /// 借款类型

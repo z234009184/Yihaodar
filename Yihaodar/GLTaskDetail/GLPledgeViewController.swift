@@ -151,7 +151,8 @@ extension GLPledgeViewController: UICollectionViewDataSource, UICollectionViewDe
             pictureCell.imageView.image = #imageLiteral(resourceName: "add_add_picture")
         } else {
             pictureCell.deleteBtn.isHidden = false
-            pictureCell.imageView.setImage(urlString: pictureArray[indexPath.row].attachment_href, placeholderImage: nil)
+            let url = URL(string: pictureArray[indexPath.row].attachment_href)
+            pictureCell.imageView.kf.setImage(with: url)
             
         }
         

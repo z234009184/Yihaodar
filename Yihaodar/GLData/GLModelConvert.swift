@@ -154,7 +154,7 @@ class GLModelConvert: NSObject {
             sectionModel.title = "借款申请信息"
             
             if model.dataAuth.jksqxx_jksqje == true {
-                let item = GLItemModel(title: "借款申请金额", subTitle: model.loanApply.l_amount + "元")
+                let item = GLItemModel(title: "借款申请金额", subTitle: model.loanApply.l_amount.decimalString() + "元")
                 sectionModel.items.append(item)
             }
             

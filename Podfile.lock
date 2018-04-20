@@ -3,7 +3,7 @@ PODS:
   - Default (2.1.0)
   - FSPagerView (0.7.1)
   - GTSDK (2.2.0.0-noidfa)
-  - HandyJSON (4.0.0-beta.1)
+  - HandyJSON (4.1.1)
   - HGPlaceholders (0.3.0)
   - IQKeyboardManagerSwift (5.0.7)
   - JGProgressHUD (2.0)
@@ -29,7 +29,7 @@ DEPENDENCIES:
   - Default
   - FSPagerView
   - GTSDK (= 2.2.0.0-noidfa)
-  - HandyJSON (= 4.0.0-beta.1)
+  - HandyJSON
   - HGPlaceholders
   - IQKeyboardManagerSwift
   - JGProgressHUD
@@ -50,7 +50,7 @@ SPEC CHECKSUMS:
   Default: 6b79a17b84763dac64c2e49ea1198c00ce8c2631
   FSPagerView: 958aba39684e1573755ddcfcc29f7eebb8413cee
   GTSDK: 2cb8f5df1fbb250f596698443edd0191f77024f1
-  HandyJSON: 428bb18e2c34c2a77361accebf90cf64e4f74118
+  HandyJSON: 3a3de917c4118767ffe41c29b5acba23409649f4
   HGPlaceholders: 2df01c51b04a30acd0b8c9c7161c7cdde4541109
   IQKeyboardManagerSwift: 30fb3a61de1af53a95e02b80fb54ed0a19d5ede5
   JGProgressHUD: c402c0f41fc291ca7e33bba2f999118d9682dd9c
@@ -67,6 +67,6 @@ SPEC CHECKSUMS:
   Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
   XLPagerTabStrip: d1ab378af0923320ec0b5eab11d7b2f803d31261
 
-PODFILE CHECKSUM: 208b1246da3e159f7fadcd708062fef317735eb3
+PODFILE CHECKSUM: 4f68f576d0bd3e82356c5ad6cb72de5e9b0393c8
 
 COCOAPODS: 1.3.1

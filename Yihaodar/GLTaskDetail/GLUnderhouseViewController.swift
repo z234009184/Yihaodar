@@ -12,7 +12,7 @@ import HandyJSON
 import SwiftyJSON
 import Moya
 import JGProgressHUD
-
+import Kingfisher
 
 
 /// 下户控制器
@@ -358,9 +358,9 @@ extension GLUnderhouseViewController: UICollectionViewDataSource, UICollectionVi
             pictureCell.imageView.image = #imageLiteral(resourceName: "add_add_picture")
         } else {
             pictureCell.deleteBtn.isHidden = false
-//            pictureCell.imageView.image = pictureArray[indexPath.row].image
             
-            pictureCell.imageView.setImage(urlString: pictureArray[indexPath.row].attachment_href, placeholderImage: nil)
+            let url = URL(string: pictureArray[indexPath.row].attachment_href)
+            pictureCell.imageView.kf.setImage(with: url)
             
         }
         
