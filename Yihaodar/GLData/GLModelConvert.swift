@@ -181,6 +181,7 @@ class GLModelConvert: NSObject {
         if model.dataAuth.jbxx_jkrxx == true {
             
             for jkrModel in model.loanApply.ltcSet {
+                
                 if jkrModel.is_together == "0" { // 借款人信息
                     
                     // 借款人
@@ -358,13 +359,17 @@ class GLModelConvert: NSObject {
                             dataArray.append(sectionModel)
                         }
                     }
+                    break
                     
-                } else {
-                    // （共借人信息 -> 银行卡信息 -> 紧急联系人信息（多个））（多个）
-                    
-                    //--------------
-                    
-                    // 共借人
+                }
+                
+            }
+            
+            for jkrModel in model.loanApply.ltcSet {
+                
+                // （共借人信息 -> 银行卡信息 -> 紧急联系人信息（多个））（多个）
+                
+                if jkrModel.is_together == "1" {
                     if model.dataAuth.jbxx_gjrxx == true {
                         var sectionModel = GLSectionModel()
                         sectionModel.title = "共借人信息"
@@ -536,7 +541,7 @@ class GLModelConvert: NSObject {
                             dataArray.append(sectionModel)
                         }
                     }
-                    //--------------
+                    break // 如果不是共借人不用遍历
                 }
             }
         }
@@ -958,7 +963,7 @@ class GLModelConvert: NSObject {
             
             sectionModel.items.append(GLItemModel(title: "是否转单", subTitle:  lrPreIszhuangdan))
             
-//            sectionModel.items.append(GLItemModel(title: "垫资费", subTitle: model.loanRisker.lrPreAdvance.decimalString().isEmpty ? "" : model.loanRisker.lrPreAdvance.decimalString() + "元"))
+            //            sectionModel.items.append(GLItemModel(title: "垫资费", subTitle: model.loanRisker.lrPreAdvance.decimalString().isEmpty ? "" : model.loanRisker.lrPreAdvance.decimalString() + "元"))
             
             var lrPreIsgps = model.loanRisker.lrPreIsgps
             if lrPreIsgps == "1" {
@@ -970,7 +975,7 @@ class GLModelConvert: NSObject {
             
             sectionModel.items.append(GLItemModel(title: "GPS安装", subTitle: lrPreIsgps))
             
-//            sectionModel.items.append(GLItemModel(title: "GPS安装费", subTitle: model.loanRisker.lrPreGpsfee.decimalString().isEmpty ? "" : model.loanRisker.lrPreGpsfee.decimalString() + "元"))
+            //            sectionModel.items.append(GLItemModel(title: "GPS安装费", subTitle: model.loanRisker.lrPreGpsfee.decimalString().isEmpty ? "" : model.loanRisker.lrPreGpsfee.decimalString() + "元"))
             
             var lrPreIspauper = model.loanRisker.lrPreIspauper
             if lrPreIspauper == "1" {
@@ -981,7 +986,7 @@ class GLModelConvert: NSObject {
             }
             sectionModel.items.append(GLItemModel(title: "下户", subTitle: lrPreIspauper))
             
-//            sectionModel.items.append(GLItemModel(title: "下户费", subTitle: model.loanRisker.lrPrePauperfee.decimalString().isEmpty ? "" : model.loanRisker.lrPrePauperfee.decimalString() + "元"))
+            //            sectionModel.items.append(GLItemModel(title: "下户费", subTitle: model.loanRisker.lrPrePauperfee.decimalString().isEmpty ? "" : model.loanRisker.lrPrePauperfee.decimalString() + "元"))
             
             
             var lrPreIsriskMargin = model.loanRisker.lrPreIsriskMargin
@@ -1032,7 +1037,7 @@ class GLModelConvert: NSObject {
                 }
                 sectionModel.items.append(formModel)
             }
-                
+            
             dataArray.append(sectionModel)
         }
         
@@ -1064,7 +1069,7 @@ class GLModelConvert: NSObject {
                 sectionModel.items.append(GLItemModel(title: "实际放款", subTitle: jqskModel.fk_sjfke.isEmpty ? "" : jqskModel.fk_sjfke.decimalString() + "万元" ))
                 
             }
-
+            
             dataArray.append(sectionModel)
         }
         
