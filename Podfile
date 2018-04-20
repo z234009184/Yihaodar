@@ -55,7 +55,7 @@ abstract_target 'CommonPods' do
     pod 'FSPagerView' # 轮播
     pod 'Default' # 持久化存储
     pod 'JGProgressHUD' # 加载进度条
-    #    pod 'WCDB.swift'
+    pod 'Kingfisher' # 图片缓存
     
     target 'Yihaodar' do
     end

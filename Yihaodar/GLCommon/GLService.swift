@@ -14,7 +14,7 @@ import HandyJSON
 struct CustomPlugin: PluginType {
     
     
-    static let requestTimeoutClosure = { (endpoint: Endpoint<GLService>, done: @escaping MoyaProvider<GLService>.RequestResultClosure) in
+    static let requestTimeoutClosure = { (endpoint: Endpoint, done: @escaping MoyaProvider<GLService>.RequestResultClosure) in
         guard var request = try? endpoint.urlRequest() else { return }
         request.timeoutInterval = 60    //设置请求超时时间
         done(.success(request))
