@@ -206,41 +206,41 @@ struct GLLoanRiskerModel: HandyJSON {
     /// 批贷期限
     var lrTerm = ""
     /// 还款方式 0：先息后本 1：等额本息   2：等本等息
-    var lrRepaytype = "" {
-        willSet {
-            switch newValue {
+    var lrRepaytype = ""
+    /// 还款方式Str
+    var lrRepaytypeStr: String {
+        get {
+            switch lrRepaytype {
             case "0":
-                lrRepaytypeStr = "先息后本"
+                return "先息后本"
             case "1":
-                lrRepaytypeStr = "等额本息"
+                return "等额本息"
             case "2":
-                lrRepaytypeStr = "等本等息"
+                return "等本等息"
             default:
-                break
+                return ""
             }
         }
     }
-    /// 还款方式Str
-    var lrRepaytypeStr = ""
     /// 借款抵押率（0.02就是2%）
     var lrLoanmortgageRate = ""
     /// 借款类型 1：押手续 2：押车 3：双押
-    var lrMortagetype = "" {
-        willSet {
-            switch newValue {
+    var lrMortagetype = ""
+    /// 借款类型Str
+    var lrMortagetypeStr: String {
+        get {
+            switch lrMortagetype {
             case "1":
-                lrMortagetypeStr = "押手续"
+                return "押手续"
             case "2":
-                lrMortagetypeStr = "押车"
+                return "押车"
             case "3":
-                lrMortagetypeStr = "双押"
+                return "双押"
             default:
-                break
+                return ""
             }
         }
     }
-    /// 借款类型Str
-    var lrMortagetypeStr = ""
     /// 出借人
     var lrLenderName = ""
     /// 公司月息
@@ -514,65 +514,64 @@ struct GLLoanApply: HandyJSON {
             /// 北京居住年限
             var c_bjyear = ""
             /// 教育程度 1：硕士及以上 2：本科 3：专科 4：高中及以下
-            var c_educational_level = "" {
-                willSet{
-                    switch newValue {
+            var c_educational_level = ""
+            /// 教育程度Str
+            var c_educational_level_str: String {
+                get {
+                    switch c_educational_level {
                     case "1":
-                        c_educational_level_str = "硕士及以上"
+                        return "硕士及以上"
                     case "2":
-                        c_educational_level_str = "本科"
+                        return "本科"
                     case "3":
-                        c_educational_level_str = "专科"
+                        return "专科"
                     case "4":
-                        c_educational_level_str = "高中及以下"
+                        return "高中及以下"
                     default:
-                        c_educational_level_str = "未知"
-                        break
+                        return "未知"
                     }
                 }
             }
-            /// 教育程度Str
-            var c_educational_level_str = ""
             
             /// 毕业院校
             var c_over_school = ""
             /// 婚姻状况 1：已婚 2：未婚 3：离异 4：再婚
-            var c_marital_status = "" {
-                willSet {
-                    switch newValue {
+            var c_marital_status = ""
+            /// 婚姻状况Str
+            var c_marital_status_str: String {
+                get {
+                    switch c_marital_status {
                     case "1":
-                        c_marital_status_str = "已婚"
+                        return "已婚"
                     case "2":
-                        c_marital_status_str = "未婚"
+                        return "未婚"
                     case "3":
-                        c_marital_status_str = "离异"
+                        return "离异"
                     case "4":
-                        c_marital_status_str = "再婚"
+                        return "再婚"
                     default:
-                        break
+                        return ""
                     }
                 }
             }
-            /// 婚姻状况Str
-            var c_marital_status_str = ""
             /// 子女状况
             var c_children = ""
             /// 工作性质 1：工薪阶层 2：商人 3：农民
-            var c_nature_of_work = "" {
-                willSet {
-                    switch newValue {
+            var c_nature_of_work = ""
+            var c_nature_of_work_str: String {
+                get {
+                    switch c_nature_of_work {
                     case "1":
-                        c_nature_of_work_str = "工薪阶层"
+                        return "工薪阶层"
                     case "2":
-                        c_nature_of_work_str = "商人"
+                        return "商人"
                     case "3":
-                        c_nature_of_work_str = "农民"
+                        return "农民"
                     default:
-                        break
+                        return ""
                     }
                 }
             }
-            var c_nature_of_work_str = ""
             /// 从属行业
             var c_industry = ""
             /// 工作单位
@@ -611,23 +610,23 @@ struct GLLoanApply: HandyJSON {
                 /// 联系电话
                 var con_phone = ""
                 /// 与借款人关系 1：配偶 2：亲属 3：朋友
-                var con_nexus = "" {
-                    willSet {
-                        switch newValue {
+                var con_nexus = ""
+                /// 与共接人关系Str
+                var con_nexus_str: String {
+                    get {
+                        switch con_nexus {
                         case "1":
-                            con_nexus_str = "配偶"
+                            return "配偶"
                         case "2":
-                            con_nexus_str = "亲属"
+                            return "亲属"
                         case "3":
-                            con_nexus_str = "朋友"
+                            return "朋友"
                         default:
-                            con_nexus_str = "未知"
-                            break
+                            return "未知"
+                            
                         }
                     }
                 }
-                /// 与共接人关系Str
-                var con_nexus_str = ""
                 /// 工作单位
                 var con_work_company = ""
                 /// 联系地址

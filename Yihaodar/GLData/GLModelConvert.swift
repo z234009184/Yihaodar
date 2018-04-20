@@ -228,7 +228,11 @@ class GLModelConvert: NSObject {
                     }
                     
                     if model.dataAuth.jkrxx_bjjznx == true {
-                        let item = GLItemModel(title: "北京居住年限", subTitle: jkrModel.lc.c_bjyear)
+                        var bjyear = jkrModel.lc.c_bjyear
+                        if bjyear.isEmpty == false {
+                            bjyear = bjyear + "年"
+                        }
+                        let item = GLItemModel(title: "北京居住年限", subTitle: bjyear)
                         sectionModel.items.append(item)
                     }
                     
