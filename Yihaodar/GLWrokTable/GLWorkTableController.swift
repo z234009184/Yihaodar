@@ -599,27 +599,7 @@ class GLCache: NSObject, SKImageCacheable {
     func removeImageForKey(_ key: String) {
         cache.removeImage(forKey: key)
     }
-    
-    
-    
-    
-//    var cache: NSCache<AnyObject, AnyObject>
-//
-//    init() {
-//        cache = NSCache()
-//    }
-//
-//    func imageForKey(_ key: String) -> UIImage? {
-//        return cache.object(forKey: key as AnyObject) as? UIImage
-//    }
-//
-//    func setImage(_ image: UIImage, forKey key: String) {
-//        cache.setObject(image, forKey: key as AnyObject)
-//    }
-//
-//    func removeImageForKey(_ key: String) {
-//        cache.removeObject(forKey: key as AnyObject)
-//    }
+
 }
 
 /// 多项标签栏控制器
