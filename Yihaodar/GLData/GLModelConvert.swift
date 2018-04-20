@@ -947,21 +947,62 @@ class GLModelConvert: NSObject {
             var sectionModel = GLSectionModel()
             sectionModel.title = "贷前费用"
             
-            sectionModel.items.append(GLItemModel(title: "是否转单", subTitle: model.loanRisker.lrPreIszhuandan == "1" ? "是" : "否"))
+            var lrPreIszhuangdan = ""
+            if model.loanRisker.lrPreIszhuandan == "1" {
+                lrPreIszhuangdan = "是"
+            }
+            
+            if model.loanRisker.lrPreIszhuandan == "0" {
+                lrPreIszhuangdan = "否"
+            }
+            
+            sectionModel.items.append(GLItemModel(title: "是否转单", subTitle:  lrPreIszhuangdan))
             
 //            sectionModel.items.append(GLItemModel(title: "垫资费", subTitle: model.loanRisker.lrPreAdvance.decimalString().isEmpty ? "" : model.loanRisker.lrPreAdvance.decimalString() + "元"))
             
-            sectionModel.items.append(GLItemModel(title: "GPS安装", subTitle: model.loanRisker.lrPreIsgps == "1" ? "需要" : "不需要"))
+            var lrPreIsgps = model.loanRisker.lrPreIsgps
+            if lrPreIsgps == "1" {
+                lrPreIsgps = "需要"
+            }
+            if lrPreIsgps == "0" {
+                lrPreIsgps = "不需要"
+            }
+            
+            sectionModel.items.append(GLItemModel(title: "GPS安装", subTitle: lrPreIsgps))
             
 //            sectionModel.items.append(GLItemModel(title: "GPS安装费", subTitle: model.loanRisker.lrPreGpsfee.decimalString().isEmpty ? "" : model.loanRisker.lrPreGpsfee.decimalString() + "元"))
             
-            sectionModel.items.append(GLItemModel(title: "下户", subTitle: model.loanRisker.lrPreIspauper == "1" ? "需要" : "不需要"))
+            var lrPreIspauper = model.loanRisker.lrPreIspauper
+            if lrPreIspauper == "1" {
+                lrPreIspauper = "需要"
+            }
+            if lrPreIspauper == "0" {
+                lrPreIspauper = "不需要"
+            }
+            sectionModel.items.append(GLItemModel(title: "下户", subTitle: lrPreIspauper))
             
 //            sectionModel.items.append(GLItemModel(title: "下户费", subTitle: model.loanRisker.lrPrePauperfee.decimalString().isEmpty ? "" : model.loanRisker.lrPrePauperfee.decimalString() + "元"))
             
-            sectionModel.items.append(GLItemModel(title: "风险保证金", subTitle: model.loanRisker.lrPreIsriskMargin == "1" ? "有" : "无"))
             
-            sectionModel.items.append(GLItemModel(title: "证件不押金", subTitle: model.loanRisker.lrPreIsmortageCertificates == "1" ? "有" : "无"))
+            var lrPreIsriskMargin = model.loanRisker.lrPreIsriskMargin
+            if lrPreIsriskMargin == "1" {
+                lrPreIsriskMargin = "有"
+            }
+            if lrPreIsriskMargin == "0" {
+                lrPreIsriskMargin = "无"
+            }
+            sectionModel.items.append(GLItemModel(title: "风险保证金", subTitle: lrPreIsriskMargin))
+            
+            
+            
+            var lrPreIsmortageCertificates = model.loanRisker.lrPreIsmortageCertificates
+            if lrPreIsmortageCertificates == "1" {
+                lrPreIsmortageCertificates = "有"
+            }
+            if lrPreIsmortageCertificates == "0" {
+                lrPreIsmortageCertificates = "无"
+            }
+            sectionModel.items.append(GLItemModel(title: "证件不押金", subTitle: lrPreIsmortageCertificates))
             
             dataArray.append(sectionModel)
         }
@@ -999,7 +1040,15 @@ class GLModelConvert: NSObject {
             var sectionModel = GLSectionModel()
             sectionModel.title = "放款基本信息"
             
-            sectionModel.items.append(GLItemModel(title: "合同起止日期", subTitle: model.appInfo.ht_start == "" ? "-" : model.appInfo.ht_start + "至" + model.appInfo.ht_end == "" ? "-" : model.appInfo.ht_end))
+            
+            var start_end_date = model.appInfo.ht_start
+            if model.appInfo.ht_end.isEmpty == false {
+                if start_end_date.isEmpty == false {
+                    start_end_date = start_end_date + "至" + model.appInfo.ht_end
+                }
+            }
+            
+            sectionModel.items.append(GLItemModel(title: "合同起止日期", subTitle: start_end_date))
             
             var gdhkr = ""
             if model.appInfo.gdhxr.isEmpty == false {
