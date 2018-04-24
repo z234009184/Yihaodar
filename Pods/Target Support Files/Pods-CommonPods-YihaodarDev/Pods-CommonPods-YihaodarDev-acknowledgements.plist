@@ -43,6 +43,28 @@ THE SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>Copyright (C) 2017 Tencent Bugly, Inc. All rights reserved.
+</string>
+			<key>License</key>
+			<string>Copyright</string>
+			<key>Title</key>
+			<string>Bugly</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
+			<string>Copyright (C) 2017 Tencent Bugly, Inc. All rights reserved.
+</string>
+			<key>License</key>
+			<string>Commercial</string>
+			<key>Title</key>
+			<string>BuglyHotfix</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>MIT License
 
 Copyright (c) 2017 Nicholas Maccharoli 

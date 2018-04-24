@@ -25,12 +25,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        // 启动
+        Bugly.start(withAppId: "bddfb2bc57")
+        
+        // 初始化窗口 以及根视图控制器
         window = UIWindow(frame: UIScreen.main.bounds)
         let rootVc = UIStoryboard(name: "GLLogin", bundle: nil).instantiateInitialViewController()
         window?.rootViewController = rootVc
         window?.makeKeyAndVisible()
 
-        
+        // 设置全局键盘
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().enableAutoToolbar = false
         IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true

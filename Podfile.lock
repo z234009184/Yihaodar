@@ -1,5 +1,9 @@
 PODS:
   - Alamofire (4.7.2)
+  - Bugly (2.5.0)
+  - BuglyHotfix (2.1.0):
+    - BuglyHotfix/Core (= 2.1.0)
+  - BuglyHotfix/Core (2.1.0)
   - Default (2.1.0)
   - FSPagerView (0.7.1)
   - GTSDK (2.2.0.0-noidfa)
@@ -26,6 +30,8 @@ PODS:
   - XLPagerTabStrip (8.0.0)
 
 DEPENDENCIES:
+  - Bugly
+  - BuglyHotfix
   - Default
   - FSPagerView
   - GTSDK (= 2.2.0.0-noidfa)
@@ -47,6 +53,8 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
+  BuglyHotfix: 99a969c77da1baae823a7537acb16e4f1985a5f5
   Default: 6b79a17b84763dac64c2e49ea1198c00ce8c2631
   FSPagerView: 958aba39684e1573755ddcfcc29f7eebb8413cee
   GTSDK: 2cb8f5df1fbb250f596698443edd0191f77024f1
@@ -67,6 +75,6 @@ SPEC CHECKSUMS:
   Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
   XLPagerTabStrip: d1ab378af0923320ec0b5eab11d7b2f803d31261
 
-PODFILE CHECKSUM: 4f68f576d0bd3e82356c5ad6cb72de5e9b0393c8
+PODFILE CHECKSUM: 08acf698e697477decf85dfee695dd4561b57507
 
 COCOAPODS: 1.3.1
