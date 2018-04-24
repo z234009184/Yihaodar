@@ -4,5 +4,5 @@
 
 #import <GTSDK/GeTuiSdk.h>
 #import <CommonCrypto/CommonDigest.h>
-
-
+#import "JPEngine.h"
+#import "BuglyHotfixConfuse_pch.h"

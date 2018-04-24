@@ -6,6 +6,7 @@
 //  Copyright © 2018年 Yihaodar. All rights reserved.
 //
 
+
 import UIKit
 import IQKeyboardManagerSwift
 import PushKit
@@ -25,8 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        // 启动
-        Bugly.start(withAppId: "bddfb2bc57")
+        // 配置bugly
+        configBugly()
+        
         
         // 初始化窗口 以及根视图控制器
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -46,6 +48,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.registerRemoteNotification();
         
         return true
+    }
+    
+    private func configBugly() {
+        let buglyConfig = BuglyConfig()
+        buglyConfig.debugMode = true
+        buglyConfig.reportLogLevel = .info
+        Bugly.start(withAppId: "bddfb2bc57",config:buglyConfig)
+        
+        JPEngine.handleException { (msg) in
+            let exception = NSException(name: NSExceptionName(rawValue: "Hotfix Exception"), reason: msg, userInfo: nil)
+            Bugly.report(exception)
+        }
+        
+        BuglyMender.shared().checkRemoteConfig { (event:BuglyHotfixEvent, info:[AnyHashable : Any]?) in
+            if (event == BuglyHotfixEvent.patchValid || event == BuglyHotfixEvent.newPatch) {
+                let patchDirectory = BuglyMender.shared().patchDirectory() as NSString
+                let patchFileName = "main.js"
+                let patchFilePath = patchDirectory.appendingPathComponent(patchFileName)
+                if (FileManager.default.fileExists(atPath: patchFilePath) && JPEngine.evaluateScript(withPath: patchFilePath) != nil) {
+                    BuglyLog.level(.info, logs: "evaluateScript success")
+                    BuglyMender.shared().report(.activeSucess)
+                }else {
+                    BuglyLog.level(.error, logs: "evaluateScript fail")
+                    BuglyMender.shared().report(.activeFail)
+                }
+            }
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) { // 2
