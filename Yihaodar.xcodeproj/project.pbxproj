@@ -64,10 +64,6 @@
 		8A8BA2AF2074B8F2003F7421 /* Pods_CommonPods_Yihaodar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF1F8DA5F5C42818A503C6C /* Pods_CommonPods_Yihaodar.framework */; };
 		8A8E614B20455D590068EA06 /* GLDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E614A20455D590068EA06 /* GLDatePicker.swift */; };
 		8A8E614D20466D800068EA06 /* GLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E614C20466D800068EA06 /* GLService.swift */; };
-		8AA0DD34208EE11A00BF1199 /* JPEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA0DD30208EE11A00BF1199 /* JPEngine.m */; };
-		8AA0DD35208EE11A00BF1199 /* JPEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA0DD30208EE11A00BF1199 /* JPEngine.m */; };
-		8AA0DD36208EE11A00BF1199 /* JSPatch.js in Resources */ = {isa = PBXBuildFile; fileRef = 8AA0DD33208EE11A00BF1199 /* JSPatch.js */; };
-		8AA0DD37208EE11A00BF1199 /* JSPatch.js in Resources */ = {isa = PBXBuildFile; fileRef = 8AA0DD33208EE11A00BF1199 /* JSPatch.js */; };
 		8AB74B17206E109D00F58BE5 /* GLPledge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AB74B16206E109D00F58BE5 /* GLPledge.storyboard */; };
 		8AB74B19206E10B100F58BE5 /* GLPledgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB74B18206E10B100F58BE5 /* GLPledgeViewController.swift */; };
 		8AB994592067583D00EF21B5 /* GLTaskDetailGPS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AB994582067583D00EF21B5 /* GLTaskDetailGPS.storyboard */; };
@@ -256,10 +252,6 @@
 		8A7D848D2041329300B5046C /* GLTaskDetailPriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLTaskDetailPriceViewController.swift; sourceTree = "<group>"; };
 		8A8E614A20455D590068EA06 /* GLDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLDatePicker.swift; sourceTree = "<group>"; };
 		8A8E614C20466D800068EA06 /* GLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLService.swift; sourceTree = "<group>"; };
-		8AA0DD30208EE11A00BF1199 /* JPEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPEngine.m; sourceTree = "<group>"; };
-		8AA0DD31208EE11A00BF1199 /* JPEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPEngine.h; sourceTree = "<group>"; };
-		8AA0DD32208EE11A00BF1199 /* BuglyHotfixConfuse_pch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuglyHotfixConfuse_pch.h; sourceTree = "<group>"; };
-		8AA0DD33208EE11A00BF1199 /* JSPatch.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = JSPatch.js; sourceTree = "<group>"; };
 		8AB200E1205618DE00AE43A3 /* Yihaodar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Yihaodar.entitlements; sourceTree = "<group>"; };
 		8AB74B16206E109D00F58BE5 /* GLPledge.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLPledge.storyboard; sourceTree = "<group>"; };
 		8AB74B18206E10B100F58BE5 /* GLPledgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLPledgeViewController.swift; sourceTree = "<group>"; };
@@ -384,7 +376,6 @@
 				8AC76E6B206C99940000214F /* SheetView */,
 				8A4FCB1B206B465C00869687 /* SubmitTransition */,
 				8A24F7A1202DB5C000FDC669 /* Yihaodar-Bridging-Header.h */,
-				8AA0DD2F208EE11A00BF1199 /* JSPatch */,
 			);
 			path = GLCommon;
 			sourceTree = "<group>";
@@ -482,17 +473,6 @@
 				8A4FCB20206B465C00869687 /* TimerEx.swift */,
 			);
 			path = SubmitTransition;
-			sourceTree = "<group>";
-		};
-		8AA0DD2F208EE11A00BF1199 /* JSPatch */ = {
-			isa = PBXGroup;
-			children = (
-				8AA0DD30208EE11A00BF1199 /* JPEngine.m */,
-				8AA0DD31208EE11A00BF1199 /* JPEngine.h */,
-				8AA0DD32208EE11A00BF1199 /* BuglyHotfixConfuse_pch.h */,
-				8AA0DD33208EE11A00BF1199 /* JSPatch.js */,
-			);
-			path = JSPatch;
 			sourceTree = "<group>";
 		};
 		8AB994572064A43A00EF21B5 /* Views */ = {
@@ -710,7 +690,6 @@
 				8A54560D204255290039D127 /* GLEstimateCarStateView.xib in Resources */,
 				8AD5E0D4204447DD00CB7CFF /* ranyoufangshi.plist in Resources */,
 				8AB74B17206E109D00F58BE5 /* GLPledge.storyboard in Resources */,
-				8AA0DD36208EE11A00BF1199 /* JSPatch.js in Resources */,
 				8A24F7A6202F0E1200FDC669 /* GLSubmitMessageView.xib in Resources */,
 				8A357A7C2086E67C004CF0CB /* fangwuyongtu.plist in Resources */,
 				8A24F7AA20329A6400FDC669 /* GLSearch.storyboard in Resources */,
@@ -758,7 +737,6 @@
 				8AF90BF420746850009DD32E /* GLTaskDetailTableViewPictureCell.xib in Resources */,
 				8AF90BF520746850009DD32E /* qita.plist in Resources */,
 				8AF90BF620746850009DD32E /* youwu.plist in Resources */,
-				8AA0DD37208EE11A00BF1199 /* JSPatch.js in Resources */,
 				8A357A792086E67C004CF0CB /* fangwuhuanjing.plist in Resources */,
 				8AF90BF720746850009DD32E /* GLRadio.storyboard in Resources */,
 				8AF90BF820746850009DD32E /* GLAddView.xib in Resources */,
@@ -996,7 +974,6 @@
 				8AF1C4B92071C909009D6F7D /* GLApproveView.swift in Sources */,
 				8A37F34D202BE9F2004FD467 /* GLSearchViewController.swift in Sources */,
 				8AEEF1FA2037C41800F8F5E1 /* GLRadioViewController.swift in Sources */,
-				8AA0DD34208EE11A00BF1199 /* JPEngine.m in Sources */,
 				8A4FCB24206B465C00869687 /* FadeTransition.swift in Sources */,
 				8AD5E0C520440AD300CB7CFF /* GLEstimateResultViewController.swift in Sources */,
 				8A1DAB92202AC3A8001CBD0F /* UIView+GLExtension.swift in Sources */,
@@ -1050,7 +1027,6 @@
 				8AF90BC820746850009DD32E /* GLApproveView.swift in Sources */,
 				8AF90BC920746850009DD32E /* GLSearchViewController.swift in Sources */,
 				8AF90BCA20746850009DD32E /* GLRadioViewController.swift in Sources */,
-				8AA0DD35208EE11A00BF1199 /* JPEngine.m in Sources */,
 				8AF90BCB20746850009DD32E /* FadeTransition.swift in Sources */,
 				8AF90BCC20746850009DD32E /* GLEstimateResultViewController.swift in Sources */,
 				8AF90BCD20746850009DD32E /* UIView+GLExtension.swift in Sources */,

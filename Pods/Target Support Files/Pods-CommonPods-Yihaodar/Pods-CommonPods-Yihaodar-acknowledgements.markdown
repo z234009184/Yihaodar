@@ -24,11 +24,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-## BuglyHotfix
-
-Copyright (C) 2017 Tencent Bugly, Inc. All rights reserved.
-
-
 ## Default
 
 MIT License
