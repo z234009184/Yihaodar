@@ -4,6 +4,5 @@
 
 #import <GTSDK/GeTuiSdk.h>
 #import <CommonCrypto/CommonDigest.h>
-#import <Bugly/Bugly.h>
 
 

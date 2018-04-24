@@ -29,8 +29,7 @@ abstract_target 'CommonPods' do
     pod 'JGProgressHUD' # 加载进度条
     pod 'Kingfisher' # 图片缓存
     
-    pod 'Bugly' # 异常统计
-    pod 'BuglyHotfix' # 热更新
+    pod 'BuglyHotfix' # 异常统计  热更新
     
     target 'Yihaodar' do
     end

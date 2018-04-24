@@ -10,7 +10,7 @@ import UIKit
 import IQKeyboardManagerSwift
 import PushKit
 import UserNotifications
-
+import BuglyHotfix
 
 let kGtAppId:String = "v2c1oYfvOA643tbfBjgLO2"
 let kGtAppKey:String = "jLUwBgziDE6WObmNigVK42"
