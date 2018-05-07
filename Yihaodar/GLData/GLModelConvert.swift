@@ -484,7 +484,9 @@ class GLModelConvert: NSObject {
                         }
                         
                         if model.dataAuth.gjrxx_zhnsr == true {
-                            let item = GLItemModel(title: "综合年收入", subTitle: jkrModel.lc.c_year_income.decimalString() + "元")
+                            
+                            let c_year_incom = Double(jkrModel.lc.c_year_income)! * 10000.0
+                            let item = GLItemModel(title: "综合年收入", subTitle: String(c_year_incom).decimalString() + "元")
                             sectionModel.items.append(item)
                         }
                         
@@ -681,7 +683,7 @@ class GLModelConvert: NSObject {
             sectionModel.title = "借款利率"
             
             if model.dataAuth.jkll_gsyx == true {
-                sectionModel.items.append(GLItemModel(title: "公司月息", subTitle: model.loanRisker.lrRateGsmonthrate))
+                sectionModel.items.append(GLItemModel(title: "公司月息", subTitle: model.loanRisker.lrRateGsmonthrate.percentString()))
             }
             
             if model.dataAuth.jkll_gsfwf == true {
@@ -693,7 +695,7 @@ class GLModelConvert: NSObject {
             }
             
             if model.dataAuth.jkll_khyx == true {
-                sectionModel.items.append(GLItemModel(title: "客户月息", subTitle: model.loanRisker.lrRateKhmonthrate))
+                sectionModel.items.append(GLItemModel(title: "客户月息", subTitle: model.loanRisker.lrRateKhmonthrate.percentString()))
             }
             
             if model.dataAuth.jkll_khfwf == true {
