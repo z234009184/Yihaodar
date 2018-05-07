@@ -230,6 +230,7 @@ class GLUnderhouseViewController: UIViewController, UITextViewDelegate {
         }
         
         let radioVc = GLRadioViewController.jumpRadioVc(title: "选择下户与申请地址是否一致", dataArray: dataArray, navigationVc: navigationController)
+        radioVc.searchBarIsHidden = true
         radioVc.closeClosure = { [weak self] (radioModel) in
             self?.selectedAdressSameModel = radioModel
             self?.underAdressSameLabel.text = radioModel.title
@@ -255,6 +256,7 @@ class GLUnderhouseViewController: UIViewController, UITextViewDelegate {
         }
         
         let radioVc = GLRadioViewController.jumpRadioVc(title: "选择房屋居住来源", dataArray: dataArray, navigationVc: navigationController)
+        radioVc.searchBarIsHidden = true
         radioVc.closeClosure = { [weak self] (radioModel) in
             self?.selectedHouseSourceModel = radioModel
             self?.underHouseSourceLabel.text = radioModel.title
@@ -280,6 +282,7 @@ class GLUnderhouseViewController: UIViewController, UITextViewDelegate {
         }
         
         let radioVc = GLRadioViewController.jumpRadioVc(title: "选择房屋用途", dataArray: dataArray, navigationVc: navigationController)
+        radioVc.searchBarIsHidden = true
         radioVc.closeClosure = { [weak self] (radioModel) in
             self?.selectedHouseUseModel = radioModel
             self?.underHouseUseLabel.text = radioModel.title
@@ -305,6 +308,7 @@ class GLUnderhouseViewController: UIViewController, UITextViewDelegate {
         }
         
         let radioVc = GLRadioViewController.jumpRadioVc(title: "选择房屋周围环境", dataArray: dataArray, navigationVc: navigationController)
+        radioVc.searchBarIsHidden = true
         radioVc.closeClosure = { [weak self] (radioModel) in
             self?.selectedHouseEnvironmentModel = radioModel
             self?.underHouseEnvironmentLabel.text = radioModel.title
@@ -330,6 +334,7 @@ class GLUnderhouseViewController: UIViewController, UITextViewDelegate {
         }
         
         let radioVc = GLRadioViewController.jumpRadioVc(title: "选择房屋内有无违禁品", dataArray: dataArray, navigationVc: navigationController)
+        radioVc.searchBarIsHidden = true
         radioVc.closeClosure = { [weak self] (radioModel) in
             self?.selectedHouseContrabandModel = radioModel
             self?.underInHouseContrabandLabel.text = radioModel.title

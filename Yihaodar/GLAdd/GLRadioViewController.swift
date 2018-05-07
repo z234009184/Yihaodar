@@ -58,6 +58,10 @@ class GLRadioViewController: UIViewController {
     
     @IBOutlet weak var textField: DesignableTextField!
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var searchBarViewTopConstraint: NSLayoutConstraint!
+    
+    var searchBarIsHidden = false
     var dataArray: [GLRadioModel] = [GLRadioModel]()
     lazy var dataArrayCopy = [GLRadioModel]()
     var closeClosure: ((_ model: GLRadioModel)->())?
@@ -68,6 +72,11 @@ class GLRadioViewController: UIViewController {
         
         dataArrayCopy = dataArray
         textField.addTarget(self, action: #selector(GLRadioViewController.textFieldDidChange(_:)), for: .editingChanged)
+        
+        if searchBarIsHidden == true {
+            searchBarViewTopConstraint.constant = -55.0
+        }
+        
     }
     
     /// 跳转单选控制器
