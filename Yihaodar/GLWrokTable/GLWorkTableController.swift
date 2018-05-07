@@ -327,11 +327,7 @@ class GLWorkTableBaseViewController: UITableViewController {
                 let json = JSON(respon.data)
                 print(json)
                 if json["type"] != "S" {  // 如果领单失败 则刷新列表
-                    if let msg = json["message"].rawString() {
-                        self?.view.makeToast(msg)
-                        
-                        self?.refreshData()
-                    }
+                    self?.refreshData()
                 } else {
                     if let success = success {
                         success()

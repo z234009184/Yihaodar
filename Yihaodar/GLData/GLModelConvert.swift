@@ -92,7 +92,11 @@ class GLModelConvert: NSObject {
             }
             
             if model.dataAuth.clxx_xslc == true {
-                let item = GLItemModel(title: "行驶里程", subTitle: model.carInfo.runNumber)
+                var runNumber = model.carInfo.runNumber
+                if runNumber.isEmpty == false {
+                    runNumber = runNumber + "万公里"
+                }
+                let item = GLItemModel(title: "行驶里程", subTitle: runNumber)
                 sectionModel.items.append(item)
             }
             
@@ -352,7 +356,7 @@ class GLModelConvert: NSObject {
                             
                             sectionModel.items.append(GLItemModel(title: "姓名", subTitle: value.con_name))
                             sectionModel.items.append(GLItemModel(title: "联系电话", subTitle: value.con_phone))
-                            sectionModel.items.append(GLItemModel(title: "与共借人关系", subTitle: value.con_nexus_str))
+                            sectionModel.items.append(GLItemModel(title: "与借款人关系", subTitle: value.con_nexus_str))
                             sectionModel.items.append(GLItemModel(title: "工作单位", subTitle: value.con_work_company))
                             sectionModel.items.append(GLItemModel(title: "联系地址", subTitle: value.con_address))
                             
