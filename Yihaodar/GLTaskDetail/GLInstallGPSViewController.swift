@@ -135,6 +135,11 @@ class GLInstallGPSViewController: UIViewController {
             return
         }
         
+        if arr.isEmpty == true {
+            view.makeToast("请添加GPS安装描述")
+            return
+        }
+        
         
         var gpsList = [GLGPSInfoModel.GLGPSSetModel]()
         // 过滤并赋值
