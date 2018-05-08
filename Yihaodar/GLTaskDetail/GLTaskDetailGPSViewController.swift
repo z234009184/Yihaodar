@@ -739,7 +739,7 @@ struct GLGPSCarInfoModel: HandyJSON {
     /// 事故
     var accident = ""
     /// 事故等级
-    var accident_level = ""
+    var accidentLevel = ""
 }
 
 

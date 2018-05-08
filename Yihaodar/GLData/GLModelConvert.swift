@@ -595,7 +595,7 @@ class GLModelConvert: NSObject {
             }
             sectionModel.items.append(GLItemModel(title: "其他", subTitle: carInfo.other + airbagNumber))
             
-            sectionModel.items.append(GLItemModel(title: "事故", subTitle: carInfo.accident + carInfo.accident_level))
+            sectionModel.items.append(GLItemModel(title: "事故", subTitle: carInfo.accident + carInfo.accidentLevel))
             
             dataArray.append(sectionModel)
         }
