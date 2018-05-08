@@ -903,6 +903,9 @@ class GLModelConvert: NSObject {
             sectionModel.title = "风险控制"
             
             let acceaaroyFileUrls = model.loanAttFxkz.flatMap { (accessoryModel) -> String? in
+                if accessoryModel.file_url.isEmpty == true { // 如果图片路径为空 则移除
+                    return nil
+                }
                 return accessoryModel.file_url
             }
             sectionModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
@@ -915,6 +918,9 @@ class GLModelConvert: NSObject {
             sectionModel.title = "收押材料"
             
             let acceaaroyFileUrls = model.loanAttSycl.flatMap { (accessoryModel) -> String? in
+                if accessoryModel.file_url.isEmpty == true {
+                    return nil
+                }
                 return accessoryModel.file_url
             }
             sectionModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
