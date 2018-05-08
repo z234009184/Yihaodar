@@ -683,7 +683,7 @@ class GLModelConvert: NSObject {
             sectionModel.title = "借款利率"
             
             if model.dataAuth.jkll_gsyx == true {
-                sectionModel.items.append(GLItemModel(title: "公司月息", subTitle: model.loanRisker.lrRateGsmonthrate.percentString()))
+                sectionModel.items.append(GLItemModel(title: "公司月息", subTitle: model.loanRisker.lrRateGsmonthrate + "%"))
             }
             
             if model.dataAuth.jkll_gsfwf == true {
@@ -695,7 +695,7 @@ class GLModelConvert: NSObject {
             }
             
             if model.dataAuth.jkll_khyx == true {
-                sectionModel.items.append(GLItemModel(title: "客户月息", subTitle: model.loanRisker.lrRateKhmonthrate.percentString()))
+                sectionModel.items.append(GLItemModel(title: "客户月息", subTitle: model.loanRisker.lrRateKhmonthrate + "%"))
             }
             
             if model.dataAuth.jkll_khfwf == true {

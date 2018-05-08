@@ -243,11 +243,11 @@ struct GLLoanRiskerModel: HandyJSON {
     /// 出借人
     var lrLenderName = ""
     /// 公司月息
-    var lrRateGsmonthrate = ""
+    var lrRateGsmonthrate = "0"
     /// 公司服务费
     var lrRateGsservicefee = ""
     /// 客户月息
-    var lrRateKhmonthrate = ""
+    var lrRateKhmonthrate = "0"
     /// 客户服务费
     var lrRateKhservicefee = ""
     /// 是否转单 1：是 0：否
