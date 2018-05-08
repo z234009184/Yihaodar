@@ -733,7 +733,7 @@ struct GLGPSCarInfoModel: HandyJSON {
     /// 空调配置
     var airConditioner = ""
     /// 其他
-    var Other = ""
+    var other = ""
     /// 安全气囊（个）
     var airbag = ""
     /// 事故

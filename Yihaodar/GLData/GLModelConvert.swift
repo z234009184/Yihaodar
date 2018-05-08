@@ -108,7 +108,7 @@ class GLModelConvert: NSObject {
             if model.dataAuth.clxx_dqwzs == true {
                 var peccancyStr = "无"
                 if model.carInfo.peccancy == "1" {
-                    peccancyStr = "罚分:\(model.carInfo.peccancyFraction)分 罚钱:\(model.carInfo.peccancyMoney)元"
+                    peccancyStr = "有;罚分:\(model.carInfo.peccancyFraction)分 罚钱:\(model.carInfo.peccancyMoney)元"
                 }
                 let item = GLItemModel(title: "当前违章", subTitle: peccancyStr)
                 sectionModel.items.append(item)
@@ -130,7 +130,11 @@ class GLModelConvert: NSObject {
             }
             
             if model.dataAuth.clxx_ghcs == true {
-                let item = GLItemModel(title: "过户次数", subTitle: model.carInfo.transferNumber)
+                var transferNumber = model.carInfo.transferNumber
+                if transferNumber.isEmpty == false {
+                    transferNumber = transferNumber + "次"
+                }
+                let item = GLItemModel(title: "过户次数", subTitle: transferNumber)
                 sectionModel.items.append(item)
             }
             
@@ -302,7 +306,8 @@ class GLModelConvert: NSObject {
                     }
                     
                     if model.dataAuth.jkrxx_zhnsr == true {
-                        let item = GLItemModel(title: "综合年收入", subTitle: jkrModel.lc.c_year_income.decimalString() + "元")
+                        let c_year_incom = Double(jkrModel.lc.c_year_income)! * 10000.0
+                        let item = GLItemModel(title: "综合年收入", subTitle: String(c_year_incom).decimalString() + "元")
                         sectionModel.items.append(item)
                     }
                     
@@ -363,20 +368,27 @@ class GLModelConvert: NSObject {
                             dataArray.append(sectionModel)
                         }
                     }
-                    break
                     
                 }
                 
             }
             
-            for jkrModel in model.loanApply.ltcSet {
+            let gongjirenList = model.loanApply.ltcSet.flatMap { (model) -> GLLoanApply.GLLtcSetModel? in
+                if model.is_together == "1" {
+                    return model
+                } else {
+                    return nil
+                }
+            }
+            
+            for (index, jkrModel) in gongjirenList.enumerated() {
                 
                 // （共借人信息 -> 银行卡信息 -> 紧急联系人信息（多个））（多个）
                 
                 if jkrModel.is_together == "1" {
                     if model.dataAuth.jbxx_gjrxx == true {
                         var sectionModel = GLSectionModel()
-                        sectionModel.title = "共借人信息"
+                        sectionModel.title = "共借人信息" + "\(index + 1)"
                         
                         if model.dataAuth.gjrxx_jkrxm == true {
                             let item = GLItemModel(title: "借款人姓名", subTitle: jkrModel.lc.c_name)
@@ -547,7 +559,6 @@ class GLModelConvert: NSObject {
                             dataArray.append(sectionModel)
                         }
                     }
-                    break // 如果不是共借人不用遍历
                 }
             }
         }
@@ -578,8 +589,13 @@ class GLModelConvert: NSObject {
             sectionModel.items.append(GLItemModel(title: "燃油方式", subTitle: carInfo.fuelType))
             sectionModel.items.append(GLItemModel(title: "天窗", subTitle: carInfo.skylight))
             sectionModel.items.append(GLItemModel(title: "空调配置", subTitle: carInfo.airConditioner))
-            sectionModel.items.append(GLItemModel(title: "其他", subTitle: carInfo.Other))
-            sectionModel.items.append(GLItemModel(title: "事故", subTitle: carInfo.accident))
+            var airbagNumber = carInfo.airbag
+            if carInfo.airbag.isEmpty == false {
+                airbagNumber = carInfo.airbag + "个"
+            }
+            sectionModel.items.append(GLItemModel(title: "其他", subTitle: carInfo.other + airbagNumber))
+            
+            sectionModel.items.append(GLItemModel(title: "事故", subTitle: carInfo.accident + carInfo.accident_level))
             
             dataArray.append(sectionModel)
         }
@@ -1027,7 +1043,7 @@ class GLModelConvert: NSObject {
         
         if model.dataAuth.fyjfk_fyjnmx == true {
             var sectionModel = GLSectionModel()
-            sectionModel.title = "贷前费用"
+            sectionModel.title = "费用缴纳明细"
             
             if model.payList.count > 0 {
                 var formModel = GLFormModel()
