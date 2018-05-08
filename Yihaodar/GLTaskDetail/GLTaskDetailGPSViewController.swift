@@ -15,7 +15,6 @@ import SwiftyJSON
 
 
 
-
 /// 附件模型
 struct GLGPSAccessoryModel: HandyJSON {
     var ishadall = ""
@@ -1088,12 +1087,18 @@ class GLTaskDetailTableViewPictureCell: UITableViewCell, UICollectionViewDataSou
             var arr = [SKPhoto]()
             pictureModel?.pictures.enumerated().forEach({ (index, value) in
                 var photo = SKPhoto.photoWithImageURL(value)
+                
                 if let image = SKCache.sharedCache.imageForKey(value) {
                     photo = SKPhoto.photoWithImage(image)
                 }
-                photo.checkCache()
-                photo.index = index
-                photo.shouldCachePhotoURLImage = true
+                
+                if value.isEmpty == true {
+                    photo = SKPhoto.photoWithImage(#imageLiteral(resourceName: "image_load_error"))
+                } else {
+                    photo.checkCache()
+                    photo.index = index
+                    photo.shouldCachePhotoURLImage = true
+                }
                 photo.loadUnderlyingImageAndNotify()
                 
                 arr.append(photo)
@@ -1129,6 +1134,7 @@ class GLTaskDetailTableViewPictureCell: UITableViewCell, UICollectionViewDataSou
         guard let pictureCell = cell as? GLTaskDetailPictureCell else {
             return UICollectionViewCell()
         }
+        
         pictureCell.imageView.image = pictureArray[indexPath.item].underlyingImage
         return pictureCell
     }
