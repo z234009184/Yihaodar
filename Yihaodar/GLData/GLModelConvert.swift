@@ -982,7 +982,7 @@ class GLModelConvert: NSObject {
             
             var lrPreIszhuangdan = ""
             if model.loanRisker.lrPreIszhuandan == "1" {
-                lrPreIszhuangdan = "是"
+                lrPreIszhuangdan = "是" + ", 垫资费\(model.loanRisker.lrPreAdvance.decimalString())元"
             }
             
             if model.loanRisker.lrPreIszhuandan == "0" {
@@ -991,11 +991,10 @@ class GLModelConvert: NSObject {
             
             sectionModel.items.append(GLItemModel(title: "是否转单", subTitle:  lrPreIszhuangdan))
             
-            //            sectionModel.items.append(GLItemModel(title: "垫资费", subTitle: model.loanRisker.lrPreAdvance.decimalString().isEmpty ? "" : model.loanRisker.lrPreAdvance.decimalString() + "元"))
             
             var lrPreIsgps = model.loanRisker.lrPreIsgps
             if lrPreIsgps == "1" {
-                lrPreIsgps = "需要"
+                lrPreIsgps = "需要" + ", GPS安装费\(model.loanRisker.lrPreGpsfee.decimalString())元"
             }
             if lrPreIsgps == "0" {
                 lrPreIsgps = "不需要"
@@ -1003,23 +1002,19 @@ class GLModelConvert: NSObject {
             
             sectionModel.items.append(GLItemModel(title: "GPS安装", subTitle: lrPreIsgps))
             
-            //            sectionModel.items.append(GLItemModel(title: "GPS安装费", subTitle: model.loanRisker.lrPreGpsfee.decimalString().isEmpty ? "" : model.loanRisker.lrPreGpsfee.decimalString() + "元"))
-            
             var lrPreIspauper = model.loanRisker.lrPreIspauper
             if lrPreIspauper == "1" {
-                lrPreIspauper = "需要"
+                lrPreIspauper = "需要" + ", 下户费\(model.loanRisker.lrPrePauperfee.decimalString())元"
             }
             if lrPreIspauper == "0" {
                 lrPreIspauper = "不需要"
             }
             sectionModel.items.append(GLItemModel(title: "下户", subTitle: lrPreIspauper))
             
-            //            sectionModel.items.append(GLItemModel(title: "下户费", subTitle: model.loanRisker.lrPrePauperfee.decimalString().isEmpty ? "" : model.loanRisker.lrPrePauperfee.decimalString() + "元"))
-            
             
             var lrPreIsriskMargin = model.loanRisker.lrPreIsriskMargin
             if lrPreIsriskMargin == "1" {
-                lrPreIsriskMargin = "有"
+                lrPreIsriskMargin = "有" + ", 风险保证金\(model.loanRisker.lrPreRiskmargin.decimalString())元"
             }
             if lrPreIsriskMargin == "0" {
                 lrPreIsriskMargin = "无"
@@ -1030,7 +1025,7 @@ class GLModelConvert: NSObject {
             
             var lrPreIsmortageCertificates = model.loanRisker.lrPreIsmortageCertificates
             if lrPreIsmortageCertificates == "1" {
-                lrPreIsmortageCertificates = "有"
+                lrPreIsmortageCertificates = "有" + ", 证件不押金\(model.loanRisker.lrPreIsmortageFee.decimalString())元"
             }
             if lrPreIsmortageCertificates == "0" {
                 lrPreIsmortageCertificates = "无"
