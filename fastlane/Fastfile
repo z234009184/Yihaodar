@@ -14,7 +14,7 @@ default_platform(:ios)
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
-    build_app(workspace: "Yihaodar.xcworkspace", scheme: "YihaodarDev", export_method: "development")
-  pgyer(api_key: "03df3a8f19f7bea8f31ba9c6d0f6ddf3", user_key: "39aefc3cfc3e87829b53d7b8791a41f1")
+    build_app(workspace: "Yihaodar.xcworkspace", scheme: "YihaodarDev", export_method: "development", output_directory: "../", output_name: "Yihaodar.ipa")
+  pgyer(api_key: "03df3a8f19f7bea8f31ba9c6d0f6ddf3", user_key: "39aefc3cfc3e87829b53d7b8791a41f1", ipa: "../Yihaodar.ipa")
   end
 end

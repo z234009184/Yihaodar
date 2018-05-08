@@ -94,18 +94,20 @@ class GLInstallDetailView: UIView, UITextViewDelegate {
         
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
-        
-        let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        let newString = (textView.text! as NSString).replacingCharacters(in: range, with: text)
         print(newString)
-        let expression = "^{0,20}$"
+        var expression = "^.{0,20}$"
+        if textView == remarksTextView {
+           expression = "^.{0,50}$"
+        }
         let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.allowCommentsAndWhitespace)
         let numberOfMatches = regex.numberOfMatches(in: newString, options:NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, (newString as NSString).length))
         
         return numberOfMatches != 0
-        
     }
+    
     
 }
 
