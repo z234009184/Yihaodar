@@ -1158,19 +1158,27 @@ class GLTaskDetailTableViewPictureCell: UITableViewCell, UICollectionViewDataSou
 /// 各个自模块控制器的父类控制器
 class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    lazy var noResultsData: PlaceholderData = {
+        var noResultsData = PlaceholderData.noResults
+        noResultsData.title = ""
+        noResultsData.action = nil
+//        noResultsData.subtitle = "暂无相关查看权限"
+//        noResultsData.image = #imageLiteral(resourceName: "taskdetail_authority")
+        noResultsData.subtitle = ""
+        noResultsData.image = nil
+        return noResultsData
+    }()
+    
     open lazy var tableView: TableView = {
         let tableView = TableView(frame: CGRect(x: 8, y: 0, width: view.frame.size.width-16, height: view.frame.size.height), style: UITableViewStyle.grouped)
         
         
         tableView.placeholdersAlwaysBounceVertical = true
         tableView.placeholdersProvider = .default
-        var noResultsData: PlaceholderData = .noResults
-        noResultsData.title = ""
-        noResultsData.action = nil
-        noResultsData.subtitle = "暂无相关查看权限"
-        noResultsData.image = #imageLiteral(resourceName: "taskdetail_authority")
+        
         let noResultsPlaceholder = Placeholder(data: noResultsData, style: PlaceholderStyle(), key: .noResultsKey)
         tableView.placeholdersProvider.add(placeholders: noResultsPlaceholder)
+        
         
         tableView.estimatedRowHeight = 80
         tableView.delegate = self
@@ -1227,8 +1235,13 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
     
     
     
-    func updateUI(dataArr: [GLSectionModel]) {
+    func updateUI(dataArr: [GLSectionModel]?) {
+        guard let dataArr = dataArr else {
+            return
+        }
         dataArray = dataArr
+        noResultsData.subtitle = "暂无相关查看权限"
+        noResultsData.image = #imageLiteral(resourceName: "taskdetail_authority")
         tableView.reloadData()
     }
     
@@ -1526,7 +1539,7 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     }
     
     /// 基本信息数据
-    var basicDataArray = [GLSectionModel]()
+    var basicDataArray: [GLSectionModel]?
     
     /// 评估信息数据
     var estimateDataArray = [GLSectionModel]()

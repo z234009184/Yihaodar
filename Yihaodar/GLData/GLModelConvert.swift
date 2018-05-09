@@ -1136,7 +1136,13 @@ class GLModelConvert: NSObject {
             
             for examModel in model.examiner {
                 sectionModel.items.append(GLItemModel(title: "审批人姓名", subTitle: examModel.exam_name))
-                sectionModel.items.append(GLItemModel(title: "审批意见", subTitle: examModel.exam_status == "1" ? "同意放款" : "拒绝放款"))
+                var exam_status = examModel.exam_status
+                if exam_status == "1" {
+                    exam_status = "同意放款"
+                } else if exam_status == "0" {
+                    exam_status = "拒绝放款"
+                }
+                sectionModel.items.append(GLItemModel(title: "审批意见", subTitle: exam_status))
                 sectionModel.items.append(GLItemModel(title: "备注", subTitle: examModel.exam_remark))
             }
             
