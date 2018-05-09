@@ -758,7 +758,39 @@ class GLModelConvert: NSObject {
                     var formModel = GLFormModel()
                     formModel.titles = ["设备类型", "设备型号", "设备编号", "设备SIM卡号", "安装位置", "备注"]
                     for gpsMxModel in model.gpsInfo.gpsSet {
-                        let formArray = [gpsMxModel.gps_type, gpsMxModel.gps_version, gpsMxModel.gps_number, gpsMxModel.gps_sim_card, gpsMxModel.gps_position, gpsMxModel.gps_remark]
+                        
+                        var gps_type = gpsMxModel.gps_type
+                        if gps_type.isEmpty == true {
+                            gps_type = "未填写"
+                        }
+                        
+                        var gps_version = gpsMxModel.gps_version
+                        if gps_version.isEmpty == true {
+                            gps_version = "未填写"
+                        }
+                        
+                        var gps_number = gpsMxModel.gps_number
+                        if gps_number.isEmpty == true {
+                            gps_number = "未填写"
+                        }
+                        
+                        var gps_sim_card = gpsMxModel.gps_sim_card
+                        if gps_sim_card.isEmpty == true {
+                            gps_sim_card = "未填写"
+                        }
+                        
+                        var gps_position = gpsMxModel.gps_position
+                        if gps_position.isEmpty == true {
+                            gps_position = "未填写"
+                        }
+                        
+                        var gps_remark = gpsMxModel.gps_remark
+                        if gps_remark.isEmpty == true {
+                            gps_remark = "未填写"
+                        }
+                        
+                        
+                        let formArray = [gps_type, gps_version, gps_number, gps_sim_card, gps_position, gps_remark]
                         
                         formModel.dataArray.append(formArray)
                     }
@@ -1054,7 +1086,32 @@ class GLModelConvert: NSObject {
                             break
                         }
                     }
-                    let formArray = [o.dname, payModel.unpaid.decimalString()+"元", payModel.alreadyPaid.decimalString()+"元", payModel.content]
+                    
+                    var name = o.dname
+                    if name.isEmpty == true {
+                        name = "未填写"
+                    }
+                    
+                    var unpaid = payModel.unpaid
+                    if unpaid.isEmpty == true {
+                        unpaid = "未填写"
+                    } else {
+                        unpaid = unpaid.decimalString() + "元"
+                    }
+                    
+                    var alreadyPaid = payModel.alreadyPaid
+                    if alreadyPaid.isEmpty == true {
+                        alreadyPaid = "未填写"
+                    } else {
+                        alreadyPaid = alreadyPaid.decimalString() + "元"
+                    }
+                    
+                    var content = payModel.content
+                    if content.isEmpty == true {
+                        content = "未填写"
+                    }
+                    
+                    let formArray = [name, unpaid, alreadyPaid, content]
                     
                     formModel.dataArray.append(formArray)
                 }
@@ -1118,7 +1175,24 @@ class GLModelConvert: NSObject {
                 formM.titles = ["预计返费时间", "返费金额", "备注"]
                 formM.titleColWidth = 130
                 for agentModel in model.agentBack {
-                    let formArray = [agentModel.backtime, agentModel.backamount.decimalString() + "元", agentModel.backremark]
+                    var backtime = agentModel.backtime
+                    if backtime.isEmpty == true {
+                        backtime = "未填写"
+                    }
+                    
+                    var backamount = agentModel.backamount
+                    if backamount.isEmpty == true {
+                        backamount = "未填写"
+                    } else {
+                        backamount = backamount.decimalString() + "元"
+                    }
+                    
+                    var backremark = agentModel.backremark
+                    if backremark.isEmpty == true {
+                        backremark = "未填写"
+                    }
+                    
+                    let formArray = [backtime, backamount, backremark]
                     
                     formM.dataArray.append(formArray)
                 }
@@ -1159,6 +1233,7 @@ class GLModelConvert: NSObject {
                 var formModel = GLFormModel()
                 formModel.titles = ["期数", "还款日期", "还款本金", "还款利息", "本期还款总额"]
                 for planModel in model.repaymentPlan {
+                    
                     let formArray = [planModel.overdue_periods, planModel.repayment_date, planModel.repaymentCorpus.decimalString(), planModel.repaymentInterests.decimalString(), planModel.repaymentTotal.decimalString()]
                     
                     formModel.dataArray.append(formArray)
