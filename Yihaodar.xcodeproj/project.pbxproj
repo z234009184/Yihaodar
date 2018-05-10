@@ -64,6 +64,10 @@
 		8A8BA2AF2074B8F2003F7421 /* Pods_CommonPods_Yihaodar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF1F8DA5F5C42818A503C6C /* Pods_CommonPods_Yihaodar.framework */; };
 		8A8E614B20455D590068EA06 /* GLDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E614A20455D590068EA06 /* GLDatePicker.swift */; };
 		8A8E614D20466D800068EA06 /* GLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E614C20466D800068EA06 /* GLService.swift */; };
+		8AA2E81F20A4570900A3A7CB /* GLGPSnoAuthorityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AA2E81E20A4570900A3A7CB /* GLGPSnoAuthorityView.xib */; };
+		8AA2E82020A4570900A3A7CB /* GLGPSnoAuthorityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AA2E81E20A4570900A3A7CB /* GLGPSnoAuthorityView.xib */; };
+		8AA2E82220A4572200A3A7CB /* GLGPSnoAuthorityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA2E82120A4572200A3A7CB /* GLGPSnoAuthorityView.swift */; };
+		8AA2E82320A4572200A3A7CB /* GLGPSnoAuthorityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA2E82120A4572200A3A7CB /* GLGPSnoAuthorityView.swift */; };
 		8AB74B17206E109D00F58BE5 /* GLPledge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AB74B16206E109D00F58BE5 /* GLPledge.storyboard */; };
 		8AB74B19206E10B100F58BE5 /* GLPledgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB74B18206E10B100F58BE5 /* GLPledgeViewController.swift */; };
 		8AB994592067583D00EF21B5 /* GLTaskDetailGPS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AB994582067583D00EF21B5 /* GLTaskDetailGPS.storyboard */; };
@@ -252,6 +256,8 @@
 		8A7D848D2041329300B5046C /* GLTaskDetailPriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLTaskDetailPriceViewController.swift; sourceTree = "<group>"; };
 		8A8E614A20455D590068EA06 /* GLDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLDatePicker.swift; sourceTree = "<group>"; };
 		8A8E614C20466D800068EA06 /* GLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLService.swift; sourceTree = "<group>"; };
+		8AA2E81E20A4570900A3A7CB /* GLGPSnoAuthorityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLGPSnoAuthorityView.xib; sourceTree = "<group>"; };
+		8AA2E82120A4572200A3A7CB /* GLGPSnoAuthorityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLGPSnoAuthorityView.swift; sourceTree = "<group>"; };
 		8AB200E1205618DE00AE43A3 /* Yihaodar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Yihaodar.entitlements; sourceTree = "<group>"; };
 		8AB74B16206E109D00F58BE5 /* GLPledge.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLPledge.storyboard; sourceTree = "<group>"; };
 		8AB74B18206E10B100F58BE5 /* GLPledgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLPledgeViewController.swift; sourceTree = "<group>"; };
@@ -494,6 +500,8 @@
 				8AF1C4B62071C8F9009D6F7D /* GLApproveView.xib */,
 				8AF1C4BC20720C95009D6F7D /* GLTaskDetailPictureCell.xib */,
 				8AF1C4BA2071DB74009D6F7D /* GLTaskDetailTableViewPictureCell.xib */,
+				8AA2E82120A4572200A3A7CB /* GLGPSnoAuthorityView.swift */,
+				8AA2E81E20A4570900A3A7CB /* GLGPSnoAuthorityView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -711,6 +719,7 @@
 				8A357A7220858FB9004CF0CB /* GPStype.plist in Resources */,
 				8A7D848C2041325800B5046C /* GLTaskDetailPrice.storyboard in Resources */,
 				8AD5E0BF2043D42C00CB7CFF /* GLCarStateView.xib in Resources */,
+				8AA2E81F20A4570900A3A7CB /* GLGPSnoAuthorityView.xib in Resources */,
 				8AE3E24A206DCF7700C95E1B /* GLUnderhouse.storyboard in Resources */,
 				8AD5E0D62044485F00CB7CFF /* tianchuang.plist in Resources */,
 				8A5456132042A9850039D127 /* GLSubmitMessagePriceView.xib in Resources */,
@@ -754,6 +763,7 @@
 				8AF90C0220746850009DD32E /* chegoujian.plist in Resources */,
 				8A357A7D2086E67C004CF0CB /* fangwuyongtu.plist in Resources */,
 				8AF90C0320746850009DD32E /* qudongfangshi.plist in Resources */,
+				8AA2E82020A4570900A3A7CB /* GLGPSnoAuthorityView.xib in Resources */,
 				8AF90C0420746850009DD32E /* kongtiaopeizhi.plist in Resources */,
 				8AF90C0620746850009DD32E /* GLInstallDetailView.xib in Resources */,
 				8A357A7320858FB9004CF0CB /* GPStype.plist in Resources */,
@@ -967,6 +977,7 @@
 				8A1DAB9C202B002B001CBD0F /* GLTaskDetailViewController.swift in Sources */,
 				8AE3E24C206DCF8D00C95E1B /* GLUnderhouseViewController.swift in Sources */,
 				8A7D848E2041329300B5046C /* GLTaskDetailPriceViewController.swift in Sources */,
+				8AA2E82220A4572200A3A7CB /* GLGPSnoAuthorityView.swift in Sources */,
 				8A1DAB89202AB282001CBD0F /* UIColor+GLExtension.swift in Sources */,
 				8AF1C4C120738694009D6F7D /* GLGPSCompleteViewController.swift in Sources */,
 				8ADBF9E620468B86009F2052 /* String+GLExtension.swift in Sources */,
@@ -1020,6 +1031,7 @@
 				8AF90BC120746850009DD32E /* GLTaskDetailViewController.swift in Sources */,
 				8AF90BC220746850009DD32E /* GLUnderhouseViewController.swift in Sources */,
 				8AF90BC320746850009DD32E /* GLTaskDetailPriceViewController.swift in Sources */,
+				8AA2E82320A4572200A3A7CB /* GLGPSnoAuthorityView.swift in Sources */,
 				8AF90BC420746850009DD32E /* UIColor+GLExtension.swift in Sources */,
 				8AF90BC520746850009DD32E /* GLGPSCompleteViewController.swift in Sources */,
 				8AF90BC620746850009DD32E /* String+GLExtension.swift in Sources */,

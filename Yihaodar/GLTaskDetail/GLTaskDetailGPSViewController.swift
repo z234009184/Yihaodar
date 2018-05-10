@@ -1158,28 +1158,14 @@ class GLTaskDetailTableViewPictureCell: UITableViewCell, UICollectionViewDataSou
 /// 各个自模块控制器的父类控制器
 class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    lazy var noResultsPlaceholder: Placeholder = {
-        var noResultsData = PlaceholderData.noResults
-        noResultsData.title = ""
-        noResultsData.action = nil
-        noResultsData.subtitle = ""
-        noResultsData.image = nil
-        return  Placeholder(data: noResultsData, style: PlaceholderStyle(), key: .noResultsKey)
-        
-    }()
     
-    open lazy var tableView: TableView = {
-        let tableView = TableView(frame: CGRect(x: 8, y: 0, width: view.frame.size.width-16, height: view.frame.size.height), style: UITableViewStyle.grouped)
-        
-        
+    open lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: CGRect(x: 8, y: 0, width: view.frame.size.width-16, height: view.frame.size.height), style: UITableViewStyle.grouped)
         
         tableView.estimatedRowHeight = 80
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.placeholdersAlwaysBounceVertical = true
-        tableView.placeholdersProvider = .default
-        
-        tableView.placeholdersProvider.add(placeholders: noResultsPlaceholder)
+
         
         tableView.register(UINib(nibName: "GLTaskDetailItemHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: GLTaskDetailItemHeaderId)
         
@@ -1200,6 +1186,12 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
         return tableView
     }()
     
+    
+    lazy var noAuthorityView: GLGPSnoAuthorityView = {
+        let noView = Bundle.main.loadNibNamed("GLGPSnoAuthorityView", owner: nil, options: nil)?.first as! GLGPSnoAuthorityView
+        noView.frame = tableView.bounds
+        return noView
+    }()
     
     /// 重用标识符
     fileprivate let GLTaskDetailItemCellId = "GLTaskDetailItemCellId"
@@ -1238,12 +1230,15 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
         }
         dataArray = dataArr
         if dataArray.count < 1 {
-            noResultsPlaceholder.data?.subtitle = "暂无相关查看权限"
-            noResultsPlaceholder.data?.image = #imageLiteral(resourceName: "taskdetail_authority")
-            tableView.placeholdersProvider.add(placeholders: noResultsPlaceholder)
+            tableView.addSubview(noAuthorityView)
+        } else {
+            noAuthorityView.removeFromSuperview()
         }
         tableView.reloadData()
     }
+    
+    
+    
     
     
     func numberOfSections(in tableView: UITableView) -> Int {

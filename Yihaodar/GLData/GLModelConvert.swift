@@ -19,6 +19,7 @@ class GLModelConvert: NSObject {
     static func basicData(model: GLGPSTaskDetailBigModel) -> [GLSectionModel] {
         var dataArray = [GLSectionModel]()
         
+        
         if model.dataAuth.null_jbxx == false {
             return dataArray
         }
@@ -27,6 +28,7 @@ class GLModelConvert: NSObject {
         if model.dataAuth.jbxx_ddxx == true {
             var sectionModel = GLSectionModel()
             sectionModel.title = "订单信息"
+            
             if model.dataAuth.ddxx_ssmd == true {
                 let item = GLItemModel(title: "所属门店", subTitle: model.loanApply.l_store)
                 sectionModel.items.append(item)
