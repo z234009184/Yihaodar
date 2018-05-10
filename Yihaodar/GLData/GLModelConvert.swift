@@ -19,6 +19,10 @@ class GLModelConvert: NSObject {
     static func basicData(model: GLGPSTaskDetailBigModel) -> [GLSectionModel] {
         var dataArray = [GLSectionModel]()
         
+        if model.dataAuth.null_jbxx == false {
+            return dataArray
+        }
+        
         // 订单信息
         if model.dataAuth.jbxx_ddxx == true {
             var sectionModel = GLSectionModel()
@@ -108,7 +112,7 @@ class GLModelConvert: NSObject {
             if model.dataAuth.clxx_dqwzs == true {
                 var peccancyStr = "无"
                 if model.carInfo.peccancy == "1" {
-                    peccancyStr = "有;罚分:\(model.carInfo.peccancyFraction)分 罚钱:\(model.carInfo.peccancyMoney)元"
+                    peccancyStr = "有;扣:\(model.carInfo.peccancyFraction == "" ? "0" : model.carInfo.peccancyFraction)分 罚:\(model.carInfo.peccancyMoney == "" ? "0" : model.carInfo.peccancyMoney.decimalString())元"
                 }
                 let item = GLItemModel(title: "当前违章", subTitle: peccancyStr)
                 sectionModel.items.append(item)
@@ -573,6 +577,10 @@ class GLModelConvert: NSObject {
     static func estimateData(model: GLGPSTaskDetailBigModel) -> [GLSectionModel] {
         var dataArray = [GLSectionModel]()
         
+        if model.dataAuth.null_pgxx == false {
+            return dataArray
+        }
+        
         // 车辆配置
         if model.dataAuth.pgxx_clpz == true {
             var sectionModel = GLSectionModel()
@@ -654,6 +662,10 @@ class GLModelConvert: NSObject {
     /// - Returns: 风险控制数据数组
     static func riskControlData(model: GLGPSTaskDetailBigModel) -> [GLSectionModel] {
         var dataArray = [GLSectionModel]()
+        
+        if model.dataAuth.null_fxkz == false {
+            return dataArray
+        }
         
         if model.dataAuth.fxkz_fxkz == true {
             var sectionModel = GLSectionModel()
@@ -739,6 +751,9 @@ class GLModelConvert: NSObject {
     static func investigateData(model: GLGPSTaskDetailBigModel) -> [GLSectionModel] {
         var dataArray = [GLSectionModel]()
         
+        if model.dataAuth.null_jzdc == false {
+            return dataArray
+        }
         
         // GPS 安装明细
         if model.dataAuth.jzdc_gpsazmx == true {
@@ -810,19 +825,19 @@ class GLModelConvert: NSObject {
                 sectionModel.items.append(GLItemModel(title: "下户日期", subTitle: model.pauperInfo.crea_date))
             }
             
-            if model.dataAuth.xhjd_xhrq == true {
+            if model.dataAuth.xhjd_xhysqdzsfyz == true {
                 sectionModel.items.append(GLItemModel(title: "下户与申请地址是否一致", subTitle: model.pauperInfo.pauper_agreement))
             }
             
-            if model.dataAuth.xhjd_xhrq == true {
+            if model.dataAuth.xhjd_fwjzly == true {
                 sectionModel.items.append(GLItemModel(title: "房屋居住来源", subTitle: model.pauperInfo.pauper_source))
             }
             
-            if model.dataAuth.xhjd_xhrq == true {
+            if model.dataAuth.xhjd_fwyt == true {
                 sectionModel.items.append(GLItemModel(title: "房屋用途", subTitle: model.pauperInfo.pauper_purpose))
             }
             
-            if model.dataAuth.xhjd_xhrq == true {
+            if model.dataAuth.xhjd_fwzwhj == true {
                 sectionModel.items.append(GLItemModel(title: "房屋周围环境", subTitle: model.pauperInfo.pauper_environment))
             }
             
@@ -860,6 +875,12 @@ class GLModelConvert: NSObject {
     /// - Returns: 合同数据数组
     static func pactData(model: GLGPSTaskDetailBigModel) -> [GLSectionModel] {
         var dataArray = [GLSectionModel]()
+        
+        if model.dataAuth.null_htqy == false {
+            return dataArray
+        }
+        
+        
         if model.dataAuth.htqy_htjf == true {
             var sectionModel = GLSectionModel()
             sectionModel.title = "合同交付"
@@ -889,6 +910,11 @@ class GLModelConvert: NSObject {
     /// - Returns: 资料附件数据数组
     static func accessoryData(model: GLGPSTaskDetailBigModel) -> [GLSectionModel] {
         var dataArray = [GLSectionModel]()
+        
+        if model.dataAuth.null_zlfj == false {
+            return dataArray
+        }
+        
         
         if model.dataAuth.zlfj_clwg == true {
             var sectionModel = GLSectionModel()
@@ -1008,6 +1034,10 @@ class GLModelConvert: NSObject {
     static func costData(model: GLGPSTaskDetailBigModel) -> [GLSectionModel] {
         var dataArray = [GLSectionModel]()
         
+        if model.dataAuth.null_fyjfk == false {
+            return dataArray
+        }
+        
         if model.dataAuth.fyjfk_dqfy == true {
             var sectionModel = GLSectionModel()
             sectionModel.title = "贷前费用"
@@ -1074,7 +1104,7 @@ class GLModelConvert: NSObject {
             
             if model.payList.count > 0 {
                 var formModel = GLFormModel()
-                formModel.titles = ["缴费科目", "已缴纳金额", "待缴纳金额", "备注"]
+                formModel.titles = ["缴费科目", "应收费用", "实收费用", "备注"]
                 formModel.titleColWidth = 100
                 
                 for payModel in model.payList {
@@ -1111,7 +1141,7 @@ class GLModelConvert: NSObject {
                         content = "未填写"
                     }
                     
-                    let formArray = [name, unpaid, alreadyPaid, content]
+                    let formArray = [name, alreadyPaid, unpaid, content]
                     
                     formModel.dataArray.append(formArray)
                 }

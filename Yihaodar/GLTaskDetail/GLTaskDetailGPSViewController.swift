@@ -1158,31 +1158,28 @@ class GLTaskDetailTableViewPictureCell: UITableViewCell, UICollectionViewDataSou
 /// 各个自模块控制器的父类控制器
 class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    lazy var noResultsData: PlaceholderData = {
+    lazy var noResultsPlaceholder: Placeholder = {
         var noResultsData = PlaceholderData.noResults
         noResultsData.title = ""
         noResultsData.action = nil
-//        noResultsData.subtitle = "暂无相关查看权限"
-//        noResultsData.image = #imageLiteral(resourceName: "taskdetail_authority")
         noResultsData.subtitle = ""
         noResultsData.image = nil
-        return noResultsData
+        return  Placeholder(data: noResultsData, style: PlaceholderStyle(), key: .noResultsKey)
+        
     }()
     
     open lazy var tableView: TableView = {
         let tableView = TableView(frame: CGRect(x: 8, y: 0, width: view.frame.size.width-16, height: view.frame.size.height), style: UITableViewStyle.grouped)
         
         
-        tableView.placeholdersAlwaysBounceVertical = true
-        tableView.placeholdersProvider = .default
-        
-        let noResultsPlaceholder = Placeholder(data: noResultsData, style: PlaceholderStyle(), key: .noResultsKey)
-        tableView.placeholdersProvider.add(placeholders: noResultsPlaceholder)
-        
         
         tableView.estimatedRowHeight = 80
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.placeholdersAlwaysBounceVertical = true
+        tableView.placeholdersProvider = .default
+        
+        tableView.placeholdersProvider.add(placeholders: noResultsPlaceholder)
         
         tableView.register(UINib(nibName: "GLTaskDetailItemHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: GLTaskDetailItemHeaderId)
         
@@ -1240,8 +1237,10 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
             return
         }
         dataArray = dataArr
-        noResultsData.subtitle = "暂无相关查看权限"
-        noResultsData.image = #imageLiteral(resourceName: "taskdetail_authority")
+        noResultsPlaceholder.data?.subtitle = "暂无相关查看权限"
+        noResultsPlaceholder.data?.image = #imageLiteral(resourceName: "taskdetail_authority")
+        tableView.placeholdersProvider.add(placeholders: noResultsPlaceholder)
+        
         tableView.reloadData()
     }
     
