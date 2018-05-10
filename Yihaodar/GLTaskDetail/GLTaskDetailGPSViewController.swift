@@ -26,7 +26,7 @@ struct GLGPSAccessoryModel: HandyJSON {
 
 
 /// 放款时间金额模型
-struct GLJqskTimeModel {
+struct GLJqskTimeModel: HandyJSON {
     
     /// 申请放款时间
     var fksq_sqfksj = ""
@@ -1162,8 +1162,8 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
         var noResultsData = PlaceholderData.noResults
         noResultsData.title = ""
         noResultsData.action = nil
-        noResultsData.subtitle = ""
-        noResultsData.image = nil
+        noResultsData.subtitle = "暂无相关查看权限"
+        noResultsData.image = #imageLiteral(resourceName: "taskdetail_authority")
         return  Placeholder(data: noResultsData, style: PlaceholderStyle(), key: .noResultsKey)
         
     }()
@@ -1237,10 +1237,6 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
             return
         }
         dataArray = dataArr
-        noResultsPlaceholder.data?.subtitle = "暂无相关查看权限"
-        noResultsPlaceholder.data?.image = #imageLiteral(resourceName: "taskdetail_authority")
-        tableView.placeholdersProvider.add(placeholders: noResultsPlaceholder)
-        
         tableView.reloadData()
     }
     
@@ -1290,7 +1286,7 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let sectionHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: GLTaskDetailItemHeaderId) as? GLTaskDetailItemHeader else {
-            return GLTaskDetailItemHeader(reuseIdentifier: GLTaskDetailItemHeaderId)
+            return nil
         }
         sectionHeader.sectionModel = dataArray[section]
         
@@ -1346,10 +1342,33 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
 class GL基本信息ViewController: GLTaskDetailBaseViewController, IndicatorInfoProvider {
     
     override func viewDidLoad() {
+        noResultsPlaceholder.data?.subtitle = ""
+        noResultsPlaceholder.data?.image = nil
+        tableView.placeholdersProvider.add(placeholders: noResultsPlaceholder)
         super.viewDidLoad()
+        
+        
+        
         if let dataArr = (parent as? GLTaskDetailGPSViewController)?.basicDataArray {
             updateUI(dataArr: dataArr)
         }
+    }
+    override func updateUI(dataArr: [GLSectionModel]?) {
+        guard let dataArr = dataArr else {
+            return
+        }
+        dataArray = dataArr
+        if dataArray.count < 1 {
+            noResultsPlaceholder.data?.subtitle = "暂无相关查看权限"
+            noResultsPlaceholder.data?.image = #imageLiteral(resourceName: "taskdetail_authority")
+            tableView.placeholdersProvider.add(placeholders: noResultsPlaceholder)
+        }
+        tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     
@@ -1659,6 +1678,7 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
             vc.model = model
             vc.submitSuccess = { [weak self] in
                 self?.navigationController?.popViewController(animated: true)
+                 NotificationCenter.default.post(name: YiRefreshNotificationName, object: nil)
             }
             present(underHouseNaVc, animated: true, completion: nil)
             
@@ -1670,6 +1690,7 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
             vc.model = model
             vc.submitSuccess = { [weak self] in
                 self?.navigationController?.popViewController(animated: true)
+                 NotificationCenter.default.post(name: YiRefreshNotificationName, object: nil)
             }
             present(pledgeNaVc, animated: true, completion: nil)
         } else if model?.statusType == GLWorkTableModel.TaskType.approve {
