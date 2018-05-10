@@ -123,7 +123,7 @@ class GLInstallGPSViewController: UIViewController {
     
     /// 提交
     @IBAction func submitAction(_ sender: UIBarButtonItem) {
-        
+    
         // 过滤判断
         if self.selectedInstallerModel == nil {
             view.makeToast("请选择安装人员")
@@ -202,6 +202,13 @@ class GLInstallGPSViewController: UIViewController {
                     tabBarVc?.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_failure"), title: "提交失败")
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
                         tabBarVc?.dismissCover(btn: nil)
+                        if json["code"] == "ERROR" {
+                            self?.navigationController?.dismiss(animated: false, completion: {
+                                if let submitSuccess = self?.submitSuccess {
+                                    submitSuccess()
+                                }
+                            })
+                        }
                     })
                 }
             }

@@ -1646,6 +1646,7 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
             vc.model = model
             vc.submitSuccess = { [weak self] in
                 self?.navigationController?.popViewController(animated: true)
+                NotificationCenter.default.post(name: YiRefreshNotificationName, object: nil)
             }
             present(installGPSNaVc, animated: true, completion: nil)
             
@@ -1708,6 +1709,10 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
                             tabBarVc?.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_failure"), title: "提交失败")
                             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
                                 tabBarVc?.dismissCover(btn: nil)
+                                if json["code"] == "ERROR" {
+                                    NotificationCenter.default.post(name: YiRefreshNotificationName, object: nil)
+                                    self?.navigationController?.popViewController(animated: true)
+                                }
                             })
                         }
                     }

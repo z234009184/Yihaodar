@@ -117,6 +117,13 @@ class GLPledgeViewController: UIViewController {
                     tabBarVc?.showLoadingView(img: #imageLiteral(resourceName: "taskdetail_submit_failure"), title: "提交失败")
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
                         tabBarVc?.dismissCover(btn: nil)
+                        if json["code"] == "ERROR" {
+                            self?.navigationController?.dismiss(animated: false, completion: {
+                                if let submitSuccess = self?.submitSuccess {
+                                    submitSuccess()
+                                }
+                            })
+                        }
                     })
                 }
             }
