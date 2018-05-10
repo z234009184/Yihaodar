@@ -923,6 +923,9 @@ class GLModelConvert: NSObject {
             sectionModel.title = "车辆外观"
             
             let acceaaroyFileUrls = model.carAttWg.flatMap { (accessoryModel) -> String? in
+                if accessoryModel.file_url.isEmpty == true {
+                    return nil
+                }
                 return accessoryModel.file_url
             }
             sectionModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
@@ -934,6 +937,9 @@ class GLModelConvert: NSObject {
             sectionModel.title = "车辆内饰"
             
             let acceaaroyFileUrls = model.carAttNs.flatMap { (accessoryModel) -> String? in
+                if accessoryModel.file_url.isEmpty == true {
+                    return nil
+                }
                 return accessoryModel.file_url
             }
             sectionModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
@@ -945,6 +951,9 @@ class GLModelConvert: NSObject {
             sectionModel.title = "车辆信息"
             
             let acceaaroyFileUrls = model.carAttXx.flatMap { (accessoryModel) -> String? in
+                if accessoryModel.file_url.isEmpty == true {
+                    return nil
+                }
                 return accessoryModel.file_url
             }
             sectionModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
@@ -957,6 +966,9 @@ class GLModelConvert: NSObject {
             sectionModel.title = "车价查询"
             
             let acceaaroyFileUrls = model.carAttCj.flatMap { (accessoryModel) -> String? in
+                if accessoryModel.file_url.isEmpty == true {
+                    return nil
+                }
                 return accessoryModel.file_url
             }
             sectionModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
@@ -968,6 +980,9 @@ class GLModelConvert: NSObject {
             sectionModel.title = "违章查询"
             
             let acceaaroyFileUrls = model.carAttWz.flatMap { (accessoryModel) -> String? in
+                if accessoryModel.file_url.isEmpty == true {
+                    return nil
+                }
                 return accessoryModel.file_url
             }
             sectionModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
@@ -1008,6 +1023,9 @@ class GLModelConvert: NSObject {
             sectionModel.title = "下户照片"
             
             let acceaaroyFileUrls = model.loanAttXh.flatMap { (accessoryModel) -> String? in
+                if accessoryModel.file_url.isEmpty == true {
+                    return nil
+                }
                 return accessoryModel.file_url
             }
             sectionModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
@@ -1019,6 +1037,9 @@ class GLModelConvert: NSObject {
             sectionModel.title = "抵质押登记已办理凭证"
             
             let acceaaroyFileUrls = model.loanAttDzy.flatMap { (accessoryModel) -> String? in
+                if accessoryModel.file_url.isEmpty == true {
+                    return nil
+                }
                 return accessoryModel.file_url
             }
             sectionModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
