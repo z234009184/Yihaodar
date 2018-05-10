@@ -1162,8 +1162,8 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
         var noResultsData = PlaceholderData.noResults
         noResultsData.title = ""
         noResultsData.action = nil
-        noResultsData.subtitle = "暂无相关查看权限"
-        noResultsData.image = #imageLiteral(resourceName: "taskdetail_authority")
+        noResultsData.subtitle = ""
+        noResultsData.image = nil
         return  Placeholder(data: noResultsData, style: PlaceholderStyle(), key: .noResultsKey)
         
     }()
@@ -1237,6 +1237,11 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
             return
         }
         dataArray = dataArr
+        if dataArray.count < 1 {
+            noResultsPlaceholder.data?.subtitle = "暂无相关查看权限"
+            noResultsPlaceholder.data?.image = #imageLiteral(resourceName: "taskdetail_authority")
+            tableView.placeholdersProvider.add(placeholders: noResultsPlaceholder)
+        }
         tableView.reloadData()
     }
     
@@ -1342,35 +1347,12 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
 class GL基本信息ViewController: GLTaskDetailBaseViewController, IndicatorInfoProvider {
     
     override func viewDidLoad() {
-        noResultsPlaceholder.data?.subtitle = ""
-        noResultsPlaceholder.data?.image = nil
-        tableView.placeholdersProvider.add(placeholders: noResultsPlaceholder)
         super.viewDidLoad()
-        
-        
         
         if let dataArr = (parent as? GLTaskDetailGPSViewController)?.basicDataArray {
             updateUI(dataArr: dataArr)
         }
     }
-    override func updateUI(dataArr: [GLSectionModel]?) {
-        guard let dataArr = dataArr else {
-            return
-        }
-        dataArray = dataArr
-        if dataArray.count < 1 {
-            noResultsPlaceholder.data?.subtitle = "暂无相关查看权限"
-            noResultsPlaceholder.data?.image = #imageLiteral(resourceName: "taskdetail_authority")
-            tableView.placeholdersProvider.add(placeholders: noResultsPlaceholder)
-        }
-        tableView.reloadData()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "基本信息")
