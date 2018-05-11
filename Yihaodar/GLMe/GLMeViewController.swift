@@ -40,8 +40,10 @@ class GLMeViewController: UIViewController {
         
         let hud = JGProgressHUD(style: .dark)
         hud.indicatorView = JGProgressHUDIndicatorView()
-        hud.textLabel.text = organName
+        hud.indicatorView?.frame.width = 200
         hud.contentInsets = UIEdgeInsets(top: -10, left: 10, bottom: 10, right: 10)
+        hud.textLabel.text = organName
+        
         hud.show(in: view)
         hud.tapOutsideBlock = { phud in
             phud.dismiss()
