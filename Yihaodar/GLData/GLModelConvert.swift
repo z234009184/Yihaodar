@@ -762,57 +762,60 @@ class GLModelConvert: NSObject {
             var sectionModel = GLSectionModel()
             sectionModel.title = "GPS安装明细"
             
-            if model.dataAuth.gpsazmx_azry == true {
-                sectionModel.items.append(GLItemModel(title: "安装人员", subTitle: model.gpsInfo.g_personnel))
-            }
-            
-            if model.dataAuth.gpsazmx_azrq == true {
-                sectionModel.items.append(GLItemModel(title: "安装日期", subTitle: model.gpsInfo.install_Date))
-            }
-            
-            if model.dataAuth.gpsazmx_azms == true {
-                if model.gpsInfo.gpsSet.count > 0 {
-                    var formModel = GLFormModel()
-                    formModel.titles = ["设备类型", "设备型号", "设备编号", "设备SIM卡号", "安装位置", "备注"]
-                    for gpsMxModel in model.gpsInfo.gpsSet {
-                        
-                        var gps_type = gpsMxModel.gps_type
-                        if gps_type.isEmpty == true {
-                            gps_type = "未填写"
-                        }
-                        
-                        var gps_version = gpsMxModel.gps_version
-                        if gps_version.isEmpty == true {
-                            gps_version = "未填写"
-                        }
-                        
-                        var gps_number = gpsMxModel.gps_number
-                        if gps_number.isEmpty == true {
-                            gps_number = "未填写"
-                        }
-                        
-                        var gps_sim_card = gpsMxModel.gps_sim_card
-                        if gps_sim_card.isEmpty == true {
-                            gps_sim_card = "未填写"
-                        }
-                        
-                        var gps_position = gpsMxModel.gps_position
-                        if gps_position.isEmpty == true {
-                            gps_position = "未填写"
-                        }
-                        
-                        var gps_remark = gpsMxModel.gps_remark
-                        if gps_remark.isEmpty == true {
-                            gps_remark = "未填写"
-                        }
-                        
-                        
-                        let formArray = [gps_type, gps_version, gps_number, gps_sim_card, gps_position, gps_remark]
-                        
-                        formModel.dataArray.append(formArray)
-                    }
-                    sectionModel.items.append(formModel)
+            if model.processStatus.LOAN_APPLY_GPS_INSTALL == "3" {
+                if model.dataAuth.gpsazmx_azry == true {
+                    sectionModel.items.append(GLItemModel(title: "安装人员", subTitle: model.gpsInfo.g_personnel))
                 }
+                
+                if model.dataAuth.gpsazmx_azrq == true {
+                    sectionModel.items.append(GLItemModel(title: "安装日期", subTitle: model.gpsInfo.install_Date))
+                }
+                
+                if model.dataAuth.gpsazmx_azms == true {
+                    if model.gpsInfo.gpsSet.count > 0 {
+                        var formModel = GLFormModel()
+                        formModel.titles = ["设备类型", "设备型号", "设备编号", "设备SIM卡号", "安装位置", "备注"]
+                        for gpsMxModel in model.gpsInfo.gpsSet {
+                            
+                            var gps_type = gpsMxModel.gps_type
+                            if gps_type.isEmpty == true {
+                                gps_type = "未填写"
+                            }
+                            
+                            var gps_version = gpsMxModel.gps_version
+                            if gps_version.isEmpty == true {
+                                gps_version = "未填写"
+                            }
+                            
+                            var gps_number = gpsMxModel.gps_number
+                            if gps_number.isEmpty == true {
+                                gps_number = "未填写"
+                            }
+                            
+                            var gps_sim_card = gpsMxModel.gps_sim_card
+                            if gps_sim_card.isEmpty == true {
+                                gps_sim_card = "未填写"
+                            }
+                            
+                            var gps_position = gpsMxModel.gps_position
+                            if gps_position.isEmpty == true {
+                                gps_position = "未填写"
+                            }
+                            
+                            var gps_remark = gpsMxModel.gps_remark
+                            if gps_remark.isEmpty == true {
+                                gps_remark = "未填写"
+                            }
+                            
+                            
+                            let formArray = [gps_type, gps_version, gps_number, gps_sim_card, gps_position, gps_remark]
+                            
+                            formModel.dataArray.append(formArray)
+                        }
+                        sectionModel.items.append(formModel)
+                    }
+                }
+                
             }
             dataArray.append(sectionModel)
         }
@@ -823,34 +826,35 @@ class GLModelConvert: NSObject {
             var sectionModel = GLSectionModel()
             sectionModel.title = "下户尽调"
             
-            if model.dataAuth.xhjd_xhrq == true {
-                sectionModel.items.append(GLItemModel(title: "下户日期", subTitle: model.pauperInfo.crea_date))
+            if model.processStatus.LOAN_APPLY_PAUPER == "3" {
+                if model.dataAuth.xhjd_xhrq == true {
+                    sectionModel.items.append(GLItemModel(title: "下户日期", subTitle: model.pauperInfo.crea_date))
+                }
+                
+                if model.dataAuth.xhjd_xhysqdzsfyz == true {
+                    sectionModel.items.append(GLItemModel(title: "下户与申请地址是否一致", subTitle: model.pauperInfo.pauper_agreement))
+                }
+                
+                if model.dataAuth.xhjd_fwjzly == true {
+                    sectionModel.items.append(GLItemModel(title: "房屋居住来源", subTitle: model.pauperInfo.pauper_source))
+                }
+                
+                if model.dataAuth.xhjd_fwyt == true {
+                    sectionModel.items.append(GLItemModel(title: "房屋用途", subTitle: model.pauperInfo.pauper_purpose))
+                }
+                
+                if model.dataAuth.xhjd_fwzwhj == true {
+                    sectionModel.items.append(GLItemModel(title: "房屋周围环境", subTitle: model.pauperInfo.pauper_environment))
+                }
+                
+                if model.dataAuth.xhjd_fwnywwjp == true {
+                    sectionModel.items.append(GLItemModel(title: "房屋内有无违禁品", subTitle: model.pauperInfo.pauper_contraband))
+                }
+                
+                if model.dataAuth.xhjd_xhyj == true {
+                    sectionModel.items.append(GLItemModel(title: "下户意见", subTitle: model.pauperInfo.pauper_opinion))
+                }
             }
-            
-            if model.dataAuth.xhjd_xhysqdzsfyz == true {
-                sectionModel.items.append(GLItemModel(title: "下户与申请地址是否一致", subTitle: model.pauperInfo.pauper_agreement))
-            }
-            
-            if model.dataAuth.xhjd_fwjzly == true {
-                sectionModel.items.append(GLItemModel(title: "房屋居住来源", subTitle: model.pauperInfo.pauper_source))
-            }
-            
-            if model.dataAuth.xhjd_fwyt == true {
-                sectionModel.items.append(GLItemModel(title: "房屋用途", subTitle: model.pauperInfo.pauper_purpose))
-            }
-            
-            if model.dataAuth.xhjd_fwzwhj == true {
-                sectionModel.items.append(GLItemModel(title: "房屋周围环境", subTitle: model.pauperInfo.pauper_environment))
-            }
-            
-            if model.dataAuth.xhjd_fwnywwjp == true {
-                sectionModel.items.append(GLItemModel(title: "房屋内有无违禁品", subTitle: model.pauperInfo.pauper_contraband))
-            }
-            
-            if model.dataAuth.xhjd_xhyj == true {
-                sectionModel.items.append(GLItemModel(title: "下户意见", subTitle: model.pauperInfo.pauper_opinion))
-            }
-            
             dataArray.append(sectionModel)
         }
         
@@ -858,11 +862,11 @@ class GLModelConvert: NSObject {
         if model.dataAuth.jzdc_dzydj == true {
             var sectionModel = GLSectionModel()
             sectionModel.title = "抵质押登记"
-            
-            if model.dataAuth.dzydj_dzydjrq == true {
-                sectionModel.items.append(GLItemModel(title: "抵质押登记日期", subTitle: model.pledgeTime))
+            if model.processStatus.LOAN_APPLY_PLEDGE == "3" {
+                if model.dataAuth.dzydj_dzydjrq == true {
+                    sectionModel.items.append(GLItemModel(title: "抵质押登记日期", subTitle: model.pledgeTime))
+                }
             }
-            
             dataArray.append(sectionModel)
         }
         
@@ -886,19 +890,23 @@ class GLModelConvert: NSObject {
         if model.dataAuth.htqy_htjf == true {
             var sectionModel = GLSectionModel()
             sectionModel.title = "合同交付"
-            sectionModel.items.append(GLItemModel(title: "合同编号", subTitle: model.loanApply.contract_number))
             
-            if model.signatureList.count > 0{
-                var formModel = GLFormModel()
-                formModel.titles = ["合同名称", "是否交付", "数量(份)"]
-                formModel.titleColWidth = 120
-                for htModel in model.signatureList {
-                    let formArray = [htModel.dname, htModel.isGive, htModel.contract_count]
-                    
-                    formModel.dataArray.append(formArray)
+            if model.processStatus.LOAN_APPLY_INTERVIEW == "3" { // 如果面签流程已经完成 则显示
+                
+                sectionModel.items.append(GLItemModel(title: "合同编号", subTitle: model.loanApply.contract_number))
+                if model.signatureList.count > 0{
+                    var formModel = GLFormModel()
+                    formModel.titles = ["合同名称", "是否交付", "数量(份)"]
+                    formModel.titleColWidth = 120
+                    for htModel in model.signatureList {
+                        let formArray = [htModel.dname, htModel.isGive, htModel.contract_count]
+                        
+                        formModel.dataArray.append(formArray)
+                    }
+                    sectionModel.items.append(formModel)
                 }
-                sectionModel.items.append(formModel)
             }
+            
             
             dataArray.append(sectionModel)
         }
@@ -1125,50 +1133,54 @@ class GLModelConvert: NSObject {
             var sectionModel = GLSectionModel()
             sectionModel.title = "费用缴纳明细"
             
-            if model.payList.count > 0 {
-                var formModel = GLFormModel()
-                formModel.titles = ["缴费科目", "应收费用", "实收费用", "备注"]
-                formModel.titleColWidth = 100
+            if model.processStatus.LOAN_APPLY_PAYFEE == "3" {
                 
-                for payModel in model.payList {
+                
+                if model.payList.count > 0 {
+                    var formModel = GLFormModel()
+                    formModel.titles = ["缴费科目", "应收费用", "实收费用", "备注"]
+                    formModel.titleColWidth = 100
                     
-                    var o = GLOptionsModel()
-                    for optionModel in model.options {
-                        if payModel.pay_id == optionModel.id {
-                            o = optionModel
-                            break
+                    for payModel in model.payList {
+                        
+                        var o = GLOptionsModel()
+                        for optionModel in model.options {
+                            if payModel.pay_id == optionModel.id {
+                                o = optionModel
+                                break
+                            }
                         }
+                        
+                        var name = o.dname
+                        if name.isEmpty == true {
+                            name = "未填写"
+                        }
+                        
+                        var unpaid = payModel.unpaid
+                        if unpaid.isEmpty == true {
+                            unpaid = "未填写"
+                        } else {
+                            unpaid = unpaid.decimalString() + "元"
+                        }
+                        
+                        var alreadyPaid = payModel.alreadyPaid
+                        if alreadyPaid.isEmpty == true {
+                            alreadyPaid = "未填写"
+                        } else {
+                            alreadyPaid = alreadyPaid.decimalString() + "元"
+                        }
+                        
+                        var content = payModel.content
+                        if content.isEmpty == true {
+                            content = "未填写"
+                        }
+                        
+                        let formArray = [name, alreadyPaid, unpaid, content]
+                        
+                        formModel.dataArray.append(formArray)
                     }
-                    
-                    var name = o.dname
-                    if name.isEmpty == true {
-                        name = "未填写"
-                    }
-                    
-                    var unpaid = payModel.unpaid
-                    if unpaid.isEmpty == true {
-                        unpaid = "未填写"
-                    } else {
-                        unpaid = unpaid.decimalString() + "元"
-                    }
-                    
-                    var alreadyPaid = payModel.alreadyPaid
-                    if alreadyPaid.isEmpty == true {
-                        alreadyPaid = "未填写"
-                    } else {
-                        alreadyPaid = alreadyPaid.decimalString() + "元"
-                    }
-                    
-                    var content = payModel.content
-                    if content.isEmpty == true {
-                        content = "未填写"
-                    }
-                    
-                    let formArray = [name, alreadyPaid, unpaid, content]
-                    
-                    formModel.dataArray.append(formArray)
+                    sectionModel.items.append(formModel)
                 }
-                sectionModel.items.append(formModel)
             }
             
             dataArray.append(sectionModel)
@@ -1178,31 +1190,32 @@ class GLModelConvert: NSObject {
             var sectionModel = GLSectionModel()
             sectionModel.title = "放款基本信息"
             
-            
-            var start_end_date = model.appInfo.ht_start
-            if model.appInfo.ht_end.isEmpty == false {
-                if start_end_date.isEmpty == false {
-                    start_end_date = start_end_date + "至" + model.appInfo.ht_end
+            if model.specialStatus.LOAN_APPLY_DOAPPLY == "3" { // 放款申请流程
+                
+                var start_end_date = model.appInfo.ht_start
+                if model.appInfo.ht_end.isEmpty == false {
+                    if start_end_date.isEmpty == false {
+                        start_end_date = start_end_date + "至" + model.appInfo.ht_end
+                    }
+                }
+                
+                sectionModel.items.append(GLItemModel(title: "合同起止日期", subTitle: start_end_date))
+                
+                var gdhkr = ""
+                if model.appInfo.gdhxr.isEmpty == false {
+                    gdhkr =  "每月" + (model.appInfo.gdhxr.isEmpty==false ? model.appInfo.gdhxr : "-") + "日"
+                }
+                sectionModel.items.append(GLItemModel(title: "固定还息日", subTitle: gdhkr))
+                
+                for jqskModel in model.jqsk_time {
+                    
+                    sectionModel.items.append(GLItemModel(title: "申请放款时间", subTitle: jqskModel.fksq_sqfksj))
+                    sectionModel.items.append(GLItemModel(title: "申请放款金额", subTitle: jqskModel.fksq_sqfke.isEmpty ? "" : jqskModel.fksq_sqfke.decimalString() + "万元" ))
+                    sectionModel.items.append(GLItemModel(title: "放款时间", subTitle: jqskModel.fk_sjfksj))
+                    sectionModel.items.append(GLItemModel(title: "实际放款", subTitle: jqskModel.fk_sjfke.isEmpty ? "" : jqskModel.fk_sjfke.decimalString() + "万元" ))
+                    
                 }
             }
-            
-            sectionModel.items.append(GLItemModel(title: "合同起止日期", subTitle: start_end_date))
-            
-            var gdhkr = ""
-            if model.appInfo.gdhxr.isEmpty == false {
-                gdhkr =  "每月" + (model.appInfo.gdhxr.isEmpty==false ? model.appInfo.gdhxr : "-") + "日"
-            }
-            sectionModel.items.append(GLItemModel(title: "固定还息日", subTitle: gdhkr))
-            
-            for jqskModel in model.jqsk_time {
-                
-                sectionModel.items.append(GLItemModel(title: "申请放款时间", subTitle: jqskModel.fksq_sqfksj))
-                sectionModel.items.append(GLItemModel(title: "申请放款金额", subTitle: jqskModel.fksq_sqfke.isEmpty ? "" : jqskModel.fksq_sqfke.decimalString() + "万元" ))
-                sectionModel.items.append(GLItemModel(title: "放款时间", subTitle: jqskModel.fk_sjfksj))
-                sectionModel.items.append(GLItemModel(title: "实际放款", subTitle: jqskModel.fk_sjfke.isEmpty ? "" : jqskModel.fk_sjfke.decimalString() + "万元" ))
-                
-            }
-            
             dataArray.append(sectionModel)
         }
         
@@ -1211,47 +1224,49 @@ class GLModelConvert: NSObject {
             var sectionModel = GLSectionModel()
             sectionModel.title = "经纪人信息&返费信息"
             
-            sectionModel.items.append(GLItemModel(title: "经纪人姓名", subTitle: model.appInfo.a_name))
             
-            sectionModel.items.append(GLItemModel(title: "联系方式", subTitle: model.appInfo.a_contact_way))
-            
-            
-            sectionModel.items.append(GLItemModel(title: "微信号", subTitle: model.appInfo.a_wechat))
-            sectionModel.items.append(GLItemModel(title: "户名", subTitle: model.appInfo.a_card_name))
-            sectionModel.items.append(GLItemModel(title: "银行卡号", subTitle: model.appInfo.a_card_code))
-            sectionModel.items.append(GLItemModel(title: "开户行", subTitle: model.appInfo.a_card_bank))
-            sectionModel.items.append(GLItemModel(title: "支行信息", subTitle: model.appInfo.a_bank_branch))
-            
-            
-            if model.agentBack.count > 0 {
-                var formM = GLFormModel()
-                formM.titles = ["预计返费时间", "返费金额", "备注"]
-                formM.titleColWidth = 130
-                for agentModel in model.agentBack {
-                    var backtime = agentModel.backtime
-                    if backtime.isEmpty == true {
-                        backtime = "未填写"
+            if model.specialStatus.LOAN_APPLY_DOAPPLY == "3" { // 放款申请流程
+                sectionModel.items.append(GLItemModel(title: "经纪人姓名", subTitle: model.appInfo.a_name))
+                
+                sectionModel.items.append(GLItemModel(title: "联系方式", subTitle: model.appInfo.a_contact_way))
+                
+                
+                sectionModel.items.append(GLItemModel(title: "微信号", subTitle: model.appInfo.a_wechat))
+                sectionModel.items.append(GLItemModel(title: "户名", subTitle: model.appInfo.a_card_name))
+                sectionModel.items.append(GLItemModel(title: "银行卡号", subTitle: model.appInfo.a_card_code))
+                sectionModel.items.append(GLItemModel(title: "开户行", subTitle: model.appInfo.a_card_bank))
+                sectionModel.items.append(GLItemModel(title: "支行信息", subTitle: model.appInfo.a_bank_branch))
+                
+                
+                if model.agentBack.count > 0 {
+                    var formM = GLFormModel()
+                    formM.titles = ["预计返费时间", "返费金额", "备注"]
+                    formM.titleColWidth = 130
+                    for agentModel in model.agentBack {
+                        var backtime = agentModel.backtime
+                        if backtime.isEmpty == true {
+                            backtime = "未填写"
+                        }
+                        
+                        var backamount = agentModel.backamount
+                        if backamount.isEmpty == true {
+                            backamount = "未填写"
+                        } else {
+                            backamount = backamount.decimalString() + "元"
+                        }
+                        
+                        var backremark = agentModel.backremark
+                        if backremark.isEmpty == true {
+                            backremark = "未填写"
+                        }
+                        
+                        let formArray = [backtime, backamount, backremark]
+                        
+                        formM.dataArray.append(formArray)
                     }
-                    
-                    var backamount = agentModel.backamount
-                    if backamount.isEmpty == true {
-                        backamount = "未填写"
-                    } else {
-                        backamount = backamount.decimalString() + "元"
-                    }
-                    
-                    var backremark = agentModel.backremark
-                    if backremark.isEmpty == true {
-                        backremark = "未填写"
-                    }
-                    
-                    let formArray = [backtime, backamount, backremark]
-                    
-                    formM.dataArray.append(formArray)
+                    sectionModel.items.append(formM)
                 }
-                sectionModel.items.append(formM)
             }
-            
             dataArray.append(sectionModel)
         }
         
@@ -1261,18 +1276,19 @@ class GLModelConvert: NSObject {
             var sectionModel = GLSectionModel()
             sectionModel.title = "审批信息"
             
-            for examModel in model.examiner {
-                sectionModel.items.append(GLItemModel(title: "审批人姓名", subTitle: examModel.exam_name))
-                var exam_status = examModel.exam_status
-                if exam_status == "1" {
-                    exam_status = "同意放款"
-                } else if exam_status == "0" {
-                    exam_status = "拒绝放款"
+            if model.specialStatus.LOAN_APPLY_DOAPPLY == "3" { // 放款申请流程
+                for examModel in model.examiner {
+                    sectionModel.items.append(GLItemModel(title: "审批人姓名", subTitle: examModel.exam_name))
+                    var exam_status = examModel.exam_status
+                    if exam_status == "1" {
+                        exam_status = "同意放款"
+                    } else if exam_status == "0" {
+                        exam_status = "拒绝放款"
+                    }
+                    sectionModel.items.append(GLItemModel(title: "审批意见", subTitle: exam_status))
+                    sectionModel.items.append(GLItemModel(title: "备注", subTitle: examModel.exam_remark))
                 }
-                sectionModel.items.append(GLItemModel(title: "审批意见", subTitle: exam_status))
-                sectionModel.items.append(GLItemModel(title: "备注", subTitle: examModel.exam_remark))
             }
-            
             dataArray.append(sectionModel)
         }
         
@@ -1304,6 +1320,15 @@ class GLModelConvert: NSObject {
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /// 转换已获取安装GPS信息数据
     ///
     /// - Parameter model: 数据模型
@@ -1313,6 +1338,7 @@ class GLModelConvert: NSObject {
         
         var sectionModel = GLSectionModel()
         sectionModel.title = "GPS安装明细"
+        
         
         sectionModel.items.append(GLItemModel(title: "安装人员", subTitle: model.g_personnel))
         sectionModel.items.append(GLItemModel(title: "安装日期", subTitle: model.install_Date))

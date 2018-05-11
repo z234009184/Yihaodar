@@ -436,6 +436,23 @@ struct GLDataAuth: HandyJSON {
     var gjrxx_xykzed: Bool?
 }
 
+struct GLProcessStatusModel: HandyJSON {
+    var CARS_ASSESS_TASK = ""
+    var LOAN_APPLY_FACE_TASK = ""
+    var LOAN_APPLY_GPS_INSTALL = ""
+    var LOAN_APPLY_REGISTER_TASK = ""
+    var LOAN_APPLY_INTERVIEW = ""
+    var LOAN_APPLY_PAYFEE = ""
+    var LOAN_APPLY_PAUPER = ""
+    var LOAN_APPLY_PLEDGE = ""
+}
+
+struct GLSpecialStatusModel: HandyJSON {
+    var LOAN_APPLY_TO_EXAMINE = ""
+    var LOAN_APPLY_DOAPPLY = ""
+    var LOAN_APPLY_FANGKUAN = ""
+}
+
 
 /// 缴费明细列表模型
 struct GLPayListModel: HandyJSON {
@@ -808,6 +825,9 @@ struct GLGPSTaskDetailBigModel: HandyJSON {
 ///    null_jbxx:false 就是‘基本信息’模块不显示
     var dataAuth = GLDataAuth()
     
+    var processStatus = GLProcessStatusModel() // 流程状态
+    var specialStatus = GLSpecialStatusModel()
+    var shenPiStatus = false // 审批流程是否完成
     
     /// 缴费明细列表
     var payList = [GLPayListModel]()
