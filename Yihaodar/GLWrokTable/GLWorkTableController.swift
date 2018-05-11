@@ -205,11 +205,12 @@ class GLWorkTableBaseViewController: UITableViewController {
     open let pageSize = 8
     open var startIndex = 1
     open var dataArray = [GLWorkTableModel]()
-    
+    var isNotyRefresh = false
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.configRefreshHeader(with: GLRefreshHeader.header()) { [weak self] in
-            self?.refreshData()
+            self?.startIndex = 1
+            self?.loadData()
             
         }
         tableView.configRefreshFooter(with: GLRefreshFooter.footer()) { [weak self] in
@@ -217,14 +218,30 @@ class GLWorkTableBaseViewController: UITableViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        isNotyRefresh = false
+    }
+    
     /// 子类实现的方法
     func loadData() { }
     
     @objc func refreshData () {
-        startIndex = 1
-        loadData()
+        isNotyRefresh = true
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if isNotyRefresh == false { return }
+        dataArray.removeAll()
+        tableView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) { [weak self] in
+            self?.startIndex = 1
+            self?.loadData()
+        }
+        
+    }
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -365,12 +382,15 @@ class GLDaiBanController: GLWorkTableBaseViewController, IndicatorInfoProvider {
     
     
     override func loadData() {
+        view.showLoading()
         GLProvider.request(GLService.todoList(partyId: GLUser.partyId!, pageSize: "\(pageSize)", startIndex: "\(startIndex)"))  { [weak self] (result) in
+            self?.view.hideLoading()
             if self == nil {return}
             self?.tableView.switchRefreshFooter(to: .normal)
             if case let .success(response) = result {
                 if self?.startIndex == 1 {
                     self?.dataArray.removeAll()
+                    
                 }
                 let json = JSON(response.data)
                 print(json)
@@ -424,12 +444,15 @@ class GLWanChengController: GLWorkTableBaseViewController, IndicatorInfoProvider
     
     
     override func loadData() {
+        view.showLoading()
         GLProvider.request(GLService.completeList(partyId: GLUser.partyId!, pageSize: "\(pageSize)", startIndex: "\(startIndex)"))  { [weak self] (result) in
+            self?.view.hideLoading()
             if self == nil {return}
             self?.tableView.switchRefreshFooter(to: .normal)
             if case let .success(response) = result {
                 if self?.startIndex == 1 {
                     self?.dataArray.removeAll()
+                    
                 }
                 let json = JSON(response.data)
                 print(json)

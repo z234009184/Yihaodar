@@ -39,8 +39,9 @@ class GLSearchViewController: GLWorkTableBaseViewController {
             tableView.switchRefreshHeader(to: .normal(.success, 0.5))
             return
         }
-        
+        view.showLoading()
         GLProvider.request(GLService.searchList(partyId: GLUser.partyId!, pageSize: "\(pageSize)", startIndex: "\(startIndex)", executionId: executionId!))  { [weak self] (result) in
+            self?.view.hideLoading()
             if self == nil {return}
             self?.tableView.switchRefreshHeader(to: .normal(.success, 0.5))
             if case let .success(response) = result {

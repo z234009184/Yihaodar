@@ -103,7 +103,7 @@ class GLGPSCompleteViewController: GLTaskDetailBaseViewController {
             self?.view.hideLoading()
             if case let .success(respon) = result {
                 let json = JSON(respon.data)
-                
+                print(json)
                 self?.completeModel = GLCompleteModel.deserialize(from: json.rawString(), designatedPath: "results")
                 
                 if let gpsModel = self?.completeModel?.gps.gpsInformation {
