@@ -1185,7 +1185,6 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
         tableView.estimatedRowHeight = 80
         tableView.delegate = self
         tableView.dataSource = self
-
         
         tableView.register(UINib(nibName: "GLTaskDetailItemHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: GLTaskDetailItemHeaderId)
         
@@ -1200,7 +1199,6 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.separatorColor = .clear
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
-        
         tableView.bounces = false
         
         return tableView
@@ -1213,13 +1211,19 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
         return noView
     }()
     
+    var isLoadingFinish = false
+    
     /// 重用标识符
     fileprivate let GLTaskDetailItemCellId = "GLTaskDetailItemCellId"
     fileprivate let GLTaskDetailItemHeaderId = "GLTaskDetailItemHeaderId"
     fileprivate let GLTaskDetailFormCellId = "GLTaskDetailFormCellId"
     fileprivate let GLTaskDetailTableViewPictureCellId = "GLTaskDetailTableViewPictureCellId"
     
-    open var dataArray: [GLSectionModel] = []
+    open var dataArray: [GLSectionModel] = [] {
+        didSet {
+            updateUI()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -1244,15 +1248,10 @@ class GLTaskDetailBaseViewController: UIViewController, UITableViewDelegate, UIT
     
     
     
-    func updateUI(dataArr: [GLSectionModel]?) {
-        guard let dataArr = dataArr else {
-            return
-        }
-        dataArray = dataArr
-        if dataArray.count < 1 {
+    func updateUI() {
+        if dataArray.count < 1 && isLoadingFinish == true {
+            noAuthorityView.frame = tableView.bounds
             tableView.addSubview(noAuthorityView)
-        } else {
-            noAuthorityView.removeFromSuperview()
         }
         tableView.reloadData()
     }
@@ -1363,10 +1362,8 @@ class GL基本信息ViewController: GLTaskDetailBaseViewController, IndicatorInf
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateUI()
         
-        if let dataArr = (parent as? GLTaskDetailGPSViewController)?.basicDataArray {
-            updateUI(dataArr: dataArr)
-        }
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -1381,10 +1378,11 @@ class GL评估信息ViewController: GLTaskDetailBaseViewController, IndicatorInf
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let dataArr = (parent as? GLTaskDetailGPSViewController)?.estimateDataArray {
-            updateUI(dataArr: dataArr)
-        }
+        updateUI()
     }
+    
+    
+   
     
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -1396,9 +1394,9 @@ class GL风险控制ViewController: GLTaskDetailBaseViewController, IndicatorInf
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let dataArr = (parent as? GLTaskDetailGPSViewController)?.riskControlDataArray {
-            updateUI(dataArr: dataArr)
-        }
+        
+        updateUI()
+        
     }
     
     
@@ -1411,9 +1409,9 @@ class GL尽职调查ViewController: GLTaskDetailBaseViewController, IndicatorInf
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let dataArr = (parent as? GLTaskDetailGPSViewController)?.investigateDataArray {
-            updateUI(dataArr: dataArr)
-        }
+        
+        updateUI()
+        
     }
     
     
@@ -1426,9 +1424,9 @@ class GL合同签约ViewController: GLTaskDetailBaseViewController, IndicatorInf
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let dataArr = (parent as? GLTaskDetailGPSViewController)?.pactDataArray  {
-            updateUI(dataArr: dataArr)
-        }
+        
+        updateUI()
+        
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -1440,9 +1438,9 @@ class GL资料附件ViewController: GLTaskDetailBaseViewController, IndicatorInf
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let dataArr = (parent as? GLTaskDetailGPSViewController)?.accessoryDataArray  {
-            updateUI(dataArr: dataArr)
-        }
+        
+        updateUI()
+        
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -1454,9 +1452,8 @@ class GL费用及放款ViewController: GLTaskDetailBaseViewController, Indicator
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let dataArr = (parent as? GLTaskDetailGPSViewController)?.costDataArray  {
-            updateUI(dataArr: dataArr)
-        }
+        
+        updateUI()
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -1554,7 +1551,7 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     }
     
     /// 基本信息数据
-    var basicDataArray: [GLSectionModel]?
+    var basicDataArray = [GLSectionModel]()
     
     /// 评估信息数据
     var estimateDataArray = [GLSectionModel]()
@@ -1622,35 +1619,42 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     
     /// 更新基本信息UI
     func updateBasicVcUI() {
-        vc1.updateUI(dataArr: basicDataArray)
+        vc1.isLoadingFinish = true
+        vc1.dataArray = basicDataArray
     }
     
     /// 更新评估信息UI
     func updateEstimateVcUI() {
-        vc2.updateUI(dataArr: estimateDataArray)
+        vc2.isLoadingFinish = true
+        vc2.dataArray = estimateDataArray
     }
     
     
     /// 更新风险控制UI
     func updateRiskControlVcUI() {
-        vc3.updateUI(dataArr: riskControlDataArray)
+        vc3.isLoadingFinish = true
+        vc3.dataArray = riskControlDataArray
     }
     
     /// 更新尽职调查UI
     func updateInvestigateVcUI() {
-        vc4.updateUI(dataArr: investigateDataArray)
+        vc4.isLoadingFinish = true
+        vc4.dataArray = investigateDataArray
     }
     
     func updatePactVcUI() {
-        vc5.updateUI(dataArr: pactDataArray)
+        vc5.isLoadingFinish = true
+        vc5.dataArray = pactDataArray
     }
     
     func updateAccessoryVcUI() {
-        vc6.updateUI(dataArr: accessoryDataArray)
+        vc6.isLoadingFinish = true
+        vc6.dataArray = accessoryDataArray
     }
     
     func updateCostVcUI() {
-        vc7.updateUI(dataArr: costDataArray)
+        vc7.isLoadingFinish = true
+        vc7.dataArray = costDataArray
     }
     
     @IBAction func submitBtnClick(_ sender: DesignableButton) {

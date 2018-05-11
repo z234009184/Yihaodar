@@ -307,6 +307,9 @@
 		8AF1C4BC20720C95009D6F7D /* GLTaskDetailPictureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GLTaskDetailPictureCell.xib; sourceTree = "<group>"; };
 		8AF1C4BE2073867A009D6F7D /* GLGPSComplete.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GLGPSComplete.storyboard; sourceTree = "<group>"; };
 		8AF1C4C020738694009D6F7D /* GLGPSCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLGPSCompleteViewController.swift; sourceTree = "<group>"; };
+		8AF699B320A58ED600D819E4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "../zh-Hans.lproj/GLWorkTable.strings"; sourceTree = "<group>"; };
+		8AF699B420A58ED600D819E4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		8AF699B520A58ED600D819E4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		8AF90C1D20746850009DD32E /* YihaodarDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YihaodarDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AF90C1F207469D1009DD32E /* YihaodarDev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "YihaodarDev-Info.plist"; sourceTree = "<group>"; };
 		8C9FBF8E4CCEB0B7CCAA2047 /* Pods-CommonPods-YihaodarDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-YihaodarDev.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-YihaodarDev/Pods-CommonPods-YihaodarDev.release.xcconfig"; sourceTree = "<group>"; };
@@ -1082,6 +1085,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8A1DAB95202ACBA3001CBD0F /* Base */,
+				8AF699B320A58ED600D819E4 /* zh-Hans */,
 			);
 			name = GLWorkTable.storyboard;
 			sourceTree = "<group>";
@@ -1090,6 +1094,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8A235116201E0AC4002715E0 /* Base */,
+				8AF699B420A58ED600D819E4 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1098,6 +1103,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8A23511B201E0AC4002715E0 /* Base */,
+				8AF699B520A58ED600D819E4 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1109,6 +1115,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1166,6 +1173,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

@@ -77,6 +77,8 @@ class GLPledgeViewController: UIViewController {
     
     @IBAction func submitAction(_ sender: UIBarButtonItem) {
         
+        view.endEditing(true)
+        
         if pledgeDate.text == "请选择" {
             view.makeToast("请选择抵质押登记日期")
             return

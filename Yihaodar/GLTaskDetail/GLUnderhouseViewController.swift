@@ -119,6 +119,9 @@ class GLUnderhouseViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func submitAction(_ sender: UIBarButtonItem) {
+        
+        view.endEditing(true)
+        
         // 过滤判断
         if underDateLabel.text == "请选择" {
             view.makeToast("请选择下户日期")

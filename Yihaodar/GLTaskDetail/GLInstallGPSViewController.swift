@@ -123,7 +123,8 @@ class GLInstallGPSViewController: UIViewController {
     
     /// 提交
     @IBAction func submitAction(_ sender: UIBarButtonItem) {
-    
+        view.endEditing(true)
+        
         // 过滤判断
         if self.selectedInstallerModel == nil {
             view.makeToast("请选择安装人员")
