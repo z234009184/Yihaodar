@@ -114,7 +114,7 @@ class GLModelConvert: NSObject {
             if model.dataAuth.clxx_dqwzs == true {
                 var peccancyStr = "无"
                 if model.carInfo.peccancy == "1" {
-                    peccancyStr = "有;扣:\(model.carInfo.peccancyFraction == "" ? "0" : model.carInfo.peccancyFraction)分 罚:\(model.carInfo.peccancyMoney == "" ? "0" : model.carInfo.peccancyMoney.decimalString())元"
+                    peccancyStr = "有;扣\(model.carInfo.peccancyFraction == "" ? "0" : model.carInfo.peccancyFraction)分; 罚\(model.carInfo.peccancyMoney == "" ? "0" : model.carInfo.peccancyMoney.decimalString())元"
                 }
                 let item = GLItemModel(title: "当前违章", subTitle: peccancyStr)
                 sectionModel.items.append(item)

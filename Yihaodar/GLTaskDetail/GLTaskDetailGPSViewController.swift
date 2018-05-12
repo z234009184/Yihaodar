@@ -1774,6 +1774,7 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
+        
         return [vc1, vc2, vc3, vc4, vc5, vc6, vc7]
     }
     
