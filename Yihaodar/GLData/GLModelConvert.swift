@@ -131,7 +131,12 @@ class GLModelConvert: NSObject {
             }
             
             if model.dataAuth.clxx_kpjg == true {
-                let item = GLItemModel(title: "开票价格", subTitle: model.carInfo.invoice)
+                
+                var invoice = model.carInfo.invoice
+                if invoice.isEmpty == false {
+                    invoice = invoice + "万元"
+                }
+                let item = GLItemModel(title: "开票价格", subTitle: invoice)
                 sectionModel.items.append(item)
             }
             
@@ -1390,6 +1395,9 @@ class GLModelConvert: NSObject {
         sectionPicModel.title = "下户照片"
         
         let acceaaroyFileUrls = model.attachmentList.flatMap { (accessoryModel) -> String? in
+            if accessoryModel.attachment_href.isEmpty == true {
+                return nil
+            }
             return accessoryModel.attachment_href
         }
         sectionPicModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
@@ -1422,6 +1430,9 @@ class GLModelConvert: NSObject {
         sectionPicModel.title = "抵质押登记已办理凭证"
         
         let acceaaroyFileUrls = model.attachmentList.flatMap { (accessoryModel) -> String? in
+            if accessoryModel.attachment_href.isEmpty == true {
+                return nil
+            }
             return accessoryModel.attachment_href
         }
         sectionPicModel.items.append(GLPictureModel(pictures: acceaaroyFileUrls))
