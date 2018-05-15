@@ -18,6 +18,7 @@ class GLDatePicker: NSObject {
     static func showDatePicker(currentDate: Date, sureClosure: @escaping ((String)->())) {
         let mask = tabBarVc.showMaskView()
         guard let maskView = mask else {
+            assert(mask != nil, "没有mask")
             return
         }
         date = currentDate

@@ -1537,8 +1537,12 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
                 if let examinerModel = examinerModel {
                     if examinerModel.exam_status == "1" {
                         typeButton.setTitle("同意放款", for: .normal)
+                        typeButton.backgroundColor = YiBlueColor
+                        typeButton.setTitleColor(.white, for: .normal)
                     } else {
                         typeButton.setTitle("拒绝放款", for: .normal)
+                        typeButton.backgroundColor = YiRedColor
+                        typeButton.setTitleColor(.white, for: .normal)
                     }
                 }
                 

@@ -12,6 +12,7 @@ import UIKit
 let YiThemeColor = UIColor(hex: "FFFFFF")
 let YiNavigationBarTitleColor = UIColor(hex: "767E87")
 let YiBlueColor = UIColor(hex: "19A4FF")
+let YiRedColor = UIColor(hex: "E9212F")
 let YiSelectedTitleColor = UIColor(hex: "212832")
 let YiUnselectedTitleColor = UIColor(hex: "99A0AA")
 let YiRefreshTitleColor = YiUnselectedTitleColor

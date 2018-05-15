@@ -56,7 +56,7 @@ class GLTabBarController: UITabBarController {
     /// - Returns: 返回遮罩
     func showMaskView(isDismiss: Bool=true) -> UIView? {
         dismissCover(btn: nil)
-        maskView = UIView(frame: self.view.bounds)
+        maskView = UIView(frame: UIScreen.main.bounds)
         guard let maskView = maskView else {
             return nil
         }
@@ -68,11 +68,14 @@ class GLTabBarController: UITabBarController {
             btn.addTarget(self, action: #selector(GLTabBarController.dismissCover(btn:)), for: .touchUpInside)
             
         }
-        if let vc = self.presentedViewController {
-            maskView.frame = vc.view.bounds
-            vc.view.addSubview(maskView)
-        } else {
-            self.view.addSubview(maskView)
+//        if let vc = self.presentedViewController {
+//            maskView.frame = vc.view.bounds
+//            vc.view.addSubview(maskView)
+//        } else {
+//            self.view.addSubview(maskView)
+//        }
+        if let window = UIApplication.shared.keyWindow {
+            window.addSubview(maskView)
         }
         return maskView
     }
