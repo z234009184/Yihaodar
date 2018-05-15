@@ -596,7 +596,7 @@ class GLModelConvert: NSObject {
             let carInfo = model.carInfo
             sectionModel.items.append(GLItemModel(title: "变速器", subTitle: carInfo.gearbox))
             sectionModel.items.append(GLItemModel(title: "驱动方式", subTitle: carInfo.drivingType))
-            sectionModel.items.append(GLItemModel(title: "有无钥匙启动", subTitle: carInfo.keylessStartup))
+            sectionModel.items.append(GLItemModel(title: "无钥匙启动", subTitle: carInfo.keylessStartup))
             sectionModel.items.append(GLItemModel(title: "定速巡航", subTitle: carInfo.cruiseControl))
             sectionModel.items.append(GLItemModel(title: "导航", subTitle: carInfo.navigation))
             sectionModel.items.append(GLItemModel(title: "后排娱乐", subTitle: carInfo.hpyl))
@@ -699,6 +699,11 @@ class GLModelConvert: NSObject {
             }
             
             if model.dataAuth.fxkz_jkdyl == true {
+                var lrLoanmortgageRate = model.loanRisker.lrLoanmortgageRate
+                if lrLoanmortgageRate.isEmpty == false {
+                    lrLoanmortgageRate = lrLoanmortgageRate.percentString()
+                    lrLoanmortgageRate = lrLoanmortgageRate.replacingOccurrences(of: ",", with: "")
+                }
                 sectionModel.items.append(GLItemModel(title: "借款抵押率", subTitle: model.loanRisker.lrLoanmortgageRate.percentString()))
             }
             

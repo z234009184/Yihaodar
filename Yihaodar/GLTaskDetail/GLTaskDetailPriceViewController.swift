@@ -801,9 +801,9 @@ class GLTaskDetailPriceViewController: GLButtonBarPagerTabStripViewController {
         guard let model = model else {
             return
         }
-        
+        view.showLoading()
         GLProvider.request(GLService.priceDetail(custRequestId: model.executionId!, takeStatus: model.takeStatus!, partyId: GLUser.partyId!, processExampleId: model.processId!, processTaskId: model.processTaskId!)) {[weak self] (result) in
-            
+            self?.view.hideLoading()
             if case let .success(respon) = result {
                 print(JSON(respon.data))
                 if JSON(respon.data)["type"] == "E" {
