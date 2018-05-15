@@ -402,9 +402,9 @@
 			isa = PBXGroup;
 			children = (
 				8A1DAB9B202B002B001CBD0F /* GLTaskDetailViewController.swift */,
-				8A1DAB9D202B003F001CBD0F /* GLTaskDetail.storyboard */,
 				8A7D848D2041329300B5046C /* GLTaskDetailPriceViewController.swift */,
 				8A7D848B2041325800B5046C /* GLTaskDetailPrice.storyboard */,
+				8A1DAB9D202B003F001CBD0F /* GLTaskDetail.storyboard */,
 				8AB9945A2067585600EF21B5 /* GLTaskDetailGPSViewController.swift */,
 				8AB994582067583D00EF21B5 /* GLTaskDetailGPS.storyboard */,
 				8A4832D0206B9F2C00BCD623 /* GLInstallGPSViewController.swift */,

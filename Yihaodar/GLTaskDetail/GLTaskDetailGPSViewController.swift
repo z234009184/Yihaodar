@@ -1526,24 +1526,22 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
             if model?.statusType == GLWorkTableModel.TaskType.approve { // 已经审批的
                 typeButton.setTitle("已审批", for: .normal)
                 if detailGPSBigModel == nil { return }
-                var examinerModel: GLGPSTaskDetailBigModel.GLExaminerModel?
+                var exam_status = "1"
+
                 for examinerM in detailGPSBigModel.examiner {
-                    if examinerM.exam_name == GLUser.partyName {
-                        examinerModel = examinerM
-                        break
+                    if examinerM.exam_status == "0" {
+                        exam_status = "0"
                     }
                 }
                 
-                if let examinerModel = examinerModel {
-                    if examinerModel.exam_status == "1" {
-                        typeButton.setTitle("同意放款", for: .normal)
-                        typeButton.backgroundColor = YiBlueColor
-                        typeButton.setTitleColor(.white, for: .normal)
-                    } else {
-                        typeButton.setTitle("拒绝放款", for: .normal)
-                        typeButton.backgroundColor = YiRedColor
-                        typeButton.setTitleColor(.white, for: .normal)
-                    }
+                if exam_status == "1" {
+                    typeButton.setTitle("同意放款", for: .normal)
+                    typeButton.backgroundColor = YiBlueColor
+                    typeButton.setTitleColor(.white, for: .normal)
+                } else {
+                    typeButton.setTitle("拒绝放款", for: .normal)
+                    typeButton.backgroundColor = YiRedColor
+                    typeButton.setTitleColor(.white, for: .normal)
                 }
                 
                 
@@ -1714,7 +1712,7 @@ class GLTaskDetailGPSViewController: GLButtonBarPagerTabStripViewController {
                 if weakShowMsgView?.lastBtn == weakShowMsgView?.agreeBtn {
                     exam_status = "1"
                 } else {
-                    exam_status = "2"
+                    exam_status = "0"
                 }
                 
                 

@@ -72,11 +72,9 @@ class GLTabBarController: UITabBarController {
 //            maskView.frame = vc.view.bounds
 //            vc.view.addSubview(maskView)
 //        } else {
-//            self.view.addSubview(maskView)
+            self.view.addSubview(maskView)
 //        }
-        if let window = UIApplication.shared.keyWindow {
-            window.addSubview(maskView)
-        }
+        
         return maskView
     }
     

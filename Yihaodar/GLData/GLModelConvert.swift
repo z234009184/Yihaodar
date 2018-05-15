@@ -1300,7 +1300,7 @@ class GLModelConvert: NSObject {
                     var exam_status = examModel.exam_status
                     if exam_status == "1" {
                         exam_status = "同意放款"
-                    } else if exam_status == "2" {
+                    } else if exam_status == "0" {
                         exam_status = "拒绝放款"
                     } else {
                         exam_status = ""
