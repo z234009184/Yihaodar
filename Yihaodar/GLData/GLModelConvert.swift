@@ -704,7 +704,7 @@ class GLModelConvert: NSObject {
                     lrLoanmortgageRate = lrLoanmortgageRate.percentString()
                     lrLoanmortgageRate = lrLoanmortgageRate.replacingOccurrences(of: ",", with: "")
                 }
-                sectionModel.items.append(GLItemModel(title: "借款抵押率", subTitle: model.loanRisker.lrLoanmortgageRate.percentString()))
+                sectionModel.items.append(GLItemModel(title: "借款抵押率", subTitle: lrLoanmortgageRate))
             }
             
             if model.dataAuth.fxkz_jklx == true {
@@ -1221,10 +1221,13 @@ class GLModelConvert: NSObject {
                     
                     sectionModel.items.append(GLItemModel(title: "申请放款时间", subTitle: jqskModel.fksq_sqfksj))
                     sectionModel.items.append(GLItemModel(title: "申请放款金额", subTitle: jqskModel.fksq_sqfke.isEmpty ? "" : jqskModel.fksq_sqfke.decimalString() + "万元" ))
-                    sectionModel.items.append(GLItemModel(title: "放款时间", subTitle: jqskModel.fk_sjfksj))
-                    sectionModel.items.append(GLItemModel(title: "实际放款", subTitle: jqskModel.fk_sjfke.isEmpty ? "" : jqskModel.fk_sjfke.decimalString() + "万元" ))
                     
+                    if model.specialStatus.LOAN_APPLY_FANGKUAN == "3" { // 已放款
+                        sectionModel.items.append(GLItemModel(title: "放款时间", subTitle: jqskModel.fk_sjfksj))
+                        sectionModel.items.append(GLItemModel(title: "实际放款", subTitle: jqskModel.fk_sjfke.isEmpty ? "" : jqskModel.fk_sjfke.decimalString() + "万元" ))
+                    }
                 }
+                
             }
             dataArray.append(sectionModel)
         }
@@ -1308,19 +1311,19 @@ class GLModelConvert: NSObject {
             var sectionModel = GLSectionModel()
             sectionModel.title = "还款计划"
             
-            if model.repaymentPlan.count > 0 {
-                var formModel = GLFormModel()
-                formModel.titles = ["期数", "还款日期", "还款本金", "还款利息", "本期还款总额"]
-                for planModel in model.repaymentPlan {
-                    
-                    let formArray = [planModel.overdue_periods, planModel.repayment_date, planModel.repaymentCorpus.decimalString(), planModel.repaymentInterests.decimalString(), planModel.repaymentTotal.decimalString()]
-                    
-                    formModel.dataArray.append(formArray)
+            if model.specialStatus.LOAN_APPLY_FANGKUAN == "3" {
+                if model.repaymentPlan.count > 0 {
+                    var formModel = GLFormModel()
+                    formModel.titles = ["期数", "还款日期", "还款本金", "还款利息", "本期还款总额"]
+                    for planModel in model.repaymentPlan {
+                        
+                        let formArray = [planModel.overdue_periods, planModel.repayment_date, planModel.repaymentCorpus.decimalString(), planModel.repaymentInterests.decimalString(), planModel.repaymentTotal.decimalString()]
+                        
+                        formModel.dataArray.append(formArray)
+                    }
+                    sectionModel.items.append(formModel)
                 }
-                sectionModel.items.append(formModel)
             }
-            
-            
             
             dataArray.append(sectionModel)
         }
