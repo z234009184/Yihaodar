@@ -1223,8 +1223,13 @@ class GLModelConvert: NSObject {
                     sectionModel.items.append(GLItemModel(title: "申请放款金额", subTitle: jqskModel.fksq_sqfke.isEmpty ? "" : jqskModel.fksq_sqfke.decimalString() + "万元" ))
                     
                     if model.specialStatus.LOAN_APPLY_FANGKUAN == "3" { // 已放款
-                        sectionModel.items.append(GLItemModel(title: "放款时间", subTitle: jqskModel.fk_sjfksj))
-                        sectionModel.items.append(GLItemModel(title: "实际放款", subTitle: jqskModel.fk_sjfke.isEmpty ? "" : jqskModel.fk_sjfke.decimalString() + "万元" ))
+                        if jqskModel.fk_sjfksj.isEmpty == false {
+                            sectionModel.items.append(GLItemModel(title: "放款时间", subTitle: jqskModel.fk_sjfksj))
+                            
+                            sectionModel.items.append(GLItemModel(title: "实际放款", subTitle: jqskModel.fk_sjfke.isEmpty ? "" : jqskModel.fk_sjfke.decimalString() + "万元" ))
+                        }
+                        
+                        
                     }
                 }
                 
@@ -1295,8 +1300,10 @@ class GLModelConvert: NSObject {
                     var exam_status = examModel.exam_status
                     if exam_status == "1" {
                         exam_status = "同意放款"
-                    } else if exam_status == "0" {
+                    } else if exam_status == "2" {
                         exam_status = "拒绝放款"
+                    } else {
+                        exam_status = ""
                     }
                     sectionModel.items.append(GLItemModel(title: "审批意见", subTitle: exam_status))
                     sectionModel.items.append(GLItemModel(title: "备注", subTitle: examModel.exam_remark))
